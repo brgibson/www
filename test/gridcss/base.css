@@ -4,11 +4,35 @@ h1, h2, h3, h4 ,h5, h6 {
 	padding: .5em 1em;
 }
 
+div {
+	overflow: hidden;
+}
+
 /* begin css */
 body {
 	background-color: #000000;
 	color: #ffffff;
 	font-family: "Britannic Bold";
+}
+
+/** Note: adding padding to something with % width, makes it longer*/
+.top {
+	background-color: #1f3f8f;
+	border-color: white;
+	border: solid;
+}
+
+.side {
+	background-color: lightyellow;
+	color: black;
+}
+
+.main {
+	background-color: lightblue;
+}
+
+.nav {
+	background-color: lightgreen;
 }
 
 /* Grid System */
