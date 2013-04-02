@@ -1,14 +1,7 @@
 /* resets */
-h1, h2, h3, h4 ,h5, h6 {
+h1, h2, h3, h4 ,h5, h6, p {
 	margin: 0;
 	padding: .5em 1em;
-}
-
-/* begin css */
-body {
-	background-color: #000000;
-	color: #ffffff;
-	font-family: "Britannic Bold";
 }
 
 /* Grid System */
@@ -62,6 +55,52 @@ body {
 }
 .row .c12 {
 	display: block;
+}
+
+/* grid with inline-block instead of floating*/
+
+
+
+/* begin css */
+body {
+	background-color: #000000;
+	color: #ffffff;
+	font-family: "Britannic Bold";
+}
+
+.experiments ul {
+	padding: 0 15%;
+}
+
+
+.experiments li {
+	display: inline-block;
+	padding-left: 2em;
+}
+.experiments dl, .experiments dt {
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+}
+.experiments dd {
+	display: inline-block;
+	padding-left: 2em;
+	margin: 0;
+}
+li, dd, dt {
+	min-width: 1em;
+}
+.experiments li {
+	background-color:lightblue;
+}
+.experiments dd {
+	background-color:lightpink;
+}
+.experiments dt {
+	background-color:lightyellow;
+}
+.image {
+	overflow: hidden;
 }
 
 /* media query section */
