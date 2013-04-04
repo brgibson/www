@@ -28,51 +28,51 @@ body {
 	display: block;
 	clear:both;
 }
-.row .c1 {
+.c1 {
 	float: left;
 	width: 8.33%;
 }
-.row .c2 {
+.c2 {
 	float: left;
 	width: 16.66%
 }
-.row .c3 {
+.c3 {
 	float: left;
 	width: 25%;
 }
-.row .c4 {
+.c4 {
 	float: left;
 	width: 33.33%;
 }
-.row .c5 {
+.c5 {
 	float: left;
 	width: 41.66%
 }
-.row .c6 {
+.c6 {
 	float: left;
 	width: 50%;
 }
-.row .c7 {
+.c7 {
 	float: left;
 	width: 58.33%
 }
-.row .c8 {
+.c8 {
 	float: left;
 	width: 66.66%;
 }
-.row .c9 {
+.c9 {
 	float: left;
 	width: 75%;	
 }
-.row .c10 {
+.c10 {
 	float: left;
 	width: 83.33%
 }
-.row .c11 {
+.c11 {
 	float: left;
 	width: 91.66%;
 }
-.row .c12 {
+.c12 {
 	display: block;
 }
 
@@ -110,7 +110,12 @@ body {
 	border-radius: 10px;
 	text-decoration: none;
 }
+
 /*
+a {
+	background:url(./mypage/myphoto.jpg) -80px -10px;
+}
+
 .experiments li {
 	background-color:lightblue;
 }
@@ -125,4 +130,15 @@ body {
 /* media query section */
 body {
 	font-size: 16pt;
+}
+@media screen and (orientation:portrait) {
+	body {
+		font-size: 25pt;
+	}
+	.hidep {
+		display: none;
+	}
+	.c6 {
+		width: 100%;
+	}
 }
