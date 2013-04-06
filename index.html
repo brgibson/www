@@ -1,6 +1,40 @@
 <!DOCTYPE html>
 <html>
 <style>
+.experiments a {
+	position:relative;
+}
+.experiments a:before {
+  position:absolute;
+	width:6em;
+	height:4.5em;
+	content:'';
+	top:.5em;
+}
+.slider:before {
+	background: url('./icons.jpg') -19em -16em;
+	background-size: 40em;
+}
+.sudoku:before {
+	background: url('./icons.jpg') -12.2em -11.4em;
+	background-size: 40em;
+}
+.games:before {
+	background: url('./icons.jpg') -9em -3.9em;
+	background-size: 32em;
+}
+.movies:before {
+	background: url('./icons.jpg') -31.8em -16.7em;
+	background-size: 40em;
+}
+.music:before {
+	background: url('./icons.jpg') -25.4em -14.6em;
+	background-size: 40em;
+}
+.photos:before {
+	background: url('./icons.jpg') -27.4em -8.9em;
+	background-size: 40em;
+}
 </style>
 <head>
 	<link rel="stylesheet" href="./base.css" />
@@ -11,8 +45,7 @@
 
 	<div class="row">
 
-		<div class="c3 hidep">
-			<img src="./mypage/myphoto.jpg"/>
+		<div class="c3 hide-p beaker" style="text-align:right">
 		</div>
 		
 		<div class="c6">
@@ -22,16 +55,16 @@
 					<h1>Ben's Experiments</h1>
 		
 					<ul>
-						<li class="outer-item" style="display:inline;">
+						<li class="outer-item">
 							<dl>
-								<dt><a href="#games">Games</a></dt>
-								<dd><a href="#sudoku">Sudoku</a></dd>
-								<dd><a href="#slider">Slider</a></dd>
+								<dt><a href="#games" class="games">Games</a></dt>
+								<dd><a href="#sudoku" class="sudoku">Sudoku</a></dd>
+								<dd><a href="#slider" class="slider">Slider</a></dd>
 							</dl>
 						</li>
-						<li><a href="#photos">Photos</a></li>
-						<li><a href="#movies">Movies</a></li>
-						<li><a href="#music">Music</a></li>			
+						<li><a href="#photos" class="photos">Photos</a></li>
+						<li><a href="#movies" class="movies">Movies</a></li>
+						<li><a href="#music" class="music">Music</a></li>			
 					</ul>
 				</div>
 			</div>
@@ -54,8 +87,7 @@
 
 		</div>
 
-		<div class="c3 hidep" style="text-align:right">
-			<img src="./mypage/myphoto.jpg"/>
+		<div class="c3 hide-p beaker">
 		</div>
 	</div>
 </body>

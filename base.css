@@ -21,8 +21,17 @@ body {
 	color: #ffffff;
 	font-family: "Britannic Bold";
 }
+/* Re-usable */
+.hidden {
+	visibility: hidden;
+}
 
-
+/* Icons */
+.beaker {
+	background: url("./icons.jpg") -17px -15px; 
+	width: 240px;
+	height: 500px;
+}
 /* Grid System */
 .row {
 	display: block;
@@ -85,7 +94,7 @@ body {
 	text-align: center;
 }
 .experiments ul {
-	padding: 0 2em;
+	padding: 0;
 }
 .experiments dl {
 	display: inline;
@@ -100,20 +109,26 @@ body {
 	display: inline-block;
 	padding: 0;
 	margin: 1em;
-	width: 6em;
+	width: 8em;
 	text-align: center;
 }
 .experiments a {
 	display: block;
 	padding: 1em;
-	border: solid white;
+	padding-top: 5em;
+	border: solid white; 
 	border-radius: 10px;
 	text-decoration: none;
 }
+.experiments a:visited {
+	color: lightgreen;
+	border: solid lightgreen;
+}
+
 
 /*
 a {
-	background:url(./mypage/myphoto.jpg) -80px -10px;
+	background: url(./mypage/myphoto.jpg) -80px -10px;
 }
 
 .experiments li {
@@ -135,7 +150,7 @@ body {
 	body {
 		font-size: 25pt;
 	}
-	.hidep {
+	.hide-p {
 		display: none;
 	}
 	.c6 {
