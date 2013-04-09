@@ -1,39 +1,17 @@
 <!DOCTYPE html>
 <html>
 <style>
-.experiments a {
-	position:relative;
+.smain:before{
+	/* same css as .c3 */
+	float: left;
+	width: 25%;
+	
 }
-.experiments a:before {
-  position:absolute;
-	width:6em;
-	height:4.5em;
-	content:'';
-	top:.5em;
-}
-.slider:before {
-	background: url('./icons.jpg') -19em -16em;
-	background-size: 40em;
-}
-.sudoku:before {
-	background: url('./icons.jpg') -12.2em -11.4em;
-	background-size: 40em;
-}
-.games:before {
-	background: url('./icons.jpg') -9em -3.9em;
-	background-size: 32em;
-}
-.movies:before {
-	background: url('./icons.jpg') -31.8em -16.7em;
-	background-size: 40em;
-}
-.music:before {
-	background: url('./icons.jpg') -25.4em -14.6em;
-	background-size: 40em;
-}
-.photos:before {
-	background: url('./icons.jpg') -27.4em -8.9em;
-	background-size: 40em;
+.smain:before:before {
+	background: url("./icons.jpg") -0em -.9375px; 
+	height: 31.25em;
+	width:12em;
+	content:'hello';
 }
 </style>
 <head>
@@ -43,10 +21,12 @@
 
 <body>
 
-	<div class="row">
-
-		<div class="c3 hide-p beaker" style="text-align:right">
-		</div>
+	<div class="row main"> 
+	
+		<!-- gutter of width c3 added via css 
+		<div class="c3 beaker right"></div>
+		-->
+		<div class="c3 beaker right"></div>
 		
 		<div class="c6">
 		
@@ -62,7 +42,7 @@
 								<dd><a href="#slider" class="slider">Slider</a></dd>
 							</dl>
 						</li>
-						<li><a href="#photos" class="photos">Photos</a></li>
+						<li><a href="./photos.html" class="photos">Photos</a></li>
 						<li><a href="#movies" class="movies">Movies</a></li>
 						<li><a href="#music" class="music">Music</a></li>			
 					</ul>
@@ -81,14 +61,18 @@
 						<li><a href="#cds">CD Collection</a></li>
 						<li><a href="#shows">Shows Attended</a></li>
 					</ul>
-				</div>
+					
+					<div class="photos">
+						<img src="./photos/selfportrait1.png" alt="Ben's Headshot"/>
+					</div>
 				</div>
 			</div>
 
 		</div>
 
-		<div class="c3 hide-p beaker">
+		<div class="c3 beaker left">
 		</div>
+
 	</div>
 </body>
 

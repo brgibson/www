@@ -20,17 +20,11 @@ body {
 	background-color: #000000;
 	color: #ffffff;
 	font-family: "Britannic Bold";
+	font-size: 16pt;
 }
 /* Re-usable */
 .hidden {
 	visibility: hidden;
-}
-
-/* Icons */
-.beaker {
-	background: url("./icons.jpg") -17px -15px; 
-	width: 240px;
-	height: 500px;
 }
 /* Grid System */
 .row {
@@ -90,6 +84,28 @@ body {
 
 
 /* begin css */
+
+/* beaker gutter */
+.beaker.left:before {
+	float: left;
+}
+.beaker.right:before {
+	float: right;
+}
+.beaker:before {
+	background: url("./icons.jpg") -0em -.9375px; 
+	height: 31.25em;
+	width:12em;
+	content:'';
+}
+
+/* about section */
+.about .photos {
+	text-align: center;
+	margin-top: 2em;
+}
+
+/* experiments section */
 .experiments {
 	text-align: center;
 }
@@ -116,41 +132,55 @@ body {
 	display: block;
 	padding: 1em;
 	padding-top: 5em;
-	border: solid white; 
-	border-radius: 10px;
+	color: white;
+	border: solid lightgreen; 
+	border-radius: .6em;
 	text-decoration: none;
 }
-.experiments a:visited {
-	color: lightgreen;
-	border: solid lightgreen;
-}
 
-
-/*
-a {
-	background: url(./mypage/myphoto.jpg) -80px -10px;
+/* experiments icons */
+.experiments a {
+	position:relative;
 }
-
-.experiments li {
-	background-color:lightblue;
+.experiments a:before {
+  position:absolute;
+	width:6em;
+	height:4.5em;
+	content:'';
+	top:.5em;
+	right:.8em;
 }
-.experiments dd {
-	background-color:lightpink;
+.experiments .slider:before {
+	background: url('./icons.jpg') -19em -16em;
+	background-size: 40em;
 }
-.experiments dt {
-	background-color:lightyellow;
+.experiments .sudoku:before {
+	background: url('./icons.jpg') -12.2em -11.4em;
+	background-size: 40em;
 }
-*/
+.experiments .games:before {
+	background: url('./icons.jpg') -9em -3.9em;
+	background-size: 32em;
+}
+.experiments .movies:before {
+	background: url('./icons.jpg') -31.8em -16.7em;
+	background-size: 40em;
+}
+.experiments .music:before {
+	background: url('./icons.jpg') -25.4em -14.6em;
+	background-size: 40em;
+}
+.experiments .photos:before {
+	background: url('./icons.jpg') -27.4em -8.9em;
+	background-size: 40em;
+}
 
 /* media query section */
-body {
-	font-size: 16pt;
-}
 @media screen and (orientation:portrait) {
 	body {
 		font-size: 25pt;
 	}
-	.hide-p {
+	.beaker:before {
 		display: none;
 	}
 	.c6 {
