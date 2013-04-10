@@ -1,0 +1,6 @@
+- should I limit the number of instance variables
+- should I try to cut down on the number of functions
+
+- should we stop observing events (ex. the event for clearing the coordinates)
+
+- do we want people to be able to refresh their posotion?

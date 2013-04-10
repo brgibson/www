@@ -1,0 +1,96 @@
+h1. Javascript Notes
+
+----
+
+What is the correct spelling of Javascript (no caps, camel case)?
+
+----
+
+.firstChild 
+- returns differently between browsers
+- some return #text element if there is whitespace
+- other's skip whitespace and return the first tag element 
+
+Solution: 
+	use .getElementsByTagName which recursively returns
+	all the children of that node with the requested tag type
+----
+
+How do you remove Dom events? 
+	(ie. after I click on a button, I want to stop the onClick 
+	 event listener so that next time I click, it does nothing)
+	 
+- elemen.onclick = null
+- the problem was the camel casing of onClick
+	 
+----
+
+When using window.setTimeout, what is the cleanest way to stop an event?
+
+- by using window.clearTimeout
+
+var identifier = window.setTimeout(func, 1000);
+window.clearTimeout(identifier);
+
+----
+
+When should you use the 'new' keyword?
+
+?
+
+----
+
+How do I make a semantically logical grouping of buttons in html?
+
+----
+
+Closures: do private variables need to be inside of the closure?
+
+----
+
+Closures: can you create a closure with just a json oject to be returned?
+
+----
+
+How is it best to attach event listeners to dom elements?
+(because you need to wait until the element has been created in the dom)
+
+----
+
+Closure confusion:
+
+
+ 	for (var i = 0; i < elements.length; i++) {
+
+		 //this one always writes (element.length + 1)
+ 		 elements[i].onclick = function() { 
+ 					var test = function(index) {
+ 						document.write(index);
+ 					};
+ 					test(i); 
+ 			};
+
+ 			//this one write the expected value of i
+ 			elements[i].onclick = function(index) { 
+ 					return function() {
+ 						document.write(index);
+ 					};
+ 			}(i);
+ 	}
+ 	
+ 	*	The reason is because the bottom one executes the one argument
+		method immediately, which saves the value of i in the function
+		that is returned 
+		
+		In the top example, the function with an argument is not executed
+		until the onclick event is fired, and by that time, i is 
+		elements.length + 1 (because that is the value when the function
+		that this code is written inside of exits) *
+		
+----
+
+How do you change base css with javascript?
+
+----
+
+Is there a way to style certain columns of a table in css?

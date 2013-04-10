@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ben's Experiments - Sudoku</title>
+	<link rel="stylesheet" type="text/css" href="./SudokuSolver.css" />
+	<script src="./jsModels/Square.js"></script>
+	<script src="./jsModels/Grid.js"></script>
+	<script src="./jsActions/GridAnimator.js"></script>
+	<script src="./jsModels/TestScenarios.js"></script>
+	<script type="text/javascript">
+		var puzzle = realPuzzle1; //from TestScenarios.js
+		var grid = new Grid();
+		var animatedGrid = new Grid();
+
+		grid.initialize();
+		animatedGrid.initialize();
+		
+		grid.addNumbersToGrid(puzzle);
+		animatedGrid.addNumbersToGrid(puzzle);
+
+		grid.solvePuzzle();
+		
+		var animationsDiv = document.createElement('div');
+		animationsDiv.setAttribute('class', 'animations');
+		animationsDiv.innerHTML = animatedGrid.toString();
+		
+		var showErrors = function() {
+			var show = false;
+
+			return function(elem) {
+				show = !show;
+				if (show) {
+					animationsDiv.className += " showErrors";
+					elem.className = "showErrors"
+				} else {
+					animationsDiv.className = "animations";
+					elem.className = ""
+				}
+			};
+		}();
+		
+		var toggleDiscardMode = function() {
+			animationsDiv.discardMode = false;
+
+			return function(elem) {
+				var isDiscardMode = animationsDiv.discardMode;
+				if (isDiscardMode) {
+					document.getElementById('numberChooser').className = "";
+					elem.className = "";			
+				} else {
+					document.getElementById('numberChooser').className += " discardMode";
+					elem.className = "discardMode";
+				}
+				animationsDiv.discardMode = !isDiscardMode;
+			};
+		}();
+		
+		var toggleClickToSolveMode = function() {
+			var clickToSolveMode = false;
+			
+			return function(elem) {
+				clickToSolveMode = !clickToSolveMode;
+				if (clickToSolveMode) {
+					gridSolutionDisplayer(grid, animationsDiv)
+					elem.className = "clickToSolveMode";
+				} else {
+					numberChooser(	grid,
+													animationsDiv,
+													document.getElementById("numberChooser"));
+					elem.className = "";
+				}
+			}
+		}();
+	</script>
+	<style>
+		.numberChooser,{
+			float:left;
+		}
+		.numberChooser td {
+			display: block;
+		}
+		.animations {
+			float: right;
+		}
+	</style>
+</head>
+
+<body>
+
+<button onclick="toggleDiscardMode(this)">Discard Mode</button>
+
+<button style="float:right" onclick="showErrors(this)">Show Errors</button>
+<button style="float:right" onclick="toggleClickToSolveMode(this)">Click To Solve</button>
+
+
+
+<div class="numberChooser">
+	<table id="numberChooser" class="hidden">
+		<tr>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>5</td>
+			<td>6</td>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td>8</td>
+			<td>9</td>
+		</tr>
+	</table>
+</div>
+
+</body>
+<script>
+		
+		document.body.appendChild(animationsDiv);		
+		
+		numberChooser(	grid,
+										animationsDiv,
+										document.getElementById("numberChooser"));
+	
+</script>
+
+</html>

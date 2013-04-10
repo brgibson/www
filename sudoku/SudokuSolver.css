@@ -1,0 +1,80 @@
+table {
+	border: 3px solid blue;
+	border-collapse: collapse;
+	float: left;
+/*	margin-right: 5em; */
+	margin-right: 1%;
+}
+
+.bottomSubRow {
+	border-bottom: 3px solid blue;
+}
+
+.rightSubCol { 
+	border-right: 3px solid blue;
+}
+
+td, tr {
+	border: 1px solid purple;
+	text-align: center;
+	width: 3em;
+	height: 3em;
+	background-color: lightblue;
+}
+
+select {
+	background: none;
+	border: none;
+	font-size: 1em;
+}
+
+.hidden {
+/*	visibility: hidden; */
+}
+
+.showErrors .incorrect {
+	color: red;
+}
+
+.original {
+	background-color: lightpink;
+}
+
+/** --- number chooser section --- **/
+
+.numberChooser .discardMode td,
+.numberChooser .discardMode tr {
+	background-color: lightgreen;
+}
+
+.numberChooser .chosen {
+	background-color: lightgreen;
+}
+
+.numberChooser .discarded {
+	color: lightblue;
+}
+.numberChooser .discardMode .discarded {
+	color: lightgreen;
+}
+
+
+/** --- animation section --- **/
+
+.animations {
+	padding-top: 12px;
+	padding-left: 15em;
+}
+
+.animations .chosen {
+	background-color: lightgreen;
+}
+
+/** --- button styles --- **/
+button.showErrors,
+button.discardMode,
+button.animate,
+button.animateBackwards,
+button.clickToSolveMode {
+	color: grey;
+}

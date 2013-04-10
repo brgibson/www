@@ -1,0 +1,157 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="./SudokuSolver.css" />
+	<script src="./jsModels/Square.js"></script>
+	<script src="./jsModels/Grid.js"></script>
+	<script src="./jsModels/PuzzleGenerator.js"></script>
+	<script src="./jsActions/GridAnimator.js"></script>
+	<script src="./jsModels/TestScenarios.js"></script>
+	<script type="text/javascript">
+//		var puzzle = realPuzzle1; //from TestScenarios.js
+		var puzzle = new PuzzleGenerator.generate(); //from TestScenarios.js
+		var grid = new Grid();
+		var animatedGrid = new Grid();
+
+		grid.initialize();
+		animatedGrid.initialize();
+		
+		grid.addNumbersToGrid(puzzle);
+		animatedGrid.addNumbersToGrid(puzzle);
+
+		document.write(grid.toString());
+		grid.solvePuzzle();
+		document.write(grid.toString());
+		
+		var animationsDiv = document.createElement('div');
+		animationsDiv.setAttribute('class', 'animations');
+		
+		animationsDiv.innerHTML = animatedGrid.toString();
+		document.body.appendChild(animationsDiv);		
+		
+		//why can't I wrap this in an anonymous function? - because the function is created before the document is ready?
+		function debug() {
+			var toOutput = "index:" + grid.solution.index;
+			toOutput += ", hasNext:" + grid.solution.hasNext();
+			toOutput += ", next:" + function(x) { return "" + x.row + x.column + x.solution; }(grid.solution.next());
+			toOutput += ", hasNext:" + grid.solution.hasNext();			
+			toOutput += ", next:" + function(x) { return "" + x.row + x.column + x.solution; }(grid.solution.next());
+			toOutput += ", hasNext:" + grid.solution.hasNext();			
+			toOutput += ", next:" + function(x) { return "" + x.row + x.column + x.solution; }(grid.solution.next());
+			toOutput += ", next:" + function(x) { return "" + x.row + x.column + x.solution; }(grid.solution.next());
+			
+			document.write(toOutput);
+		};
+		//debug();
+		
+		var showErrors = function() {
+			var show = false;
+
+			return function(elem) {
+				show = !show;
+				if (show) {
+					animationsDiv.className += " showErrors";
+					elem.className = "showErrors"
+				} else {
+					animationsDiv.className = "animations";
+					elem.className = ""
+				}
+			};
+		}();
+		
+		var toggleDiscardMode = function() {
+			animationsDiv.discardMode = false;
+
+			return function(elem) {
+				var isDiscardMode = animationsDiv.discardMode;
+				if (isDiscardMode) {
+					document.getElementById('numberChooser').className = "";
+					elem.className = "";			
+				} else {
+					document.getElementById('numberChooser').className += " discardMode";
+					elem.className = "discardMode";
+				}
+				animationsDiv.discardMode = !isDiscardMode;
+			};
+		}();
+		
+		var toggleClickToSolveMode = function() {
+			var clickToSolveMode = false;
+			
+			return function(elem) {
+				clickToSolveMode = !clickToSolveMode;
+				if (clickToSolveMode) {
+					gridSolutionDisplayer(grid, animationsDiv)
+					elem.className = "clickToSolveMode";
+				} else {
+					numberChooser(	grid,
+													animationsDiv,
+													document.getElementById("numberChooser"));
+					elem.className = "";
+				}
+			}
+		}();
+	</script>
+</head>
+
+<body>
+
+<!-- how do I make a semantically logical grouping of buttons in html? -->
+
+<button id="nextButton">Next</button>
+<button id="previousButton">Previous</button>
+<button id="animateButton">Animate</button>
+<button id="animateBackwardsButton">Animate Backwards</button>
+<button id="stopAnimationButton">Stop</button>
+
+<div>Seconds: <span id="animationDelayDisplay">.5</span></div>
+<input id="animationDelay" type="range" min="0" max="1000" value="500" step="100"/>
+
+<button onclick="toggleClickToSolveMode(this)">Click To Solve</button>
+
+<button onclick="showErrors(this)">Show Errors</button>
+<button onclick="toggleDiscardMode(this)">Discard Mode</button>
+
+<div class="numberChooser">
+	<table id="numberChooser" class="hidden">
+		<tr>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>5</td>
+			<td>6</td>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td>8</td>
+			<td>9</td>
+		</tr>
+	</table>
+</div>
+
+</body>
+<script>
+		
+
+
+		//is this a good practice?
+		gridAnimator(	grid,
+									animationsDiv,
+									document.getElementById("nextButton"),
+									document.getElementById("previousButton"),
+									document.getElementById("animateButton"),
+									document.getElementById("animateBackwardsButton"),
+									document.getElementById("animationDelay"),	
+									document.getElementById("animationDelayDisplay"),
+									document.getElementById("stopAnimationButton"));
+		
+		numberChooser(	grid,
+										animationsDiv,
+										document.getElementById("numberChooser"));
+	
+		
+</script>
+
+</html>

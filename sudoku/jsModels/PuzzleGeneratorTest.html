@@ -1,0 +1,28 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../SudokuSolver.css" />
+
+	<script src="./Grid.js"></script>
+	<script src="./Square.js"></script>
+	<script src="./PuzzleGenerator.js"></script>
+	<script type="text/javascript">
+		var puzzle = new PuzzleGenerator().generate();	
+	
+		var grid = new Grid();
+		grid.initialize();
+		grid.addNumbersToGrid(puzzle);
+
+		document.write(grid.toString());
+		grid.solvePuzzle();
+		document.write(grid.toString());
+				
+	</script>
+</head>
+
+<body>
+
+</body>
+<script>
+</script>
+
+</html>
