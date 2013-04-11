@@ -51,31 +51,30 @@ function nextBoard() {
 
 <h1>Generic Puzzle Game</h1>
 
-<div class="nav" style="font-size:2em;position:absolute; top:0; left:0;">
-	<ul>
-		<li onclick="board.move('up')">up</li>
-		<li onclick="board.move('down')">down</li>
-		<li onclick="board.move('left')">left</li>
-		<li onclick="board.move('right')">right</li>
-	</ul>
-</div>
-
 <div id="boardName" style="text-align:center"></div>
 
-<form style="text-align:center">
-	<input type="button" id="win" style="visibility:visible;" value="Next Board" onClick="nextBoard()">
+<div id="board-container" style="position:relative;">
+	<div id="board"></div> 	
+	<img src="character.gif" id="moveMe" style="position:absolute; left:0; top:0;"   />
+</div>
 
-	<input style="visibility:hidden" type="text" id="txt">
-	<input style="visibility:hidden" type="text" id="xcoordinate">
-</form>
+<div class="nav" style="text-align:center; font-size:2em;position:absolute; bottom:0; right:0; padding-bottom:1em;">
+		<i style="display:block;" onclick="board.move('up')">up</i>
+		<i style="display:inline; padding-right:1em;" onclick="board.move('left')">left</i>
+		<i style="display:inline" onclick="board.move('right')">right</i>
+		<i style="display:block;" onclick="board.move('down')">down</i>
+</div>
 
 <h1 class="center" id="keyvalue"></h1>
 
-<br/>
+<form style="text-align:right; ">
+	<input type="button" id="win" style="visibility:visible;" value="Next Board" onClick="nextBoard()">
 
-<div id="board"></div> 
-
-<img src="character.gif" id="moveMe" style="position:absolute; left:100px; top:220px;"   />
+	<input style="visibility:hiddens" type="text" id="currCol">
+	<input style="visibility:hiddens" type="text" id="currRow"><br/>
+	<input style="visibility:hiddens" type="text" id="xcoordinate">
+	<input style="visibility:hiddens" type="text" id="ycoordinate">
+</form>
 
 <script type="text/javascript">
 board.writeBoard();

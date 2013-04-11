@@ -1,8 +1,8 @@
 table {
 	border-collapse: collapse;
 	position: absolute;
-	left: 100px;
-	top: 220px;'
+	left: 0;
+	top: 0;
 }
 td {
 	padding: 0;

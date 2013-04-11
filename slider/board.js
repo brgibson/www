@@ -28,17 +28,18 @@ function Board()
 	this.moveHappeningFlag = false;
 	this.exitDir = 'right';
 	this.hasWon = false;
-	this.boardOriginX = 100; //remove these variables
-	this.boardOriginY = 220; //remove these variables
+	this.boardOriginX = 0; //remove these variables
+	this.boardOriginY = 0; //remove these variables
+	this.xcoord = 0;
 	this.boardCellHeight = 40;
 	this.boardCellWidth = 50;
 	this.moveSpeedX = this.boardCellWidth /5;
 	this.moveSpeedY = this.boardCellHeight / 4;
 	this.currRow = 0;
 	this.currCol = 0;
-	this.xcoord = 100;
 	this.t;
 	this.animationDelay = 10;
+	
 	
 	
 	this.getNumCols = 
@@ -305,8 +306,10 @@ function Board()
 				this.currCol = m;
 			}
 			
-			document.getElementById('txt').value="curr row => " + this.currRow;		
+			document.getElementById('currCol').value="curr col => " + this.currCol;		
+			document.getElementById('currRow').value="curr row => " + this.currRow;		
 			document.getElementById('xcoordinate').value="xcoord => " + this.xcoord;	
+			document.getElementById('ycoordinate').value="ycoord => " + this.ycoord;	
 			
 			if(direction == 'stop')
 			{
