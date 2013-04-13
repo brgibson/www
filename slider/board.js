@@ -1,5 +1,3 @@
-
-
 function Board()
 {	
 	
@@ -33,12 +31,13 @@ function Board()
 	this.xcoord = 0;
 	this.boardCellHeight = 40;
 	this.boardCellWidth = 50;
-	this.moveSpeedX = this.boardCellWidth /5;
+	this.moveSpeedX = this.boardCellWidth / 5;
 	this.moveSpeedY = this.boardCellHeight / 4;
 	this.currRow = 0;
 	this.currCol = 0;
 	this.t;
 	this.animationDelay = 10;
+//	this.animationDelay = 500;
 	
 	
 	
@@ -115,6 +114,12 @@ function Board()
 			this.exitDir = strArr[i]; i++;
 			var startCol = parseInt(strArr[i]); i++;
 			var startRow = parseInt(strArr[i]); i++;
+			
+			this.currCol = startCol - 1;
+			this.currRow = startRow - 1;
+			
+			document.getElementById('currCol').value="curr col => " + this.currCol;		
+			document.getElementById('currRow').value="curr row => " + this.currRow;		
 						
 			startCol = ((startCol - 1) * this.boardCellWidth) + this.boardOriginX;
 			startRow = ((startRow - 1) * this.boardCellHeight) + this.boardOriginY;	
@@ -197,58 +202,41 @@ function Board()
 		}
 	
 	this.isBlocked =	
-		function isBlocked(direction, coordinate)
+		function isBlocked(direction)
 		{
 			
 			switch(direction)
 				{
 					case 'up': 
 		
-						for(x in this.blocked[this.currRow - 1])
-						{
-							if(this.blocked[this.currRow - 1][x] == this.xcoord)
-							{
-								return true;
-							}	
-						}
-						
+						if (this.board[this.currRow - 1][this.currCol] == 0) {
+							return true;
+						}				
+								
 						return false;
 						break;
 						
 					case 'down': 
-		
-						for(x in this.blocked[this.currRow + 1])
-						{
-							if(this.blocked[this.currRow + 1][x] == this.xcoord)
-							{
-								return true;
-							}	
-						}
 						
+						if (this.board[this.currRow + 1][this.currCol] == 0) {
+							return true;
+						}
+
 						return false;
 						break;
 					
 					case 'left': 
-					
-						for(x in this.blocked[this.currRow])
-						{
-							if(this.blocked[this.currRow][x] == (coordinate - this.boardCellWidth))
-							{
-								return true;
-							}	
+						if (this.board[this.currRow][this.currCol - 1] == 0) {
+							return true;
 						}
-						
+
 						return false;
 						break;
 						
 					case 'right': 
-						
-						for(x in this.blocked[this.currRow])
-						{
-							if(this.blocked[this.currRow][x] == (coordinate - this.boardCellWidth + this.boardOriginX))
-							{
-								return true;
-							}	
+			
+						if (this.board[this.currRow][this.currCol + 1] == 0) {
+							return true;
 						}
 						
 						return false;
@@ -269,26 +257,174 @@ function Board()
 					case 'up' 	: 
 						if(this.checkWin(direction)) {return false;}
 					
-						return (coordinate > this.boardOriginY && !this.isBlocked(direction, coordinate)); break;
+						return (coordinate > this.boardOriginY && !this.isBlocked(direction)); break;
 						
 					case 'down'	: 
 						if(this.checkWin(direction)) {return false;}
 					
-						return (coordinate < this.boardCellHeight * (this.getNumRows() - 1) + this.boardOriginY && !this.isBlocked(direction, coordinate)); break;				
+						return (coordinate < this.boardCellHeight * (this.getNumRows() - 1) + this.boardOriginY && !this.isBlocked(direction)); break;				
 						
 					case 'left'	: 
 						if(this.checkWin(direction)) {return false;}
 					
-						return (coordinate > this.boardOriginX && !this.isBlocked(direction, coordinate)); break;		
+						return (coordinate > this.boardOriginX && !this.isBlocked(direction)); break;		
 					
 					case 'right': 
 						if(this.checkWin(direction)) {return false;}
 						
-						return (coordinate < this.boardCellWidth * (this.getNumCols() - 1) + this.boardOriginX && !this.isBlocked(direction, coordinate)); break;
+						return (coordinate < this.boardCellWidth * (this.getNumCols() - 1) + this.boardOriginX && !this.isBlocked(direction)); break;
 					
 					default		: return false;
 				}
 		}
+	
+	this.determineEndPoint = 
+		function(direction) {
+			switch (direction) {
+				case 'up':
+
+					for (var i = this.currRow; i >= 0; i--) {
+						if (this.board[i][this.currCol] == 0) {
+							break;
+						}
+					}
+					return {"r":i+1, "c":this.currCol};
+
+				case 'down':
+
+					for (var i = this.currRow; i < this.board.length; i++) {
+						if (this.board[i][this.currCol] == 0) {
+							break;
+						}
+					}
+					return {"r":i-1, "c":this.currCol};
+
+				case 'left':
+
+					for (var i = this.currCol; i >= 0; i--) {
+						if (this.board[this.currRow][i] == 0) {
+							break;
+						}
+					}
+					return {"r":this.currRow, "c":i+1};
+				
+				case 'right':
+					for (var i = this.currCol; i < this.board[0].length; i++) {
+						if (this.board[this.currRow][i] == 0) {
+							break;
+						}
+					}
+					return {"r":this.currRow, "c":i-1};
+				
+				default:
+					break;
+			}
+			
+			return;
+		}
+
+	this.move2 = 
+		function(direction) {
+
+			//dermine end point
+			var endPoint = this.determineEndPoint(direction);
+			
+			var moveMe = document.getElementById('moveMe');
+			this.currCol = endPoint.c;
+			this.currRow = endPoint.r;
+			
+			if (this.checkWin(direction)) {
+				this.youWin();
+			}
+			
+			
+			moveMe.style.top = (endPoint.r * this.boardCellHeight) + this.boardOriginY;
+			moveMe.style.left = (endPoint.c * this.boardCellWidth) + this.boardOriginX;;
+			
+			document.getElementById('currCol').value="curr col => " + this.currCol;		
+			document.getElementById('currRow').value="curr row => " + this.currRow;		
+			document.getElementById('xcoordinate').value="xcoord => " + this.xcoord;	
+			document.getElementById('ycoordinate').value="ycoord => " + this.ycoord;	
+			
+			return;
+				
+			if(direction == 'stop')
+			{
+				if(this.hasWon)
+				{
+					this.youWin();
+				}
+				else{
+					this.stopCount();
+				}
+			}
+			else
+			{
+				switch(direction)
+				{
+					case 'up' : 
+						var bool = this.moveCheck('up', ycoord);
+						
+						if(bool) 
+						{
+							document.getElementById('moveMe').style.top = (ycoord - this.moveSpeedY) + 'px';
+							this.t=setTimeout("this.board.move('up')", this.animationDelay);
+						}
+						else {direction = 'stop';}
+						
+						break; 	
+						
+					case 'down'	: 
+						var bool = this.moveCheck('down', ycoord);
+						
+						if(bool) 
+						{
+							document.getElementById('moveMe').style.top = (ycoord + this.moveSpeedY) + 'px';
+							this.t=setTimeout("this.board.move('down')", this.animationDelay);
+						}
+						else {direction = 'stop';}
+						
+						break; 	
+						
+					case 'left'	:
+						var bool = this.moveCheck('left', this.xcoord);
+						
+						if(bool) 
+						{
+							document.getElementById('moveMe').style.left = (this.xcoord - this.moveSpeedX) + 'px';
+							this.t=setTimeout("this.board.move('left')", this.animationDelay);
+						}
+						else {direction = 'stop';}
+						
+						break; 	
+					
+					case 'right' :
+						var bool = this.moveCheck('right', this.xcoord);
+						
+						if(bool) 
+						{
+							document.getElementById('moveMe').style.left = (this.xcoord + this.moveSpeedX)  + 'px';
+							this.t=setTimeout("this.board.move('right')", this.animationDelay);
+						}
+						else {direction = 'stop';}
+						
+						
+						break; 	
+					
+					default	:
+						this.stopCount(); break;
+				}
+				
+				if(direction == 'stop')
+				{
+					this.t=setTimeout("this.board.move('stop')", 10);
+				}
+				
+				// THIS DOES NOT WORK BECUASE JAVASCRIPT IS REDICULOUS this.t=setTimeout("this.board.move('" + direction "')", 10);
+			}
+		}
+			
+		
 	
 	this.move =
 		function move(direction)

@@ -59,21 +59,22 @@ function nextBoard() {
 </div>
 
 <div class="nav" style="text-align:center; font-size:2em;position:absolute; bottom:0; right:0; padding-bottom:1em;">
-		<i style="display:block;" onclick="board.move('up')">up</i>
-		<i style="display:inline; padding-right:1em;" onclick="board.move('left')">left</i>
-		<i style="display:inline" onclick="board.move('right')">right</i>
-		<i style="display:block;" onclick="board.move('down')">down</i>
+		<i style="display:block;" onclick="board.move2('up')">up</i>
+		<i style="display:inline; padding-right:1em;" onclick="board.move2('left')">left</i>
+		<i style="display:inline" onclick="board.move2('right')">right</i>
+		<i style="display:block;" onclick="board.move2('down')">down</i>
 </div>
 
 <h1 class="center" id="keyvalue"></h1>
 
-<form style="text-align:right; ">
+<form style="text-align:right; top:0; right:0; position:absolute;">
 	<input type="button" id="win" style="visibility:visible;" value="Next Board" onClick="nextBoard()">
 
 	<input style="visibility:hiddens" type="text" id="currCol">
 	<input style="visibility:hiddens" type="text" id="currRow"><br/>
 	<input style="visibility:hiddens" type="text" id="xcoordinate">
-	<input style="visibility:hiddens" type="text" id="ycoordinate">
+	<input style="visibility:hiddens" type="text" id="ycoordinate"><br/>
+	<input type="text" id="debug"/>
 </form>
 
 <script type="text/javascript">
