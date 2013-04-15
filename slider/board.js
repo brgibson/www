@@ -36,10 +36,6 @@ function Board()
 	this.currRow = 0;
 	this.currCol = 0;
 	this.t;
-	this.animationDelay = 10;
-//	this.animationDelay = 500;
-	
-	
 	
 	this.getNumCols = 
 		function getNumCols() {
@@ -94,8 +90,8 @@ function Board()
 		function resetBoard(left, top) {
 			this.hasWon = false;
 			this.moveHappeningFlag = false;
-			document.getElementById('moveMe').style.left= left;
-			document.getElementById('moveMe').style.top= top;	
+			document.getElementById('moveMe').style.left = left;
+			document.getElementById('moveMe').style.top = top;	
 		}
 	/*
 	 * Reads a string and sets the board.  The first integer of the string is the number of rows.  The next integer must be the number of columns.  
@@ -117,9 +113,6 @@ function Board()
 			
 			this.currCol = startCol - 1;
 			this.currRow = startRow - 1;
-			
-			document.getElementById('currCol').value="curr col => " + this.currCol;		
-			document.getElementById('currRow').value="curr row => " + this.currRow;		
 						
 			startCol = ((startCol - 1) * this.boardCellWidth) + this.boardOriginX;
 			startRow = ((startRow - 1) * this.boardCellHeight) + this.boardOriginY;	
@@ -138,7 +131,7 @@ function Board()
 			
 			this.board = ans;
 			this.setBlocked();
-			this.resetBoard(startCol + "px", startRow + "px");
+			this.resetBoard(startCol, startRow);
 		}
 	
 	this.addRow =
@@ -157,19 +150,20 @@ function Board()
 				boardStr += "<tr>";
 				
 				for(var x = 0; x < this.getNumCols(); x++)
-				{
-					boardStr += "<td>";
-										
+				{					
 					if(!this.board[y][x])
 					{								
-						boardStr += "<img src='brick.gif' />";
+						boardStr += "<td class='brick'><span>Brick</span></td>";
 					}
 					else if(this.board[y][x] == 2)
 					{
-						boardStr += "<span id='exit'>EXIT</span>";
+						boardStr += "<td class='exit'><span>EXIT</span><i class='icon-arrow-" + this.exitDir + "'></i></td>";
 					} 
-			
-					boardStr += "</td>";
+					else 
+					{
+						boardStr += "<td></td>";
+					}
+					 
 				}
 				
 				boardStr += "</tr>";
@@ -201,86 +195,10 @@ function Board()
 			return false;
 		}
 	
-	this.isBlocked =	
-		function isBlocked(direction)
-		{
-			
-			switch(direction)
-				{
-					case 'up': 
-		
-						if (this.board[this.currRow - 1][this.currCol] == 0) {
-							return true;
-						}				
-								
-						return false;
-						break;
-						
-					case 'down': 
-						
-						if (this.board[this.currRow + 1][this.currCol] == 0) {
-							return true;
-						}
-
-						return false;
-						break;
-					
-					case 'left': 
-						if (this.board[this.currRow][this.currCol - 1] == 0) {
-							return true;
-						}
-
-						return false;
-						break;
-						
-					case 'right': 
-			
-						if (this.board[this.currRow][this.currCol + 1] == 0) {
-							return true;
-						}
-						
-						return false;
-						break;
-					
-					default		: return false;
-				}
-				
-			
-			return false;
-		}
-	
-	this.moveCheck = 
-		function moveCheck(direction, coordinate)
-		{
-			switch(direction)
-				{
-					case 'up' 	: 
-						if(this.checkWin(direction)) {return false;}
-					
-						return (coordinate > this.boardOriginY && !this.isBlocked(direction)); break;
-						
-					case 'down'	: 
-						if(this.checkWin(direction)) {return false;}
-					
-						return (coordinate < this.boardCellHeight * (this.getNumRows() - 1) + this.boardOriginY && !this.isBlocked(direction)); break;				
-						
-					case 'left'	: 
-						if(this.checkWin(direction)) {return false;}
-					
-						return (coordinate > this.boardOriginX && !this.isBlocked(direction)); break;		
-					
-					case 'right': 
-						if(this.checkWin(direction)) {return false;}
-						
-						return (coordinate < this.boardCellWidth * (this.getNumCols() - 1) + this.boardOriginX && !this.isBlocked(direction)); break;
-					
-					default		: return false;
-				}
-		}
-	
 	this.determineEndPoint = 
 		function(direction) {
 			switch (direction) {
+				
 				case 'up':
 
 					for (var i = this.currRow; i >= 0; i--) {
@@ -323,7 +241,7 @@ function Board()
 			return;
 		}
 
-	this.move2 = 
+	this.move = 
 		function(direction) {
 
 			//dermine end point
@@ -334,201 +252,25 @@ function Board()
 			this.currRow = endPoint.r;
 			
 			if (this.checkWin(direction)) {
-				this.youWin();
-			}
-			
-			
-			moveMe.style.top = (endPoint.r * this.boardCellHeight) + this.boardOriginY;
-			moveMe.style.left = (endPoint.c * this.boardCellWidth) + this.boardOriginX;;
-			
-			document.getElementById('currCol').value="curr col => " + this.currCol;		
-			document.getElementById('currRow').value="curr row => " + this.currRow;		
-			document.getElementById('xcoordinate').value="xcoord => " + this.xcoord;	
-			document.getElementById('ycoordinate').value="ycoord => " + this.ycoord;	
-			
-			return;
-				
-			if(direction == 'stop')
-			{
-				if(this.hasWon)
-				{
-					this.youWin();
-				}
-				else{
-					this.stopCount();
-				}
-			}
-			else
-			{
-				switch(direction)
-				{
-					case 'up' : 
-						var bool = this.moveCheck('up', ycoord);
-						
-						if(bool) 
-						{
-							document.getElementById('moveMe').style.top = (ycoord - this.moveSpeedY) + 'px';
-							this.t=setTimeout("this.board.move('up')", this.animationDelay);
-						}
-						else {direction = 'stop';}
-						
-						break; 	
-						
-					case 'down'	: 
-						var bool = this.moveCheck('down', ycoord);
-						
-						if(bool) 
-						{
-							document.getElementById('moveMe').style.top = (ycoord + this.moveSpeedY) + 'px';
-							this.t=setTimeout("this.board.move('down')", this.animationDelay);
-						}
-						else {direction = 'stop';}
-						
-						break; 	
-						
-					case 'left'	:
-						var bool = this.moveCheck('left', this.xcoord);
-						
-						if(bool) 
-						{
-							document.getElementById('moveMe').style.left = (this.xcoord - this.moveSpeedX) + 'px';
-							this.t=setTimeout("this.board.move('left')", this.animationDelay);
-						}
-						else {direction = 'stop';}
-						
-						break; 	
-					
-					case 'right' :
-						var bool = this.moveCheck('right', this.xcoord);
-						
-						if(bool) 
-						{
-							document.getElementById('moveMe').style.left = (this.xcoord + this.moveSpeedX)  + 'px';
-							this.t=setTimeout("this.board.move('right')", this.animationDelay);
-						}
-						else {direction = 'stop';}
-						
-						
-						break; 	
-					
-					default	:
-						this.stopCount(); break;
-				}
-				
-				if(direction == 'stop')
-				{
-					this.t=setTimeout("this.board.move('stop')", 10);
-				}
-				
-				// THIS DOES NOT WORK BECUASE JAVASCRIPT IS REDICULOUS this.t=setTimeout("this.board.move('" + direction "')", 10);
-			}
-		}
-			
-		
-	
-	this.move =
-		function move(direction)
-		{	
-		
-			this.xcoord = parseInt(document.getElementById('moveMe').style.left);
-			var ycoord = parseInt(document.getElementById('moveMe').style.top);
-						
-			var n = (ycoord - this.boardOriginY) / this.boardCellHeight;
-			if(n == Math.round(n)){
-				this.currRow = n;
-			}
-			var m = (this.xcoord - this.boardOriginX) / this.boardCellWidth;
-			if(m == Math.round(m)){
-				this.currCol = m;
+				this.youWin(direction, endPoint);
+			} else {				
+				this.changePosition(endPoint.r, endPoint.c);
 			}
 			
 			document.getElementById('currCol').value="curr col => " + this.currCol;		
 			document.getElementById('currRow').value="curr row => " + this.currRow;		
 			document.getElementById('xcoordinate').value="xcoord => " + this.xcoord;	
 			document.getElementById('ycoordinate').value="ycoord => " + this.ycoord;	
-			
-			if(direction == 'stop')
-			{
-				if(this.hasWon)
-				{
-					this.youWin();
-				}
-				else{
-					this.stopCount();
-				}
-			}
-			else
-			{
-				switch(direction)
-				{
-					case 'up' : 
-						var bool = this.moveCheck('up', ycoord);
-						
-						if(bool) 
-						{
-							document.getElementById('moveMe').style.top = (ycoord - this.moveSpeedY) + 'px';
-							this.t=setTimeout("this.board.move('up')", this.animationDelay);
-						}
-						else {direction = 'stop';}
-						
-						break; 	
-						
-					case 'down'	: 
-						var bool = this.moveCheck('down', ycoord);
-						
-						if(bool) 
-						{
-							document.getElementById('moveMe').style.top = (ycoord + this.moveSpeedY) + 'px';
-							this.t=setTimeout("this.board.move('down')", this.animationDelay);
-						}
-						else {direction = 'stop';}
-						
-						break; 	
-						
-					case 'left'	:
-						var bool = this.moveCheck('left', this.xcoord);
-						
-						if(bool) 
-						{
-							document.getElementById('moveMe').style.left = (this.xcoord - this.moveSpeedX) + 'px';
-							this.t=setTimeout("this.board.move('left')", this.animationDelay);
-						}
-						else {direction = 'stop';}
-						
-						break; 	
-					
-					case 'right' :
-						var bool = this.moveCheck('right', this.xcoord);
-						
-						if(bool) 
-						{
-							document.getElementById('moveMe').style.left = (this.xcoord + this.moveSpeedX)  + 'px';
-							this.t=setTimeout("this.board.move('right')", this.animationDelay);
-						}
-						else {direction = 'stop';}
-						
-						
-						break; 	
-					
-					default	:
-						this.stopCount(); break;
-				}
-				
-				if(direction == 'stop')
-				{
-					this.t=setTimeout("this.board.move('stop')", 10);
-				}
-				
-				// THIS DOES NOT WORK BECUASE JAVASCRIPT IS REDICULOUS this.t=setTimeout("this.board.move('" + direction "')", 10);
-			}
 		}
-	this.recur =
-		function recur() {
-			document.getElementById('xcoordinate').value = "hello";	
+
+	this.changePosition = 
+		function(r, c) {
+			moveMe.style.top = (r * this.boardCellHeight) + this.boardOriginY;
+			moveMe.style.left = (c * this.boardCellWidth) + this.boardOriginX;
 		}
 	
 	this.checkKey =	
-		function checkKey(e) 
+		function(e) 
 		{
 			if(!this.moveHappeningFlag)
 			{
@@ -565,13 +307,32 @@ function Board()
 			}
 			
 		this.youWin = 
-			function youWin()
+			function(direction, endPoint)
 				{
+					//add cases for moving character outside of the board on exit
+					switch (direction) {
+						
+						case 'up':
+							this.changePosition(endPoint.r - 1, endPoint.c);
+							break;
+						
+						case 'down':
+							this.changePosition(endPoint.r + 1, endPoint.c);
+							break;
+							
+						case 'left':
+							this.changePosition(endPoint.r, endPoint.c - 1);
+							break;
+							
+						case 'right':
+							this.changePosition(endPoint.r, endPoint.c + 1);
+							break;
+					}
+					
+					
 					document.getElementById('keyvalue').innerHTML = 'You Win!';
 					document.getElementById('win').style.visibility = "visible";
 				}
-		
-	
 	
 //----------------------------------------------------------------------------------
 

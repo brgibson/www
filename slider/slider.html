@@ -1,22 +1,68 @@
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="../fontawesome/fontawesome.css" />
 <style type="text/css">
 body{
-	background-color:#d0e4fe;
-	font-family:"Comic Sans MS", cursive;
+	background-color: #d0e4fe;
 }
-table{
-	background-color:white;
-	color:black;
-	border:white;
+table {
+	border-collapse: collapse;
+	background-color: white;
+	color: black;
 }
-#exit {
-	font-family:"Comic Sans MS";	
+td {
+	padding: 0;
+	width: 50px;
+	height: 40px;
+}
+#moveMe {
+	position: absolute;
+	width: 50px;
+	height: 40px;
+	left: 0;
+	top: 0;
+	background: url("character.gif") no-repeat;
+	text-align:center;
+}
+.exit {
+	text-align: center;
+}
+.exit span {
+	display: none;
+}
+.brick {
+	background: url("brick.gif") no-repeat;
+}
+.brick span {
+	visibility: hidden;
+}
+h1 {
+	color: orange;
+	text-align: center;
+}
+.board-container {
+	position: relative;
+}
+button {
+	font-size: .5em;
+}
+.nav {
+	text-align:center; font-size:3em;position:absolute; bottom:0; right:0; padding-bottom:1em;"
+}
+.hidden {
+	visibility: hidden;
 }
 
-h1 {
-	color:orange;
-	text-align:center;
+.nav .icon-arrow-up,
+.nav .icon-arrow-down {
+	display:block;
+}
+.nav .icon-arrow-left {
+	display:inline;
+	padding-right:1em;
+}
+.nav .icon-arrow-right {
+	display:inline-block;
 }
 </style>
 <link rel="stylesheet" href="./slider.css"/>
@@ -31,7 +77,6 @@ function nextBoard() {
 	boardnum++;
 	if(boardnum <= boards.length) {
 
-		//document.getElementById('keyvalue').innerHTML = "read= " + readstr;
     document.getElementById('keyvalue').innerHTML = "";
 		document.getElementById('boardName').innerHTML = "Board Number " + (boardnum + 1);
 		
@@ -53,29 +98,31 @@ function nextBoard() {
 
 <div id="boardName" style="text-align:center"></div>
 
-<div id="board-container" style="position:relative;">
+<div class="board-container">
 	<div id="board"></div> 	
-	<img src="character.gif" id="moveMe" style="position:absolute; left:0; top:0;"   />
+	<div id="moveMe"><span class="hidden">Player</span></div>
 </div>
 
-<div class="nav" style="text-align:center; font-size:2em;position:absolute; bottom:0; right:0; padding-bottom:1em;">
-		<i style="display:block;" onclick="board.move2('up')">up</i>
-		<i style="display:inline; padding-right:1em;" onclick="board.move2('left')">left</i>
-		<i style="display:inline" onclick="board.move2('right')">right</i>
-		<i style="display:block;" onclick="board.move2('down')">down</i>
+<div class="nav">
+	<button id="win" onclick="nextBoard()">Next Board</button>
+
+	<i class="icon-arrow-up" onclick="board.move('up')"></i>
+	<i class="icon-arrow-left" onclick="board.move('left')"></i>
+	<i class="icon-arrow-right" onclick="board.move('right')"></span></i>
+	<i class="icon-arrow-down" onclick="board.move('down')"></i>
 </div>
 
-<h1 class="center" id="keyvalue"></h1>
+<h1 id="keyvalue"></h1>
 
+<!--
 <form style="text-align:right; top:0; right:0; position:absolute;">
-	<input type="button" id="win" style="visibility:visible;" value="Next Board" onClick="nextBoard()">
-
-	<input style="visibility:hiddens" type="text" id="currCol">
-	<input style="visibility:hiddens" type="text" id="currRow"><br/>
-	<input style="visibility:hiddens" type="text" id="xcoordinate">
-	<input style="visibility:hiddens" type="text" id="ycoordinate"><br/>
+	<input style="visibility:hiddens" type="text" id="currCol"/>
+	<input style="visibility:hiddens" type="text" id="currRow"/><br/>
+	<input style="visibility:hiddens" type="text" id="xcoordinate"/>
+	<input style="visibility:hiddens" type="text" id="ycoordinate"/><br/>
 	<input type="text" id="debug"/>
 </form>
+-->
 
 <script type="text/javascript">
 board.writeBoard();
