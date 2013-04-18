@@ -1,28 +1,41 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="../fontawesome/fontawesome.css" />
+<!-- <link rel="stylesheet" href="../base.css"/> -->
+
+<!-- make all the boards the same size and start using percentages -->
+<!-- create a few percentage based options with percentages -->
+
 <style type="text/css">
-body{
-	background-color: #d0e4fe;
+body {
+	background: gray;
+	font-size: 1em;
+}
+.board-container {
+	font-size: 1em;
 }
 table {
+	font-size: 1em;
 	border-collapse: collapse;
 	background-color: white;
 	color: black;
 }
 td {
 	padding: 0;
-	width: 50px;
-	height: 40px;
+	width: 3em;
+	height: 2em;
 }
 #moveMe {
 	position: absolute;
-	width: 50px;
-	height: 40px;
+	width: 3em;
+	height: 2em;
 	left: 0;
 	top: 0;
-	background: url("character.gif") no-repeat;
+	background: lightgreen;
 	text-align:center;
+}
+.player {
+	background: orange;
 }
 .exit {
 	text-align: center;
@@ -31,7 +44,7 @@ td {
 	display: none;
 }
 .brick {
-	background: url("brick.gif") no-repeat;
+	background: lightblue;
 }
 .brick span {
 	visibility: hidden;
@@ -47,7 +60,12 @@ button {
 	font-size: .5em;
 }
 .nav {
-	text-align:center; font-size:3em;position:absolute; bottom:0; right:0; padding-bottom:1em;"
+	text-align:center;
+	font-size:3em;
+	position:absolute; 
+	bottom:0;
+	right:0;
+	padding-bottom:1em;
 }
 .hidden {
 	visibility: hidden;
@@ -63,6 +81,12 @@ button {
 }
 .nav .icon-arrow-right {
 	display:inline-block;
+}
+/* media query section */
+@media screen and (orientation:portrait) {
+	body {
+		font-size: 2em;
+	}
 }
 </style>
 <link rel="stylesheet" href="./slider.css"/>
@@ -99,7 +123,7 @@ function nextBoard() {
 <div id="boardName" style="text-align:center"></div>
 
 <div class="board-container">
-	<div id="board"></div> 	
+	<div id="board"></div>
 	<div id="moveMe"><span class="hidden">Player</span></div>
 </div>
 
@@ -113,8 +137,9 @@ function nextBoard() {
 </div>
 
 <h1 id="keyvalue"></h1>
+<input value="1" id="fontSize" style="display:none;"/>
 
-<!--
+
 <form style="text-align:right; top:0; right:0; position:absolute;">
 	<input style="visibility:hiddens" type="text" id="currCol"/>
 	<input style="visibility:hiddens" type="text" id="currRow"/><br/>
@@ -122,7 +147,6 @@ function nextBoard() {
 	<input style="visibility:hiddens" type="text" id="ycoordinate"/><br/>
 	<input type="text" id="debug"/>
 </form>
--->
 
 <script type="text/javascript">
 board.writeBoard();

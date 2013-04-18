@@ -26,11 +26,9 @@ function Board()
 	this.moveHappeningFlag = false;
 	this.exitDir = 'right';
 	this.hasWon = false;
-	this.boardOriginX = 0; //remove these variables
-	this.boardOriginY = 0; //remove these variables
-	this.xcoord = 0;
-	this.boardCellHeight = 40;
-	this.boardCellWidth = 50;
+	this.boardCellWidth = 3;
+	this.boardCellHeight = 2;
+	this.boardFactor = 1;
 	this.moveSpeedX = this.boardCellWidth / 5;
 	this.moveSpeedY = this.boardCellHeight / 4;
 	this.currRow = 0;
@@ -69,7 +67,7 @@ function Board()
 				for(var x = 0; x < this.getNumCols(); x++){
 					if(!this.board[i][x])
 					{
-						this.blocked[i].push(x * this.boardCellWidth + this.boardOriginX);
+						this.blocked[i].push(x * (this.boardCellWidth * this.boardFactor));
 					}
 				}
 			}
@@ -90,8 +88,8 @@ function Board()
 		function resetBoard(left, top) {
 			this.hasWon = false;
 			this.moveHappeningFlag = false;
-			document.getElementById('moveMe').style.left = left;
-			document.getElementById('moveMe').style.top = top;	
+			document.getElementById('moveMe').style.left = left + "em";
+			document.getElementById('moveMe').style.top = top + "em";	
 		}
 	/*
 	 * Reads a string and sets the board.  The first integer of the string is the number of rows.  The next integer must be the number of columns.  
@@ -114,8 +112,8 @@ function Board()
 			this.currCol = startCol - 1;
 			this.currRow = startRow - 1;
 						
-			startCol = ((startCol - 1) * this.boardCellWidth) + this.boardOriginX;
-			startRow = ((startRow - 1) * this.boardCellHeight) + this.boardOriginY;	
+			startCol = ((startCol - 1) * this.boardCellWidth) * this.boardFactor;
+			startRow = ((startRow - 1) * this.boardCellHeight) * this.boardFactor;	
 					
 			for(var y = 0; y < this.numRows; y++)
 			{
@@ -256,17 +254,21 @@ function Board()
 			} else {				
 				this.changePosition(endPoint.r, endPoint.c);
 			}
-			
-			document.getElementById('currCol').value="curr col => " + this.currCol;		
-			document.getElementById('currRow').value="curr row => " + this.currRow;		
-			document.getElementById('xcoordinate').value="xcoord => " + this.xcoord;	
-			document.getElementById('ycoordinate').value="ycoord => " + this.ycoord;	
 		}
 
 	this.changePosition = 
 		function(r, c) {
-			moveMe.style.top = (r * this.boardCellHeight) + this.boardOriginY;
-			moveMe.style.left = (c * this.boardCellWidth) + this.boardOriginX;
+			this.boardFactor = document.getElementById('fontSize').value;;
+
+			document.getElementById('moveMe').style.top = (r * this.boardCellHeight) * this.boardFactor + "em";
+			document.getElementById('moveMe').style.left = (c * this.boardCellWidth) * this.boardFactor + "em";
+			
+			//document.getElementsByTagName('td')[(this.numCols * r) + c].className = "player";
+			
+			document.getElementById('currCol').value="curr col => " + this.currCol;		
+			document.getElementById('currRow').value="curr row => " + this.currRow;		
+			document.getElementById('xcoordinate').value="xcoord => " + document.getElementsByTagName("body")[0].style.size;
+			document.getElementById('ycoordinate').value="ycoord => " + document.getElementById('moveMe').style.left;
 		}
 	
 	this.checkKey =	
