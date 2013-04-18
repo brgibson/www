@@ -1,4 +1,7 @@
 #!/bin/sh                                                                                                                                                              
 
 mac2unix $1
-sed 's/[^\t]*\t\([^\t]*\)\t[^\t]*\t\([^\t]*\).*/\1\t\t\2/' -u $1 | uniq -i > MusicLibrary.txt
+
+echo "<ul>" > MusicLibraryInclude.html
+sed 's/[^\t]*\t\([^\t]*\)\t[^\t]*\t\([^\t]*\).*/<li><r>\1<\/r>\2<\/li>/' -u $1 | uniq -i >> MusicLibraryInclude.html
+echo "</ul>" >> MusicLibraryInclude.html
