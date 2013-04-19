@@ -50,46 +50,15 @@ function Board()
 			return this.exitDir;	
 		}
 		
-	
-	////////////////////////////////////////////////////////////////////////////////////
-	
-	this.blocked;
-	
-	this.setBlocked =
-		function setBlocked()
-		{
-			this.blocked = new Array(this.getNumRows());
-			
-			for(var i = 0; i < this.getNumRows(); i++)
-			{
-				this.blocked[i] = new Array(0);
-				
-				for(var x = 0; x < this.getNumCols(); x++){
-					if(!this.board[i][x])
-					{
-						this.blocked[i].push(x * (this.boardCellWidth * this.boardFactor));
-					}
-				}
-			}
-		}
-		
-	this.setBlocked();
-	
-	////////////////////////////////////////////////////////////////////////////////////
-
-	
-//----------------------------------------------------------------------------------
 
 //Functions-------------------------------------------------------------------------
-////////////////////////////////////////////////////////////////////////////////////////
-	
 
 	this.resetBoard =
 		function resetBoard(left, top) {
 			this.hasWon = false;
 			this.moveHappeningFlag = false;
-			document.getElementById('moveMe').style.left = left + "em";
-			document.getElementById('moveMe').style.top = top + "em";	
+			document.getElementById('moveMe').style.left = (left * (100 / this.numCols)) + "%";
+			document.getElementById('moveMe').style.top = (top * 10) + "%";	
 		}
 	/*
 	 * Reads a string and sets the board.  The first integer of the string is the number of rows.  The next integer must be the number of columns.  
@@ -128,7 +97,6 @@ function Board()
 			}
 			
 			this.board = ans;
-			this.setBlocked();
 			this.resetBoard(startCol, startRow);
 		}
 	
@@ -140,40 +108,41 @@ function Board()
 	this.toString = 
 		function toString()
 		{
-			
-			var boardStr = "<table>";
+		
+			var boardStr = "<div class='board'>";
 			
 			for(var y = 0; y < this.getNumRows(); y++)
 			{
-				boardStr += "<tr>";
+				boardStr += "<div class='row'>";
 				
 				for(var x = 0; x < this.getNumCols(); x++)
 				{					
 					if(!this.board[y][x])
 					{								
-						boardStr += "<td class='brick'><span>Brick</span></td>";
+						boardStr += "<div class='brick'><span>Brick</span></div>";
 					}
 					else if(this.board[y][x] == 2)
 					{
-						boardStr += "<td class='exit'><span>EXIT</span><i class='icon-arrow-" + this.exitDir + "'></i></td>";
+						boardStr += "<div class='exit'><span>EXIT</span><i class='icon-arrow-" + this.exitDir + "'></i></div>";
 					} 
 					else 
 					{
-						boardStr += "<td></td>";
+						boardStr += "<div></div>";
 					}
 					 
 				}
 				
-				boardStr += "</tr>";
+				boardStr += "</div>";
 			}
 			
-			boardStr += "</table>";
+			boardStr += "</div>";
 			return boardStr;
 		}
 		
 	this.writeBoard =
 		function writeBoard()
 		{
+			document.getElementById("board-container").className = "col-" + this.numCols;
 			document.getElementById("board").innerHTML= this.toString();
 		}
 		
@@ -260,10 +229,11 @@ function Board()
 		function(r, c) {
 			this.boardFactor = document.getElementById('fontSize').value;;
 
-			document.getElementById('moveMe').style.top = (r * this.boardCellHeight) * this.boardFactor + "em";
-			document.getElementById('moveMe').style.left = (c * this.boardCellWidth) * this.boardFactor + "em";
+			document.getElementById('moveMe').style.top = (r * 10) * this.boardFactor + "%";
+			document.getElementById('moveMe').style.left = (c * (100 / this.numCols)) * this.boardFactor + "%";
 			
-			//document.getElementsByTagName('td')[(this.numCols * r) + c].className = "player";
+//			document.getElementsByTagName('td')[(this.numCols * r) + c].className = "player";
+//			document.getElementsByTagName('td')[(this.numCols * r) + c].className = "player";
 			
 			document.getElementById('currCol').value="curr col => " + this.currCol;		
 			document.getElementById('currRow').value="curr row => " + this.currRow;		
@@ -274,9 +244,9 @@ function Board()
 	this.checkKey =	
 		function(e) 
 		{
-			if(!this.moveHappeningFlag)
-			{
-				this.moveHappeningFlag = true;
+		//	if(!this.moveHappeningFlag)
+		//	{
+		//		this.moveHappeningFlag = true;
 				
 				var keynum;
 				
@@ -297,7 +267,7 @@ function Board()
 					case 40: this.move('down'); break;
 					default: return false;
 				}
-			}
+		//	}
 			
 		}
 		

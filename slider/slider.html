@@ -3,58 +3,15 @@
 <link rel="stylesheet" type="text/css" href="../fontawesome/fontawesome.css" />
 <!-- <link rel="stylesheet" href="../base.css"/> -->
 
-<!-- make all the boards the same size and start using percentages -->
 <!-- create a few percentage based options with percentages -->
 
 <style type="text/css">
 body {
 	background: gray;
-	font-size: 1em;
-}
-.board-container {
-	font-size: 1em;
-}
-table {
-	font-size: 1em;
-	border-collapse: collapse;
-	background-color: white;
-	color: black;
-}
-td {
-	padding: 0;
-	width: 3em;
-	height: 2em;
-}
-#moveMe {
-	position: absolute;
-	width: 3em;
-	height: 2em;
-	left: 0;
-	top: 0;
-	background: lightgreen;
-	text-align:center;
-}
-.player {
-	background: orange;
-}
-.exit {
-	text-align: center;
-}
-.exit span {
-	display: none;
-}
-.brick {
-	background: lightblue;
-}
-.brick span {
-	visibility: hidden;
 }
 h1 {
 	color: orange;
 	text-align: center;
-}
-.board-container {
-	position: relative;
 }
 button {
 	font-size: .5em;
@@ -67,10 +24,6 @@ button {
 	right:0;
 	padding-bottom:1em;
 }
-.hidden {
-	visibility: hidden;
-}
-
 .nav .icon-arrow-up,
 .nav .icon-arrow-down {
 	display:block;
@@ -82,6 +35,83 @@ button {
 .nav .icon-arrow-right {
 	display:inline-block;
 }
+.hidden {
+	visibility: hidden;
+}
+
+div.exit {
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	position: relative;
+}
+.exit i {
+	padding-left: 40%;
+	padding-top: 20%; 
+	display: inline;
+	position: absolute;
+}
+.exit span {
+	display: none;
+}
+.brick {
+	background: lightblue;
+}
+.brick span {
+	display:none;
+}
+#board-container {
+	position: relative;
+	width: 80%;
+	height: 80%;
+}
+.board {
+	background-color: white;
+	color: black;
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+
+.board .row div {
+	display: inline-block;
+}
+#moveMe {
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: lightgreen;
+	text-align:center;
+}
+
+.col-10 .board .row {
+	width: 100%;
+	height: 10%;
+}
+.col-10 .board .row div {
+	display: inline-block;
+	width: 10%;
+	height: 100%;
+}
+.col-10 #moveMe {
+	width:10%;
+	height:10%;
+}
+
+.col-15 .board .row {
+	width: 100%;
+	height: 10%;
+}
+.col-15 .board .row div {
+	display: inline-block;
+	width: 6.66%;
+	height: 100%;
+}
+.col-15 #moveMe {
+	width:6.66%;
+	height:10%;
+}
+
 /* media query section */
 @media screen and (orientation:portrait) {
 	body {
@@ -122,7 +152,7 @@ function nextBoard() {
 
 <div id="boardName" style="text-align:center"></div>
 
-<div class="board-container">
+<div id="board-container" class="col-10">
 	<div id="board"></div>
 	<div id="moveMe"><span class="hidden">Player</span></div>
 </div>
