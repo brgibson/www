@@ -84,32 +84,29 @@ div.exit {
 	text-align:center;
 }
 
-.col-10 .board .row {
+.board .row {
 	width: 100%;
 	height: 10%;
 }
-.col-10 .board .row div {
+.board .row div {
 	display: inline-block;
-	width: 10%;
 	height: 100%;
 }
-.col-10 #moveMe {
-	width:10%;
+#moveMe {
 	height:10%;
 }
 
-.col-15 .board .row {
-	width: 100%;
-	height: 10%;
+.col-10 .board .row div,
+.col-10 #moveMe {
+	width:10%;
 }
-.col-15 .board .row div {
-	display: inline-block;
-	width: 6.66%;
-	height: 100%;
-}
+.col-15 .board .row div,
 .col-15 #moveMe {
-	width:6.66%;
-	height:10%;
+	width:6.666%;
+}
+.col-12 .board .row div,
+.col-12 #moveMe {
+	width: 8.333%;
 }
 
 /* media query section */

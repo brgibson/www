@@ -57,8 +57,8 @@ function Board()
 		function resetBoard(left, top) {
 			this.hasWon = false;
 			this.moveHappeningFlag = false;
-			document.getElementById('moveMe').style.left = (left * (100 / this.numCols)) + "%";
-			document.getElementById('moveMe').style.top = (top * 10) + "%";	
+			document.getElementById('moveMe').style.left = left + "%";
+			document.getElementById('moveMe').style.top = top + "%";	
 		}
 	/*
 	 * Reads a string and sets the board.  The first integer of the string is the number of rows.  The next integer must be the number of columns.  
@@ -81,8 +81,8 @@ function Board()
 			this.currCol = startCol - 1;
 			this.currRow = startRow - 1;
 						
-			startCol = ((startCol - 1) * this.boardCellWidth) * this.boardFactor;
-			startRow = ((startRow - 1) * this.boardCellHeight) * this.boardFactor;	
+			startCol = ((startCol - 1) * (100 / this.numCols)) * this.boardFactor;
+			startRow = ((startRow - 1) * 10) * this.boardFactor;	
 					
 			for(var y = 0; y < this.numRows; y++)
 			{
