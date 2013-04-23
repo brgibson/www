@@ -3,6 +3,10 @@ a {
 	color: lightgreen;
 }
 
+hr {
+	color: lightgreen;
+}
+
 a:visited {
 	color: green;
 }
@@ -173,6 +177,28 @@ body {
 .experiments .photos:before {
 	background: url('./icons.jpg') -27.4em -8.9em;
 	background-size: 40em;
+}
+
+/* music library and shows pages */
+.music-library .content ul,
+.shows .content ol {
+	border-bottom: lightgreen solid;
+	padding-bottom: 2em;
+	white-space: nowrap;
+	overflow: scroll;
+}
+.music-library .content li {
+	display: block;
+}
+.music-library .quick-links,
+.shows .quick-links {
+	text-align: center;
+}
+.music-library .quick-links li {
+	display: inline;
+}
+.music-library r { /* tag for artist */
+	padding-right: 2em;
 }
 
 /* media query section */
