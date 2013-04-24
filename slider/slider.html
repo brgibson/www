@@ -41,8 +41,6 @@ button {
 
 div.exit {
 	text-align: center;
-	padding: 0;
-	margin: 0;
 	position: relative;
 }
 .exit i {
@@ -68,13 +66,15 @@ div.exit {
 .board {
 	background-color: white;
 	color: black;
-	display: inline-block;
 	width: 100%;
 	height: 100%;
+	padding: 0;
+	margin: 0;
 }
 
 .board .row div {
 	display: inline-block;
+	height: 100%;
 }
 #moveMe {
 	position: absolute;
@@ -93,7 +93,7 @@ div.exit {
 	height: 100%;
 }
 #moveMe {
-	height:10%;
+	height: 10%;
 }
 
 .col-10 .board .row div,
@@ -147,7 +147,7 @@ function nextBoard() {
 
 <h1>Generic Puzzle Game</h1>
 
-<div id="boardName" style="text-align:center"></div>
+<div id="boardName"></div>
 
 <div id="board-container" class="col-10">
 	<div id="board"></div>

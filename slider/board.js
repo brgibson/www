@@ -2,7 +2,7 @@ function Board()
 {	
 	
 	
-//Instance Variables---------------------------------------------------------------	
+	//Instance Variables---------------------------------------------------------------	
 	///////////////////////////////////////////////////////////////////////////////////////
 	// This sets the default board and the default board Settings.
 	
@@ -26,11 +26,6 @@ function Board()
 	this.moveHappeningFlag = false;
 	this.exitDir = 'right';
 	this.hasWon = false;
-	this.boardCellWidth = 3;
-	this.boardCellHeight = 2;
-	this.boardFactor = 1;
-	this.moveSpeedX = this.boardCellWidth / 5;
-	this.moveSpeedY = this.boardCellHeight / 4;
 	this.currRow = 0;
 	this.currCol = 0;
 	this.t;
@@ -81,8 +76,8 @@ function Board()
 			this.currCol = startCol - 1;
 			this.currRow = startRow - 1;
 						
-			startCol = ((startCol - 1) * (100 / this.numCols)) * this.boardFactor;
-			startRow = ((startRow - 1) * 10) * this.boardFactor;	
+			startCol = (startCol - 1) * (100 / this.numCols)
+			startRow = (startRow - 1) * 10;	
 					
 			for(var y = 0; y < this.numRows; y++)
 			{
@@ -227,17 +222,12 @@ function Board()
 
 	this.changePosition = 
 		function(r, c) {
-			this.boardFactor = document.getElementById('fontSize').value;;
-
-			document.getElementById('moveMe').style.top = (r * 10) * this.boardFactor + "%";
-			document.getElementById('moveMe').style.left = (c * (100 / this.numCols)) * this.boardFactor + "%";
-			
-//			document.getElementsByTagName('td')[(this.numCols * r) + c].className = "player";
-//			document.getElementsByTagName('td')[(this.numCols * r) + c].className = "player";
+			document.getElementById('moveMe').style.top = (r * 10) + "%";
+			document.getElementById('moveMe').style.left = (c * (100 / this.numCols)) + "%";
 			
 			document.getElementById('currCol').value="curr col => " + this.currCol;		
 			document.getElementById('currRow').value="curr row => " + this.currRow;		
-			document.getElementById('xcoordinate').value="xcoord => " + document.getElementsByTagName("body")[0].style.size;
+			document.getElementById('xcoordinate').value="xcoord => " + document.getElementById("moveMe").style.top;
 			document.getElementById('ycoordinate').value="ycoord => " + document.getElementById('moveMe').style.left;
 		}
 	
