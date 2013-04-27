@@ -30,6 +30,13 @@ body {
 .hidden {
 	visibility: hidden;
 }
+.no-transition {
+	-moz-transition: none !important;
+	-o-transition: none !important;
+	-webkit-transition: none !important;
+	transition: none !important;
+}
+
 /* Grid System */
 .row {
 	display: block;

@@ -52,8 +52,12 @@ function Board()
 		function resetBoard(left, top) {
 			this.hasWon = false;
 			this.moveHappeningFlag = false;
-			document.getElementById('moveMe').style.left = left + "%";
-			document.getElementById('moveMe').style.top = top + "%";	
+			var moveMe = document.getElementById('moveMe');
+		
+			moveMe.className = "no-transition";
+			moveMe.style.left = left + "%";
+			moveMe.style.top = top + "%";
+		  window.setTimeout(function() {moveMe.className = ""}, 15);
 		}
 	/*
 	 * Reads a string and sets the board.  The first integer of the string is the number of rows.  The next integer must be the number of columns.  
@@ -229,6 +233,7 @@ function Board()
 			document.getElementById('currRow').value="curr row => " + this.currRow;		
 			document.getElementById('xcoordinate').value="xcoord => " + document.getElementById("moveMe").style.top;
 			document.getElementById('ycoordinate').value="ycoord => " + document.getElementById('moveMe').style.left;
+			
 		}
 	
 	this.checkKey =	
@@ -295,7 +300,4 @@ function Board()
 					document.getElementById('keyvalue').innerHTML = 'You Win!';
 					document.getElementById('win').style.visibility = "visible";
 				}
-	
-//----------------------------------------------------------------------------------
-
 }

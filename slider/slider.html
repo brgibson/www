@@ -1,16 +1,16 @@
-<html>
+<!DOCTYPE html>
+<html lang="en-US">
 <head>
-<link rel="stylesheet" type="text/css" href="../fontawesome/fontawesome.css" />
-<!-- <link rel="stylesheet" href="../base.css"/> -->
-
-<!-- create a few percentage based options with percentages -->
-
+<title>Ben's Experiments - Slider</title>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../fontawesome/fontawesome.css" />
+<link rel="stylesheet" href="../base.css"/>
 <style type="text/css">
-body {
-	background: gray;
+html, body, #board{
+ height: 100%;
+ overflow: hidden;
 }
 h1 {
-	color: orange;
 	text-align: center;
 }
 button {
@@ -23,6 +23,10 @@ button {
 	bottom:0;
 	right:0;
 	padding-bottom:1em;
+	color: lightgreen;
+}
+.nav i {
+	opacity: .3;
 }
 .nav .icon-arrow-up,
 .nav .icon-arrow-down {
@@ -35,6 +39,7 @@ button {
 .nav .icon-arrow-right {
 	display:inline-block;
 }
+
 .hidden {
 	visibility: hidden;
 }
@@ -46,7 +51,7 @@ div.exit {
 .exit i {
 	padding-left: 40%;
 	padding-top: 20%; 
-	display: inline;
+	display: block;
 	position: absolute;
 }
 .exit span {
@@ -56,12 +61,14 @@ div.exit {
 	background: lightblue;
 }
 .brick span {
-	display:none;
+	display: none;
 }
 #board-container {
 	position: relative;
-	width: 80%;
-	height: 80%;
+	width: 99%;
+	height: 99%;
+	margin:0;
+	padding:0;
 }
 .board {
 	background-color: white;
@@ -82,6 +89,10 @@ div.exit {
 	top: 0;
 	background: lightgreen;
 	text-align:center;
+	-moz-transition: top .15s, left .15s;
+	-o-transition: top .15s, left .15s;
+	-webkit-transition: top .15s, left .15s;
+	transition: top .15s, left .15s;
 }
 
 .board .row {
@@ -114,9 +125,16 @@ div.exit {
 	body {
 		font-size: 2em;
 	}
+	#board-container {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		margin-left: 0;
+		padding:0;
+		margin:0;
+	}
 }
 </style>
-<link rel="stylesheet" href="./slider.css"/>
 <script src="board.js"></script>
 <script src="boards.js"></script>
 <script type="text/javascript">
@@ -129,7 +147,7 @@ function nextBoard() {
 	if(boardnum <= boards.length) {
 
     document.getElementById('keyvalue').innerHTML = "";
-		document.getElementById('boardName').innerHTML = "Board Number " + (boardnum + 1);
+		document.getElementById('boardName').innerHTML = "Slider No. " + (boardnum + 1);
 		
 		board.read(readstr);
 		board.writeBoard();
@@ -145,9 +163,8 @@ function nextBoard() {
 
 <body onKeyUp="board.checkKey(event)">
 
-<h1>Generic Puzzle Game</h1>
-
-<div id="boardName"></div>
+<h1 id="boardName" style="display:none;"></h1>
+<h2 style="position:absolute;top:0;right:0;" id="keyvalue"></h2>
 
 <div id="board-container" class="col-10">
 	<div id="board"></div>
@@ -156,29 +173,25 @@ function nextBoard() {
 
 <div class="nav">
 	<button id="win" onclick="nextBoard()">Next Board</button>
-
 	<i class="icon-arrow-up" onclick="board.move('up')"></i>
 	<i class="icon-arrow-left" onclick="board.move('left')"></i>
-	<i class="icon-arrow-right" onclick="board.move('right')"></span></i>
+	<i class="icon-arrow-right" onclick="board.move('right')"></i>
 	<i class="icon-arrow-down" onclick="board.move('down')"></i>
 </div>
 
-<h1 id="keyvalue"></h1>
-<input value="1" id="fontSize" style="display:none;"/>
-
-
-<form style="text-align:right; top:0; right:0; position:absolute;">
-	<input style="visibility:hiddens" type="text" id="currCol"/>
-	<input style="visibility:hiddens" type="text" id="currRow"/><br/>
-	<input style="visibility:hiddens" type="text" id="xcoordinate"/>
-	<input style="visibility:hiddens" type="text" id="ycoordinate"/><br/>
+<!-- for debugging only -->
+<form style="display:none;text-align:right; top:0; right:0; position:absolute;">
+	<input type="text" id="currCol"/>
+	<input type="text" id="currRow"/><br/>
+	<input type="text" id="xcoordinate"/>
+	<input type="text" id="ycoordinate"/><br/>
 	<input type="text" id="debug"/>
 </form>
 
 <script type="text/javascript">
-board.writeBoard();
-document.getElementById('boardName').innerHTML = "Board Number " + (boardnum + 1);
-document.getElementById('win').style.visibility = "hidden";
+	board.writeBoard();
+	document.getElementById('boardName').innerHTML = "Slider No. " + (boardnum + 1);
+	document.getElementById('win').style.visibility = "hidden";
 </script>
 
 </body>
