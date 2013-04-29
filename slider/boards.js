@@ -69,23 +69,27 @@ var boardstr5 = "12 10 up 1 1 ";
 	
 boards.push(boardstr5);
 
-var boardstr6 = "10 8 right 10 8 ";
-	boardstr6 += "1 1 1 1 1 1 1 1 1 1 ";
+var boardstr6 = "10 10 right 10 10 ";
+	boardstr6 += "1 1 1 1 1 1 1 1 1 1 ";	
 	boardstr6 += "1 1 1 0 1 1 1 1 1 1 ";
 	boardstr6 += "0 1 1 1 1 1 1 1 1 2 ";
 	boardstr6 += "1 1 1 1 1 0 1 1 1 1 ";
 	boardstr6 += "0 1 0 1 1 1 1 1 1 1 ";
 	boardstr6 += "1 1 1 1 1 1 1 1 1 1 ";
+	boardstr6 += "1 1 1 1 1 1 1 1 1 1 ";	
 	boardstr6 += "1 1 1 1 0 1 1 1 1 1 ";
 	boardstr6 += "0 0 0 1 1 1 0 1 1 1 ";
+	boardstr6 += "1 1 1 1 1 1 1 1 1 1 ";	
 	
 boards.push(boardstr6);
 
-var boardstr7 = "10 8 up 1 1 ";
+var boardstr7 = "10 10 up 1 1 ";
 	boardstr7 += "1 0 1 2 1 1 1 0 1 1 ";
 	boardstr7 += "1 0 1 1 1 1 1 0 1 1 ";
 	boardstr7 += "1 0 1 1 1 1 0 0 1 1 ";
 	boardstr7 += "1 1 1 1 0 1 1 1 1 1 ";
+	boardstr7 += "1 1 1 1 1 1 1 1 1 1 ";
+	boardstr7 += "1 1 1 1 1 1 1 1 1 1 ";
 	boardstr7 += "1 1 1 1 1 1 1 1 1 1 ";
 	boardstr7 += "0 1 1 1 1 1 1 1 0 1 ";
 	boardstr7 += "1 1 1 1 0 1 1 1 1 1 ";

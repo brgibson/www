@@ -296,8 +296,8 @@ function Board()
 							break;
 					}
 					
-					
 					document.getElementById('keyvalue').innerHTML = 'You Win!';
-					document.getElementById('win').style.visibility = "visible";
+					document.getElementById('win-overlay').style.display = "block";
+					window.setTimeout(function() {document.getElementById('win-overlay').style.opacity = 1}, 15);
 				}
 }
