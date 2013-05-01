@@ -1,6 +1,7 @@
 function numberChooser(	grid,
 												animationsDiv,
-												numberChooserDiv) {
+												numberChooserDiv,
+												numberChooserWrapper) {
 
 	//these methods exist in two places, might want to consolidate
 	var elements = animationsDiv.getElementsByTagName('td');																
@@ -55,7 +56,7 @@ function numberChooser(	grid,
 					numberChooserDiv.selectedSolution = null;
 					
 					//hide the number chooser
-					numberChooserDiv.className = "hidden";
+					numberChooserWrapper.className = "numberChooser hidden";
 				}
 			 };
 			 
@@ -103,6 +104,7 @@ function numberChooser(	grid,
 				
 					
 					//show the number chooser
+					numberChooserWrapper.className = "numberChooser";
 					if (animationsDiv.discardMode) {
 						numberChooserDiv.className = "discardMode";
 					} else {

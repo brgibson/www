@@ -2,10 +2,13 @@
 <html>
 <head>
 	<title>Ben's Experiments - Sudoku</title>
-	<link rel="stylesheet" type="text/css" href="./SudokuSolver.css" />
+	<link rel="stylesheet" type="text/css" href="../base.css" />
+	<link rel="stylesheet" type="text/css" href="./sudoku.css" />
 	<script src="./jsModels/Square.js"></script>
 	<script src="./jsModels/Grid.js"></script>
 	<script src="./jsActions/GridAnimator.js"></script>
+	<script src="./jsActions/NumberChooser.js"></script>
+	<script src="./jsActions/GridSolutionDisplayer.js"></script>
 	<script src="./jsModels/TestScenarios.js"></script>
 	<script type="text/javascript">
 		var puzzle = realPuzzle1; //from TestScenarios.js
@@ -66,35 +69,26 @@
 				} else {
 					numberChooser(	grid,
 													animationsDiv,
-													document.getElementById("numberChooser"));
+													document.getElementById("numberChooser"),
+													document.getElementById("numberChooserWrapper"));
 					elem.className = "";
 				}
 			}
 		}();
 	</script>
-	<style>
-		.numberChooser,{
-			float:left;
-		}
-		.numberChooser td {
-			display: block;
-		}
-		.animations {
-			float: right;
-		}
-	</style>
 </head>
 
 <body>
 
-<button onclick="toggleDiscardMode(this)">Discard Mode</button>
+
 
 <button style="float:right" onclick="showErrors(this)">Show Errors</button>
 <button style="float:right" onclick="toggleClickToSolveMode(this)">Click To Solve</button>
 
+<div id="puzzle"></div>
 
-
-<div class="numberChooser">
+<div class="numberChooser hidden" id="numberChooserWrapper">
+	<button onclick="toggleDiscardMode(this)">Discard Mode</button>
 	<table id="numberChooser" class="hidden">
 		<tr>
 			<td>1</td>
@@ -117,11 +111,12 @@
 </body>
 <script>
 		
-		document.body.appendChild(animationsDiv);		
+		document.getElementById("puzzle").appendChild(animationsDiv);
 		
 		numberChooser(	grid,
 										animationsDiv,
-										document.getElementById("numberChooser"));
+										document.getElementById("numberChooser"),
+										document.getElementById("numberChooserWrapper"));
 	
 </script>
 

@@ -61,24 +61,12 @@ Square.prototype.toString =
 	function() {
 		if (this.isSolved()) {
 			if (this.original) {
-				return "<b>" + this.solution + "</b>";
+				return "<span class='original'>" + this.solution + "</span>";
 			} else {
 				return "<span>" + this.solution + "</span>";
 			}
 		} else {
 			return "<span></span>";
-			/*return "<select>" +
-					"<option></option>" +
-					"<option>1</option>" +
-					"<option>2</option>" +
-					"<option>3</option>" +
-					"<option>4</option>" +
-					"<option>5</option>" +
-					"<option>6</option>" +
-					"<option>7</option>" +
-					"<option>8</option>" +
-					"<option>9</option>" +
-				"</select>";*/			
 		}
 	};
 	

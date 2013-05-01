@@ -1,0 +1,95 @@
+table {
+	border: 3px solid;
+	border-collapse: collapse;
+	float: left;
+	margin-right: .5em;
+}
+
+.bottomSubRow {
+	border-bottom: 3px solid;
+}
+
+.rightSubCol { 
+	border-right: 3px solid;
+}
+
+td, tr {
+	border: 1px solid;
+	text-align: center;
+	width: 3em;
+	height: 3em;
+}
+
+button {
+	font-size: 1em;
+}
+
+/** -from inline- **/
+.numberChooser,{
+	float:right;
+}
+.numberChooser td {
+	/*display: block;*/
+}
+.animations {
+	/*float: right;*/
+}
+
+/** --- colors --- **/
+
+table {
+	border-color: white;
+	color: black;
+}
+.bottomSubRow {
+	border-color: white;
+}
+.rightSubCol { 
+	border-color: white;
+}
+
+td, tr {
+	border-color: white;
+	background-color: lightblue;
+}
+
+.original {
+	background-color: lightgreen;
+	font-weight: bold;
+}
+
+.animations .chosen {
+	background-color: lightpink;
+}
+
+/* number chooser section */
+
+.numberChooser .discardMode td,
+.numberChooser .discardMode tr {
+	background-color: lightgreen;
+}
+
+.numberChooser .chosen {
+	background-color: lightpink;
+}
+
+.numberChooser .discarded {
+	color: lightblue;
+}
+.numberChooser .discardMode .discarded {
+	color: lightgreen;
+}
+
+/* show errors */
+.showErrors .incorrect {
+	color: red;
+}
+
+/* toggled button states */
+button.showErrors,
+button.discardMode,
+button.animate,
+button.animateBackwards,
+button.clickToSolveMode {
+	color: grey;
+}
