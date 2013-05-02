@@ -89,7 +89,6 @@ Grid.prototype.toString =
 				
 			for (var c = 0; c < this.columns; c++) {
 				square = this.grid[r][c];				
-				var id = ' id="' + (r+1) + "," + (c+1) + '" ';
 
 				var colClass = 'class="';
 
@@ -103,7 +102,7 @@ Grid.prototype.toString =
 					colClass += '"';
 				}
 
-				gridStr += "<td " + colClass + id + ">";
+				gridStr += "<td " + colClass + ">";
 				gridStr += square.toString(); 
 				gridStr += "</td>"
 			}

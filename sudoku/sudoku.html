@@ -80,16 +80,10 @@
 
 <body>
 
-
-
-<button style="float:right" onclick="showErrors(this)">Show Errors</button>
-<button style="float:right" onclick="toggleClickToSolveMode(this)">Click To Solve</button>
-
 <div id="puzzle"></div>
 
 <div class="numberChooser hidden" id="numberChooserWrapper">
-	<button onclick="toggleDiscardMode(this)">Discard Mode</button>
-	<table id="numberChooser" class="hidden">
+	<table id="numberChooser">
 		<tr>
 			<td>1</td>
 			<td>2</td>
@@ -105,7 +99,13 @@
 			<td>8</td>
 			<td>9</td>
 		</tr>
-	</table>
+	</table>	
+	<button onclick="toggleDiscardMode(this)">Discard Mode</button>
+</div>
+
+<div class="options">
+		<button onclick="showErrors(this)">Show Errors</button>
+		<button onclick="toggleClickToSolveMode(this)">Click To Solve</button>
 </div>
 
 </body>

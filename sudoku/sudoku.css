@@ -1,20 +1,19 @@
 table {
-	border: 3px solid;
+	border: .1875em solid;
 	border-collapse: collapse;
-	float: left;
 	margin-right: .5em;
 }
 
 .bottomSubRow {
-	border-bottom: 3px solid;
+	border-bottom: .1875em solid;
 }
 
 .rightSubCol { 
-	border-right: 3px solid;
+	border-right: .1875em solid;
 }
 
 td, tr {
-	border: 1px solid;
+	border: .0625em solid;
 	text-align: center;
 	width: 3em;
 	height: 3em;
@@ -22,17 +21,42 @@ td, tr {
 
 button {
 	font-size: 1em;
+	display: inline-block;
+	margin: .5em;
 }
 
-/** -from inline- **/
-.numberChooser,{
-	float:right;
+#puzzle {
+/*	text-align: center;*/
 }
-.numberChooser td {
-	/*display: block;*/
+#puzzle table {
+	display: inline-block;
 }
-.animations {
-	/*float: right;*/
+.numberChooser {
+	position: absolute;
+	top: 1em;
+	right: 1em;
+	text-align: center;
+}
+
+.options {
+	position: absolute;
+	bottom: 1em;
+	right: 1em;
+	text-align: center;
+}
+.options button {
+	display: block;
+}
+
+/* media query section */
+@media screen and (orientation:portrait) {
+	.options {
+		position: relative;
+		text-align: center;
+	}
+	.options button {
+		display: inline;
+	}
 }
 
 /** --- colors --- **/
