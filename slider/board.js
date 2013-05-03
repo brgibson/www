@@ -57,7 +57,7 @@ function Board()
 			moveMe.className = "no-transition";
 			moveMe.style.left = left + "%";
 			moveMe.style.top = top + "%";
-		  window.setTimeout(function() {moveMe.className = ""}, 15);
+		  window.setTimeout(function() {moveMe.className = ""; moveMe.style.visibility = "visible"}, 15);
 		}
 	/*
 	 * Reads a string and sets the board.  The first integer of the string is the number of rows.  The next integer must be the number of columns.  
@@ -224,16 +224,78 @@ function Board()
 			}
 		}
 
+	// takes zero indexed row and col values
 	this.changePosition = 
 		function(r, c) {
-			document.getElementById('moveMe').style.top = (r * 10) + "%";
-			document.getElementById('moveMe').style.left = (c * (100 / this.numCols)) + "%";
+			//show the moveMe element so that we will see the animation
+			var moveMe = document.getElementById("moveMe");
+			moveMe.style.visibility = "visible";
 			
+			//update the moveMe element with the new position so that 
+			//the css transition happens
+			moveMe.style.top = (r * 10) + "%";
+			moveMe.style.left = (c * (100 / this.numCols)) + "%";
+			
+			//hide the player in the grid, if it is set
+			var player = document.getElementById("player");
+			if (player != null) {
+				player.className = "";
+				player.id = "";
+			}
+			
+			//this function shows the player in the grid after the moveMe
+			//element animation has finished.  We need to do this because
+			//of rounding errors with percentage based widths and heights.
+			var setNewPlayerPosition = function (obj, r, c, moveMe) {
+				return function () {
+					var moveHere = obj.getSquare(r, c);
+					//only hide moveMe and set a player if it doesn't have a class.
+					//otherwise, you might override the exit class.  If you're on
+					//the exit, just keep the moveMe visibile until you move off.
+					if (moveHere != null && moveHere.className == "") {
+						moveHere.id = "player";
+						moveHere.className = "player";
+						moveMe.style.visibility = "hidden"; 
+					}
+				}
+			}(this, r, c, moveMe);
+			
+			//set the timeout to be the same lenght as the css transition.
+			//this way, we hide the show the player in the grid as close
+			//as we can to the css transition finishing.
+			window.setTimeout(setNewPlayerPosition, 150);
+			
+			//for debugging
+			/*
 			document.getElementById('currCol').value="curr col => " + this.currCol;		
 			document.getElementById('currRow').value="curr row => " + this.currRow;		
 			document.getElementById('xcoordinate').value="xcoord => " + document.getElementById("moveMe").style.top;
 			document.getElementById('ycoordinate').value="ycoord => " + document.getElementById('moveMe').style.left;
-			
+			*/
+		}
+		
+	/*
+		r,c
+		
+		0,0 == squares[2]
+		0,1 == squares[3]
+		0,8 == squares[10]
+		
+		1,0 == squares[12]
+		1,1 == squares[13]
+		1,8 == squares[20]
+		
+		1,0 == squares[22]
+		1,1 == squares[13]
+		1,8 == squares[20]
+		
+		(r * 10) + (c + 2)
+	*/
+	this.getSquare = 
+		function (r, c) {
+			var board = document.getElementById("board");
+			var squares = board.getElementsByTagName("div");
+			return squares[(r * (this.numCols + 1)) + (c + 2)];
 		}
 	
 	this.checkKey =	
