@@ -5,179 +5,52 @@
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="../fontawesome/fontawesome.css" />
 <link rel="stylesheet" href="../base.css"/>
-<style type="text/css">
-html, body, #board{
- height: 100%;
- overflow: hidden;
- padding:0;
- margin:0;
-}
-h1 {
-	text-align: center;
-}
-.overlay {
-	position: absolute;
-	top:0;
-	width: 100%;
-	height: 100%;
-	background: rgb(0,0,0);
-	opacity: 0;
-	-moz-transition: opacity .5s;
-	-o-transition: opacity .5s;
-	-webkit-transition: opacity .5s;
-	transition: opacity .5s;
-}
-#win {
-	position: absolute;
-	text-align: center;
-	font-size: 3em;
-	width: 100%;
-	top: 50%;
-	margin-top: -1.5em;
-}
-#win button {
-	font-size: 1em;
-}
-.nav {
-	text-align:center;
-	font-size:3em;
-	position:absolute; 
-	bottom:0;
-	left:0;
-	padding-bottom:1em;
-	color: lightgreen;
-}
-.nav i {
-	opacity: .3;
-}
-.nav .icon-arrow-up,
-.nav .icon-arrow-down {
-	display:block;
-}
-.nav .icon-arrow-left {
-	display:inline;
-	padding-right:1em;
-}
-.nav .icon-arrow-right {
-	display:inline-block;
-}
-
-div.exit {
-	text-align: center;
-	position: relative;
-}
-.exit i {
-	padding-left: 40%;
-	padding-top: 20%; 
-	display: block;
-	position: absolute;
-}
-.exit span {
-	display: none;
-}
-.brick {
-	background: lightblue;
-}
-.brick span {
-	display: none;
-}
-#board-container {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	margin:0;
-	padding:0;
-}
-.board {
-	background-color: black;
-	color: white;
-	width: 100%;
-	height: 100%;
-	padding: 0;
-	margin: 0;
-}
-
-.board .row div {
-	display: inline-block;
-	height: 100%;
-}
-#moveMe, .player {
-	background: lightgreen;
-}
-#moveMe {
-	position: absolute;
-	left: 0;
-	top: 0;
-	text-align:center;
-	-moz-transition: top .15s, left .15s;
-	-o-transition: top .15s, left .15s;
-	-webkit-transition: top .15s, left .15s;
-	transition: top .15s, left .15s;
-}
-
-.board .row {
-	width: 100%;
-	height: 10%;
-}
-.board .row div {
-	display: inline-block;
-	height: 100%;
-}
-#moveMe {
-	height: 10%;
-}
-
-.col-10 .board .row div,
-.col-10 #moveMe {
-	width:10%;
-}
-.col-15 .board .row div,
-.col-15 #moveMe {
-	width:6.666%;
-}
-.col-12 .board .row div,
-.col-12 #moveMe {
-	width: 8.333%;
-}
-
-/* media query section */
-@media screen and (orientation:portrait) {
-	body {
-		font-size: 2em;
-	}
-	#board-container {
-		position: relative;
-		width: 100%;
-		height: 100%;
-		margin-left: 0;
-		padding:0;
-		margin:0;
-	}
-}
-</style>
+<link rel="stylesheet" href="./slider.css"/>
 <script src="board.js"></script>
 <script src="boards.js"></script>
 <script type="text/javascript">
 
-var board = new Board(); 
-var boardnum = 0;
+/* todo - add local storage */
+
+/* url handling */
+/*
+document.writeln(window.location + "<br/>");
+document.writeln(window.location.href + "<br/>");
+document.writeln(window.location.pathname + "<br/>");
+document.write(window.document.URL);
+*/
+var boardnum = function() {
+	var s = 0;
+
+//	var url = "brgibson.com/slider/slider.html?board=100"
+	var url = window.location.href;
+	var index = url.search("board=");
+	if (index != -1) {
+		s = parseInt(url.substr(index + 6)) - 1; //zero indexed for later
+	}
+
+	return s;
+}();
+
 function nextBoard() {
+
 	var readstr = boards[boardnum];
 	boardnum++;
 	if(boardnum <= boards.length) {
 
     document.getElementById('keyvalue').innerHTML = "";
-		document.getElementById('boardName').innerHTML = "Slider No. " + (boardnum + 1);
+		document.getElementById('boardName').innerHTML = "Slider No. " + boardnum;
 		
 		board.read(readstr);
 		board.writeBoard();
+		history.pushState(null, "Board " + boardnum, "./slider.html?board=" + boardnum);
 
 		//fade out the next win-overlay		
 		document.getElementById('win-overlay').style.opacity = 0;
 
 		//give the fade of the win-overlay enough time to fade, then remove the overlay
 		window.setTimeout(function() {
-			document.getElementById('win-overlay').style.display = "none";
+			document.getElementById('win-overlay').style.display = "none"
 			if(boardnum == boards.length) {
 				document.getElementById('win').innerHTML = "Game Over! Out of Boards";
 			}
@@ -185,6 +58,7 @@ function nextBoard() {
   }
 }
 
+/* touch event handling */
 var firstTouchX;
 var firstTouchY;
 function handleTouchStart(evt) {
@@ -249,13 +123,31 @@ function handleTouchEnd(evt) {
 </form>
 
 <script type="text/javascript">
-	board.writeBoard();
-	document.getElementById('boardName').innerHTML = "Slider No. " + (boardnum + 1);
-	document.getElementById('win-overlay').style.display = "none";
+
+	/* setting up the game */
+	var board = function() {
+		if (boardnum >= 0 && boardnum < boards.length) {
+				var readstr = boards[boardnum];
+				boardnum++;
+		
+				var toReturn = 	new Board();		
+				toReturn.read(readstr);
+				return toReturn;
+		
+		} else {
+			return null;
+		}
+	}();
+	
+	if (board != null) {
+		board.writeBoard();
+	} else {
+			document.getElementById('win-overlay').style.display = "block";
+			document.getElementById('win-overlay').style.opacity = 1;
+			document.getElementById('win').innerHTML = "Sorry, we don't have this board.";
+	}
 </script>
 
 </body>
 
 </html>
-
-

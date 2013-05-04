@@ -1,35 +1,20 @@
 var boards = 
 	function () {		
 		var toReturn = new Array(0);
+
+		var boardstr1 = "10 10 right 1 1 ";
+			boardstr1 += "1 1 1 0 1 1 1 1 1 1 "; 
+			boardstr1 += "1 1 1 1 1 1 1 1 1 1 "; 
+			boardstr1 += "1 1 1 1 1 1 0 1 1 1 "; 
+			boardstr1 += "1 1 1 1 1 1 1 1 1 0 "; 
+			boardstr1 += "1 1 1 1 1 1 1 1 1 1 "; 
+			boardstr1 += "1 1 1 1 1 1 1 1 1 2 "; 
+			boardstr1 += "1 1 0 1 1 1 1 1 1 1 "; 
+			boardstr1 += "1 1 1 1 1 1 1 1 1 1 "; 
+			boardstr1 += "1 1 1 1 1 1 1 1 1 1 "; 
+			boardstr1 += "1 1 1 1 1 1 1 0 1 1 ";
 		
-		// GENERIC BOARD /////////////////////////////////////////////
-		
-		var boardstrN = "10 8 right 10 8 ";
-			boardstrN += "0 0 0 0 0 0 0 0 0 0 ";
-			boardstrN += "0 0 0 0 0 0 0 0 0 0 ";
-			boardstrN += "0 0 0 0 0 0 0 0 0 0 ";
-			boardstrN += "0 0 0 0 0 0 0 0 0 0 ";
-			boardstrN += "0 0 0 0 0 0 0 0 0 0 ";
-			boardstrN += "0 0 0 0 0 0 0 0 0 0 ";
-			boardstrN += "0 0 0 0 0 0 0 0 0 0 ";
-			boardstrN += "0 0 0 0 0 0 0 0 0 0 ";
-		//////////////////////////////////////////////////////////////
-		
-		/*
-		var boardStrDebug = "10 10 left 1 1 ";
-			boardStrDebug += "1 1 1 0 1 1 1 1 1 1 ";
-			boardStrDebug += "1 1 1 1 1 1 1 1 1 1 ";
-			boardStrDebug += "0 1 1 1 1 1 0 1 1 1 ";
-			boardStrDebug += "0 1 1 1 1 1 1 1 1 1 ";
-			boardStrDebug += "2 1 1 1 1 1 1 1 1 1 ";
-			boardStrDebug += "1 1 1 1 1 1 1 1 1 1 ";
-			boardStrDebug += "1 1 1 1 1 1 1 1 1 1 ";
-			boardStrDebug += "1 1 1 0 1 1 1 1 1 1 ";
-			boardStrDebug += "1 1 1 1 0 1 1 1 1 1 ";
-			boardStrDebug += "1 1 1 1 1 0 1 1 1 1 ";
-		
-		toReturn.push(boardStrDebug);
-		*/
+		toReturn.push(boardstr1);
 		
 		var boardstr2 = "15 10 down 1 2 ";
 			boardstr2 += "1 1 1 1 1 1 0 1 1 1 1 1 0 1 1 ";

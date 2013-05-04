@@ -66,7 +66,7 @@ function Board()
 	 */
 	this.read =
 		function read(str) {
-						
+
 			var ans = new Array(0);
 			var strArr = str.split(" ");
 			var i = 0;
@@ -94,7 +94,7 @@ function Board()
 				
 				ans.push(rowArr);
 			}
-			
+
 			this.board = ans;
 			this.resetBoard(startCol, startRow);
 		}
