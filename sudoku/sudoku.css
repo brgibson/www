@@ -53,6 +53,7 @@ button {
 	.options {
 		position: relative;
 		text-align: center;
+		padding-top: 1em;
 	}
 	.options button {
 		display: inline;
@@ -60,7 +61,6 @@ button {
 }
 
 /** --- colors --- **/
-
 table {
 	border-color: white;
 	color: black;

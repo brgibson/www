@@ -1,31 +1,27 @@
 /* resets */
-a {
-	color: lightgreen;
-}
-
-hr {
-	color: lightgreen;
-}
-
-a:visited {
-	color: green;
-}
-
 h1, h2, h3, h4 ,h5, h6, p {
 	margin: 0;
 	padding: .5em 1em;
 }
-
 h1 {
 	text-align: center;
 }
-
 body {
 	background-color: #000000;
 	color: #ffffff;
 	font-family: "Britannic Bold";
 	font-size: 16pt;
 }
+a {
+	color: lightgreen;
+}
+a:visited {
+	color: green;
+}
+hr {
+	color: lightgreen;
+}
+
 /* Re-usable */
 .hidden {
 	visibility: hidden;
@@ -37,7 +33,7 @@ body {
 	transition: none !important;
 }
 
-/* Grid System */
+/* Grid System */ /* todo- try a grid with inline-block instead of floating? */
 .row {
 	display: block;
 	clear:both;
@@ -89,10 +85,6 @@ body {
 .c12 {
 	display: block;
 }
-
-/* grid with inline-block instead of floating*/
-
-
 
 /* begin css */
 
@@ -186,13 +178,37 @@ body {
 	background-size: 40em;
 }
 
+/* games */
+.games a.wrapper {
+	display: block;
+	text-decoration: none;
+	border: solid lightgreen; 
+	border-radius: .6em;
+	color: white;
+}
+.games a.wrapper:visited {
+	color: white;
+}
+.games a {
+	margin: 1em;
+}
+.games p {
+	padding: .5em 1em;
+}
+.games h2 {
+	color: lightgreen;
+}
+		
 /* music library and shows pages */
+.music-library .content,
+.shows .content {
+	overflow: scroll;
+}
 .music-library .content ul,
 .shows .content ol {
 	border-bottom: lightgreen solid;
 	padding-bottom: 2em;
 	white-space: nowrap;
-	overflow: scroll;
 }
 .music-library .content li {
 	display: block;
@@ -204,8 +220,31 @@ body {
 .music-library .quick-links li {
 	display: inline;
 }
+.music-library h2 {
+	text-align: center;
+}
 .music-library r { /* tag for artist */
 	padding-right: 2em;
+}
+
+/* movies */
+.movieviewer {
+	text-align: center;
+}
+.movieviewer iframe {
+	width: 13.5em;
+	height: 12em;
+	padding: .3em;
+}
+
+/* music */
+.musicviewer {
+	text-align: center;
+}
+.musicviewer iframe {
+	width: 20em;
+	height: 18em;
+	padding: 1em;
 }
 
 /* media query section */
