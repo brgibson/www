@@ -1,14 +1,10 @@
 function Board()
 {	
-	
-	
+		
 	//Instance Variables---------------------------------------------------------------	
-	///////////////////////////////////////////////////////////////////////////////////////
-	// This sets the default board and the default board Settings.
-	
+
+	// This sets the default board and the default board Settings.	
 	this.board = new Array(10); 
-	
-	
 	this.board[0] = new Array(1, 1, 1, 0, 1, 1, 1, 1, 1, 1); 
 	this.board[1] = new Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1); 
 	this.board[2] = new Array(1, 1, 1, 1, 1, 1, 0, 1, 1, 1); 
@@ -28,7 +24,6 @@ function Board()
 	this.hasWon = false;
 	this.currRow = 0;
 	this.currCol = 0;
-	this.t;
 	
 	this.getNumCols = 
 		function getNumCols() {
@@ -166,7 +161,6 @@ function Board()
 			switch (direction) {
 				
 				case 'up':
-
 					for (var i = this.currRow; i >= 0; i--) {
 						if (this.board[i][this.currCol] == 0) {
 							break;
@@ -175,7 +169,6 @@ function Board()
 					return {"r":i+1, "c":this.currCol};
 
 				case 'down':
-
 					for (var i = this.currRow; i < this.board.length; i++) {
 						if (this.board[i][this.currCol] == 0) {
 							break;
@@ -184,7 +177,6 @@ function Board()
 					return {"r":i-1, "c":this.currCol};
 
 				case 'left':
-
 					for (var i = this.currCol; i >= 0; i--) {
 						if (this.board[this.currRow][i] == 0) {
 							break;
@@ -200,8 +192,7 @@ function Board()
 					}
 					return {"r":this.currRow, "c":i-1};
 				
-				default:
-					break;
+				default: break;
 			}
 			
 			return;
@@ -209,18 +200,22 @@ function Board()
 
 	this.move = 
 		function(direction) {
-
-			//dermine end point
-			var endPoint = this.determineEndPoint(direction);
 			
-			var moveMe = document.getElementById('moveMe');
-			this.currCol = endPoint.c;
-			this.currRow = endPoint.r;
-			
-			if (this.checkWin(direction)) {
-				this.youWin(direction, endPoint);
-			} else {				
-				this.changePosition(endPoint.r, endPoint.c);
+			if(!this.moveHappeningFlag) {	
+				this.moveHappeningFlag = true;
+	
+				//dermine end point
+				var endPoint = this.determineEndPoint(direction);
+				
+				var moveMe = document.getElementById('moveMe');
+				this.currCol = endPoint.c;
+				this.currRow = endPoint.r;
+				
+				if (this.checkWin(direction)) {
+					this.youWin(direction, endPoint);
+				} else {				
+					this.changePosition(endPoint.r, endPoint.c);
+				}
 			}
 		}
 
@@ -257,6 +252,7 @@ function Board()
 						moveHere.className = "player";
 						moveMe.style.visibility = "hidden"; 
 					}
+					obj.moveHappeningFlag = false;
 				}
 			}(this, r, c, moveMe);
 			
@@ -264,14 +260,6 @@ function Board()
 			//this way, we hide the show the player in the grid as close
 			//as we can to the css transition finishing.
 			window.setTimeout(setNewPlayerPosition, 150);
-			
-			//for debugging
-			/*
-			document.getElementById('currCol').value="curr col => " + this.currCol;		
-			document.getElementById('currRow').value="curr row => " + this.currRow;		
-			document.getElementById('xcoordinate').value="xcoord => " + document.getElementById("moveMe").style.top;
-			document.getElementById('ycoordinate').value="ycoord => " + document.getElementById('moveMe').style.left;
-			*/
 		}
 		
 	/*
@@ -299,67 +287,50 @@ function Board()
 		}
 	
 	this.checkKey =	
-		function(e) 
-		{
-		//	if(!this.moveHappeningFlag)
-		//	{
-		//		this.moveHappeningFlag = true;
-				
-				var keynum;
-				
-				if(window.event) // IE
-				{
-					keynum = e.keyCode;
-				}
-				else if(e.which) // Netscape/Firefox/Opera
-				{
-					keynum = e.which;
-				}
-					
-				//document.getElementById('keyvalue').innerHTML = keynum;				
-				switch(keynum){
-					case 37: this.move('left'); break
-					case 38: this.move('up'); break;
-					case 39: this.move('right'); break;
-					case 40: this.move('down'); break;
-					default: return false;
-				}
-		//	}
-			
+		function(e) {
+			var keynum;
+			if(window.event) { // IE
+				keynum = e.keyCode;
+			}	else if(e.which) { // Netscape/Firefox/Opera
+				keynum = e.which;
+			}
+	
+			switch(keynum){
+				case 37: this.move('left'); break
+				case 38: this.move('up'); break;
+				case 39: this.move('right'); break;
+				case 40: this.move('down'); break;
+				default: return false;
+			}		
 		}
-		
-		this.stopCount =
-			function stopCount()
-			{
-				clearTimeout(this.t);
-				this.moveHappeningFlag = false;
+			
+	this.youWin = 
+		function(direction, endPoint) {
+			//add cases for moving character outside of the board on exit
+			switch (direction) {
+				
+				case 'up':
+					this.changePosition(endPoint.r - 1, endPoint.c);
+					break;
+				
+				case 'down':
+					this.changePosition(endPoint.r + 1, endPoint.c);
+					break;
+					
+				case 'left':
+					this.changePosition(endPoint.r, endPoint.c - 1);
+					break;
+					
+				case 'right':
+					this.changePosition(endPoint.r, endPoint.c + 1);
+					break;
 			}
 			
-		this.youWin = 
-			function(direction, endPoint)
-				{
-					//add cases for moving character outside of the board on exit
-					switch (direction) {
-						
-						case 'up':
-							this.changePosition(endPoint.r - 1, endPoint.c);
-							break;
-						
-						case 'down':
-							this.changePosition(endPoint.r + 1, endPoint.c);
-							break;
-							
-						case 'left':
-							this.changePosition(endPoint.r, endPoint.c - 1);
-							break;
-							
-						case 'right':
-							this.changePosition(endPoint.r, endPoint.c + 1);
-							break;
-					}
-					
-					document.getElementById('keyvalue').innerHTML = 'You Win!';
-					document.getElementById('win-overlay').style.display = "block";
-					window.setTimeout(function() {document.getElementById('win-overlay').style.opacity = 1}, 15);
-				}
+			document.getElementById('keyvalue').innerHTML = 'You Win!';
+			document.getElementById('win-overlay').style.display = "block";
+			window.setTimeout(function() {
+					document.getElementById('win-overlay').style.opacity = 1;
+					this.moveHappeningFlag = false;
+				}, 15);
+		}
 }

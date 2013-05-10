@@ -1,93 +1,85 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-<title>Ben's Experiments - Slider</title>
-<meta charset="UTF-8" />
-<link rel="stylesheet" href="../fontawesome/fontawesome.css" />
-<link rel="stylesheet" href="../base.css"/>
-<link rel="stylesheet" href="./slider.css"/>
-<script src="board.js"></script>
-<script src="boards.js"></script>
-<script type="text/javascript">
-
-/* todo - add local storage */
-
-/* url handling */
-/*
-document.writeln(window.location + "<br/>");
-document.writeln(window.location.href + "<br/>");
-document.writeln(window.location.pathname + "<br/>");
-document.write(window.document.URL);
-*/
-var boardnum = function() {
-	var s = 0;
-
-//	var url = "brgibson.com/slider/slider.html?board=100"
-	var url = window.location.href;
-	var index = url.search("board=");
-	if (index != -1) {
-		s = parseInt(url.substr(index + 6)) - 1; //zero indexed for later
-	}
-
-	return s;
-}();
-
-function nextBoard() {
-
-	var readstr = boards[boardnum];
-	boardnum++;
-	if(boardnum <= boards.length) {
-
-    document.getElementById('keyvalue').innerHTML = "";
-		document.getElementById('boardName').innerHTML = "Slider No. " + boardnum;
-		
-		board.read(readstr);
-		board.writeBoard();
-		history.pushState(null, "Board " + boardnum, "./slider.html?board=" + boardnum);
-
-		//fade out the next win-overlay		
-		document.getElementById('win-overlay').style.opacity = 0;
-
-		//give the fade of the win-overlay enough time to fade, then remove the overlay
-		window.setTimeout(function() {
-			document.getElementById('win-overlay').style.display = "none"
-			if(boardnum == boards.length) {
-				document.getElementById('win').innerHTML = "Game Over! Out of Boards";
-			}
-		}, 500);
-  }
-}
-
-/* touch event handling */
-var firstTouchX;
-var firstTouchY;
-function handleTouchStart(evt) {
-	firstTouchX = evt.touches[0].pageX;
-	firstTouchY = evt.touches[0].pageY;
-	evt.preventDefault();
-}
-
-function handleTouchEnd(evt) {
-	var lastTouch = evt.changedTouches[0];
-
-	var xDiff = firstTouchX - lastTouch.pageX;
-	var yDiff = firstTouchY - lastTouch.pageY;
-
-	if (Math.abs(xDiff) > Math.abs(yDiff)) {
-		if (xDiff > 0)
-			board.move("left");
-		else if(xDiff < 0)
-			board.move("right");
-	} else if (yDiff > 0) {
-		board.move("up");
-	} else if (yDiff < 0) {
-		board.move("down");
+	<meta charset="UTF-8" />
+	<title>Ben's Experiments - Slider</title>
+	<link rel="stylesheet" href="../fontawesome/fontawesome.css" />
+	<link rel="stylesheet" href="../base.css"/>
+	<link rel="stylesheet" href="./slider.css"/>
+	<script src="board.js"></script>
+	<script src="boards.js"></script>
+	<script type="text/javascript">
+	
+	/* todo - add local storage */
+	var boardnum = function() {
+		var s = 0;
+	
+		//	var url = "brgibson.com/slider/slider.html?board=100"
+		var url = window.location.href;
+		var index = url.search("board=");
+		if (index != -1) {
+			s = parseInt(url.substr(index + 6)) - 1; //zero indexed for later
+		}
+	
+		return s;
+	}();
+	
+	function nextBoard() {
+	
+		var readstr = boards[boardnum];
+		boardnum++;
+		if(boardnum <= boards.length) {
+	
+	    document.getElementById('keyvalue').innerHTML = "";
+			document.getElementById('boardName').innerHTML = "Slider No. " + boardnum;
+			
+			board.read(readstr);
+			board.writeBoard();
+			history.pushState(null, "Board " + boardnum, "./slider.html?board=" + boardnum);
+	
+			//fade out the next win-overlay		
+			document.getElementById('win-overlay').style.opacity = 0;
+	
+			//give the fade of the win-overlay enough time to fade, then remove the overlay
+			window.setTimeout(function() {
+				document.getElementById('win-overlay').style.display = "none"
+				if(boardnum == boards.length) {
+					document.getElementById('win').innerHTML = "Game Over! Out of Boards";
+				}
+			}, 500);
+	  }
 	}
 	
-	evt.preventDefault();
-}
-
-</script>
+	/* touch event handling */
+	var firstTouchX;
+	var firstTouchY;
+	function handleTouchStart(evt) {
+		firstTouchX = evt.touches[0].pageX;
+		firstTouchY = evt.touches[0].pageY;
+		evt.preventDefault();
+	}
+	
+	function handleTouchEnd(evt) {
+		var lastTouch = evt.changedTouches[0];
+	
+		var xDiff = firstTouchX - lastTouch.pageX;
+		var yDiff = firstTouchY - lastTouch.pageY;
+	
+		if (Math.abs(xDiff) > Math.abs(yDiff)) {
+			if (xDiff > 0)
+				board.move("left");
+			else if(xDiff < 0)
+				board.move("right");
+		} else if (yDiff > 0) {
+			board.move("up");
+		} else if (yDiff < 0) {
+			board.move("down");
+		}
+		
+		evt.preventDefault();
+	}
+	
+	</script>
 </head>
 
 <body onKeyUp="board.checkKey(event)">
