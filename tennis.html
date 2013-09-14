@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+	<meta charset="UTF-8"/>
+	<title>Ben's Experiments - Movies</title>
+	<script type='text/javascript' src='./knockout/knockout-2.3.0.js'></script>
+	<link rel="stylesheet" href="./base.css" />	
+	<style>
+	.win {
+		background-color: lightgreen;
+	}
+	.lose {
+		background-color: lightpink;
+	}
+	</style>
+</head>
+
+<body>
+	<h1>Tennis</h1>
+	<div class="tennis">
+		<table>
+			<thead>
+				<tr>
+					<th>Player Id</th>
+					<th>Player Name</th>
+					<th>Match 1</th>
+					<th>Match 2</th>
+					<th>Match 3</th>
+					<th>Total Points</th>
+					<th>Rating</th>
+				</tr>
+			</thead>
+			<tbody data-bind="foreach: players"> 
+				<tr>
+					<td data-bind="text: playerId"></td>
+					<td data-bind="text: playerName"></td>
+					<!-- ko foreach: matches -->	
+					<td style="text-align:center" data-bind="css: cssClass">
+						<p data-bind="text:score"></p>
+						<p data-bind="text:opponent"></p>
+						<p data-bind="text:points"></p>
+					</td>
+					<!-- /ko -->
+					<td data-bind="text:points"></td>
+					<td data-bind="text:rating"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+<script type='text/javascript' src='./tennis/tennis-mock-data.js'></script>
+<script type='text/javascript' src='./tennis/tennis-view-models.js'></script>
+<script> 
+	ko.applyBindings(new TennisViewModel().setPlayers(mockPlayers));
+</script>
+</html>
