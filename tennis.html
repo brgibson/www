@@ -22,7 +22,6 @@
 		<table>
 			<thead>
 				<tr>
-					<th>Player Id</th>
 					<th>Player Name</th>
 					<!-- ko foreach: players[0].matches -->	
 					<th>Match</th>
@@ -33,7 +32,6 @@
 			</thead>
 			<tbody data-bind="foreach: players"> 
 				<tr>
-					<td data-bind="text: playerId"></td>
 					<td data-bind="text: playerName"></td>
 					<!-- ko foreach: matches -->	
 					<td style="text-align:center" data-bind="css: cssClass">
