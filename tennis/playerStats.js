@@ -20,8 +20,8 @@ var playerStats = [
 			},
 			{
 				"opponent": 8,
-				"scores": "0-0,0-0,0-0",
-				"points": 0
+				"scores": "6-3,0-6,4-10",
+				"points": 8
 			},
 			{
 				"opponent": 3,
@@ -40,8 +40,8 @@ var playerStats = [
 				"points": 0
 			}
 		],
-		"totalPoints": 19,
-		"rating": -7
+		"totalPoints": 27,
+		"rating": -6.25
 	},
 
 	{
@@ -335,8 +335,8 @@ var playerStats = [
 			},
 			{
 				"opponent": 1,
-				"scores": "0-0,0-0,0-0",
-				"points": 0
+				"scores": "3-6,6-0,10-4",
+				"points": 12
 			},
 			{
 				"opponent": 4,
@@ -355,8 +355,8 @@ var playerStats = [
 				"points": 0
 			}
 		],
-		"totalPoints": 28,
-		"rating": 0
+		"totalPoints": 40,
+		"rating": 1
 	}
 ];
 

@@ -18,3 +18,7 @@ perl -pe 's|([0-9])\.\s(.*)|\t\t"playerId": \1,\n\t\t"playerName": "${2}",\n\t\t
 
 perl -pe 's|nocomma.*vs\s([0-9])\<br\>(.*)\<br\>(.*)|\t\t\t{\n\t\t\t\t"opponent": \1,\n\t\t\t\t"scores": "${2}",\n\t\t\t\t"points": ${3}\n\t\t\t}|g' standings4.txt > standings45.txt
 perl -pe 's|.*vs\s([0-9])\<br\>(.*)\<br\>(.*)|\t\t\t{\n\t\t\t\t"opponent": \1,\n\t\t\t\t"scores": "${2}",\n\t\t\t\t"points": ${3}\n\t\t\t},|g' standings45.txt > playerStats.js
+
+rm standings*
+rm cjar
+
