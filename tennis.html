@@ -49,9 +49,17 @@
 		</table>
 	</div>
 </body>
+<script type='text/javascript' src='./tennis/playerStats.js'></script>
 <script type='text/javascript' src='./tennis/tennis-mock-data.js'></script>
 <script type='text/javascript' src='./tennis/tennis-view-models.js'></script>
+<script type='text/javascript' src='./tennis/tennis-view-model-adapter.js'></script>
 <script> 
+var useMockData = false;
+
+if (useMockData) {
 	ko.applyBindings(new TennisViewModel().setPlayers(mockPlayers));
+} else {
+	ko.applyBindings(tennisViewModelAdapter(playerStats));
+}
 </script>
 </html>
