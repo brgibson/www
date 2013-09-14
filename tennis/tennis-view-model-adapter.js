@@ -4,8 +4,10 @@ var matchViewModelAdapter = function(match) {
 		.setOpponent(match.opponent) //might want to get the actual name here instead of the number
 		.setPoints(match.points);
 		
-	if (match.points != null)	{
+	if (match.scores != "0-0,0-0,0-0") {
 		matchViewModel.setCssClass(match.points <= 8 ? "lose" : "win");
+	} else {
+	    matchViewModel.setCssClass("");
 	}
 		
 	return matchViewModel;
@@ -14,8 +16,8 @@ var matchViewModelAdapter = function(match) {
 var playerViewModelAdapter = function(playerStat) {
 	var matches = [];
 	
-	for (var i = 0; i < matches.length; i++) {
-		matches.push(matchViewModelAdapter(matches[i]));
+	for (var i = 0; i < playerStat.matches.length; i++) {
+		matches.push(matchViewModelAdapter(playerStat.matches[i]));
 	}
 
 	return new PlayerViewModel()
