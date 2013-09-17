@@ -57,7 +57,7 @@ var useMockData = false;
 if (useMockData) {
 	ko.applyBindings(new TennisViewModel().setPlayers(mockPlayers));
 } else {
-	ko.applyBindings(tennisViewModelAdapter(playerStats));
+	ko.applyBindings(new TennisViewModelAdapter(playerStats).adapt());
 }
 </script>
 </html>
