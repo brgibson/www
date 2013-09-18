@@ -11,12 +11,7 @@ var TennisViewModelAdapter = function(playerStats) {
 			players.push(playerViewModelAdapter(playerStats[i], playerStats));
 		}
 		
-		//sort the players
-		players.sort(function(a, b) {
-			return b.rating - a.rating;
-		});
-		
-		return new TennisViewModel().setPlayers(players);
+		return new TennisViewModel().setPlayers(players).ratingSort();
 	}
 
 	/**

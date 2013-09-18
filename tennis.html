@@ -22,12 +22,12 @@
 		<table>
 			<thead>
 				<tr>
-					<th>Player Name</th>
-					<!-- ko foreach: players[0].matches -->	
-					<th>Match</th>
+					<th data-bind="click: playerNameSort">Player Name</th>
+					<!-- ko foreach: players()[0].matches -->	
+					<th data-bind="click: parent.pointsInMatchSort">Match</th>
 					<!-- /ko -->
-					<th>Total Points</th>
-					<th>Rating</th>
+					<th data-bind="click: pointsSort">Total Points</th>
+					<th data-bind="click: ratingSort">Rating</th>
 				</tr>
 			</thead>
 			<tbody data-bind="foreach: players"> 
