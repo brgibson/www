@@ -36,12 +36,12 @@ var playerStats = [
 
 			{
 				"opponent": 5,
-				"scores": "0-0,0-0,0-0",
-				"points": 0
+				"scores": "6-1,6-3",
+				"points": 14
 			}
 		],
-		"totalPoints": 27,
-		"rating": -6.25
+		"totalPoints": 41,
+		"rating": -3
 	},
 
 	{
@@ -70,8 +70,8 @@ var playerStats = [
 			},
 			{
 				"opponent": 6,
-				"scores": "0-0,0-0,0-0",
-				"points": 0
+				"scores": "6-3,6-3",
+				"points": 14
 			},
 			{
 				"opponent": 8,
@@ -85,8 +85,8 @@ var playerStats = [
 				"points": 0
 			}
 		],
-		"totalPoints": 42,
-		"rating": 2
+		"totalPoints": 56,
+		"rating": 3.2
 	},
 
 	{
@@ -200,7 +200,7 @@ var playerStats = [
 			},
 			{
 				"opponent": 6,
-				"scores": "0-0,0-0,0-0",
+				"scores": "default",
 				"points": 0
 			},
 			{
@@ -216,12 +216,12 @@ var playerStats = [
 
 			{
 				"opponent": 1,
-				"scores": "0-0,0-0,0-0",
-				"points": 0
+				"scores": "1-6,3-6",
+				"points": 4
 			}
 		],
-		"totalPoints": 1,
-		"rating": -13.67
+		"totalPoints": 5,
+		"rating": -12.75
 	},
 
 	{
@@ -245,13 +245,13 @@ var playerStats = [
 			},
 			{
 				"opponent": 5,
-				"scores": "0-0,0-0,0-0",
+				"scores": "default",
 				"points": 0
 			},
 			{
 				"opponent": 2,
-				"scores": "0-0,0-0,0-0",
-				"points": 0
+				"scores": "3-6,3-6",
+				"points": 6
 			},
 			{
 				"opponent": 4,
@@ -265,8 +265,8 @@ var playerStats = [
 				"points": 0
 			}
 		],
-		"totalPoints": 34,
-		"rating": 2.67
+		"totalPoints": 40,
+		"rating": 0
 	},
 
 	{

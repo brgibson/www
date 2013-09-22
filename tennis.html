@@ -5,8 +5,32 @@
 	<meta charset="UTF-8"/>
 	<title>Ben's Experiments - Movies</title>
 	<script type='text/javascript' src='./knockout/knockout-2.3.0.js'></script>
-	<link rel="stylesheet" href="./base.css" />	
+	<!--link rel="stylesheet" href="./base.css" /-->	
 	<style>
+	table {
+		border-collapse: collapse;
+		background-color: #efe;
+	}
+	tr {
+		border: solid 1px green;
+	}
+	th {
+		padding: 1em;
+	}
+	td {
+		padding: .7em 1em;
+	}
+	ul {
+		padding: 0;
+		margin: 0;
+	}
+	li {
+		display:block;
+	}
+	.score,
+	.opponent {
+		white-space: nowrap;
+	}
 	.win {
 		background-color: lightgreen;
 	}
@@ -17,31 +41,34 @@
 </head>
 
 <body>
-	<h1>Tennis</h1>
+	<h1>Tennis Standings</h1>
 	<div class="tennis">
 		<table>
 			<thead>
 				<tr>
 					<th data-bind="click: playerNameSort">Player Name</th>
-					<!-- ko foreach: players()[0].matches -->	
-					<th data-bind="click: parent.pointsInMatchSort">Match</th>
-					<!-- /ko -->
-					<th data-bind="click: pointsSort">Total Points</th>
 					<th data-bind="click: ratingSort">Rating</th>
+					<th data-bind="click: pointsSort">Total Points</th>
+					<!-- ko foreach: players()[0].matches -->	
+					<th data-bind="click: function() {$parent.pointsInMatchSort($index())},
+												 text: ($index() + 1)"></th>
+					<!-- /ko -->
 				</tr>
 			</thead>
 			<tbody data-bind="foreach: players"> 
 				<tr>
 					<td data-bind="text: playerName"></td>
+					<td data-bind="text:rating"></td>
+					<td data-bind="text:points"></td>
 					<!-- ko foreach: matches -->	
 					<td style="text-align:center" data-bind="css: cssClass">
-						<p data-bind="text:score"></p>
-						<p data-bind="text:opponent"></p>
-						<p data-bind="text:points"></p>
+						<ul>
+							<li class="score" data-bind="text:score"></li>
+							<li class="opponent" data-bind="text:opponent"></li>
+							<li data-bind="text:points"></li>
+						</ul>
 					</td>
 					<!-- /ko -->
-					<td data-bind="text:points"></td>
-					<td data-bind="text:rating"></td>
 				</tr>
 			</tbody>
 		</table>

@@ -97,13 +97,13 @@ var TennisViewModel = function() {
 	
 	var sortByPointsInMatchDesc = function(matchNumber) {
 		return function(a, b) {
-				return b.matches[matchNumber - 1].points - a.matches[matchNumber - 1].points;
+				return b.matches[matchNumber].points - a.matches[matchNumber].points;
 			};
 	}
 	
 	var sortByPointsInMatchAsc = function(matchNumber) {
 		return function(a, b) {
-				return a.matches[matchNumber - 1].points - b.matches[matchNumber - 1].points;
+				return a.matches[matchNumber].points - b.matches[matchNumber].points;
 			};
 	}
 	
@@ -157,12 +157,12 @@ var TennisViewModel = function() {
 	
 	this.pointsInMatchSort = function(viewModel) { 
 		var toggle = true;
-		return function() {
+		return function(index) {
 
 			if (toggle) {
-				viewModel.players.sort(sortByPointsInMatchDesc(1));
+				viewModel.players.sort(sortByPointsInMatchDesc(index));
 			} else {
-				viewModel.players.sort(sortByPointsInMatchAsc(1));
+				viewModel.players.sort(sortByPointsInMatchAsc(index));
 			}
 			toggle = !toggle;
 			return viewModel;
