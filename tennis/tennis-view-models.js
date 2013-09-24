@@ -22,6 +22,12 @@ var MatchViewModel = function() {
 		this.opponent = opponent;
 		return this;
 	}
+	
+	this.isOutOfFocus = ko.observable(false);
+	this.setIsOutOfFocus = function(isOutOfFocus) {
+		this.isOutOfFocus(isOutOfFocus);
+		return this;
+	}
 }
 
 var PlayerViewModel = function() {
@@ -54,6 +60,39 @@ var PlayerViewModel = function() {
     	this.matches = matches;
     	return this;
     }
+    
+    this.isOutOfFocus = ko.observable(false);
+    this.setIsOutOfFocus = function(isOutOfFocus) {
+    	this.isOutOfFocus(isOutOfFocus);
+    	return this;
+    }
+    
+    /**
+     * Highlights the information associated with the selected
+     * player.
+     */
+    this.highlightPlayer = function(playerName) {
+    	var isPlayerOutOfFocus = this.playerName != playerName;
+   	this.setIsOutOfFocus(isPlayerOutOfFocus);
+
+    	for (var i = 0; i < this.matches.length; i++) {
+			this.matches[i].setIsOutOfFocus(
+				isPlayerOutOfFocus &&
+				this.matches[i].opponent != playerName);
+    	}
+    }
+    
+    /**
+     * Highlights the information associated with the selected
+     * player.
+     */
+    this.removeHighlight = function() {
+   	this.setIsOutOfFocus(false);
+
+    	for (var i = 0; i < this.matches.length; i++) {
+			this.matches[i].setIsOutOfFocus(false);
+    	}
+    }
 }
 
 var TennisViewModel = function() {
@@ -63,50 +102,26 @@ var TennisViewModel = function() {
 			this.players(players);
 			return this;
 	}
-		
+	
+	
 	/**
-	 * Functions for sorting the Arrays of players on the TennisViewModel.
+	 * Highlights the cells corresponding to the selected player.
 	 */
-	var sortByRatingDesc	= function(a, b) {
-		return b.rating - a.rating;
-	};
-	
-	var sortByRatingAsc = function(a, b) {
-		return a.rating - b.rating;
-	};
-	
-	var sortByPointsDesc	= function(a, b) {
-		return b.points - a.points;
-	};
-	
-	var sortByPointsAsc = function(a, b) {
-		return a.points - b.points;
-	};
-	
-	var sortByPlayerNameDesc	= function(a, b) {
-		if (a.playerName > b.playerName) return -1;
-		if (b.playerName > a.playerName) return 1;
-		else return 0;
-	};
-	
-	var sortByPlayerNameAsc	= function(a, b) {
-		if (a.playerName < b.playerName) return -1;
-		if (b.playerName < a.playerName) return 1;
-		else return 0;
-	};
-	
-	var sortByPointsInMatchDesc = function(matchNumber) {
-		return function(a, b) {
-				return b.matches[matchNumber].points - a.matches[matchNumber].points;
-			};
+	this.highlightPlayer = function(playerName) {
+		for (var i = 0; i < this.players().length; i++) {
+			this.players()[i].highlightPlayer(playerName);
+		}
 	}
 	
-	var sortByPointsInMatchAsc = function(matchNumber) {
-		return function(a, b) {
-				return a.matches[matchNumber].points - b.matches[matchNumber].points;
-			};
+	/**
+	 * Removes the highlighting from all the cells.
+	 */
+	this.removeHighlight = function(playerName) {
+		for (var i = 0; i < this.players().length; i++) {
+			this.players()[i].removeHighlight();
+		}
 	}
-	
+	 
 	/**
 	 * Event handlers which sort the players array.
 	 */
@@ -169,4 +184,48 @@ var TennisViewModel = function() {
 			
 		};
 	}(this);
+		
+	/**
+	 * Functions for sorting the Arrays of players on the TennisViewModel.
+	 */
+	var sortByRatingDesc	= function(a, b) {
+		return b.rating - a.rating;
+	};
+	
+	var sortByRatingAsc = function(a, b) {
+		return a.rating - b.rating;
+	};
+	
+	var sortByPointsDesc	= function(a, b) {
+		return b.points - a.points;
+	};
+	
+	var sortByPointsAsc = function(a, b) {
+		return a.points - b.points;
+	};
+	
+	var sortByPlayerNameDesc	= function(a, b) {
+		if (a.playerName > b.playerName) return -1;
+		if (b.playerName > a.playerName) return 1;
+		else return 0;
+	};
+	
+	var sortByPlayerNameAsc	= function(a, b) {
+		if (a.playerName < b.playerName) return -1;
+		if (b.playerName < a.playerName) return 1;
+		else return 0;
+	};
+	
+	var sortByPointsInMatchDesc = function(matchNumber) {
+		return function(a, b) {
+				return b.matches[matchNumber].points - a.matches[matchNumber].points;
+			};
+	}
+	
+	var sortByPointsInMatchAsc = function(matchNumber) {
+		return function(a, b) {
+				return a.matches[matchNumber].points - b.matches[matchNumber].points;
+			};
+	}
+
 }

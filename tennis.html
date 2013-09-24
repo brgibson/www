@@ -102,11 +102,14 @@
 	.lose {
 		background-color: lightpink;
 	}
+	.oof {
+		opacity: 0.4;
+	}
 	</style>
 </head>
 
 <body>
-	<h1>Tennis Standings</h1>
+	<h1 data-bind="click: removeHighlight">Tennis Standings</h1>
 	<div class="tennis">
 		<table>
 			<thead>
@@ -116,21 +119,25 @@
 					<th class="classname" data-bind="click: pointsSort">Total Points</th>
 					<!-- ko foreach: players()[0].matches -->	
 					<th class="classname" data-bind="click: function() {$parent.pointsInMatchSort($index())},
-												 text: ($index() + 1)"></th>
+						 										text: ($index() + 1)"></th>
 					<!-- /ko -->
 				</tr>
 			</thead>
 			<tbody data-bind="foreach: players"> 
 				<tr>
-					<td data-bind="text: playerName"></td>
-					<td data-bind="text:rating"></td>
-					<td data-bind="text:points"></td>
+					<td data-bind="text: playerName,
+					 					click: function() {$parent.highlightPlayer(playerName)}, clickBubble: false,
+										css: isOutOfFocus() ? 'oof' : ''"></td>
+					<td data-bind="text: rating, css: isOutOfFocus() ? 'oof' : ''"></td>
+					<td data-bind="text: points, css: isOutOfFocus() ? 'oof' : ''"></td>
 					<!-- ko foreach: matches -->	
-					<td style="text-align:center" data-bind="css: cssClass">
+					<td style="text-align: center"
+						 data-bind="css: isOutOfFocus() ? 'oof ' + cssClass : cssClass,
+						 				click: function() {$root.highlightPlayer(opponent)}, clickBubble: false">
 						<ul>
-							<li class="score" data-bind="text:score"></li>
-							<li class="opponent" data-bind="text:opponent"></li>
-							<li data-bind="text:points"></li>
+							<li class="score" data-bind="text: score, css: isOutOfFocus() ? 'oof' : ''"></li>
+							<li class="opponent" data-bind="text: opponent, css: isOutOfFocus() ? 'oof' : ''"></li>
+							<li data-bind="text:points, css: isOutOfFocus() ? 'oof' : ''"></li>
 						</ul>
 					</td>
 					<!-- /ko -->
