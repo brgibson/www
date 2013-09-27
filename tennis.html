@@ -127,51 +127,6 @@
 				</tr>
 			</tbody>
 		</table>
-		<script>
-		/*
-		<table style="display: none" class="portrait">
-			<tr>
-				<th data-bind="click: playerNameSort">Player Name</th>
-
-				<!-- ko foreach: players -->					
-				<td data-bind="text: getPlayerNameAbbreviated(),
-				 					click: function() {$parent.highlightPlayer(playerName)}, clickBubble: false,
-									css: isOutOfFocus() ? 'oof' : ''"></td>
-				<!-- /ko -->
-			</tr> 
-			<tr>
-				<th data-bind="click: ratingSort">Rating</th>
-				<!-- ko foreach: players -->					
-				<td data-bind="text: rating, css: isOutOfFocus() ? 'oof' : ''"></td>
-				<!-- /ko -->
-			</tr>
-			<tr>
-				<th data-bind="click: pointsSort">Total Points</th>
-				<!-- ko foreach: players -->					
-				<td data-bind="text: points, css: isOutOfFocus() ? 'oof' : ''"></td>
-				<!-- /ko -->
-			</tr>
-			<!-- ko foreach: players()[0].matches -->								
-			<tr>
-				<th data-bind="click: function() {$root.pointsInMatchSort($index())},
-					 				text: ($index() + 1)"></th>
-				
-				<!-- ko foreach: $root.players -->					
-				<td style="text-align: center"
-					 data-bind="css: isOutOfFocus() ? 'oof ' + matches[$parentContext.$index()].cssClass : matches[$parentContext.$index()].cssClass,
-					 				click: function() {$root.highlightPlayer(matches[$parentContext.$index()].opponent)}, clickBubble: false">
-					<ul>
-						<li data-bind="text: matches[$parentContext.$index()].games, css: isOutOfFocus() ? 'oof' : ''"></li>
-						<li class="opponent" data-bind="text: matches[$parentContext.$index()].getOpponentAbbreviated(), css: isOutOfFocus() ? 'oof' : ''"></li>
-						<li data-bind="text: matches[$parentContext.$index()].points"></li>
-					</ul>
-				</td>
-				<!-- /ko -->
-			</tr>
-			<!-- /ko -->
-		</table>*/
-		</script>
-
 	</div>
 </body>
 <script type='text/javascript' src='./tennis/playerStats.js'></script>
