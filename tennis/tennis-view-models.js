@@ -1,7 +1,7 @@
 var MatchViewModel = function() {
-	this.score;
-	this.setScore = function(score) {
-		this.score = score;
+	this.games;
+	this.setGames = function(games) {
+		this.games = games;
 		return this;
 	}
 	
@@ -23,6 +23,15 @@ var MatchViewModel = function() {
 		return this;
 	}
 	
+	this.isNotLastGame = function(index) {
+		return (index + 1)< this.games.length;
+	}
+	
+	this.getOpponentAbbreviated = function() {
+		var name = this.opponent.split(' ');
+		return name[0] + " " + name[1].charAt(0);
+	}
+	
 	this.isOutOfFocus = ko.observable(false);
 	this.setIsOutOfFocus = function(isOutOfFocus) {
 		this.isOutOfFocus(isOutOfFocus);
@@ -35,6 +44,11 @@ var PlayerViewModel = function() {
     this.setPlayerName = function(playerName) {
     	this.playerName = playerName;
     	return this;
+    }
+    
+    this.getPlayerNameAbbreviated = function() {
+    	var name = this.playerName.split(' ');
+    	return name[0] + " " + name[1].charAt(0);
     }
     
     this.playerId;
@@ -104,12 +118,20 @@ var TennisViewModel = function() {
 	}
 	
 	
+	var highlightedPlayer = "";
+	
 	/**
 	 * Highlights the cells corresponding to the selected player.
 	 */
 	this.highlightPlayer = function(playerName) {
-		for (var i = 0; i < this.players().length; i++) {
-			this.players()[i].highlightPlayer(playerName);
+		if (playerName == highlightedPlayer) {
+			highlightedPlayer = "";
+			this.removeHighlight();
+		} else {	
+			highlightedPlayer = playerName;
+			for (var i = 0; i < this.players().length; i++) {
+				this.players()[i].highlightPlayer(playerName);
+			}
 		}
 	}
 	

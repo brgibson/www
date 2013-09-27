@@ -39,9 +39,9 @@ var TennisViewModelAdapter = function(playerStats) {
 	 */
 	var matchViewModelAdapter = function(match) {
 		var matchViewModel = new MatchViewModel()
-			.setScore(match.scores)
+			.setGames(match.scores.split(','))
+			.setPoints(match.points)
 			.setOpponent(playerStats[match.opponent - 1].playerName) //notice this comes from the TennisViewModelAdapter constructor argument
-			.setPoints(match.points);
 			
 		if (match.scores != "0-0,0-0,0-0") {
 			matchViewModel.setCssClass(match.points <= 8 ? "lose" : "win");

@@ -6,59 +6,6 @@
 	<title>Ben's Experiments - Tennis Standings</title>
 	<script type='text/javascript' src='./knockout/knockout-2.3.0.js'></script>
 	<!--link rel="stylesheet" href="./base.css" /-->	
-<style type="text/css">
-.classname {
-/*	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;*/
-/*	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;*/
-/*	box-shadow:inset 0px 1px 0px 0px #ffffff;*/
-/*	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );*/
-/*	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.5, #ffffff), color-stop(1, #b4b4b4) );*/
-/*	background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );*/
-/*	background-color: #ededed;*/
-
-/*	-webkit-border-top-left-radius:6px;
-	-moz-border-radius-topleft:6px;
-	border-top-left-radius:6px;
-	-webkit-border-top-right-radius:6px;
-	-moz-border-radius-topright:6px;
-	border-top-right-radius:6px;
-	-webkit-border-bottom-right-radius:6px;
-	-moz-border-radius-bottomright:6px;
-	border-bottom-right-radius:6px;
-	-webkit-border-bottom-left-radius:6px;
-	-moz-border-radius-bottomleft:6px;
-	border-bottom-left-radius:6px;
-*/
-	/*text-indent:0;
-	border:1px solid #dcdcdc;*/
-/*	display:inline-block;
-	color:#777777;
-
-	font-family:arial;
-	font-size:15px;
-	font-weight:bold;
-	font-style:normal;
-	height:50px;
-	line-height:50px;
-	width:100px;
-
-	text-decoration:none;
-	text-align:center;
-	text-shadow:1px 1px 0px #ffffff;*/
-}
-/*
-.classname:hover {
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
-	background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
-	background-color:#dfdfdf;
-}.classname:active {
-	position:relative;
-	top:1px;
-}
-*/
-</style>
-
 	<style>
 	body {
 		font-family: helvetica;
@@ -76,12 +23,14 @@
 	tr {
 		border: solid 1px green;
 	}
-	th {
-		padding: 1em;
+	thead {
 		background-color: #fff;
 	}
+	th {
+		padding: 1em;
+	}
 	td {
-  	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 		padding: .7em 1em;
 	}
 	ul {
@@ -91,7 +40,6 @@
 	li {
 		display:block;
 	}
-	.score,
 	.opponent {
 		white-space: nowrap;
 	}
@@ -104,26 +52,55 @@
 	.oof {
 		opacity: 0.4;
 	}
-	@media all and (max-width: 1080px) {
+	@media all and (max-width: 1080px) and (orientation: landscape) {
 		body {
-  			font-size: .7em;
+  			font-size: .85em;
 		}
+		h1 {
+			display: none;
+		}
+	}
+	@media all and (max-width: 980px) and (orientation: portrait) {
+		body {
+  			font-size: .95em;
+		}
+	}
+	@media all and (orientation: landscape) {
+		.score {
+			white-space: nowrap;
+		}
+		.score li {
+			display: inline;
+			margin-right: -.3em;
+		}
+	}
+	@media all and (orientation: portrait) {
+		.score span {
+			display: none;
+		}
+	}
+	
+	table, thead {
+		-moz-transition: background 1.5s;
+		-o-transition: background 1.5s;
+		-webkit-transition: background 1.5s;
+		transition: background 1.5s;
 	}
 	</style>
 </head>
 
 <body>
-	<h1 data-bind="click: removeHighlight">Tennis Standings</h1>
+	<h1>Tennis Standings</h1>
 	<div class="tennis">
-		<table>
-			<thead>
+		<table class="landscape">
+			<thead id="test">
 				<tr>
-					<th class="classname" data-bind="click: playerNameSort">Player Name</th>
-					<th class="classname" data-bind="click: ratingSort">Rating</th>
-					<th class="classname" data-bind="click: pointsSort">Total Points</th>
+					<th data-bind="click: playerNameSort">Player Name</th>
+					<th data-bind="click: ratingSort">Rating</th>
+					<th data-bind="click: pointsSort">Total Points</th>
 					<!-- ko foreach: players()[0].matches -->	
-					<th class="classname" data-bind="click: function() {$parent.pointsInMatchSort($index())},
-						 										text: ($index() + 1)"></th>
+					<th data-bind="click: function() {$parent.pointsInMatchSort($index())},
+						 				text: ($index() + 1)"></th>
 					<!-- /ko -->
 				</tr>
 			</thead>
@@ -139,15 +116,62 @@
 						 data-bind="css: isOutOfFocus() ? 'oof ' + cssClass : cssClass,
 						 				click: function() {$root.highlightPlayer(opponent)}, clickBubble: false">
 						<ul>
-							<li class="score" data-bind="text: score, css: isOutOfFocus() ? 'oof' : ''"></li>
-							<li class="opponent" data-bind="text: opponent, css: isOutOfFocus() ? 'oof' : ''"></li>
-							<li data-bind="text:points, css: isOutOfFocus() ? 'oof' : ''"></li>
+							<ul class="score" data-bind="foreach: games">
+								<li><!-- ko text: $data --><!-- /ko --><span data-bind="if: $parent.isNotLastGame($index())">,<span></li>
+							</ul>
+							<li class="opponent" data-bind="text: getOpponentAbbreviated()"></li>
+							<li data-bind="text:points"></li>
 						</ul>
 					</td>
 					<!-- /ko -->
 				</tr>
 			</tbody>
 		</table>
+		<script>
+		/*
+		<table style="display: none" class="portrait">
+			<tr>
+				<th data-bind="click: playerNameSort">Player Name</th>
+
+				<!-- ko foreach: players -->					
+				<td data-bind="text: getPlayerNameAbbreviated(),
+				 					click: function() {$parent.highlightPlayer(playerName)}, clickBubble: false,
+									css: isOutOfFocus() ? 'oof' : ''"></td>
+				<!-- /ko -->
+			</tr> 
+			<tr>
+				<th data-bind="click: ratingSort">Rating</th>
+				<!-- ko foreach: players -->					
+				<td data-bind="text: rating, css: isOutOfFocus() ? 'oof' : ''"></td>
+				<!-- /ko -->
+			</tr>
+			<tr>
+				<th data-bind="click: pointsSort">Total Points</th>
+				<!-- ko foreach: players -->					
+				<td data-bind="text: points, css: isOutOfFocus() ? 'oof' : ''"></td>
+				<!-- /ko -->
+			</tr>
+			<!-- ko foreach: players()[0].matches -->								
+			<tr>
+				<th data-bind="click: function() {$root.pointsInMatchSort($index())},
+					 				text: ($index() + 1)"></th>
+				
+				<!-- ko foreach: $root.players -->					
+				<td style="text-align: center"
+					 data-bind="css: isOutOfFocus() ? 'oof ' + matches[$parentContext.$index()].cssClass : matches[$parentContext.$index()].cssClass,
+					 				click: function() {$root.highlightPlayer(matches[$parentContext.$index()].opponent)}, clickBubble: false">
+					<ul>
+						<li data-bind="text: matches[$parentContext.$index()].games, css: isOutOfFocus() ? 'oof' : ''"></li>
+						<li class="opponent" data-bind="text: matches[$parentContext.$index()].getOpponentAbbreviated(), css: isOutOfFocus() ? 'oof' : ''"></li>
+						<li data-bind="text: matches[$parentContext.$index()].points"></li>
+					</ul>
+				</td>
+				<!-- /ko -->
+			</tr>
+			<!-- /ko -->
+		</table>*/
+		</script>
+
 	</div>
 </body>
 <script type='text/javascript' src='./tennis/playerStats.js'></script>
@@ -162,5 +186,27 @@ if (useMockData) {
 } else {
 	ko.applyBindings(new TennisViewModelAdapter(playerStats).adapt());
 }
+
+function blah() {	
+	var throbColor = "#aaf";
+	var throbMillis = 700;
+	var thead = document.getElementsByTagName("thead")[0];
+	var table = document.getElementsByTagName("table")[0];
+	
+	window.setTimeout(function() { throb(thead, throbColor, throbMillis) }, 250);
+	window.setTimeout(function() { throb(table, throbColor, throbMillis) }, 1100);
+};
+
+function throb(elem, color, millis) {
+	var origColor = elem.style.background;
+	elem.style.background = color;
+
+	window.setTimeout(
+		function() {
+			elem.style.background = origColor;
+		}, millis);
+}
+
+blah();
 </script>
 </html>
