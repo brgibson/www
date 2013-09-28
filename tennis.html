@@ -54,7 +54,7 @@
 	}
 	@media all and (max-width: 1080px) and (orientation: landscape) {
 		body {
-  			font-size: .85em;
+  			font-size: .84em;
 		}
 		h1 {
 			display: none;
@@ -80,11 +80,11 @@
 		}
 	}
 	
-	table, thead {
-		-moz-transition: background 1.5s;
-		-o-transition: background 1.5s;
-		-webkit-transition: background 1.5s;
-		transition: background 1.5s;
+	table, thead, tr, td, th {
+		-moz-transition: background 1s;
+		-o-transition: background 1s;
+		-webkit-transition: background 1s;
+		transition: background 1s;
 	}
 	</style>
 </head>
@@ -92,7 +92,7 @@
 <body>
 	<h1>Tennis Standings</h1>
 	<div class="tennis">
-		<table class="landscape">
+		<table class="landscape" onclick="stopThrobbing = true;">
 			<thead id="test">
 				<tr>
 					<th data-bind="click: playerNameSort">Player Name</th>
@@ -107,14 +107,16 @@
 			<tbody data-bind="foreach: players"> 
 				<tr>
 					<td data-bind="text: playerName,
-					 					click: function() {$parent.highlightPlayer(playerName)}, clickBubble: false,
+					 					click: function() {$parent.highlightPlayer(playerName)},
 										css: isOutOfFocus() ? 'oof' : ''"></td>
-					<td data-bind="text: rating, css: isOutOfFocus() ? 'oof' : ''"></td>
-					<td data-bind="text: points, css: isOutOfFocus() ? 'oof' : ''"></td>
+					<td data-bind="click: function() {$parent.highlightPlayer(playerName)},
+										text: rating, css: isOutOfFocus() ? 'oof' : ''"></td>
+					<td data-bind="click: function() {$parent.highlightPlayer(playerName)},
+										text: points, css: isOutOfFocus() ? 'oof' : ''"></td>
 					<!-- ko foreach: matches -->	
 					<td style="text-align: center"
 						 data-bind="css: isOutOfFocus() ? 'oof ' + cssClass : cssClass,
-						 				click: function() {$root.highlightPlayer(opponent)}, clickBubble: false">
+						 				click: function() {$root.highlightPlayer(opponent)}">
 						<ul>
 							<ul class="score" data-bind="foreach: games">
 								<li><!-- ko text: $data --><!-- /ko --><span data-bind="if: $parent.isNotLastGame($index())">,<span></li>
@@ -142,26 +144,77 @@ if (useMockData) {
 	ko.applyBindings(new TennisViewModelAdapter(playerStats).adapt());
 }
 
-function blah() {	
-	var throbColor = "#aaf";
-	var throbMillis = 700;
-	var thead = document.getElementsByTagName("thead")[0];
-	var table = document.getElementsByTagName("table")[0];
+var stopThrobbing = false;
+
+var throb = function() {	
 	
-	window.setTimeout(function() { throb(thead, throbColor, throbMillis) }, 250);
-	window.setTimeout(function() { throb(table, throbColor, throbMillis) }, 1100);
+	var throb = function(elem, color, millis) {
+		if (!stopThrobbing) {
+			var origColor = elem.style.background;
+			elem.style.background = color;
+		
+			window.setTimeout(
+				function() {
+					elem.style.background = origColor;
+				}, millis);
+		}
+	};
+	
+	var throbColorHead = "#ddd";
+	var throbColor = "#fff";
+	var throbMillis = 500;
+	var timeoutLength = 7;
+	var timeoutLengthHead = 50;
+	var initialTimeout = 0;
+	var tablehead = document.getElementsByTagName("th");
+	var tablerows = document.getElementsByTagName("td");
+
+	var UnseenRandomInxedChooser = function(length) {
+		var seen = function() {
+			var toReturn = [];
+			for (var i = 0; i < length; i++) {
+				toReturn.push(false);
+			}
+			return toReturn;
+		}
+		
+		this.getRandomIndex = function() {
+			var randomIndexInRange = 0; //first row to highlight
+			
+			while (seen[randomIndexInRange]) {
+				randomIndexInRange = Math.floor(Math.random() * length);
+			}
+			
+			seen[randomIndexInRange] = true;
+			return randomIndexInRange;
+		}
+	}
+	
+	var unseenRandomIndexChooser = new UnseenRandomInxedChooser(tablerows.length);
+	var unseenRandomIndexChooserHead = new UnseenRandomInxedChooser(tablehead.length);
+	var timeout = initialTimeout; 
+
+	for (var i = 0; i < tablerows.length; i++) {
+		var randomIndex = unseenRandomIndexChooser.getRandomIndex();
+		window.setTimeout(function(index) { return function() { throb(tablerows[index], throbColor, throbMillis) }; }(randomIndex), timeout);
+		timeout += timeoutLength;
+	}
+	
+	for (var i = 0; i < tablehead.length; i++) {
+		var randomIndex = unseenRandomIndexChooserHead.getRandomIndex();
+		window.setTimeout(function(index) { return function() { throb(tablehead[index], throbColorHead, throbMillis) }; }(randomIndex), timeout);
+		timeout += timeoutLengthHead;
+	}
 };
 
-function throb(elem, color, millis) {
-	var origColor = elem.style.background;
-	elem.style.background = color;
+var recursiveThrob = function() {
+	if (!stopThrobbing) {
+		throb();
+		window.setTimeout(recursiveThrob, 10000);
+	}
+};
 
-	window.setTimeout(
-		function() {
-			elem.style.background = origColor;
-		}, millis);
-}
+recursiveThrob();
 
-blah();
 </script>
 </html>
