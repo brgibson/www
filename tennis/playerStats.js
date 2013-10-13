@@ -261,12 +261,12 @@ var playerStats = [
 
 			{
 				"opponent": 8,
-				"scores": "0-0,0-0,0-0",
-				"points": 0
+				"scores": "6-3,6-4",
+				"points": 14
 			}
 		],
-		"totalPoints": 54,
-		"rating": 2
+		"totalPoints": 68,
+		"rating": 2.83
 	},
 
 	{
@@ -351,12 +351,12 @@ var playerStats = [
 
 			{
 				"opponent": 6,
-				"scores": "0-0,0-0,0-0",
-				"points": 0
+				"scores": "3-6,4-6",
+				"points": 7
 			}
 		],
-		"totalPoints": 53,
-		"rating": -1.5
+		"totalPoints": 60,
+		"rating": -2.29
 	}
 ];
 
