@@ -24,18 +24,20 @@
 		return s;
 	}();
 	
+	var board = new Board();
+
 	function nextBoard() {
-	
+
 		var readstr = boards[boardnum];
 		boardnum++;
 		if(boardnum <= boards.length) {
 	
-	    document.getElementById('keyvalue').innerHTML = "";
+			document.getElementById('keyvalue').innerHTML = "";
 			document.getElementById('boardName').innerHTML = "Slider No. " + boardnum;
 			
 			board.read(readstr);
 			board.writeBoard();
-			history.pushState(null, "Board " + boardnum, "./slider.html?board=" + boardnum);
+			history.replaceState(null, "Board " + boardnum, "./slider.html?board=" + boardnum);
 	
 			//fade out the next win-overlay		
 			document.getElementById('win-overlay').style.opacity = 0;
@@ -115,29 +117,17 @@
 </form>
 
 <script type="text/javascript">
-
 	/* setting up the game */
-	var board = function() {
+	(function() {
 		if (boardnum >= 0 && boardnum < boards.length) {
-				var readstr = boards[boardnum];
-				boardnum++;
-		
-				var toReturn = 	new Board();		
-				toReturn.read(readstr);
-				return toReturn;
-		
+			nextBoard();		
 		} else {
-			return null;
-		}
-	}();
-	
-	if (board != null) {
-		board.writeBoard();
-	} else {
 			document.getElementById('win-overlay').style.display = "block";
 			document.getElementById('win-overlay').style.opacity = 1;
 			document.getElementById('win').innerHTML = "Sorry, we don't have this board.";
-	}
+
+		}
+	})();
 </script>
 
 </body>
