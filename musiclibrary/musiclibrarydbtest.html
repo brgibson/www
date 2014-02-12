@@ -6,8 +6,11 @@
 	<link rel="stylesheet" href="../base.css"/>
 	<script src="../jsdb/pouchdb-1.1.0.min.js"></script>
 	<script src="../jsdb/app.js"></script>
+	<script src="MusicLibrary.json"></script>
 	<script type="text/javascript">
-	  addAlbum("Bob Dylan", "Highway 61 Revisited");
+	  for (var i = 0; i < musicLibrary.length; i++) {
+              addAlbum(musicLibrary[i][0], musicLibrary[i][1]);
+	  }
 	</script>
 </head>
 
