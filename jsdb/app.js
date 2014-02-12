@@ -9,7 +9,9 @@ function addAlbum(_artist, _title) {
     };
     db.put(album, function callback(err, result) {
 	if (!err) {
-	    console.log('Successfully added an album!');
-        }
+	    console.log('Successfully added ' + album.artist + ' - ' + album.title + '!');
+        } else {
+	    console.log('Did not add  ' + album.artist + ' - ' + album.title + '!');
+	}
     });
 }
