@@ -1,0 +1,19 @@
+.dice {
+	position: relative;
+}
+.dice > i {
+    position: absolute;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    border: 1.5em solid #1142AA;
+    border-right: 1.5em solid transparent;
+    left: 0;
+    top: 0;
+}
+.off {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
