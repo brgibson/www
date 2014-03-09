@@ -44,7 +44,7 @@ hr {
 }
 .c2 {
 	float: left;
-	width: 16.66%
+	width: 16.66%;
 }
 .c3 {
 	float: left;
@@ -56,7 +56,7 @@ hr {
 }
 .c5 {
 	float: left;
-	width: 41.66%
+	width: 41.66%;
 }
 .c6 {
 	float: left;
@@ -64,7 +64,7 @@ hr {
 }
 .c7 {
 	float: left;
-	width: 58.33%
+	width: 58.33%;
 }
 .c8 {
 	float: left;
@@ -76,7 +76,7 @@ hr {
 }
 .c10 {
 	float: left;
-	width: 83.33%
+	width: 83.33%;
 }
 .c11 {
 	float: left;
@@ -96,7 +96,7 @@ hr {
 	float: right;
 }
 .beaker:before {
-	background: url("./icons.jpg") -0em -.9375px; 
+	background: url("./icons.jpg") -0 -.9375px; 
 	height: 31.25em;
 	width:12em;
 	content:'';
@@ -164,7 +164,7 @@ hr {
 	position:relative;
 }
 .experiments a:before {
-  position:absolute;
+	position:absolute;
 	width:6em;
 	height:4.5em;
 	content:'';
@@ -216,7 +216,7 @@ hr {
 .games h2 {
 	color: lightgreen;
 }
-		
+
 /* music library and shows pages */
 .music-library .quick-links,
 .shows .quick-links {

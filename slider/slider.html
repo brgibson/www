@@ -1,135 +1,135 @@
 <!DOCTYPE html>
 <html lang="en-US">
-<head>
-	<meta charset="UTF-8" />
-	<title>Ben's Experiments - Slider</title>
-	<link rel="stylesheet" href="../fontawesome/fontawesome.css" />
-	<link rel="stylesheet" href="../base.css"/>
-	<link rel="stylesheet" href="./slider.css"/>
-	<script src="board.js"></script>
-	<script src="boards.js"></script>
-	<script type="text/javascript">
-	
-	/* todo - add local storage */
-	var boardnum = function() {
-		var s = 0;
-	
-		//	var url = "brgibson.com/slider/slider.html?board=100"
-		var url = window.location.href;
-		var index = url.search("board=");
-		if (index != -1) {
-			s = parseInt(url.substr(index + 6)) - 1; //zero indexed for later
-		}
-	
-		return s;
-	}();
-	
-	var board = new Board();
+	<head>
+		<meta charset="UTF-8" />
+		<title>Ben's Experiments - Slider</title>
+		<link rel="stylesheet" href="../fontawesome/fontawesome.css" />
+		<link rel="stylesheet" href="../base.css"/>
+		<link rel="stylesheet" href="./slider.css"/>
+		<script src="board.js"></script>
+		<script src="boards.js"></script>
+		<script type="text/javascript">
 
-	function nextBoard() {
+			/* todo - add local storage */
+			var boardnum = function() {
+				var s = 0;
 
-		var readstr = boards[boardnum];
-		boardnum++;
-		if(boardnum <= boards.length) {
-	
-			document.getElementById('keyvalue').innerHTML = "";
-			document.getElementById('boardName').innerHTML = "Slider No. " + boardnum;
-			
-			board.read(readstr);
-			board.writeBoard();
-			history.replaceState(null, "Board " + boardnum, "./slider.html?board=" + boardnum);
-	
-			//fade out the next win-overlay		
-			document.getElementById('win-overlay').style.opacity = 0;
-	
-			//give the fade of the win-overlay enough time to fade, then remove the overlay
-			window.setTimeout(function() {
-				document.getElementById('win-overlay').style.display = "none"
-				if(boardnum == boards.length) {
-					document.getElementById('win').innerHTML = "Game Over! Out of Boards";
+				//	var url = "brgibson.com/slider/slider.html?board=100"
+				var url = window.location.href;
+				var index = url.search("board=");
+				if (index != -1) {
+					s = parseInt(url.substr(index + 6)) - 1; //zero indexed for later
 				}
-			}, 500);
-	  }
-	}
-	
-	/* touch event handling */
-	var firstTouchX;
-	var firstTouchY;
-	function handleTouchStart(evt) {
-		firstTouchX = evt.touches[0].pageX;
-		firstTouchY = evt.touches[0].pageY;
-		evt.preventDefault();
-	}
-	
-	function handleTouchEnd(evt) {
-		var lastTouch = evt.changedTouches[0];
-	
-		var xDiff = firstTouchX - lastTouch.pageX;
-		var yDiff = firstTouchY - lastTouch.pageY;
-	
-		if (Math.abs(xDiff) > Math.abs(yDiff)) {
-			if (xDiff > 0)
-				board.move("left");
-			else if(xDiff < 0)
-				board.move("right");
-		} else if (yDiff > 0) {
-			board.move("up");
-		} else if (yDiff < 0) {
-			board.move("down");
-		}
-		
-		evt.preventDefault();
-	}
-	
-	</script>
-</head>
 
-<body onKeyUp="board.checkKey(event)">
+				return s;
+			}();
 
-<h1 id="boardName" style="display:none;"></h1>
-<h2 style="position:absolute;top:0;right:0;" id="keyvalue"></h2>
+			var board = new Board();
 
-<div id="board-container" ontouchstart="handleTouchStart(event)" ontouchend="handleTouchEnd(event)" class="col-10">
-	<div id="board"></div>
-	<div id="moveMe"><span class="hidden">Player</span></div>
-</div>
+			function nextBoard() {
 
-<div class="overlay" id="win-overlay">
-	<div id="win">
-		<button onclick="nextBoard()">Next Board</button>
-	</div>
-</div>
+				var readstr = boards[boardnum];
+				boardnum++;
+				if(boardnum <= boards.length) {
 
-<div class="nav" style="display:none;">
-	<i class="icon-arrow-up" onclick="board.move('up')"></i>
-	<i class="icon-arrow-left" onclick="board.move('left')"></i>
-	<i class="icon-arrow-right" onclick="board.move('right')"></i>
-	<i class="icon-arrow-down" onclick="board.move('down')"></i>
-</div>
+					document.getElementById('keyvalue').innerHTML = "";
+					document.getElementById('boardName').innerHTML = "Slider No. " + boardnum;
 
-<!-- for debugging only -->
-<form style="display:none;text-align:right; top:0; right:0; position:absolute;">
-	<input type="text" id="currCol"/>
-	<input type="text" id="currRow"/><br/>
-	<input type="text" id="xcoordinate"/>
-	<input type="text" id="ycoordinate"/><br/>
-	<input type="text" id="debug"/>
-</form>
+					board.read(readstr);
+					board.writeBoard();
+					history.replaceState(null, "Board " + boardnum, "./slider.html?board=" + boardnum);
 
-<script type="text/javascript">
-	/* setting up the game */
-	(function() {
-		if (boardnum >= 0 && boardnum < boards.length) {
-			nextBoard();		
-		} else {
-			document.getElementById('win-overlay').style.display = "block";
-			document.getElementById('win-overlay').style.opacity = 1;
-			document.getElementById('win').innerHTML = "Sorry, we don't have this board.";
+					//fade out the next win-overlay		
+					document.getElementById('win-overlay').style.opacity = 0;
 
-		}
-	})();
-</script>
+					//give the fade of the win-overlay enough time to fade, then remove the overlay
+					window.setTimeout(function() {
+						document.getElementById('win-overlay').style.display = "none"
+						if(boardnum == boards.length) {
+							document.getElementById('win').innerHTML = "Game Over! Out of Boards";
+						}
+					}, 500);
+				}
+			}
 
-</body>
+			/* touch event handling */
+			var firstTouchX;
+			var firstTouchY;
+			function handleTouchStart(evt) {
+				firstTouchX = evt.touches[0].pageX;
+				firstTouchY = evt.touches[0].pageY;
+				evt.preventDefault();
+			}
+
+			function handleTouchEnd(evt) {
+				var lastTouch = evt.changedTouches[0];
+
+				var xDiff = firstTouchX - lastTouch.pageX;
+				var yDiff = firstTouchY - lastTouch.pageY;
+
+				if (Math.abs(xDiff) > Math.abs(yDiff)) {
+					if (xDiff > 0)
+						board.move("left");
+					else if(xDiff < 0)
+						board.move("right");
+				} else if (yDiff > 0) {
+					board.move("up");
+				} else if (yDiff < 0) {
+					board.move("down");
+				}
+
+				evt.preventDefault();
+			}
+
+		</script>
+	</head>
+
+	<body onKeyUp="board.checkKey(event)">
+
+		<h1 id="boardName" style="display:none;"></h1>
+		<h2 style="position:absolute;top:0;right:0;" id="keyvalue"></h2>
+
+		<div id="board-container" ontouchstart="handleTouchStart(event)" ontouchend="handleTouchEnd(event)" class="col-10">
+			<div id="board"></div>
+			<div id="moveMe"><span class="hidden">Player</span></div>
+		</div>
+
+		<div class="overlay" id="win-overlay">
+			<div id="win">
+				<button onclick="nextBoard()">Next Board</button>
+			</div>
+		</div>
+
+		<div class="nav" style="display:none;">
+			<i class="icon-arrow-up" onclick="board.move('up')"></i>
+			<i class="icon-arrow-left" onclick="board.move('left')"></i>
+			<i class="icon-arrow-right" onclick="board.move('right')"></i>
+			<i class="icon-arrow-down" onclick="board.move('down')"></i>
+		</div>
+
+		<!-- for debugging only -->
+		<form style="display:none;text-align:right; top:0; right:0; position:absolute;">
+			<input type="text" id="currCol"/>
+			<input type="text" id="currRow"/><br/>
+			<input type="text" id="xcoordinate"/>
+			<input type="text" id="ycoordinate"/><br/>
+			<input type="text" id="debug"/>
+		</form>
+
+		<script type="text/javascript">
+			/* setting up the game */
+			(function() {
+				if (boardnum >= 0 && boardnum < boards.length) {
+					nextBoard();
+				} else {
+					document.getElementById('win-overlay').style.display = "block";
+					document.getElementById('win-overlay').style.opacity = 1;
+					document.getElementById('win').innerHTML = "Sorry, we don't have this board.";
+
+				}
+			})();
+		</script>
+
+	</body>
 
 </html>

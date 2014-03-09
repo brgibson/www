@@ -1,95 +1,92 @@
 <html>
-<head>
-<style type="text/css">
-body{
-	background-color:#d0e4fe;
-	font-family:"Comic Sans MS", cursive;
-}
-table{
-	background-color:white;
-	color:black;
-	border:white;
-}
-#exit {
-	font-family:"Comic Sans MS", cursive;	
-}
+	<head>
+		<style type="text/css">
+			body{
+				background-color:#d0e4fe;
+				font-family:"Comic Sans MS", cursive;
+			}
+			table{
+				background-color:white;
+				color:black;
+				border:white;
+			}
+			#exit {
+				font-family:"Comic Sans MS", cursive;
+			}
 
-h1 {
-	color:orange;
-	text-align:center;
-}
-</style>
-<script src="board.js"></script>
-<script src="boards.js"></script>
-<script type="text/javascript">
+			h1 {
+				color:orange;
+				text-align:center;
+			}
+		</style>
+		<script src="board.js"></script>
+		<script src="boards.js"></script>
+		<script type="text/javascript">
 
-var board = new Board(); 
-var boardnum = 0;
-function nextBoard() {
-	var readstr = boards[boardnum];
-	boardnum++;
-	if(boardnum <= boards.length) {
+			var board = new Board(); 
+			var boardnum = 0;
+			function nextBoard() {
+				var readstr = boards[boardnum];
+				boardnum++;
+				if(boardnum <= boards.length) {
 
-		//document.getElementById('keyvalue').innerHTML = "read= " + readstr;
-	        document.getElementById('keyvalue').innerHTML = "";
-		document.getElementById('boardName').innerHTML = "Board Number " + (boardnum + 1);
-		
-		board.read(readstr);
-		board.writeBoard();
-        }
-	else {
-	        document.getElementById('keyvalue').innerHTML = "Game Over! Out of Boards"; 
-	}	
-	
-	//document.getElementById('win').style.visibility = "hidden";
+					//document.getElementById('keyvalue').innerHTML = "read= " + readstr;
+					document.getElementById('keyvalue').innerHTML = "";
+					document.getElementById('boardName').innerHTML = "Board Number " + (boardnum + 1);
 
-}
+					board.read(readstr);
+					board.writeBoard();
+				}
+				else {
+					document.getElementById('keyvalue').innerHTML = "Game Over! Out of Boards"; 
+				}
 
+				//document.getElementById('win').style.visibility = "hidden";
 
-</script>
-</head>
-
-<body onKeyUp="board.checkKey(event)">
-
-<h1>
-Generic Puzzle Game
-</h1>
-
-<div id="boardName"></div>
-
-<form>
-
-<input type="button" id="win" style="visibility:visible;" value="Next Board" onClick="nextBoard()">
+			}
 
 
-<input style="visibility:hidden" type="text" id="txt">
-<input style="visibility:hidden" type="text" id="xcoordinate">
+		</script>
+	</head>
+
+	<body onKeyUp="board.checkKey(event)">
+
+		<h1>
+			Generic Puzzle Game
+		</h1>
+
+		<div id="boardName"></div>
+
+		<form>
+
+			<input type="button" id="win" style="visibility:visible;" value="Next Board" onClick="nextBoard()">
 
 
-</form>
+			<input style="visibility:hidden" type="text" id="txt">
+			<input style="visibility:hidden" type="text" id="xcoordinate">
 
-<h1 class="center" id="keyvalue"></h1>
 
-<!--
-<input type="text" id="keyvalue" value="">
--->
+		</form>
 
-<br>
+		<h1 class="center" id="keyvalue"></h1>
 
-<div id="board"></div> 
+		<!--input type="text" id="keyvalue" value=""/-->
 
-<!--
-<img src="images/MMSGLogoBlue.jpg" id="moveMe" style="height:35px;width:115px;position:absolute; left:120px; top:200px;"   />
--->
-<img src="character.gif" id="moveMe" style="position:absolute; left:100px; top:220px;"   />
+		<br>
 
-<script type="text/javascript">
-board.writeBoard();
-document.getElementById('boardName').innerHTML = "Board Number " + (boardnum + 1);
-//document.getElementById('win').style.visibility = "hidden";
-</script>
+		<div id="board"></div> 
 
-</body>
+		<!--img src="images/MMSGLogoBlue.jpg" id="moveMe" style="height:35px;width:115px;position:absolute; left:120px; top:200px;"   /-->
+
+		<img src="character.gif" id="moveMe" style="position:absolute; left:100px; top:220px;"   />
+
+		<script type="text/javascript">
+			board.writeBoard();
+			document.getElementById('boardName').innerHTML = "Board Number " + (boardnum + 1);
+			//document.getElementById('win').style.visibility = "hidden";
+		</script>
+
+	</body>
 
 </html>
 

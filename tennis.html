@@ -1,220 +1,220 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-<head>
-	<meta charset="UTF-8"/>
-	<title>Ben's Experiments - Tennis Standings</title>
-	<script type='text/javascript' src='./knockout/knockout-2.3.0.js'></script>
-	<!--link rel="stylesheet" href="./base.css" /-->	
-	<style>
-	body {
-		font-family: helvetica;
- 	 	font-weight: 300;
-	}
-	table {
-		border-collapse: collapse;
-		background-color: #efe;
-		/*
-	  -moz-box-shadow:    3px 3px 5px 6px #ccc;
-	  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-	  box-shadow:         3px 3px 5px 6px #ccc;
-		*/
-	}
-	tr {
-		border: solid 1px green;
-	}
-	thead {
-		background-color: #fff;
-	}
-	th {
-		padding: 1em;
-	}
-	td {
-		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-		padding: .7em 1em;
-	}
-	ul {
-		padding: 0;
-		margin: 0;
-	}
-	li {
-		display:block;
-	}
-	.opponent {
-		white-space: nowrap;
-	}
-	.win {
-		background-color: lightgreen;
-	}
-	.lose {
-		background-color: lightpink;
-	}
-	.oof {
-		opacity: 0.4;
-	}
-	@media all and (max-width: 1080px) and (orientation: landscape) {
-		body {
-  			font-size: .84em;
-		}
-		h1 {
-			display: none;
-		}
-	}
-	@media all and (max-width: 980px) and (orientation: portrait) {
-		body {
-  			font-size: .95em;
-		}
-	}
-	@media all and (orientation: landscape) {
-		.score {
-			white-space: nowrap;
-		}
-		.score li {
-			display: inline;
-			margin-right: -.3em;
-		}
-	}
-	@media all and (orientation: portrait) {
-		.score span {
-			display: none;
-		}
-	}
-	
-	table, thead, tr, td, th {
-		-moz-transition: background 1s;
-		-o-transition: background 1s;
-		-webkit-transition: background 1s;
-		transition: background 1s;
-	}
-	</style>
-</head>
-
-<body>
-	<h1>Tennis Standings</h1>
-	<div class="tennis">
-		<table class="landscape" onclick="stopThrobbing = true;">
-			<thead id="test">
-				<tr>
-					<th data-bind="click: playerNameSort">Player Name</th>
-					<th data-bind="click: ratingSort">Rating</th>
-					<th data-bind="click: pointsSort">Total Points</th>
-					<!-- ko foreach: players()[0].matches -->	
-					<th data-bind="click: function() {$parent.pointsInMatchSort($index())},
-						 				text: ($index() + 1)"></th>
-					<!-- /ko -->
-				</tr>
-			</thead>
-			<tbody data-bind="foreach: players"> 
-				<tr>
-					<td data-bind="text: playerName,
-					 					click: function() {$parent.highlightPlayer(playerName)},
-										css: isOutOfFocus() ? 'oof' : ''"></td>
-					<td data-bind="click: function() {$parent.highlightPlayer(playerName)},
-										text: rating, css: isOutOfFocus() ? 'oof' : ''"></td>
-					<td data-bind="click: function() {$parent.highlightPlayer(playerName)},
-										text: points, css: isOutOfFocus() ? 'oof' : ''"></td>
-					<!-- ko foreach: matches -->	
-					<td style="text-align: center"
-						 data-bind="css: isOutOfFocus() ? 'oof ' + cssClass : cssClass,
-						 				click: function() {$root.highlightPlayer(opponent)}">
-						<ul>
-							<ul class="score" data-bind="foreach: games">
-								<li><!-- ko text: $data --><!-- /ko --><span data-bind="if: $parent.isNotLastGame($index())">,<span></li>
-							</ul>
-							<li class="opponent" data-bind="text: getOpponentAbbreviated()"></li>
-							<li data-bind="text:points"></li>
-						</ul>
-					</td>
-					<!-- /ko -->
-				</tr>
-			</tbody>
-		</table>
-	</div>
-</body>
-<script type='text/javascript' src='./tennis/playerStats.js'></script>
-<script type='text/javascript' src='./tennis/tennis-mock-data.js'></script>
-<script type='text/javascript' src='./tennis/tennis-view-models.js'></script>
-<script type='text/javascript' src='./tennis/tennis-view-model-adapter.js'></script>
-<script> 
-var useMockData = false;
-
-if (useMockData) {
-	ko.applyBindings(new TennisViewModel().setPlayers(mockPlayers));
-} else {
-	ko.applyBindings(new TennisViewModelAdapter(playerStats).adapt());
-}
-
-var stopThrobbing = false;
-
-var throb = function() {	
-	
-	var throb = function(elem, color, millis) {
-		if (!stopThrobbing) {
-			var origColor = elem.style.background;
-			elem.style.background = color;
-		
-			window.setTimeout(
-				function() {
-					elem.style.background = origColor;
-				}, millis);
-		}
-	};
-	
-	var throbColorHead = "#ddd";
-	var throbColor = "#fff";
-	var throbMillis = 500;
-	var timeoutLength = 7;
-	var timeoutLengthHead = 50;
-	var initialTimeout = 0;
-	var tablehead = document.getElementsByTagName("th");
-	var tablerows = document.getElementsByTagName("td");
-
-	var UnseenRandomInxedChooser = function(length) {
-		var seen = function() {
-			var toReturn = [];
-			for (var i = 0; i < length; i++) {
-				toReturn.push(false);
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Ben's Experiments - Tennis Standings</title>
+		<script type='text/javascript' src='./knockout/knockout-2.3.0.js'></script>
+		<!--link rel="stylesheet" href="./base.css" /-->	
+		<style>
+			body {
+				font-family: helvetica;
+				font-weight: 300;
 			}
-			return toReturn;
-		}
-		
-		this.getRandomIndex = function() {
-			var randomIndexInRange = 0; //first row to highlight
-			
-			while (seen[randomIndexInRange]) {
-				randomIndexInRange = Math.floor(Math.random() * length);
+			table {
+				border-collapse: collapse;
+				background-color: #efe;
+				/*
+				-moz-box-shadow:    3px 3px 5px 6px #ccc;
+				-webkit-box-shadow: 3px 3px 5px 6px #ccc;
+				box-shadow:         3px 3px 5px 6px #ccc;
+				*/
 			}
-			
-			seen[randomIndexInRange] = true;
-			return randomIndexInRange;
+			tr {
+				border: solid 1px green;
+			}
+			thead {
+				background-color: #fff;
+			}
+			th {
+				padding: 1em;
+			}
+			td {
+				font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+				padding: .7em 1em;
+			}
+			ul {
+				padding: 0;
+				margin: 0;
+			}
+			li {
+				display:block;
+			}
+			.opponent {
+				white-space: nowrap;
+			}
+			.win {
+				background-color: lightgreen;
+			}
+			.lose {
+				background-color: lightpink;
+			}
+			.oof {
+				opacity: 0.4;
+			}
+			@media all and (max-width: 1080px) and (orientation: landscape) {
+				body {
+					font-size: .84em;
+				}
+				h1 {
+					display: none;
+				}
+			}
+			@media all and (max-width: 980px) and (orientation: portrait) {
+				body {
+					font-size: .95em;
+				}
+			}
+			@media all and (orientation: landscape) {
+				.score {
+					white-space: nowrap;
+				}
+				.score li {
+					display: inline;
+					margin-right: -.3em;
+				}
+			}
+			@media all and (orientation: portrait) {
+				.score span {
+					display: none;
+				}
+			}
+
+			table, thead, tr, td, th {
+				-moz-transition: background 1s;
+				-o-transition: background 1s;
+				-webkit-transition: background 1s;
+				transition: background 1s;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1>Tennis Standings</h1>
+		<div class="tennis">
+			<table class="landscape" onclick="stopThrobbing = true;">
+				<thead id="test">
+					<tr>
+						<th data-bind="click: playerNameSort">Player Name</th>
+						<th data-bind="click: ratingSort">Rating</th>
+						<th data-bind="click: pointsSort">Total Points</th>
+						<!-- ko foreach: players()[0].matches -->	
+						<th data-bind="click: function() {$parent.pointsInMatchSort($index())},
+									   text: ($index() + 1)"></th>
+						<!-- /ko -->
+					</tr>
+				</thead>
+				<tbody data-bind="foreach: players"> 
+					<tr>
+						<td data-bind="text: playerName,
+									   click: function() {$parent.highlightPlayer(playerName)},
+									   css: isOutOfFocus() ? 'oof' : ''"></td>
+						<td data-bind="click: function() {$parent.highlightPlayer(playerName)},
+									   text: rating, css: isOutOfFocus() ? 'oof' : ''"></td>
+						<td data-bind="click: function() {$parent.highlightPlayer(playerName)},
+									   text: points, css: isOutOfFocus() ? 'oof' : ''"></td>
+						<!-- ko foreach: matches -->	
+						<td style="text-align: center"
+							data-bind="css: isOutOfFocus() ? 'oof ' + cssClass : cssClass,
+									   click: function() {$root.highlightPlayer(opponent)}">
+							<ul>
+								<ul class="score" data-bind="foreach: games">
+									<li><!-- ko text: $data --><!-- /ko --><span data-bind="if: $parent.isNotLastGame($index())">,<span></li>
+										</ul>
+										<li class="opponent" data-bind="text: getOpponentAbbreviated()"></li>
+									<li data-bind="text:points"></li>
+								</ul>
+							</td>
+							<!-- /ko -->
+						</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+	<script type='text/javascript' src='./tennis/playerStats.js'></script>
+	<script type='text/javascript' src='./tennis/tennis-mock-data.js'></script>
+	<script type='text/javascript' src='./tennis/tennis-view-models.js'></script>
+	<script type='text/javascript' src='./tennis/tennis-view-model-adapter.js'></script>
+	<script> 
+		var useMockData = false;
+
+		if (useMockData) {
+			ko.applyBindings(new TennisViewModel().setPlayers(mockPlayers));
+		} else {
+			ko.applyBindings(new TennisViewModelAdapter(playerStats).adapt());
 		}
-	}
-	
-	var unseenRandomIndexChooser = new UnseenRandomInxedChooser(tablerows.length);
-	var unseenRandomIndexChooserHead = new UnseenRandomInxedChooser(tablehead.length);
-	var timeout = initialTimeout; 
 
-	for (var i = 0; i < tablerows.length; i++) {
-		var randomIndex = unseenRandomIndexChooser.getRandomIndex();
-		window.setTimeout(function(index) { return function() { throb(tablerows[index], throbColor, throbMillis) }; }(randomIndex), timeout);
-		timeout += timeoutLength;
-	}
-	
-	for (var i = 0; i < tablehead.length; i++) {
-		var randomIndex = unseenRandomIndexChooserHead.getRandomIndex();
-		window.setTimeout(function(index) { return function() { throb(tablehead[index], throbColorHead, throbMillis) }; }(randomIndex), timeout);
-		timeout += timeoutLengthHead;
-	}
-};
+		var stopThrobbing = false;
 
-var recursiveThrob = function() {
-	if (!stopThrobbing) {
-		throb();
-		window.setTimeout(recursiveThrob, 10000);
-	}
-};
+		var throb = function() {
 
-recursiveThrob();
+			var throb = function(elem, color, millis) {
+				if (!stopThrobbing) {
+					var origColor = elem.style.background;
+					elem.style.background = color;
 
-</script>
+					window.setTimeout(
+						function() {
+							elem.style.background = origColor;
+						}, millis);
+				}
+			};
+
+			var throbColorHead = "#ddd";
+			var throbColor = "#fff";
+			var throbMillis = 500;
+			var timeoutLength = 7;
+			var timeoutLengthHead = 50;
+			var initialTimeout = 0;
+			var tablehead = document.getElementsByTagName("th");
+			var tablerows = document.getElementsByTagName("td");
+
+			var UnseenRandomInxedChooser = function(length) {
+				var seen = function() {
+					var toReturn = [];
+					for (var i = 0; i < length; i++) {
+						toReturn.push(false);
+					}
+					return toReturn;
+				}
+
+				this.getRandomIndex = function() {
+					var randomIndexInRange = 0; //first row to highlight
+
+					while (seen[randomIndexInRange]) {
+						randomIndexInRange = Math.floor(Math.random() * length);
+					}
+
+					seen[randomIndexInRange] = true;
+					return randomIndexInRange;
+				}
+			}
+
+			var unseenRandomIndexChooser = new UnseenRandomInxedChooser(tablerows.length);
+			var unseenRandomIndexChooserHead = new UnseenRandomInxedChooser(tablehead.length);
+			var timeout = initialTimeout; 
+
+			for (var i = 0; i < tablerows.length; i++) {
+				var randomIndex = unseenRandomIndexChooser.getRandomIndex();
+				window.setTimeout(function(index) { return function() { throb(tablerows[index], throbColor, throbMillis) }; }(randomIndex), timeout);
+				timeout += timeoutLength;
+			}
+
+			for (var i = 0; i < tablehead.length; i++) {
+				var randomIndex = unseenRandomIndexChooserHead.getRandomIndex();
+				window.setTimeout(function(index) { return function() { throb(tablehead[index], throbColorHead, throbMillis) }; }(randomIndex), timeout);
+				timeout += timeoutLengthHead;
+			}
+		};
+
+		var recursiveThrob = function() {
+			if (!stopThrobbing) {
+				throb();
+				window.setTimeout(recursiveThrob, 10000);
+			}
+		};
+
+		recursiveThrob();
+
+	</script>
 </html>

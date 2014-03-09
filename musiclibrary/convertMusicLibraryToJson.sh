@@ -1,4 +1,4 @@
-#!/bin/sh                                                                                                                                                              
+#!/bin/sh
 
 mac2unix $1
 
