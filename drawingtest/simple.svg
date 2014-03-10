@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 
 M <x> <y> - moveto absolute
 m <x> <y> - moveto relative
@@ -29,7 +29,7 @@ Elliptical arc commands (A and a). An elliptical arc segment draws a segment of 
 -->
 
 
-<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg">
+<svg width="607" height="607" xmlns="http://www.w3.org/2000/svg">
 	<g>
 		<title>Red Triangle</title>
 		<path d="
@@ -76,12 +76,23 @@ Elliptical arc commands (A and a). An elliptical arc segment draws a segment of 
 		stroke-width="5"
 		/>
 	</g>
-		<g>
+	<g>
 		<title>Quadratic - Q - 1</title>
 		<path d="
 		M 400,400
 		Q 600,400 600,600
 		z"
+		fill="none"
+		stroke="black" 
+		stroke-width="5"
+		/>
+	</g>
+	<g>
+		<title>Quadratic - Q - 2</title>
+		<path d="
+		M 0,300
+		Q 100,350 0,400
+		"
 		fill="none"
 		stroke="black" 
 		stroke-width="5"
