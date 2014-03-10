@@ -1,0 +1,90 @@
+<!--
+
+M <x> <y> - moveto absolute
+m <x> <y> - moveto relative
+
+Z or z (no arguments) - closepath
+
+L <x> <y> - line absolute
+l <x> <y> - line relative
+
+H <x> - horizontal line absolute
+h <x> - horizontal line relative
+
+V <y> - vertical line absolute
+v <y> - vertical line relative
+
+*Curves*
+
+Cubic Bézier commands (C, c, S and s). A cubic Bézier segment is defined by a start point, an end point, and two control points.
+C/c - 3 points
+S/s - shorthand - 2 points
+
+Quadratic Bézier commands (Q, q, T and t). A quadratic Bézier segment is defined by a start point, an end point, and one control point.
+Q/q - 2 points
+T/t - shorthand - 1 point 
+
+Elliptical arc commands (A and a). An elliptical arc segment draws a segment of an ellipse.
+
+-->
+
+
+<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg">
+	<g>
+		<title>Red Triangle</title>
+		<path d="
+		
+		M 3 0
+		L 103 0
+		L 103 100
+		z
+		"
+		 stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" stroke="#000000" 
+		 fill="red"/>
+	</g>
+	<g>
+		<title>Blue Triangle</title>
+		<path d="
+		
+		M 0 3
+		L 0 103
+		L 100 103
+		z
+		"
+		 stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" stroke="#000000" 
+		 fill="blue"/>
+	</g>
+	<g>
+		<title>Cubic - C - 1</title>
+		<path d="
+		M 200,200
+		C 200,300 300,300 300,200
+		z"
+		fill="none"
+		stroke="black" 
+		stroke-width="5"
+		/>
+	</g>
+	<g>
+		<title>Cubic - C -  2</title>
+		<path d="
+		M 300,300
+		C 400,300 400,400 300,400
+		z"
+		fill="none"
+		stroke="black" 
+		stroke-width="5"
+		/>
+	</g>
+		<g>
+		<title>Quadratic - Q - 1</title>
+		<path d="
+		M 400,400
+		Q 600,400 600,600
+		z"
+		fill="none"
+		stroke="black" 
+		stroke-width="5"
+		/>
+	</g>
+</svg>
