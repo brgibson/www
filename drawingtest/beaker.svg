@@ -171,31 +171,31 @@
 		stroke-dasharray="null"
 		stroke-width="5"
 		stroke="#000000"
-		fill="lightblue"/>
+		fill="#cfe8f0"/>
 			
 		<path d="
 		M 640,25
 		m 0,30
-		a 30,10 0 1,1 0,.1	 
-		m 0,30
-		a 30,10 0 1,1 0,.1	 
-		m 0,30
-		a 30,10 0 1,1 0,.1	 
-		m 0,30
-		a 30,10 0 1,1 0,.1	 
-		m 0,30
-		a 30,10 0 1,1 0,.1	 
-		m 0,30
-		a 30,10 0 1,1 0,.1	 
+		a 30,10 0 0,0 60,0	 
+		m -60,30
+		a 30,10 0 0,0 60,0	 
+		m -60,30
+		a 30,10 0 0,0 60,0
+		m -60,30
+		a 30,10 0 0,0 60,0	 
+		m -60,30
+		a 30,10 0 0,0 60,0
+		m -60,30
+		a 30,10 0 0,0 60,0	 
 		"
 		
 		stroke-linecap="null"
 		stroke-linejoin="null"
 		stroke-dasharray="null"
 		stroke-width="3"
-		stroke="#000000"
+		stroke="black"
 		fill="none"
-		opacity=".5"/>
+		opacity=".4"/>
 			
 		<path d="
 		M 640,25
@@ -232,7 +232,7 @@
 		stroke-linejoin="null"
 		stroke-dasharray="null"
 		stroke-width="3"
-		stroke="#000000"
+		stroke="red"
 		fill="none"
 		opacity=".2"/>
 	</g>
@@ -322,7 +322,7 @@
 			
 		<path d="
 				 M 400,350 
-				 a25,25 -30 0,1 50,0 l 50,0  
+				 a25,50 0 0,1 50,0 l 50,0  
 				 "
       style="fill:none; stroke:red; stroke-width:3"/>
 	</g>

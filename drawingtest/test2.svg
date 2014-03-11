@@ -149,6 +149,94 @@
 		fill="lightblue"/>
 	</g>
 	
+		<g>
+		<title>Beaker - 4 - Readable from Source</title>
+			
+		<path d="
+		
+		M 640,25
+		m 60,0
+		v 200
+		c 30,10 50,70 40,70
+		h -140
+		c -10,0 10,-60 40,-70
+		v -200
+		
+		a 30,10 0 1,1 0,.1	 
+		
+		"
+		
+		stroke-linecap="null"
+		stroke-linejoin="null"
+		stroke-dasharray="null"
+		stroke-width="5"
+		stroke="#000000"
+		fill="#cfe8f0"/>
+			
+		<path d="
+		M 640,25
+		m 0,30
+		a 30,10 0 0,0 60,0	 
+		m -60,30
+		a 30,10 0 0,0 60,0	 
+		m -60,30
+		a 30,10 0 0,0 60,0
+		m -60,30
+		a 30,10 0 0,0 60,0	 
+		m -60,30
+		a 30,10 0 0,0 60,0
+		m -60,30
+		a 30,10 0 0,0 60,0	 
+		"
+		
+		stroke-linecap="null"
+		stroke-linejoin="null"
+		stroke-dasharray="null"
+		stroke-width="3"
+		stroke="black"
+		fill="none"
+		opacity=".4"/>
+			
+		<path d="
+		M 640,25
+		m 30,10
+		m 0,10
+		a 30,10 0 0,0 30,-10	 
+		m -30,20
+		a 30,10 0 0,0 30,-10	 
+		m -30,30
+		a 30,10 0 0,0 30,-10	 
+		m -30,20
+		a 30,10 0 0,0 30,-10	 
+		m -30,30
+		a 30,10 0 0,0 30,-10	 
+		m -30,20
+		a 30,10 0 0,0 30,-10	 
+		m -30,30
+		a 30,10 0 0,0 30,-10	 
+		m -30,20
+		a 30,10 0 0,0 30,-10	 
+		m -30,30
+		a 30,10 0 0,0 30,-10	 
+		m -30,20
+		a 30,10 0 0,0 30,-10	 
+		m -30,30
+		a 30,10 0 0,0 30,-10	 
+		m -30,20
+		a 30,10 0 0,0 30,-10	 
+		m -30,30
+		a 30,10 0 0,0 30,-10	 
+		"
+		
+		stroke-linecap="null"
+		stroke-linejoin="null"
+		stroke-dasharray="null"
+		stroke-width="3"
+		stroke="red"
+		fill="none"
+		opacity=".2"/>
+	</g>
+	
 	<g>
 		<title>semicircle</title>
 			
@@ -210,13 +298,42 @@
 		<ellipse cx="100" cy="400" rx="50" ry="20"
       style="fill:none; stroke:purple; stroke-width:3"/>
 	</g>
+	
 	<g>
-		<title>interesting example</title>
-		<path d="M10 315
-           L 110 215
-           A 30 50 0 0 1 162.55 162.45
-           L 172.55 152.45
-           A 30 50 -45 0 1 215.1 109.9
-           L 315 10" stroke="black" fill="green" stroke-width="2" fill-opacity="0.5"/>
+		<title>ellipse</title>
+			
+		<path d="
+				 M 200,330 
+				 a 50,20 0 0,0 50,-20
+				 "
+      style="fill:none; stroke:blue; stroke-width:3"/>
 	</g>
+	<g>
+		<title>ellipse</title>
+			
+		<path d="
+				 M 300,350 
+				 a25,50 -30 0,1 50,-25 l 50,-25
+				 "
+      style="fill:none; stroke:green; stroke-width:3"/>
+	</g>
+	<g>
+		<title>ellipse</title>
+			
+		<path d="
+				 M 400,350 
+				 a25,50 0 0,1 50,0 l 50,0  
+				 "
+      style="fill:none; stroke:red; stroke-width:3"/>
+	</g>
+	<g>
+		<title>ellipse</title>
+			
+		<path d="
+				 M 500,350 
+				 a 30,10 0 1,1 -60,0 l -60,0  
+				 "
+      style="fill:none; stroke:pink; stroke-width:3"/>
+	</g>
+
 </svg>
