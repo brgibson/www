@@ -1,0 +1,339 @@
+<svg width="1000" height="1000" xmlns="http://www.w3.org/2000/svg">
+	<g>
+		<title>Layer 1</title>
+		<path d="m159.205002,503.485001c2.027679,26.813385 9.719727,51.377457 21.015625,72.94722l21.015625,-32.783569l-6.070724,-2.243164l-8.40625,-2.98819l4.391937,-7.659195l15.408722,-27.273102l-47.354935,0zm64.540955,0l-15.224014,26.899582l6.538651,2.335526l8.874176,3.176956l-5.044571,7.843948l-30.263321,47.354996c21.770874,33.048172 53.614487,55.86377 90.133163,60.805725l0,96.670013l-59.775436,0l0,23.911346l149.440628,0l0,-23.911346l-59.77536,0l0,-96.670013c63.703857,-8.51918 113.685547,-70.777939 119.555145,-148.416733l-204.459061,0l0,0z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" stroke="#000000" fill="red"/>
+	</g>
+	<g>
+		<title>Layer 2</title>
+		
+		m or M - moveto
+		
+		<path d="
+		M 0
+		
+		503.485001c2.027679
+		26.813385 9.719727
+		51.377457 21.015625
+		72.94722l21.015625
+		-32.783569l-6.070724
+		-2.243164l-8.40625
+		-2.98819l4.391937
+		-7.659195l15.408722
+		-27.273102l-47.354935
+		0zm64.540955
+		0l-15.224014
+		26.899582l6.538651
+		2.335526l8.874176
+		3.176956l-5.044571
+		7.843948l-30.263321
+		47.354996c21.770874
+		33.048172 53.614487
+		55.86377 90.133163
+		60.805725l0
+		96.670013l-59.775436
+		0l0
+		23.911346l149.440628
+		0l0
+		-23.911346l-59.77536
+		0l0
+		-96.670013c63.703857
+		-8.51918 113.685547
+		-70.777939 119.555145
+		-148.416733l-204.459061
+		0l0
+		0z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" stroke="#000000" fill="green"/>
+	</g>
+	<g>
+		<title>Cracked Glass - Readable from Source</title>
+			
+		<path d="
+		
+		M 500,500
+		c 2.027679,26.813385 9.719727,51.377457 21.015625,72.94722
+		l 21.015625 -32.783569
+		l -6.070724 -2.243164
+		l -8.40625 -2.98819
+		l 4.391937 -7.659195
+		l 15.408722 -27.273102
+		l -47.354935 0
+		z
+		m 64.540955 0
+		l -15.224014 26.899582
+		l 6.538651 2.335526
+		l 8.874176 3.176956
+		l -5.044571 7.843948
+		l -30.263321 47.354996
+		c 21.770874 33.048172 53.614487	55.86377 90.133163 60.805725
+		l 0 96.670013
+		l -59.775436 0
+		l 0 23.911346
+		l 149.440628 0
+		l 0 -23.911346
+		l -59.77536 0
+		l 0 -96.670013
+		c 63.703857 -8.51918 113.685547 -70.777939 119.555145 -148.416733
+		l -204.459061 0
+		l 0 0
+		z"
+		
+		stroke-linecap="null"
+		stroke-linejoin="null"
+		stroke-dasharray="null"
+		stroke-width="5"
+		stroke="#000000"
+		fill="orange"/>
+	</g>
+	<g>
+		<title>Beaker - 1 - Readable from Source</title>
+			
+		<path d="
+		
+		M 60,0
+		l 60,0
+		l 0,200
+		l 30,40
+		l 0,30
+		l -120,0
+		l 0,-30
+		l 30,-40
+		z
+		"
+		
+		stroke-linecap="null"
+		stroke-linejoin="null"
+		stroke-dasharray="null"
+		stroke-width="5"
+		stroke="#000000"
+		fill="lightblue"/>
+	</g>
+	<g>
+		<title>Beaker - 2 - Readable from Source</title>
+			
+		<path d="
+		
+		M 240,5
+		l 60,0
+		l 0,200
+		c 40,10 60,70 50,70
+		l -160,0
+		c -10,0 10,-60 50,-70
+		z
+		"
+		
+		stroke-linecap="null"
+		stroke-linejoin="null"
+		stroke-dasharray="null"
+		stroke-width="5"
+		stroke="#000000"
+		fill="lightblue"/>
+	</g>
+	<g>
+		<title>Beaker - 3 - Readable from Source</title>
+			
+		<path d="
+		
+		M 440,5
+		h 60
+		v 200
+		c 30,10 50,70 40,70
+		h -140
+		c -10,0 10,-60 40,-70
+		z
+		"
+		
+		stroke-linecap="null"
+		stroke-linejoin="null"
+		stroke-dasharray="null"
+		stroke-width="5"
+		stroke="#000000"
+		fill="lightblue"/>
+	</g>
+	
+		<g>
+		<title>Beaker - 4 - Readable from Source</title>
+			
+		<path d="
+		
+		M 640,25
+		m 60,0
+		v 200
+		c 30,10 50,70 40,70
+		h -140
+		c -10,0 10,-60 40,-70
+		v -200
+		
+		a 30,10 0 1,1 0,.1	 
+		
+		"
+		
+		stroke-linecap="null"
+		stroke-linejoin="null"
+		stroke-dasharray="null"
+		stroke-width="5"
+		stroke="#000000"
+		fill="lightblue"/>
+			
+		<path d="
+		M 640,25
+		m 0,30
+		a 30,10 0 1,1 0,.1	 
+		m 0,30
+		a 30,10 0 1,1 0,.1	 
+		m 0,30
+		a 30,10 0 1,1 0,.1	 
+		m 0,30
+		a 30,10 0 1,1 0,.1	 
+		m 0,30
+		a 30,10 0 1,1 0,.1	 
+		m 0,30
+		a 30,10 0 1,1 0,.1	 
+		"
+		
+		stroke-linecap="null"
+		stroke-linejoin="null"
+		stroke-dasharray="null"
+		stroke-width="3"
+		stroke="#000000"
+		fill="none"
+		opacity=".5"/>
+			
+		<path d="
+		M 640,25
+		m 30,10
+		m 0,10
+		a 30,10 0 0,0 30,-10	 
+		m -30,20
+		a 30,10 0 0,0 30,-10	 
+		m -30,30
+		a 30,10 0 0,0 30,-10	 
+		m -30,20
+		a 30,10 0 0,0 30,-10	 
+		m -30,30
+		a 30,10 0 0,0 30,-10	 
+		m -30,20
+		a 30,10 0 0,0 30,-10	 
+		m -30,30
+		a 30,10 0 0,0 30,-10	 
+		m -30,20
+		a 30,10 0 0,0 30,-10	 
+		m -30,30
+		a 30,10 0 0,0 30,-10	 
+		m -30,20
+		a 30,10 0 0,0 30,-10	 
+		m -30,30
+		a 30,10 0 0,0 30,-10	 
+		m -30,20
+		a 30,10 0 0,0 30,-10	 
+		m -30,30
+		a 30,10 0 0,0 30,-10	 
+		"
+		
+		stroke-linecap="null"
+		stroke-linejoin="null"
+		stroke-dasharray="null"
+		stroke-width="3"
+		stroke="#000000"
+		fill="none"
+		opacity=".2"/>
+	</g>
+	
+	<g>
+		<title>semicircle</title>
+			
+		<path d="
+				 M600,300 
+				 a 150,150 0 1,0 150,-150
+				 "
+      style="fill:none; stroke:red; stroke-width:6"/>
+	</g>
+	<g>
+		<title>semicircle</title>
+			
+		<path d="
+				 M600,300 
+				 a 110,110 0 1,0 150,-150
+				 "
+      style="fill:none; stroke:orange; stroke-width:6"/>
+	</g>
+	<g>
+		<title>circle</title>
+			
+		<path d="
+				 M 400,400 
+				 a 50 20 0 1 1 0 1
+				 "
+      style="fill:none; stroke:green; stroke-width:4"/>
+	</g>
+	<g>
+		<title>circle</title>
+			
+		<path d="
+				 M 400,400 
+				 a 50 20 45 1 1 0 1
+				 "
+      style="fill:none; stroke:green; stroke-width:4"/>
+	</g>
+	<g>
+		<title>circle</title>
+			
+		<path d="
+				 M 400,400 
+				 a 50 20 90 1 1 0 1
+				 "
+      style="fill:none; stroke:green; stroke-width:4"/>
+	</g>
+	<g>
+		<title>ellipse</title>
+			
+		<path d="
+				 M 200,400 
+				 a 50,20 0 1,1 0,.1
+				 z
+				 "
+      style="fill:none; stroke:orange; stroke-width:3"/>
+	</g>
+	<g>
+		<title>ellipse</title>
+			
+		<ellipse cx="100" cy="400" rx="50" ry="20"
+      style="fill:none; stroke:purple; stroke-width:3"/>
+	</g>
+	
+	<g>
+		<title>ellipse</title>
+			
+		<path d="
+				 M 200,330 
+				 a 50,20 0 0,0 50,-20
+				 "
+      style="fill:none; stroke:blue; stroke-width:3"/>
+	</g>
+	<g>
+		<title>ellipse</title>
+			
+		<path d="
+				 M 300,350 
+				 a25,50 -30 0,1 50,-25 l 50,-25
+				 "
+      style="fill:none; stroke:green; stroke-width:3"/>
+	</g>
+	<g>
+		<title>ellipse</title>
+			
+		<path d="
+				 M 400,350 
+				 a25,25 -30 0,1 50,0 l 50,0  
+				 "
+      style="fill:none; stroke:red; stroke-width:3"/>
+	</g>
+	<g>
+		<title>ellipse</title>
+			
+		<path d="
+				 M 500,350 
+				 a 30,10 0 1,1 -60,0 l -60,0  
+				 "
+      style="fill:none; stroke:pink; stroke-width:3"/>
+	</g>
+
+</svg>
