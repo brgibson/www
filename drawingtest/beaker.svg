@@ -111,12 +111,12 @@
 			
 		<path d="
 		
-		M 240,0
+		M 240,5
 		l 60,0
 		l 0,200
 		c 40,10 60,70 50,70
 		l -160,0
-		c -10,0 20,-60 40,-10
+		c -10,0 10,-60 50,-70
 		z
 		"
 		
@@ -126,5 +126,97 @@
 		stroke-width="5"
 		stroke="#000000"
 		fill="lightblue"/>
+	</g>
+	<g>
+		<title>Beaker - 3 - Readable from Source</title>
+			
+		<path d="
+		
+		M 440,5
+		h 60
+		v 200
+		c 30,10 50,70 40,70
+		h -140
+		c -10,0 10,-60 40,-70
+		z
+		"
+		
+		stroke-linecap="null"
+		stroke-linejoin="null"
+		stroke-dasharray="null"
+		stroke-width="5"
+		stroke="#000000"
+		fill="lightblue"/>
+	</g>
+	
+	<g>
+		<title>semicircle</title>
+			
+		<path d="
+				 M600,300 
+				 a 150,150 0 1,0 150,-150
+				 "
+      style="fill:none; stroke:red; stroke-width:6"/>
+	</g>
+	<g>
+		<title>semicircle</title>
+			
+		<path d="
+				 M600,300 
+				 a 110,110 0 1,0 150,-150
+				 "
+      style="fill:none; stroke:orange; stroke-width:6"/>
+	</g>
+	<g>
+		<title>circle</title>
+			
+		<path d="
+				 M 400,400 
+				 a 50 20 0 1 1 0 1
+				 "
+      style="fill:none; stroke:green; stroke-width:4"/>
+	</g>
+	<g>
+		<title>circle</title>
+			
+		<path d="
+				 M 400,400 
+				 a 50 20 45 1 1 0 1
+				 "
+      style="fill:none; stroke:green; stroke-width:4"/>
+	</g>
+	<g>
+		<title>circle</title>
+			
+		<path d="
+				 M 400,400 
+				 a 50 20 90 1 1 0 1
+				 "
+      style="fill:none; stroke:green; stroke-width:4"/>
+	</g>
+	<g>
+		<title>ellipse</title>
+			
+		<path d="
+				 M 200,400 
+				 a 50,20 0 1,1 0,.1
+				 z
+				 "
+      style="fill:none; stroke:orange; stroke-width:3"/>
+	</g>
+	<g>
+		<title>ellipse</title>
+			
+		<ellipse cx="100" cy="400" rx="50" ry="20"
+      style="fill:none; stroke:purple; stroke-width:3"/>
+	</g>
+	<g>
+		<title>interesting example</title>
+		<path d="M10 315
+           L 110 215
+           A 30 50 0 0 1 162.55 162.45
+           L 172.55 152.45
+           A 30 50 -45 0 1 215.1 109.9
+           L 315 10" stroke="black" fill="green" stroke-width="2" fill-opacity="0.5"/>
 	</g>
 </svg>
