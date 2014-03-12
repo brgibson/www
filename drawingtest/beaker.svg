@@ -1,9 +1,29 @@
-<svg width="1000" height="1000" xmlns="http://www.w3.org/2000/svg">
+<!--?xml-stylesheet type="text/css" href="./svg.css" ?-->
+<svg width="160" height="325" xmlns="http://www.w3.org/2000/svg">	
+	<style type="text/css">
+		<![CDATA[
+			path {
+				fill: #cfe8f0;				
+				stroke: #000000;
+				stroke-width: 5;
+			}
+			.beaker-lines-large {
+				opacity: .4;
+				stroke-width: 3;
+			}
+			.beaker-lines-small {
+				opacity: .2;
+				stroke: red;
+				stroke-width: 3;
+			}
+		]]>
+	</style>
+	
 	<g>
 		<title>Beaker - 4 - Readable from Source</title>
             
         <!-- main beaker shape -->    
-		<path d="
+		<path class="beaker-body" d="
 		M 50,25
 		m 60,0
 		v 200
@@ -12,15 +32,10 @@
 		c -10,0 10,-60 40,-70
 		v -200
 		"
-		stroke-linecap="null"
-		stroke-linejoin="null"
-		stroke-dasharray="null"
-		stroke-width="5"
-		stroke="#000000"
-		fill="#cfe8f0"/>
+		/>
         
         <!-- horizontal curves of beaker -->   
-        <path d="
+        <path class="beaker-body" d="
 		M 50,25
 	    a 30,10 0 1,1 0,.1	 
         m 102,266
@@ -28,15 +43,10 @@
         m 42,-66
         a 30,10 0 0,0 60,0
 		"
-		stroke-linecap="null"
-		stroke-linejoin="null"
-		stroke-dasharray="null"
-		stroke-width="5"
-		stroke="#000000"
-		fill="#cfe8f0"/>
+		/>
 		            
         <!-- large measuring lines -->
-		<path d="
+		<path class="beaker-lines-large" d="
 		M 50,25
 		m 0,30
 		a 30,10 0 0,0 60,0	 
@@ -51,16 +61,10 @@
 		m -60,30
 		a 30,10 0 0,0 60,0	 
 		"
-		stroke-linecap="null"
-		stroke-linejoin="null"
-		stroke-dasharray="null"
-		stroke-width="3"
-		stroke="black"
-		fill="none"
-		opacity=".4"/>
+		/>
 			
         <!-- small measuring lines -->
-		<path d="
+		<path class="beaker-lines-small" d="
 		M 50,25
 		m 30,10
 		m 0,10
@@ -90,12 +94,6 @@
 		m -30,30
 		a 30,10 0 0,0 30,-10	 
 		"
-		stroke-linecap="null"
-		stroke-linejoin="null"
-		stroke-dasharray="null"
-		stroke-width="3"
-		stroke="red"
-		fill="none"
-		opacity=".2"/>
+		/>
 	</g>
 </svg>

@@ -87,19 +87,9 @@ hr {
 }
 
 /* begin css */
-
-/* beaker gutter */
-.beaker.left:before {
-	float: left;
-}
-.beaker.right:before {
-	float: right;
-}
-.beaker:before {
-	background: url("./icons.jpg") -0 -.9375px; 
-	height: 31.25em;
-	width:12em;
-	content:'';
+.beaker {
+	height: 100%;
+	width: 100%;
 }
 
 /* about section */
