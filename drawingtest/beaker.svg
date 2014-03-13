@@ -1,6 +1,6 @@
-<!--?xml-stylesheet type="text/css" href="./svg.css" ?-->
-<svg width="160" height="325" xmlns="http://www.w3.org/2000/svg">	
-	<style type="text/css">
+<?xml-stylesheet type="text/css" href="./svg.css"?>
+<svg onload="startup(evt)" onclick="see(0)" width="160" height="325" xmlns="http://www.w3.org/2000/svg">	
+	<!--style type="text/css">
 		<![CDATA[
 			path {
 				fill: #cfe8f0;				
@@ -17,13 +17,30 @@
 				stroke-width: 3;
 			}
 		]]>
-	</style>
+	</style-->
+    <script>
+        <![CDATA[
+        var svgDoc;
+        function startup(evt) {
+            svgDoc=evt.target.ownerDocument;
+            see(0);
+        }
+        function see(n) {
+            var a="visibility"
+            var e=svgDoc.getElementById("E"+n);
+            var ega=e.getAttribute(a)
+            if(ega=="hidden")
+                e.setAttribute(a,"visible");
+            else e.setAttribute(a, "hidden");
+        }
+        ]]>
+    </script>
 	
 	<g>
 		<title>Beaker - 4 - Readable from Source</title>
             
         <!-- main beaker shape -->    
-		<path class="beaker-body" d="
+		<path id="E0" class="beaker-body" d="
 		M 50,25
 		m 60,0
 		v 200

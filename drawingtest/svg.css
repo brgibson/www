@@ -1,14 +1,14 @@
 path {
-	fill: #cfe8f0;				
-	stroke: #000000;
-	stroke-width: 5;
+    fill: #cfe8f0;				
+    stroke: #000000;
+    stroke-width: 5;
 }
 .beaker-lines-large {
-	opacity: .4;
-	stroke-width: 3;
+    opacity: .4;
+    stroke-width: 3;
 }
 .beaker-lines-small {
-	opacity: .2;
-	stroke: red;
-	stroke-width: 3;
+    opacity: .2;
+    stroke: red;
+    stroke-width: 3;
 }
