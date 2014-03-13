@@ -1,5 +1,14 @@
+svg {
+    fill:lightgreen;
+     -moz-transition: fill .5s;
+	-o-transition: fill .5s;
+	-webkit-transition: fill .5s;
+	transition: fill .5s
+}
+svg:hover {
+    fill:red;
+}
 path {
-    fill: #cfe8f0;				
     stroke: #000000;
     stroke-width: 5;
 }
