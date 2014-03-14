@@ -96,8 +96,8 @@ hr {
     float: right;
 }
 .beaker {
-	height: 325px;
-	width: 160px;
+	height: 100%;
+	width: 100%;
 }
 
 /* about section */

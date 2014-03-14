@@ -1,5 +1,5 @@
 <?xml-stylesheet type="text/css" href="./svg.css" ?>
-<svg  width="160px" height="325px" xmlns="http://www.w3.org/2000/svg">
+<svg preserveAspectRatio="xMinYMin meet" viewBox="0 0 160 370" xmlns="http://www.w3.org/2000/svg">
     <g>
 		<title>Beaker - 4 - Readable from Source</title>
             
@@ -19,8 +19,8 @@
         <path class="beaker-body" d="
 		M 50,25
 	    a 30,10 0 1,1 0,.1	 
-        m 102,266
-        a 30,10 0 0,1 -144,0
+        m 103,266
+        a 10,10 0 0,1 -146,0
         m 42,-66
         a 30,10 0 0,0 60,0
 		"
