@@ -282,7 +282,7 @@ hr {
 	body {
 		font-size: 25pt;
 	}
-	.beaker:before {
+	.beaker {
 		display: none;
 	}
 	.c6 {
