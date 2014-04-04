@@ -3,18 +3,29 @@
           placeholder="Copy and past elements from data.html's table" rows="20" cols="80"></textarea>
 
 <pre id="output">
-    <dt>Amar</dt>
-    <dd>amardeep@live.com</dd>
-    <dd>408-555-1234</dd>
-    <dd>555 Halford Ave.
-        Apartment #43C
-        Santa Clara
-        CA
-        95051
-        <a href="#">Map</a>
-    </dd>
-    <dd><a href="#">Chats</a></dd>
-    <dd><a href="#">Emails</a></dd>
+    &lt;td class="hd"&gt;
+        &lt;p style="height: 16px;"&gt;.&lt;/p&gt;
+    &lt;/td&gt;
+    &lt;td class="s2"&gt;Amar&lt;/td&gt;
+    &lt;td class="s3"&gt;amardeep@live.com&lt;/td&gt;
+    &lt;td class="s3"&gt;408-555-1234&lt;/td&gt;
+    &lt;td class="s3"&gt;555 Halford Ave.&lt;/td&gt;
+    &lt;td class="s3"&gt;Apartment #43C&lt;/td&gt;
+    &lt;td class="s3"&gt;Santa Clara&lt;/td&gt;
+    &lt;td class="s3"&gt;CA&lt;/td&gt;
+    &lt;td class="s4"&gt;95051&lt;/td&gt;
+
+    <td class="hd">
+        <p style="height: 16px;">.</p>
+    </td>
+    <td class="s2">Amar</td>
+    <td class="s3">amardeep@live.com</td>
+    <td class="s3">408-555-1234</td>
+    <td class="s3">555 Halford Ave.</td>
+    <td class="s3">Apartment #43C</td>
+    <td class="s3">Santa Clara</td>
+    <td class="s3">CA</td>
+    <td class="s4">95051</td>
 </pre>
 
 <script>
@@ -28,20 +39,34 @@
         var dataParser = (function() {
             var dataToParse = "";
             
+            function removeNewlines(str) {
+                return str;
+            }
+            
             return {
                 setDataToParse : function (dataStr) {
-                    dataToParse = dataStr;
+                    dataToParse = removeNewlines(dataStr);
                 },
                 getName : function() {
-                    return "Amar";
+                    var result = /s2\">(.*)<.*/g.exec(dataToParse)
+                    return result && result[1];
                 },
                 getEmail : function() {
-                    return "amardeep@live.com";
+                    var result = /s3\">(.*)<.*/g.exec(dataToParse)
+                    return result && result[1];
                 },
                 getPhone : function() {
-                    return "408-555-1234";
+                    var result = /s3.*s3\">(.*)<.*/g.exec(dataToParse)
+                    return result && result[2];
                 },
                 getAddress : function() {
+//                    var line1 = /s3\">(.*)<.*/g.exec(dataToParse)
+//                    var line2 = /s3\">(.*)<.*/g.exec(dataToParse)
+//                    var city = /s3\">(.*)<.*/g.exec(dataToParse)
+//                    var state = /s3\">(.*)<.*/g.exec(dataToParse)
+//                    var zip = /s3\">(.*)<.*/g.exec(dataToParse)
+//                    
+//                    return result && result[1];
                     return "\n\
                             555 Halford Ave. \n\
                             Apartment #43C \n\
