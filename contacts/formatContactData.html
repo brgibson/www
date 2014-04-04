@@ -1,6 +1,6 @@
 <textarea onkeypress="convertTabularDataToSemanticMarkup(this)" 
           onchange="convertTabularDataToSemanticMarkup(this)"
-          placeholder="Copy and past elements from data.html's table" rows="20" cols="80"></textarea>
+          placeholder="Copy and past elements from data.html's table" rows="15" cols="80"></textarea>
 
 <pre id="output">
     &lt;td class="hd"&gt;
@@ -40,7 +40,12 @@
             var dataToParse = "";
             
             function removeNewlines(str) {
-                return str;
+                return str.replace(/\n/g, " ");
+            }
+            
+            function getString(regex) {
+                var result = regex.exec(dataToParse);
+                return result && result[1];
             }
             
             return {
@@ -48,31 +53,26 @@
                     dataToParse = removeNewlines(dataStr);
                 },
                 getName : function() {
-                    var result = /s2\">(.*)<.*/g.exec(dataToParse)
-                    return result && result[1];
+                    return getString(/s2\">(.+?)<.*/g);
                 },
                 getEmail : function() {
-                    var result = /s3\">(.*)<.*/g.exec(dataToParse)
-                    return result && result[1];
+                    return getString(/s3\">(.+?)<.*/g);
                 },
                 getPhone : function() {
-                    var result = /s3.*s3\">(.*)<.*/g.exec(dataToParse)
-                    return result && result[2];
+                    return getString(/s3.+?s3\">(.+?)<.*/g);
                 },
                 getAddress : function() {
-//                    var line1 = /s3\">(.*)<.*/g.exec(dataToParse)
-//                    var line2 = /s3\">(.*)<.*/g.exec(dataToParse)
-//                    var city = /s3\">(.*)<.*/g.exec(dataToParse)
-//                    var state = /s3\">(.*)<.*/g.exec(dataToParse)
-//                    var zip = /s3\">(.*)<.*/g.exec(dataToParse)
-//                    
-//                    return result && result[1];
-                    return "\n\
-                            555 Halford Ave. \n\
-                            Apartment #43C \n\
-                            Santa Clara \n\
-                            CA \n\
-                            95051";
+                    var line1 = getString(/s3.+?s3.+?s3\">(.+?)<.*/g);
+                    var line2 = getString(/s3.+?s3.+?s3.+?s3\">(.+?)<.*/g);
+                    var city = getString(/s3.+?s3.+?s3.+?s3.+?s3\">(.+?)<.*/g);
+                    var state = getString(/s3.+?s3.+?s3.+?s3.+?s3.+?s3\">(.+?)<.*/g);
+                    var zip = getString(/s4\">(.+?)<.*/g);
+                    
+                    return "\n    " + 
+                        line1 + "\n    " + 
+                        line2 + "\n    " + 
+                        city + ", " + state + "\n    " + 
+                        zip;
                 },
                 getMapUrl : function() {
                     return "#";
@@ -104,7 +104,7 @@
                     markup += "<dd class='phone'>"+ phone +"</dd>\n"; 
                 },
                 addAddress : function(address) { 
-                    markup += "<dd class='address'>"+ address +"</dd>\n"; 
+                    markup += "<dd class='address'>"+ address +"\n</dd>\n"; 
                 },
                 addMapUrl : function(mapUrl) { 
                     markup += "<dd><a href='"+ mapUrl +"'>map</a></dd>\n"; 
