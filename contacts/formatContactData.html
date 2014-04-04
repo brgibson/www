@@ -1,0 +1,32 @@
+<script>
+    function tabularDataToSemanticMarkup(elem) {
+        var outputElement = document.getElementById('output');
+        
+        
+        
+        
+        var markupBuilder = (function {
+            var markup = "markup";
+            
+            return {
+                getMarkup : function() { return markup; },
+                //addName : function()                 
+            };            
+        })();
+    }
+</script>
+<textarea placeholder="Copy and past elements from data.html's table" rows="20" cols="80"></textarea>
+<pre id="output">
+    <dt>Amar</dt>
+    <dd>amardeep@live.com</dd>
+    <dd>408-555-1234</dd>
+    <dd>555 Halford Ave.
+        Apartment #43C
+        Santa Clara
+        CA
+        95051
+        <a href="#">Map</a>
+    </dd>
+    <dd><a href="#">Chats</a></dd>
+    <dd><a href="#">Emails</a></dd>
+</pre>
