@@ -1,32 +1,7 @@
-<script>
-    function tabularDataToSemanticMarkup(elem) {
-                
-        var markupBuilder = (function() {
-            var markup = "";
-            
-            return {
-                getMarkup : function() { return encodeSpecialCharacters(markup); },
-                addName : function(name) { markup += "<dt class='name'>"+ name +"</dt>"; }                
-            };
-            
-            function encodeSpecialCharacters(str) {
-                return str
-                        .replace("<", "&lt;")
-                        .replace(">", "&gt;")
-                        .replace("/", "&frasl;")
-                        ;
-            }
-        })();
-        
-        markupBuilder.addName(elem.value);
-    
-        var outputElement = document.getElementById('output');
-        outputElement.innerHTML = markupBuilder.getMarkup();
-    }
-</script>
-<textarea onkeypress="tabularDataToSemanticMarkup(this)" 
-          onchange="tabularDataToSemanticMarkup(this)"
+<textarea onkeypress="convertTabularDataToSemanticMarkup(this)" 
+          onchange="convertTabularDataToSemanticMarkup(this)"
           placeholder="Copy and past elements from data.html's table" rows="20" cols="80"></textarea>
+
 <pre id="output">
     <dt>Amar</dt>
     <dd>amardeep@live.com</dd>
@@ -41,3 +16,110 @@
     <dd><a href="#">Chats</a></dd>
     <dd><a href="#">Emails</a></dd>
 </pre>
+
+<script>
+    var convertTabularDataToSemanticMarkup = (function() {
+        
+        /**
+         * Initialization section
+         */
+        
+        /* an object to parse the tabular entries in data.html */
+        var dataParser = (function() {
+            var dataToParse = "";
+            
+            return {
+                setDataToParse : function (dataStr) {
+                    dataToParse = dataStr;
+                },
+                getName : function() {
+                    return "Amar";
+                },
+                getEmail : function() {
+                    return "amardeep@live.com";
+                },
+                getPhone : function() {
+                    return "408-555-1234";
+                },
+                getAddress : function() {
+                    return "\n\
+                            555 Halford Ave. \n\
+                            Apartment #43C \n\
+                            Santa Clara \n\
+                            CA \n\
+                            95051";
+                },
+                getMapUrl : function() {
+                    return "#";
+                },
+                getChatsUrl : function() {
+                    return "#";
+                },
+                getEmailsUrl : function() {
+                    return "#";
+                }
+            }
+        })();
+        
+        /* an object to build the markup that we want for the entries in our contacts widget */
+        var markupBuilder = (function() {
+            /* markup to be returned */
+            var markup;
+            
+            return {
+                init : function() { markup = ""; },
+                getMarkup : function() { return encodeSpecialCharacters(markup); },
+                addName : function(name) { 
+                    markup += "<dt class='name'>"+ name +"</dt>\n"; 
+                },
+                addEmail : function(email) { 
+                    markup += "<dd class='email'>"+ email +"</dd>\n"; 
+                },
+                addPhone : function(phone) { 
+                    markup += "<dd class='phone'>"+ phone +"</dd>\n"; 
+                },
+                addAddress : function(address) { 
+                    markup += "<dd class='address'>"+ address +"</dd>\n"; 
+                },
+                addMapUrl : function(mapUrl) { 
+                    markup += "<dd><a href='"+ mapUrl +"'>map</a></dd>\n"; 
+                },
+                addChatsUrl : function(chatsUrl) { 
+                    markup += "<dd><a href='"+ chatsUrl +"'>Chats</a></dd>\n"; 
+                },
+                addEmailsUrl : function(emailsUrl) { 
+                    markup += "<dd><a href='"+ emailsUrl +"'>Emails</a></dd>\n"; 
+                }
+            };            
+            
+            /* helper function */
+            function encodeSpecialCharacters(str) {
+                return str
+                        .replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;")
+                        .replace(/\//g, "&frasl;")
+                        ;
+            }
+        })();
+        
+        /**
+         * Return the eventHandler we will be using to convert and output the data.
+         */
+        var outputElement = document.getElementById('output');
+        
+        return function(elem) {
+            dataParser.setDataToParse(elem.value);
+            
+            markupBuilder.init();
+            markupBuilder.addName(dataParser.getName());
+            markupBuilder.addEmail(dataParser.getEmail());
+            markupBuilder.addPhone(dataParser.getPhone());
+            markupBuilder.addAddress(dataParser.getAddress());
+            markupBuilder.addMapUrl(dataParser.getMapUrl());
+            markupBuilder.addChatsUrl(dataParser.getChatsUrl());
+            markupBuilder.addEmailsUrl(dataParser.getEmailsUrl());
+
+            outputElement.innerHTML = markupBuilder.getMarkup();
+        };
+    })();
+</script>
