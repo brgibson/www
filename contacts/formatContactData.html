@@ -1,21 +1,32 @@
 <script>
     function tabularDataToSemanticMarkup(elem) {
-        var outputElement = document.getElementById('output');
-        
-        
-        
-        
-        var markupBuilder = (function {
-            var markup = "markup";
+                
+        var markupBuilder = (function() {
+            var markup = "";
             
             return {
-                getMarkup : function() { return markup; },
-                //addName : function()                 
-            };            
+                getMarkup : function() { return encodeSpecialCharacters(markup); },
+                addName : function(name) { markup += "<dt class='name'>"+ name +"</dt>"; }                
+            };
+            
+            function encodeSpecialCharacters(str) {
+                return str
+                        .replace("<", "&lt;")
+                        .replace(">", "&gt;")
+                        .replace("/", "&frasl;")
+                        ;
+            }
         })();
+        
+        markupBuilder.addName(elem.value);
+    
+        var outputElement = document.getElementById('output');
+        outputElement.innerHTML = markupBuilder.getMarkup();
     }
 </script>
-<textarea placeholder="Copy and past elements from data.html's table" rows="20" cols="80"></textarea>
+<textarea onkeypress="tabularDataToSemanticMarkup(this)" 
+          onchange="tabularDataToSemanticMarkup(this)"
+          placeholder="Copy and past elements from data.html's table" rows="20" cols="80"></textarea>
 <pre id="output">
     <dt>Amar</dt>
     <dd>amardeep@live.com</dd>
