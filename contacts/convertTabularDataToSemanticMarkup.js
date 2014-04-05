@@ -1,7 +1,7 @@
 /**
  * convertTabularDataToSemanticMarkup is a function which  
  * takes a string of tabular contact data and returns semantic
- * markup.
+ * markup.  Takes an optional flag to encodeSpecialCharacters.
  */
 var convertTabularDataToSemanticMarkup = (function() {
 
@@ -11,7 +11,9 @@ var convertTabularDataToSemanticMarkup = (function() {
 
     /* an object to parse the tabular entries in data.html */
     var dataParser = (function() {
-        var dataToParse = "";
+        
+        /* private variable */
+        var _dataToParse = "";
 
         /* helper functions */
         function removeNewlines(str) {
@@ -19,14 +21,14 @@ var convertTabularDataToSemanticMarkup = (function() {
         }
 
         function getString(regex) {
-            var result = regex.exec(dataToParse);
+            var result = regex.exec(_dataToParse);
             return result && result[1];
         }
 
         /* object to be returned */
         return {
             setDataToParse : function (dataStr) {
-                dataToParse = removeNewlines(dataStr);
+                _dataToParse = removeNewlines(dataStr);
             },
             getName : function() {
                 return getString(/s2\">(.+?)<.*/g);
@@ -64,8 +66,9 @@ var convertTabularDataToSemanticMarkup = (function() {
 
     /* an object to build the markup that we want for the entries in our contacts widget */
     var markupBuilder = (function() {
-        /* private markup variable */
-        var markup;
+        /* private variables */
+        var _markup;
+        var _encodeSpecialCharactersFlag;
 
         /* helper function */
         function encodeSpecialCharacters(str) {
@@ -78,32 +81,37 @@ var convertTabularDataToSemanticMarkup = (function() {
 
         /* object to be returned */
         return {
-            init : function() { 
-                markup = ""; 
+            init : function(encodeSpecialCharactersFlag) { 
+                _markup = ""; 
+                _encodeSpecialCharactersFlag = encodeSpecialCharactersFlag;
             },
             getMarkup : function() { 
-                return encodeSpecialCharacters(markup + "\n");
+                if (_encodeSpecialCharactersFlag) {
+                    return encodeSpecialCharacters(_markup + "\n");    
+                } else {
+                    return _markup;    
+                }
             },
             addName : function(name) { 
-                markup += "<dt class='name'>"+ name +"</dt>\n"; 
+                _markup += "<dt class='name'>"+ name +"</dt>\n"; 
             },
             addEmail : function(email) { 
-                markup += "<dd class='email'>"+ email +"</dd>\n"; 
+                _markup += "<dd class='email'>"+ email +"</dd>\n"; 
             },
             addPhone : function(phone) { 
-                markup += "<dd class='phone'>"+ phone +"</dd>\n"; 
+                _markup += "<dd class='phone'>"+ phone +"</dd>\n"; 
             },
             addAddress : function(address) { 
-                markup += "<dd class='address'>"+ address +"\n</dd>\n"; 
+                _markup += "<dd class='address'>"+ address +"\n</dd>\n"; 
             },
             addMapUrl : function(mapUrl) { 
-                markup += "<dd><a href='"+ mapUrl +"'>map</a></dd>\n"; 
+                _markup += "<dd><a href='"+ mapUrl +"'>map</a></dd>\n"; 
             },
             addChatsUrl : function(chatsUrl) { 
-                markup += "<dd><a href='"+ chatsUrl +"'>Chats</a></dd>\n"; 
+                _markup += "<dd><a href='"+ chatsUrl +"'>Chats</a></dd>\n"; 
             },
             addEmailsUrl : function(emailsUrl) { 
-                markup += "<dd><a href='"+ emailsUrl +"'>Emails</a></dd>\n"; 
+                _markup += "<dd><a href='"+ emailsUrl +"'>Emails</a></dd>\n"; 
             }
         };            
 
@@ -113,12 +121,12 @@ var convertTabularDataToSemanticMarkup = (function() {
     /**
      * Return the function we will be using to convert the data.
      */
-    return function(str) {
+    return function(str, encodeSpecialCharactersFlag) {
         var markup = "";
         for (var i = 1, entries = str.split("<tr>"); i < entries.length ; i++) {
             dataParser.setDataToParse(entries[i]);
 
-            markupBuilder.init();
+            markupBuilder.init(encodeSpecialCharactersFlag);
             markupBuilder.addName(dataParser.getName());
             markupBuilder.addEmail(dataParser.getEmail());
             markupBuilder.addPhone(dataParser.getPhone());

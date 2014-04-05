@@ -5,23 +5,22 @@
         <title>Ben's Experiments - Contacts Widget</title>
     </head>
     <body>
-        <section> <!-- how does the section element degrade in older browsers? -->
-            <h1>Contacts</h1> <!-- do I want to use an h1 here? - reference to consider: http://webdesign.tutsplus.com/articles/the-truth-about-multiple-h1-tags-in-the-html5-era--webdesign-16824 -->
+        <section> <!-- todo - how does the section element degrade in older browsers? -->
+            <h1>Contacts</h1> <!-- todo - do I want to use an h1 here? - reference to consider: http://webdesign.tutsplus.com/articles/the-truth-about-multiple-h1-tags-in-the-html5-era--webdesign-16824 -->
 
-            <dl>
-                <dt>Amar</dt> <!-- we will need to associate an image with this user -->
-                <dd>amardeep@live.com</dd>
-                <dd>408-555-1234</dd>
-                <dd>555 Halford Ave.
-                    Apartment #43C
-                    Santa Clara
-                    CA
-                    95051
-                    <a href="#">Map</a> <!-- would I prefer this to be a separate definition? Also, this needs to be positioned next to the first address line -->
-                </dd>
-                <dd><a href="#">Chats</a></dd>
-                <dd><a href="#">Emails</a></dd>
+            <!-- todo - we will need to associate an image with this user -->
+            <!-- todo - would I prefer the "map" link to be a separate definition? -->
+
+            <dl id="contacts">
+                <!-- todo - include a sample of the final markup here -->    
             </dl>
         </section>
+        
+        <script src="./tabularContactData.js"></script> <!-- contains a single variable "tabularContactData" - a String containing all of the contacts -->
+        <script src="./convertTabularDataToSemanticMarkup.js"></script> <!-- contains a single variable "convertTabularDataToSemanticMarkup" - a function which takes the "tabularContactData" and returns the markup to be inserted into the "contacts" div -->
+        <script>
+            var contactsContainer = document.getElementById("contacts");
+            contactsContainer.innerHTML = convertTabularDataToSemanticMarkup(tabularContactData);
+        </script>
     </body>
 </html>
