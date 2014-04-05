@@ -81,9 +81,12 @@ var convertTabularDataToSemanticMarkup = (function() {
 
         /* object to be returned */
         return {
-            init : function(encodeSpecialCharactersFlag) { 
+            init : function() { 
                 _markup = ""; 
-                _encodeSpecialCharactersFlag = encodeSpecialCharactersFlag;
+                _encodeSpecialCharactersFlag = false;
+            },
+            encodeSpecialCharacters : function() {
+                _encodeSpecialCharactersFlag = true;
             },
             getMarkup : function() { 
                 if (_encodeSpecialCharactersFlag) {
@@ -126,7 +129,8 @@ var convertTabularDataToSemanticMarkup = (function() {
         for (var i = 1, entries = str.split("<tr>"); i < entries.length ; i++) {
             dataParser.setDataToParse(entries[i]);
 
-            markupBuilder.init(encodeSpecialCharactersFlag);
+            markupBuilder.init(); 
+            if (encodeSpecialCharactersFlag) markupBuilder.encodeSpecialCharacters();
             markupBuilder.addName(dataParser.getName());
             markupBuilder.addEmail(dataParser.getEmail());
             markupBuilder.addPhone(dataParser.getPhone());
