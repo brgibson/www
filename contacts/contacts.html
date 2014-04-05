@@ -17,10 +17,10 @@
         </section>
         
         <script src="./tabularContactData.js"></script> <!-- contains a single variable "tabularContactData" - a String containing all of the contacts -->
-        <script src="./convertTabularDataToSemanticMarkup.js"></script> <!-- contains a single variable "convertTabularDataToSemanticMarkup" - a function which takes the "tabularContactData" and returns the markup to be inserted into the "contacts" div -->
+        <script src="./convertTabularContactData.js"></script> <!-- contains a single variable "convertTabularContactData" - a function which takes a string of tabular contact data and returns the markup to be inserted into the "contacts" div -->
         <script>
             var contactsContainer = document.getElementById("contacts");
-            contactsContainer.innerHTML = convertTabularDataToSemanticMarkup(tabularContactData);
+            contactsContainer.innerHTML = convertTabularContactData(tabularContactData);
         </script>
         <!-- todo - it might be cool to add a search function -->
     </body>

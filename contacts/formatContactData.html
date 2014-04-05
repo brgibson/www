@@ -31,12 +31,12 @@
 <h2> JSON Output</h2>
 <pre id="jsonOutput"></pre>
 
-<script src="./convertTabularDataToSemanticMarkup.js"></script>
+<script src="./convertTabularContactData.js"></script>
 <script>
     var htmlOutputContainer = document.getElementById('htmlOutput');
     var jsonOutputContainer = document.getElementById('jsonOutput');
     function eventListener(elem) {
-        htmlOutputContainer.innerHTML = convertTabularDataToSemanticMarkup(elem.value, "encodeSpecialCharacters");
-        jsonOutputContainer.innerHTML = convertTabularDataToSemanticMarkup(elem.value, "encodeSpecialCharacters", "asJSON");
+        htmlOutputContainer.innerHTML = convertTabularContactData(elem.value, false, "encodeSpecialCharacters");
+        jsonOutputContainer.innerHTML = convertTabularContactData(elem.value, "asJSON", "encodeSpecialCharacters");
     }
 </script>
