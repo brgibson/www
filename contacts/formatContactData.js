@@ -1,7 +1,7 @@
 /**
- * A function which takes an html element, parses tabular contact
- * data, and finally updates the innerHTML of a div with id "output"
- * to be the newly formatted markup.
+ * convertTabularDataToSemanticMarkup is a function which  
+ * takes a string of tabular contact data and returns semantic
+ * markup.
  */
 var convertTabularDataToSemanticMarkup = (function() {
 
@@ -111,14 +111,11 @@ var convertTabularDataToSemanticMarkup = (function() {
     })();
 
     /**
-     * Return the eventHandler we will be using to convert and output the data.
+     * Return the function we will be using to convert the data.
      */
-    var outputElement = document.getElementById('output');
-
-    return function(elem) {
+    return function(str) {
         var markup = "";
-
-        for (var i = 1, entries = elem.value && elem.value.split("<tr>"); i < entries.length ; i++) {
+        for (var i = 1, entries = str.split("<tr>"); i < entries.length ; i++) {
             dataParser.setDataToParse(entries[i]);
 
             markupBuilder.init();
@@ -132,6 +129,6 @@ var convertTabularDataToSemanticMarkup = (function() {
 
             markup += markupBuilder.getMarkup();
         }
-        outputElement.innerHTML = markup;
+        return markup;
     };
 })();

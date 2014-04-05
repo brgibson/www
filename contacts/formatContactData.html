@@ -1,5 +1,5 @@
-<textarea onkeypress="convertTabularDataToSemanticMarkup(this)" 
-          onchange="convertTabularDataToSemanticMarkup(this)"
+<textarea onkeypress="eventListener(this)" 
+          onchange="eventListener(this)"
           placeholder="Copy and past elements from data.html's table" rows="15" cols="80"></textarea>
 
 <pre id="output">
@@ -27,3 +27,9 @@
 </pre>
 
 <script src="formatContactData.js"></script>
+<script>
+    var outputElement = document.getElementById('output');
+    function eventListener(elem) {
+        outputElement.innerHTML = convertTabularDataToSemanticMarkup(elem.value);
+    }
+</script>
