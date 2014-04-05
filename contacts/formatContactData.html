@@ -1,8 +1,10 @@
-<textarea onkeypress="eventListener(this)" 
+<textarea onkeypress="eventListener(this)"
+          onkeyup="eventListener(this)" 
           onchange="eventListener(this)"
           placeholder="Copy and past elements from data.html's table" rows="15" cols="80"></textarea>
 
-<pre id="output">
+<h2> HTML Output</h2>
+<pre id="htmlOutput">
    Expected Input:
    
    <!-- full input
@@ -11,25 +13,30 @@
    &lt;tr&gt;&lt;td class="hd"&gt;&lt;p style="height: 16px;"&gt;.&lt;/p&gt;&lt;/td&gt;&lt;td class="s2"&gt;Amar&lt;/td&gt;&lt;td class="s3"&gt;amardeep@live.com&lt;/td&gt;&lt;td class="s3"&gt;408-555-1234&lt;/td&gt;&lt;td class="s3"&gt;555 Halford Ave.&lt;/td&gt;&lt;td class="s3"&gt;Apartment #43C&lt;/td&gt;&lt;td class="s3"&gt;Santa Clara&lt;/td&gt;&lt;td class="s3"&gt;CA&lt;/td&gt;&lt;td class="s4"&gt;95051&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="hd"&gt;&lt;p style="height: 16px;"&gt;.&lt;/p&gt;&lt;/td&gt;&lt;td class="s2"&gt;Deepa&lt;/td&gt;&lt;td class="s3"&gt;deepa@yahoo.com&lt;/td&gt;&lt;td class="s3"&gt;408-555-1234&lt;/td&gt;&lt;td class="s3"&gt;1234 Montcalm St.&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td class="s3"&gt;Chula Vista&lt;/td&gt;&lt;td class="s3"&gt;CA&lt;/td&gt;&lt;td class="s4"&gt;91911&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="hd"&gt;&lt;p style="height: 16px;"&gt;.&lt;/p&gt;&lt;/td&gt;&lt;td class="s2"&gt;Eric&lt;/td&gt;&lt;td class="s3"&gt;eric@ericrules.com&lt;/td&gt;&lt;td class="s3"&gt;408-555-1234&lt;/td&gt;&lt;td class="s3"&gt;10 Candyland&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td class="s3"&gt;North Pole&lt;/td&gt;&lt;td class="s3"&gt;PA&lt;/td&gt;&lt;td class="s4"&gt;87996&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="hd"&gt;&lt;p style="height: 16px;"&gt;.&lt;/p&gt;&lt;/td&gt;&lt;td class="s2"&gt;Gregor&lt;/td&gt;&lt;td class="s3"&gt;gregor@gmail.com&lt;/td&gt;&lt;td class="s3"&gt;897-984-3145&lt;/td&gt;&lt;td class="s3"&gt;Gregor Insurance Co.&lt;/td&gt;&lt;td class="s3"&gt;1234 Strip St.&lt;/td&gt;&lt;td class="s3"&gt;New York&lt;/td&gt;&lt;td class="s3"&gt;NY&lt;/td&gt;&lt;td class="s4"&gt;45879&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="hd"&gt;&lt;p style="height: 16px;"&gt;.&lt;/p&gt;&lt;/td&gt;&lt;td class="s2"&gt;Jeff&lt;/td&gt;&lt;td class="s3"&gt;jeff@aol.com&lt;/td&gt;&lt;td class="s3"&gt;408-555-1234&lt;/td&gt;&lt;td class="s3"&gt;1234 Montcalm St.&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td class="s3"&gt;Chula Vista&lt;/td&gt;&lt;td class="s3"&gt;CA&lt;/td&gt;&lt;td class="s4"&gt;91911&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="hd"&gt;&lt;p style="height: 16px;"&gt;.&lt;/p&gt;&lt;/td&gt;&lt;td class="s2"&gt;Jen&lt;/td&gt;&lt;td class="s3"&gt;jen@ebay.com&lt;/td&gt;&lt;td class="s3"&gt;408-555-1234&lt;/td&gt;&lt;td class="s3"&gt;1234 Lily St.&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td class="s3"&gt;San Diego&lt;/td&gt;&lt;td class="s3"&gt;CA&lt;/td&gt;&lt;td class="s4"&gt;91911&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="hd"&gt;&lt;p style="height: 16px;"&gt;.&lt;/p&gt;&lt;/td&gt;&lt;td class="s2"&gt;Katie&lt;/td&gt;&lt;td class="s3"&gt;katie@ask.com&lt;/td&gt;&lt;td class="s3"&gt;415-555-1234&lt;/td&gt;&lt;td class="s3"&gt;949 Thunk Ct.&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td class="s3"&gt;Sacramento&lt;/td&gt;&lt;td class="s3"&gt;CA&lt;/td&gt;&lt;td class="s4"&gt;95826&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="hd"&gt;&lt;p style="height: 16px;"&gt;.&lt;/p&gt;&lt;/td&gt;&lt;td class="s2"&gt;Vivian&lt;/td&gt;&lt;td class="s3"&gt;vivian@altavista.com&lt;/td&gt;&lt;td class="s3"&gt;650-458-1234&lt;/td&gt;&lt;td class="s3"&gt;949 FooBar St.&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td class="s3"&gt;San Mateo&lt;/td&gt;&lt;td class="s3"&gt;CA&lt;/td&gt;&lt;td class="s4"&gt;98745&lt;/td&gt;&lt;/tr&gt;
    
    or
-   
-    &lt;td class="hd"&gt;
-        &lt;p style="height: 16px;"&gt;.&lt;/p&gt;
-    &lt;/td&gt;
-    &lt;td class="s2"&gt;Amar&lt;/td&gt;
-    &lt;td class="s3"&gt;amardeep@live.com&lt;/td&gt;
-    &lt;td class="s3"&gt;408-555-1234&lt;/td&gt;
-    &lt;td class="s3"&gt;555 Halford Ave.&lt;/td&gt;
-    &lt;td class="s3"&gt;Apartment #43C&lt;/td&gt;
-    &lt;td class="s3"&gt;Santa Clara&lt;/td&gt;
-    &lt;td class="s3"&gt;CA&lt;/td&gt;
-    &lt;td class="s4"&gt;95051&lt;/td&gt;
-    
+   &lt;tr&gt;
+        &lt;td class="hd"&gt;
+            &lt;p style="height: 16px;"&gt;.&lt;/p&gt;
+        &lt;/td&gt;
+        &lt;td class="s2"&gt;Amar&lt;/td&gt;
+        &lt;td class="s3"&gt;amardeep@live.com&lt;/td&gt;
+        &lt;td class="s3"&gt;408-555-1234&lt;/td&gt;
+        &lt;td class="s3"&gt;555 Halford Ave.&lt;/td&gt;
+        &lt;td class="s3"&gt;Apartment #43C&lt;/td&gt;
+        &lt;td class="s3"&gt;Santa Clara&lt;/td&gt;
+        &lt;td class="s3"&gt;CA&lt;/td&gt;
+        &lt;td class="s4"&gt;95051&lt;/td&gt;
+    &lt;/tr&gt;
 </pre>
+
+<h2> JSON Output</h2>
+<pre id="jsonOutput"></pre>
 
 <script src="./convertTabularDataToSemanticMarkup.js"></script>
 <script>
-    var outputElement = document.getElementById('output');
+    var htmlOutputContainer = document.getElementById('htmlOutput');
+    var jsonOutputContainer = document.getElementById('jsonOutput');
     function eventListener(elem) {
-        outputElement.innerHTML = convertTabularDataToSemanticMarkup(elem.value, true);
+        htmlOutputContainer.innerHTML = convertTabularDataToSemanticMarkup(elem.value, "encodeSpecialCharacters");
+        jsonOutputContainer.innerHTML = convertTabularDataToSemanticMarkup(elem.value, "encodeSpecialCharacters", "asJSON");
     }
 </script>
