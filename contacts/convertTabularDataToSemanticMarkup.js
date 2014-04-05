@@ -1,9 +1,12 @@
 /**
- * convertTabularDataToSemanticMarkup is a function which  
- * takes a string of tabular contact data and returns semantic
- * markup.  Takes an optional flag to encodeSpecialCharacters.
+ * A function which takes a string of tabular contact data and returns the
+ * list of contacts as semantic markup or JSON.
+ * 
+ * @param - {string} tabularContactsStr - example string: <tr><td class="hd"><p style="height: 16px;">.</p></td><td class="s2">Amar</td><td class="s3">amardeep@live.com</td><td class="s3">408-555-1234</td><td class="s3">555 Halford Ave.</td><td class="s3">Apartment #43C</td><td class="s3">Santa Clara</td><td class="s3">CA</td><td class="s4">95051</td></tr>
+ * @param - {*} [asJSON] - a flag to return the output as JSON
+ * @param - {*} [encodeSpecialCharacters] - a flag to encode html characters for display in a pre tag
  */
-var convertTabularDataToSemanticMarkup = (function() {
+var convertTabularContactData = (function() {
 
     /**
      * Initialization section
@@ -144,15 +147,15 @@ var convertTabularDataToSemanticMarkup = (function() {
     /**
      * Return the function we will be using to convert the data.
      */
-    return function(str, encodeSpecialCharactersFlag, asJSON) {
+    return function(tabularContactsStr, asJSON, encodeSpecialCharacters) {
         
         var formattedContacts = asJSON ? "[" : "";
         
-        for (var i = 1, entries = str.split("<tr>"); i < entries.length ; i++) {
+        for (var i = 1, entries = tabularContactsStr.split("<tr>"); i < entries.length ; i++) {
             dataParser.setDataToParse(entries[i]);
 
             contactFormatter.setDataParser(dataParser);
-            contactFormatter.setEncodeSpecialCharactersFlag(encodeSpecialCharactersFlag);
+            contactFormatter.setEncodeSpecialCharactersFlag(encodeSpecialCharacters);
             
             formattedContacts += asJSON 
                 ? contactFormatter.getJSON() + ","
