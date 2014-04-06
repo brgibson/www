@@ -102,9 +102,11 @@ var convertTabularContactData = (function() {
             getMarkup : function() { 
                 var markup = "<dl>";
                 markup +=       "<dt class='name'>"+ _dataParser.getName() +"</dt>"; 
-                markup +=       "<dd class='details'>" + 
-                                    "<dl>" + 
-                                        "<dt>Email</dt><dd class='email'>"+ _dataParser.getEmail() +"</dd>" + 
+                markup +=       "<dd class='details'>" + //wrapping the details in one term so styling can be easily applied
+                                    "<dl>" +
+                                        "<dt>Email</dt><dd class='email show'>" + 
+                                                          "<a href='mailto:"+ _dataParser.getEmail() +"'>"+ _dataParser.getEmail() +"</a>" + 
+                                                      "</dd>" + 
                                         "<dt>Phone Number</dt><dd class='phone'>"+ _dataParser.getPhone() +"</dd>" + 
                                         "<dt>Address</dt><dd>"+ _dataParser.getAddress() +"</dd>" +
                                         "<dt>Map</dt><dd><a href='"+ _dataParser.getMapUrl() +"'>map</a></dd>" +

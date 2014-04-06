@@ -12,31 +12,47 @@ dl, dt, dd{
 #contacts > dl > dd {
     display: inline-block;
 }
-#contacts .details { /* we don't want to display most of the contact info initially */
-    height: 0;
-    overflow: hidden;
+#contacts .details {
     position: absolute;
+    z-index: 1;
+}
+#contacts .details dd {
+    height: 0;
+    opacity:0; /* used for transition */
+    overflow: hidden;
     visibility: hidden;
     width: 0;
     
     opacity:0;
-    transition: opacity .1s ease-in-out;
-   -moz-transition: opacity .1s ease-in-out;
-   -webkit-transition: opacity .1s ease-in-out;
+    transition: opacity 2.1s ease-in-out;
 }
 #contacts .details dt { /* these terms are for screen readers only */
     height: 0;
     overflow: hidden;
-    position: absolute;
+    position: relative;
     visibility: hidden;
     width: 0;
 }
-#contacts > dl:hover .details {
+#contacts .details .show,
+#contacts > dl:hover .details dd {
     height: auto;
     opacity: 1;
-    position: absolute;
+    position: inherit;
     visibility: visible;
     width: auto;
+}
+#contacts > dl:hover,
+#contacts > dl:hover .details {
+    background-color: lightpink;
+    z-index: 2;
+}
+
+/* CSS Transitions - not important so only using the non-browser targeted version - also not sure if I like them, but felt like playing :) */
+#contacts .details {
+    transition: background .1s;
+}
+#contacts .details dd {
+    transition: opacity .1s;
 }
 
 /* IE7 hacks */
