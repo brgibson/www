@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Ben's Experiments - Contacts Widget</title>
+        <link rel="stylesheet" href="./contacts.css">
     </head>
     <body>
         <section> <!-- todo - how does the section element degrade in older browsers? -->
@@ -11,14 +12,15 @@
             <!-- todo - we will need to associate an image with this user -->
             <!-- todo - would I prefer the "map" link to be a separate definition? -->
 
-            <dl id="contacts">
+            <ul id="contacts">
                 <!-- todo - include a sample of the final markup here -->    
-            </dl>
+            </ul>
         </section>
         
         <script src="./tabularContactData.js"></script> <!-- contains a single variable "tabularContactData" - a String containing all of the contacts -->
         <script src="./convertTabularContactData.js"></script> <!-- contains a single variable "convertTabularContactData" - a function which takes a string of tabular contact data and returns the markup to be inserted into the "contacts" div -->
         <script>
+            //add the contacts to the page
             var contactsContainer = document.getElementById("contacts");
             contactsContainer.innerHTML = convertTabularContactData(tabularContactData);
         </script>

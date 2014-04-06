@@ -100,7 +100,7 @@ var convertTabularContactData = (function() {
                 _encodeSpecialCharactersFlag = encodeSpecialCharactersFlag;
             },
             getMarkup : function() { 
-                var markup = "";
+                var markup = "<dl>";
                 markup += "<dt class='name'>"+ _dataParser.getName() +"</dt>\n"; 
                 markup += "<dd class='email'>"+ _dataParser.getEmail() +"</dd>\n"; 
                 markup += "<dd class='phone'>"+ _dataParser.getPhone() +"</dd>\n"; 
@@ -108,7 +108,8 @@ var convertTabularContactData = (function() {
                 markup += "<dd><a href='"+ _dataParser.getMapUrl() +"'>map</a></dd>\n"; 
                 markup += "<dd><a href='"+ _dataParser.getChatsUrl() +"'>Chats</a></dd>\n"; 
                 markup += "<dd><a href='"+ _dataParser.getEmailsUrl() +"'>Emails</a></dd>\n"; 
-               
+                markup += "</dl>"
+                
                 return _encodeSpecialCharactersFlag ? encodeSpecialCharacters(markup + "\n") : markup;    
             },
             getJSON : function() {

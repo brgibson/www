@@ -1,0 +1,23 @@
+#contacts {
+    border: black solid 1px;
+}
+#contacts dd { /* we don't want to display most of the contact info initially */
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    visibility: hidden;
+    width: 0;
+}
+#contacts dd.email {
+    height: auto;
+    position: static;
+    visibility: visible;
+    width: auto;
+}
+#contacts .selected dd, /* todo - remove one of these cases */
+#contacts dl:hover dd {
+    height: auto;
+    position: static;
+    visibility: visible;
+    width: auto;
+}
