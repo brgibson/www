@@ -6,7 +6,7 @@ dl, dt, dd{
     position: relative;
 }
 #contacts .name {
-    min-width: 6em;
+    width: 6em;
 }
 #contacts > dl > dt,
 #contacts > dl > dd {
@@ -40,11 +40,7 @@ dl, dt, dd{
 }
 
 /* IE7 hacks */
-* #contacts .name {
-    overflow: hidden;
-    width: 6em;
-}
-* #contacts .details {
+#contacts .details {
     left:6em;
     top:0;
 }
