@@ -21,8 +21,14 @@ dl, dt, dd{
     display: inline-block;
 }
 .contacts .details {
+    min-width: 180px;
     position: absolute;
+    padding-right: 60px; /* space for the images */
     z-index: 1;
+}
+.contacts .details .image {
+    float: right;
+    margin-right: -60px;
 }
 .contacts .details dd {
     height: 0;
@@ -46,6 +52,7 @@ dl, dt, dd{
     opacity: 1; /* used for transisions */
     position: inherit;
     visibility: visible;
+    white-space: nowrap;
     width: auto;
 }
 .contacts > dl:hover,
@@ -55,6 +62,7 @@ dl, dt, dd{
     background-color: lightpink;
     z-index: 2;
 }
+
 
 /* CSS Transitions - not important so only using the non-browser targeted version - also not sure if I like them, but felt like playing :) */
 /*

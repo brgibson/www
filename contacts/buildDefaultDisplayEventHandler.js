@@ -7,6 +7,9 @@
  */
 var buildDefaultDisplayEventHandler = function(emailElements, phoneElements) {
                     
+    
+    /* todo - swap the order of the phone number and the email */
+    
     /* setup */
     var show = function(elems, doNotShowFlag) {
             for (var i = 0; i < elems.length; i++) {

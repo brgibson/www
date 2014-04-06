@@ -104,6 +104,9 @@ var convertTabularContactData = (function() {
                                 "<dt class='name' data-type='name' itemprop='name'>"+ _dataParser.getName() +"</dt>" + 
                                 "<dd class='details'>" + //wrapping the details in one term so styling can be easily applied
                                     "<dl>" +
+                                        "<dt>Photo</dt>" +
+                                        "<dd class='image'><img src='./images/"+ _dataParser.getName().toLowerCase() +".gif' itemprop='image'></dd>" +                     
+                    
                                         "<dt>Email</dt>" + 
                                         "<dd data-type='email'>" +
                                             "<a href='mailto:"+ _dataParser.getEmail() +"' itemprop='email'>"+ _dataParser.getEmail() +"</a>" + 
