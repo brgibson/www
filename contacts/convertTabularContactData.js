@@ -101,14 +101,18 @@ var convertTabularContactData = (function() {
             },
             getMarkup : function() { 
                 var markup = "<dl>";
-                markup += "<dt class='name'>"+ _dataParser.getName() +"</dt>\n"; 
-                markup += "<dd class='email'>"+ _dataParser.getEmail() +"</dd>\n"; 
-                markup += "<dd class='phone'>"+ _dataParser.getPhone() +"</dd>\n"; 
-                markup += "<dd class='address'>"+ _dataParser.getAddress() +"\n</dd>\n"; 
-                markup += "<dd><a href='"+ _dataParser.getMapUrl() +"'>map</a></dd>\n"; 
-                markup += "<dd><a href='"+ _dataParser.getChatsUrl() +"'>Chats</a></dd>\n"; 
-                markup += "<dd><a href='"+ _dataParser.getEmailsUrl() +"'>Emails</a></dd>\n"; 
-                markup += "</dl>"
+                markup +=       "<dt class='name'>"+ _dataParser.getName() +"</dt>"; 
+                markup +=       "<dd class='details'>" + 
+                                    "<dl>" + 
+                                        "<dt>Email</dt><dd class='email'>"+ _dataParser.getEmail() +"</dd>" + 
+                                        "<dt>Phone Number</dt><dd class='phone'>"+ _dataParser.getPhone() +"</dd>" + 
+                                        "<dt>Address</dt><dd>"+ _dataParser.getAddress() +"</dd>" +
+                                        "<dt>Map</dt><dd><a href='"+ _dataParser.getMapUrl() +"'>map</a></dd>" +
+                                        "<dt>Chats</dt><dd><a href='"+ _dataParser.getChatsUrl() +"'>Chats</a></dd>" + 
+                                        "<dt>Emails</dt><dd><a href='"+ _dataParser.getEmailsUrl() +"'>Emails</a></dd>" + 
+                                    "</dl>" + 
+                                "</dd>";
+                markup +=     "</dl>"
                 
                 return _encodeSpecialCharactersFlag ? encodeSpecialCharacters(markup + "\n") : markup;    
             },

@@ -1,23 +1,49 @@
-#contacts {
-    border: black solid 1px;
+dl, dt, dd{
+    margin: 0;
+    padding: 0;
 }
-#contacts dd { /* we don't want to display most of the contact info initially */
+#contacts {
+    position: relative;
+}
+#contacts .name {
+    min-width: 6em;
+}
+#contacts > dl > dt,
+#contacts > dl > dd {
+    display: inline-block;
+}
+#contacts .details { /* we don't want to display most of the contact info initially */
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    visibility: hidden;
+    width: 0;
+    
+    opacity:0;
+    transition: opacity .1s ease-in-out;
+   -moz-transition: opacity .1s ease-in-out;
+   -webkit-transition: opacity .1s ease-in-out;
+}
+#contacts .details dt { /* these terms are for screen readers only */
     height: 0;
     overflow: hidden;
     position: absolute;
     visibility: hidden;
     width: 0;
 }
-#contacts dd.email {
+#contacts > dl:hover .details {
     height: auto;
-    position: static;
+    opacity: 1;
+    position: absolute;
     visibility: visible;
     width: auto;
 }
-#contacts .selected dd, /* todo - remove one of these cases */
-#contacts dl:hover dd {
+
+/* for quick debugging
+#contacts > dl:first-of-type .details {
     height: auto;
-    position: static;
+    position: absolute;
     visibility: visible;
     width: auto;
 }
+*/
