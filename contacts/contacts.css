@@ -2,7 +2,7 @@ dl, dt, dd{
     margin: 0;
     padding: 0;
 }
-#contacts {
+#contacts > dl {
     position: relative;
 }
 #contacts .name {
@@ -39,11 +39,12 @@ dl, dt, dd{
     width: auto;
 }
 
-/* for quick debugging
-#contacts > dl:first-of-type .details {
-    height: auto;
-    position: absolute;
-    visibility: visible;
-    width: auto;
+/* IE7 hacks */
+* #contacts .name {
+    overflow: hidden;
+    width: 6em;
 }
-*/
+* #contacts .details {
+    left:6em;
+    top:0;
+}
