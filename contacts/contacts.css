@@ -1,4 +1,3 @@
-/* todo - slightly different styles for click ("pinned") vs hover state */
 dl, dt, dd{
     margin: 0;
     padding: 0;
@@ -46,7 +45,7 @@ dl, dt, dd{
     width: 0;
 }
 .contacts .details .show,
-.contacts .show .details dd,
+.contacts .pinned .details dd,
 .contacts > dl:hover .details dd {
     height: auto;
     opacity: 1; /* used for transisions */
@@ -56,13 +55,17 @@ dl, dt, dd{
     width: auto;
 }
 .contacts > dl:hover,
-.contacts > dl:hover .details,
-.contacts > .show,
-.contacts > .show .details {
-    background-color: lightpink;
+.contacts > dl:hover .details {
+    background-color: lightpink; /* slightly different color for the un-pinned hover state */
     z-index: 2;
 }
-
+.contacts > .pinned,
+.contacts > .pinned .details,
+.contacts > .pinned:hover,
+.contacts > .pinned:hover .details { /* slightly different color for the pinned state */
+    background-color: pink;
+    z-index: 2;
+}
 
 /* CSS Transitions - not important so only using the non-browser targeted version - also not sure if I like them, but felt like playing :) */
 /*

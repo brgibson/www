@@ -31,22 +31,22 @@
                 var contactsContainer = document.getElementById("contacts")
                 contactsContainer.innerHTML = convertTabularContactData(tabularContactData);
 
-                /* add a click event handler so that we can support expanding details for touch devices */ //todo - refactor this out into it's own js file
+                /* add a click event handler so that we can support pinning the details open on click for touch devices */ //todo - refactor this out into it's own js file
                 (function() {
-                    var selectedElement = null;
+                    var pinnedElement = null;
                     var clickEventHandler = function() {
-                          if (this.parentNode == selectedElement) {
+                          if (this.parentNode == pinnedElement) {
                               this.parentNode.className = ""
-                              selectedElement = null;
+                              pinnedElement = null;
                           } else {
-                              this.parentNode.className = "show"
-                              selectedElement = this.parentNode;
+                              this.parentNode.className = "pinned"
+                              pinnedElement = this.parentNode;
                           }
                     };
                     var mouseOverEventHandler = function() {
-                          if (selectedElement && this != selectedElement) {
-                              selectedElement.className = "";
-                              selectedElement = null;
+                          if (pinnedElement && this != pinnedElement) {
+                              pinnedElement.className = "";
+                              pinnedElement = null;
                           }
                     };
                     
