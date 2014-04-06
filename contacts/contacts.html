@@ -11,7 +11,7 @@
 
             <!-- todo - we will need to associate an image with this user -->
 
-            <ul id="contacts">
+            <ul id="contacts" class="contacts">
                 <!-- todo - include a sample of the final markup here -->    
                 <!-- todo - it might be nice to put a placeholder contacts list here, so there isn't a pop in when we load the contacts -->  
             </ul>
@@ -31,6 +31,35 @@
                 var contactsContainer = document.getElementById("contacts")
                 contactsContainer.innerHTML = convertTabularContactData(tabularContactData);
 
+                /* add a click event handler so that we can support expanding details for touch devices */ //todo - refactor this out into it's own js file
+                (function() {
+                    var selectedElement = null;
+                    var clickEventHandler = function() {
+                          if (this.parentNode == selectedElement) {
+                              this.parentNode.className = ""
+                              selectedElement = null;
+                          } else {
+                              this.parentNode.className = "show"
+                              selectedElement = this.parentNode;
+                          }
+                    };
+                    var mouseOverEventHandler = function() {
+                          if (selectedElement && this != selectedElement) {
+                              selectedElement.className = "";
+                              selectedElement = null;
+                          }
+                    };
+                    
+                    var dtElements = contactsContainer.getElementsByTagName("dt");
+                    for (var i = 0; i < dtElements.length; i++) {
+                        switch (dtElements[i].getAttribute("data-type")) {
+                            case "name": 
+                                dtElements[i].onclick = clickEventHandler;
+                                dtElements[i].parentElement.onmouseover = mouseOverEventHandler;
+                                break;
+                        }
+                    }
+                })();
                 
                 /* add event handler for email/phone select list */
                 //get the email and phone DOM elements
@@ -48,7 +77,7 @@
                 
                 //attach the event handler
                 var defaultDisplyInput = document.getElementById("defaultDisplay");
-                defaultDisplyInput.onchange = (function() { //todo- do i need to register the capture events? ie if (element.captureEvents) element.captureEvents(Event.CLICK);
+                defaultDisplyInput.onchange = (function() {
                     var eventHandler = buildDefaultDisplayEventHandler(emailElements, phoneElements);
                     return function() {
                         eventHandler(defaultDisplyInput.value);

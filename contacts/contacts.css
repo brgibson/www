@@ -1,76 +1,73 @@
+/* todo - slightly different styles for click ("pinned") vs hover state */
 dl, dt, dd{
     margin: 0;
     padding: 0;
 }
-#contacts > dl {
+.contacts > dl {
     position: relative;
 }
-#contacts .name {
+.contacts .name {
     width: 6em;
 }
-#contacts .address span {
+.contacts .address span {
     display: block;
 }
-#contacts .address .city,
-#contacts .address .state {
+.contacts .address .city,
+.contacts .address .state {
     display: inline;
 }
-#contacts > dl > dt,
-#contacts > dl > dd {
+.contacts > dl > dt,
+.contacts > dl > dd {
     display: inline-block;
 }
-#contacts .details {
+.contacts .details {
     position: absolute;
     z-index: 1;
 }
- {
-    height: 0;
-
-    overflow: hidden;
-    visibility: hidden;
-    width: 0;
-}
-#contacts .details dd {
+.contacts .details dd {
     height: 0;
     opacity:0; /* used for transition */
     overflow: hidden;
     visibility: hidden;
     width: 0;
 }
-#contacts .details dt, /* these terms are for screen readers only */
-#contacts .hidden { 
+.contacts .details dt, /* these terms are for screen readers only */
+.contacts .hidden { 
     height: 0;
     overflow: hidden;
     position: relative;
     visibility: hidden;
     width: 0;
 }
-#contacts .details .show,
-#contacts > dl:hover .details dd {
+.contacts .details .show,
+.contacts .show .details dd,
+.contacts > dl:hover .details dd {
     height: auto;
     opacity: 1; /* used for transisions */
     position: inherit;
     visibility: visible;
     width: auto;
 }
-#contacts > dl:hover,
-#contacts > dl:hover .details {
+.contacts > dl:hover,
+.contacts > dl:hover .details,
+.contacts > .show,
+.contacts > .show .details {
     background-color: lightpink;
     z-index: 2;
 }
 
 /* CSS Transitions - not important so only using the non-browser targeted version - also not sure if I like them, but felt like playing :) */
 /*
-#contacts .details {
+.contacts .details {
 transition: background .1s;
 }
-#contacts .details dd {
+.contacts .details dd {
     transition: opacity .1s;
 }
 */
 
 /* IE7 hacks */
-#contacts .details {
+.contacts .details {
     left:6em;
     top:0;
 }

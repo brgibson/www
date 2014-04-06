@@ -101,7 +101,7 @@ var convertTabularContactData = (function() {
             },
             getMarkup : function() { 
                 var markup = "<dl itemscope itemtype='http://schema.org/Person'>" + 
-                                "<dt class='name' itemprop='name'>"+ _dataParser.getName() +"</dt>" + 
+                                "<dt class='name' data-type='name' itemprop='name'>"+ _dataParser.getName() +"</dt>" + 
                                 "<dd class='details'>" + //wrapping the details in one term so styling can be easily applied
                                     "<dl>" +
                                         "<dt>Email</dt>" + 
