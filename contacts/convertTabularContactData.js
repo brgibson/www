@@ -2,9 +2,9 @@
  * A function which takes a string of tabular contact data and returns the
  * list of contacts as semantic markup or JSON.
  * 
- * @param - {string} tabularContactsStr - example string: <tr><td class="hd"><p style="height: 16px;">.</p></td><td class="s2">Amar</td><td class="s3">amardeep@live.com</td><td class="s3">408-555-1234</td><td class="s3">555 Halford Ave.</td><td class="s3">Apartment #43C</td><td class="s3">Santa Clara</td><td class="s3">CA</td><td class="s4">95051</td></tr>
- * @param - {*} [asJSON] - a flag to return the output as JSON
- * @param - {*} [encodeSpecialCharacters] - a flag to encode html characters for display in a pre tag
+ * @param {string} tabularContactsStr - example string: <tr><td class="hd"><p style="height: 16px;">.</p></td><td class="s2">Amar</td><td class="s3">amardeep@live.com</td><td class="s3">408-555-1234</td><td class="s3">555 Halford Ave.</td><td class="s3">Apartment #43C</td><td class="s3">Santa Clara</td><td class="s3">CA</td><td class="s4">95051</td></tr>
+ * @param {*} [asJSON] - a flag to return the output as JSON
+ * @param {*} [encodeSpecialCharacters] - a flag to encode html characters for display in a pre tag
  */
 var convertTabularContactData = (function() {
 

@@ -22,16 +22,19 @@
             </select>
         </section>
         
-        <script src="./tabularContactData.js"></script> <!-- contains a single variable "tabularContactData" - a String containing all of the contacts -->
-        <script src="./convertTabularContactData.js"></script> <!-- contains a single variable "convertTabularContactData" - a function which takes a string of tabular contact data and returns the markup to be inserted into the "contacts" div -->
+        <script src="./tabularContactData.js"></script> <!-- contains a single string (tabularContactData) containing all of the contacts -->
+        <script src="./convertTabularContactData.js"></script> <!-- contains a single function (convertTabularContactData) which takes a string of tabular contact data and returns the markup to be inserted into the "contacts" div -->
+        <script src="./buildDefaultDisplayEventHandler.js"></script> <!-- contains a single function (buildDefaultDisplayEventHandler) which returns the event handler for the "defaultDisplay" select list -->
         <script>
             (function() {
-                
-                //add the contacts to the page
+                /* add the contacts to the page */
                 var contactsContainer = document.getElementById("contacts")
                 contactsContainer.innerHTML = convertTabularContactData(tabularContactData);
 
-                //add event handler for email/phone select list
+                
+                /* add event handler for email/phone select list */
+                
+                //get the email and phone DOM elements
                 var emailElements = [],
                     phoneElements = [];
                 (function() {
@@ -44,41 +47,18 @@
                     }
                 })();
                 
+                //attach the event handler
                 var defaultDisplyInput = document.getElementById("defaultDisplay");
-                defaultDisplyInput.onchange = (function(elementToListenToemailElements, phoneElements) { //todo- do i need to register the capture events? ie if (element.captureEvents) element.captureEvents(Event.CLICK);
-                    
-                    /* setup */
-                    var show = function(elems, doNotShowFlag) {
-                            for (var i = 0; i < elems.length; i++) {
-                                elems[i].className = doNotShowFlag ? "" : "show";
-                            }
-                        },
-                        hide = function(elems) {
-                            return show(elems, true);
-                        };
-
-                    /* return function */
-                    return function(type) {
-                        switch(type) {
-                            case "email":
-                                show(emailElements);
-                                hide(phoneElements);
-                                break;
-                            case "phone":
-                                hide(emailElements);
-                                show(phoneElements);
-                                break;
-                        }
+                defaultDisplyInput.onchange = (function() { //todo- do i need to register the capture events? ie if (element.captureEvents) element.captureEvents(Event.CLICK);
+                    var eventHandler = buildDefaultDisplayEventHandler(emailElements, phoneElements);
+                    return function() {
+                        eventHandler(defaultDisplyInput.value);
                     };
-                })(emailElements, phoneElements);
+                })();
                 
-                //pick default
-                document.getElementById("defaultDisplay").onchange("email");
-                
-               
+                //show the elements based on the deafult selection
+                document.getElementById("defaultDisplay").onchange(defaultDisplyInput.value);
             })();
-            
-            //todo - can we use schema.org attributes for targeting needed for email/phone link (ie. get elements by tag name - check for attribute 'blah')
         </script>
         <!-- todo - it might be cool to add a search function -->
     </body>
