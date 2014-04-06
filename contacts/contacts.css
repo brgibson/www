@@ -8,6 +8,13 @@ dl, dt, dd{
 #contacts .name {
     width: 6em;
 }
+#contacts .address span {
+    display: block;
+}
+#contacts .address .city,
+#contacts .address .state {
+    display: inline;
+}
 #contacts > dl > dt,
 #contacts > dl > dd {
     display: inline-block;
@@ -16,6 +23,13 @@ dl, dt, dd{
     position: absolute;
     z-index: 1;
 }
+ {
+    height: 0;
+
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+}
 #contacts .details dd {
     height: 0;
     opacity:0; /* used for transition */
@@ -23,7 +37,8 @@ dl, dt, dd{
     visibility: hidden;
     width: 0;
 }
-#contacts .details dt { /* these terms are for screen readers only */
+#contacts .details dt, /* these terms are for screen readers only */
+#contacts .hidden { 
     height: 0;
     overflow: hidden;
     position: relative;

@@ -104,21 +104,29 @@ var convertTabularContactData = (function() {
                                 "<dt class='name' itemprop='name'>"+ _dataParser.getName() +"</dt>" + 
                                 "<dd class='details'>" + //wrapping the details in one term so styling can be easily applied
                                     "<dl>" +
-                                        "<dt>Email</dt><dd data-type='email'>" +
-                                                          "<a href='mailto:"+ _dataParser.getEmail() +"' itemprop='email'>"+ _dataParser.getEmail() +"</a>" + 
-                                                      "</dd>" + 
-                                        "<dt>Phone Number</dt><dd data-type='phone' itemprop='telephone'>"+ _dataParser.getPhone() +"</dd>" + 
-                                        "<dt>Address</dt><dd itemprop='address' itemscope itemtype='http://schema.org/PostalAddress'>" +
-                                                            "<span itemprop='streetAddress'>"   + _dataParser.getAddressLine1() + 
-                                                                                            ' ' + _dataParser.getAddressLine2() +
-                                                                                            "<a href='"+ _dataParser.getMapUrl() +"'>map</a>" + 
-                                                            "</span>" + 
-                                                            "<span itemprop='addressLocality'>"+ _dataParser.getCity() +"</span>," + 
-                                                            "<span itemprop='addressRegion '>"+ _dataParser.getState() +"</span>" + 
-                                                            "<span itemprop='postalCode'>"+ _dataParser.getZip() +"</span>" + 
-                                                        "</dd>" +
-                                        "<dt>Chats</dt><dd><a href='"+ _dataParser.getChatsUrl() +"'>Chats</a></dd>" + 
-                                        "<dt>Emails</dt><dd><a href='"+ _dataParser.getEmailsUrl() +"'>Emails</a></dd>" + 
+                                        "<dt>Email</dt>" + 
+                                        "<dd data-type='email'>" +
+                                            "<a href='mailto:"+ _dataParser.getEmail() +"' itemprop='email'>"+ _dataParser.getEmail() +"</a>" + 
+                                        "</dd>" + 
+                    
+                                        "<dt>Phone Number</dt>" + 
+                                        "<dd data-type='phone' itemprop='telephone'>"+ _dataParser.getPhone() +"</dd>" + 
+                    
+                                        "<dt>Address</dt>" + 
+                                        "<dd class='address' itemprop='address' itemscope itemtype='http://schema.org/PostalAddress'>" +
+                                            "<span class='hidden' itemprop='streetAddress'>" + _dataParser.getAddressLine1() +' '+ _dataParser.getAddressLine2() +"</span>" + // todo - hide this guy - added for schema.org markup
+                                            "<span>" + _dataParser.getAddressLine1() + " - <a href='"+ _dataParser.getMapUrl() +"'>map</a></span>" + 
+                                            (_dataParser.getAddressLine2() ? "<span>" + _dataParser.getAddressLine2() + "</span>" : "") + 
+                                            "<span class='city' itemprop='addressLocality'>"+ _dataParser.getCity() +"</span>, " + 
+                                            "<span class='state' itemprop='addressRegion '>"+ _dataParser.getState() +"</span>" + 
+                                            "<span itemprop='postalCode'>"+ _dataParser.getZip() +"</span>" + 
+                                        "</dd>" +
+                                        
+                                        "<dt>Chats</dt>" +
+                                        "<dd><a href='"+ _dataParser.getChatsUrl() +"'>Chats</a></dd>" + 
+                                        
+                                        "<dt>Emails</dt>" + 
+                                        "<dd><a href='"+ _dataParser.getEmailsUrl() +"'>Emails</a></dd>" + 
                                     "</dl>" + 
                                 "</dd>" + 
                              "</dl>";
