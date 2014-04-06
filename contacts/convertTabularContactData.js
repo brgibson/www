@@ -100,21 +100,28 @@ var convertTabularContactData = (function() {
                 _encodeSpecialCharactersFlag = encodeSpecialCharactersFlag;
             },
             getMarkup : function() { 
-                var markup = "<dl>";
-                markup +=       "<dt class='name'>"+ _dataParser.getName() +"</dt>"; 
-                markup +=       "<dd class='details'>" + //wrapping the details in one term so styling can be easily applied
+                var markup = "<dl itemscope itemtype='http://schema.org/Person'>" + 
+                                "<dt class='name' itemprop='name'>"+ _dataParser.getName() +"</dt>" + 
+                                "<dd class='details'>" + //wrapping the details in one term so styling can be easily applied
                                     "<dl>" +
-                                        "<dt>Email</dt><dd class='email show'>" + 
-                                                          "<a href='mailto:"+ _dataParser.getEmail() +"'>"+ _dataParser.getEmail() +"</a>" + 
+                                        "<dt>Email</dt><dd data-type='email'>" +
+                                                          "<a href='mailto:"+ _dataParser.getEmail() +"' itemprop='email'>"+ _dataParser.getEmail() +"</a>" + 
                                                       "</dd>" + 
-                                        "<dt>Phone Number</dt><dd class='phone'>"+ _dataParser.getPhone() +"</dd>" + 
-                                        "<dt>Address</dt><dd>"+ _dataParser.getAddress() +"</dd>" +
-                                        "<dt>Map</dt><dd><a href='"+ _dataParser.getMapUrl() +"'>map</a></dd>" +
+                                        "<dt>Phone Number</dt><dd data-type='phone' itemprop='telephone'>"+ _dataParser.getPhone() +"</dd>" + 
+                                        "<dt>Address</dt><dd itemprop='address' itemscope itemtype='http://schema.org/PostalAddress'>" +
+                                                            "<span itemprop='streetAddress'>"   + _dataParser.getAddressLine1() + 
+                                                                                            ' ' + _dataParser.getAddressLine2() +
+                                                                                            "<a href='"+ _dataParser.getMapUrl() +"'>map</a>" + 
+                                                            "</span>" + 
+                                                            "<span itemprop='addressLocality'>"+ _dataParser.getCity() +"</span>," + 
+                                                            "<span itemprop='addressRegion '>"+ _dataParser.getState() +"</span>" + 
+                                                            "<span itemprop='postalCode'>"+ _dataParser.getZip() +"</span>" + 
+                                                        "</dd>" +
                                         "<dt>Chats</dt><dd><a href='"+ _dataParser.getChatsUrl() +"'>Chats</a></dd>" + 
                                         "<dt>Emails</dt><dd><a href='"+ _dataParser.getEmailsUrl() +"'>Emails</a></dd>" + 
                                     "</dl>" + 
-                                "</dd>";
-                markup +=     "</dl>"
+                                "</dd>" + 
+                             "</dl>";
                 
                 return _encodeSpecialCharactersFlag ? encodeSpecialCharacters(markup + "\n") : markup;    
             },
