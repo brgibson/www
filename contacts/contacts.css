@@ -44,7 +44,8 @@ dl, dt, dd, h1, ul {
 }
 .widgetContainer select {
     float: right;
-    margin: 6px
+    font-size: 16px;
+    margin: 6px;
 }
 
 /* functional css */
@@ -52,9 +53,7 @@ dl, dt, dd, h1, ul {
     position: relative;
     padding-bottom: 2px
 }
-.contacts .name {
-    width: 140px;
-}
+
 .contacts .address span {
     display: block;
 }
@@ -151,8 +150,10 @@ transition: background .1s;
 }
 */
 
-/* IE7 hacks */
+.contacts .name {
+    width: 120px;
+}
 .contacts .details {
-    left:6em;
+    left: 100px;
     top:0;
 }

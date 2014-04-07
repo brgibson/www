@@ -28,12 +28,18 @@ var buildDefaultDisplayEventHandler = function(contactsContainer, emailElements,
         hide = function(elems) {
             return show(elems, true);
         },
-    
-        isPhoneFirst = false,
         reorder = function(type) {
-            contactsContainer.className = isPhoneFirst ? contactsContainer.className.substring(0, 8) 
-                                                       : contactsContainer.className + " phoneFirst";
-            isPhoneFirst != isPhoneFirst;
+            var selector = contactsContainer.className;
+            switch(type) {
+                case "email":
+                    contactsContainer.className = selector.replace(" phoneFirst", "");
+                    break;
+                case "phone":
+                    if (selector.indexOf("phoneFirst") == -1) {
+                        contactsContainer.className = selector += " phoneFirst";
+                    }
+                    break;
+            }
         };
     
     /* return the event handler */

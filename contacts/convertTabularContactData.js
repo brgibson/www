@@ -19,46 +19,67 @@ var convertTabularContactData = (function() {
         var _dataToParse = "";
 
         /* helper functions */
-        function removeNewlines(str) {
+        var removeNewlines = function(str) {
             return str.replace(/\n/g, " ");
-        }
+        };
 
-        function getString(regex) {
-            var result = regex.exec(_dataToParse);
+        var get = function(type) {
+            var tdIndex;
+            switch (type) {
+                case  "name": tdIndex = 2; break;
+                case "email": tdIndex = 3; break;
+                case "phone": tdIndex = 4; break;
+                case "line1": tdIndex = 5; break;
+                case "line2": tdIndex = 6; break;
+                case  "city": tdIndex = 7; break;
+                case "state": tdIndex = 8; break;
+                case   "zip": tdIndex = 9; break;
+            }
+            
+            var getRegex = function(tdIndex) {
+                var regexStr = ""
+                for (var i = 1; i < tdIndex; i++) {
+                    regexStr += "td.+?td.+?";
+                }
+                regexStr += ">(.+?)<.+?";
+                return new RegExp(regexStr, "g");
+            };
+            
+            var result = getRegex(tdIndex).exec(_dataToParse);
             return result && result[1];
-        }
-
+        };
+        
         /* object to be returned */
         return {
             setDataToParse : function (dataStr) {
                 _dataToParse = removeNewlines(dataStr);
             },
             getName : function() {
-                return getString(/s2\">(.+?)<.*/g);
+                return get("name");
             },
             getEmail : function() {
-                return getString(/s3\">(.+?)<.*/g);
+                return get("email");
             },
             getPhone : function() {
-                return getString(/s3.+?s3\">(.+?)<.*/g);
+                return get("phone");
             },
             getAddressLine1 : function() {
-                return getString(/s3.+?s3.+?s3\">(.+?)<.*/g);
+                return get("line1");
             },
             getAddressLine2 : function() {
-                return getString(/s3.+?s3.+?s3.+?s3\">(.+?)<.*/g);
+                return get("line2");
             },
             getCity : function() {
-                return getString(/s3.+?s3.+?s3.+?s3.+?s3\">(.+?)<.*/g);
+                return get("city");
             },
             getState : function() {
-                return getString(/s3.+?s3.+?s3.+?s3.+?s3.+?s3\">(.+?)<.*/g);
+                return get("state");
             },
             getZip : function() {
-                return getString(/s4\">(.+?)<.*/g);
+                return get("zip");
             },
             getAddress : function() {
-                return "\n    " + 
+                return "" || "\n    " + 
                     this.getAddressLine1() + "\n    " + 
                     this.getAddressLine2() + "\n    " + 
                     this.getCity() + ", " + this.getState() + "\n    " + 
