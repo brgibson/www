@@ -8,8 +8,8 @@ dl, dt, dd, h1, li, ul {
     padding: 0;
 }
 li {
-    position:relative;
-    
+    position: relative;
+    list-style-type: none; /* todo - need a fix for this in IE7/8 */
 }
 /* todo - on mouse over - gray out background */
 /* candy coating */
@@ -99,6 +99,9 @@ li {
     visibility: visible;
     white-space: nowrap;
     width: auto;
+}
+.contacts .name {
+    cursor: pointer;
 }
 .contacts .singleContact {
     border-bottom: transparent solid 1px; 
