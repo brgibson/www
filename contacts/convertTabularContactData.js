@@ -108,12 +108,12 @@ var convertTabularContactData = (function() {
                                         "<dd class='image'><img src='./images/"+ _dataParser.getName().toLowerCase() +".gif' itemprop='image'></dd>" +                     
                     
                                         "<dt>Email</dt>" + 
-                                        "<dd data-type='email'>" +
+                                        "<dd class='email' data-type='email'>" +
                                             "<a href='mailto:"+ _dataParser.getEmail() +"' itemprop='email'>"+ _dataParser.getEmail() +"</a>" + 
                                         "</dd>" + 
                     
                                         "<dt>Phone Number</dt>" + 
-                                        "<dd data-type='phone' itemprop='telephone'>"+ _dataParser.getPhone() +"</dd>" + 
+                                        "<dd class='phone' data-type='phone' itemprop='telephone'>"+ _dataParser.getPhone() +"</dd>" + 
                     
                                         "<dt>Address</dt>" + 
                                         "<dd class='address' itemprop='address' itemscope itemtype='http://schema.org/PostalAddress'>" +

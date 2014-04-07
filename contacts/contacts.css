@@ -67,6 +67,17 @@ dl, dt, dd{
     z-index: 2;
 }
 
+.phoneFirst .pinned .details .email,
+.phoneFirst > dl:hover .details .email {
+    position: relative;
+    top: 18px;
+}
+.phoneFirst .pinned .details .phone,
+.phoneFirst > dl:hover .details .phone {
+    position: relative;
+    top: -18px;
+}
+
 /* CSS Transitions - not important so only using the non-browser targeted version - also not sure if I like them, but felt like playing :) */
 /*
 .contacts .details {

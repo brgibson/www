@@ -17,8 +17,8 @@
             </ul>
             
             <select id="defaultDisplay">
-                <option value="email">Email address</option>
                 <option value="phone">Phone number</option>
+                <option value="email">Email address</option>
             </select>
         </section>
         
@@ -75,10 +75,21 @@
                     }
                 })();
                 
+                var isPhoneFirst = false;
+                var blah = function() {
+                    contactsContainer.className = isPhoneFirst ? contactsContainer.className.substring(0, 8) 
+                                                               : contactsContainer.className + " phoneFirst";
+                    isPhoneFirst = !isPhoneFirst;
+                };
+                
                 //attach the event handler
                 var defaultDisplyInput = document.getElementById("defaultDisplay");
                 defaultDisplyInput.onchange = (function() {
-                    var eventHandler = buildDefaultDisplayEventHandler(emailElements, phoneElements);
+                    
+                        
+                    
+                    
+                    var eventHandler = buildDefaultDisplayEventHandler(emailElements, phoneElements, blah);
                     return function() {
                         eventHandler(defaultDisplyInput.value);
                     };
