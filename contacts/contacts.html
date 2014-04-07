@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="./contacts.css">
     </head>
     <body>
-        <section> <!-- todo - how does the section element degrade in older browsers? -->
+        <section class="widgetContainer"> <!-- todo - how does the section element degrade in older browsers? -->
             <h1>Contacts</h1> <!-- todo - do I want to use an h1 here? - reference to consider: http://webdesign.tutsplus.com/articles/the-truth-about-multiple-h1-tags-in-the-html5-era--webdesign-16824 -->
 
             <!-- todo - we will need to associate an image with this user -->
@@ -16,10 +16,12 @@
                 <!-- todo - it might be nice to put a placeholder contacts list here, so there isn't a pop in when we load the contacts -->  
             </ul>
             
-            <select id="defaultDisplay">
-                <option value="phone">Phone number</option>
-                <option value="email">Email address</option>
-            </select>
+            <div class="dropdown">
+                <select id="defaultDisplay">
+                    <option value="email">Email address</option>
+                    <option value="phone">Phone number</option>
+                </select>
+            </div>
         </section>
         
         <script src="./tabularContactData.js"></script> <!-- contains a single string (tabularContactData) containing all of the contacts -->
@@ -75,28 +77,17 @@
                     }
                 })();
                 
-                var isPhoneFirst = false;
-                var blah = function() {
-                    contactsContainer.className = isPhoneFirst ? contactsContainer.className.substring(0, 8) 
-                                                               : contactsContainer.className + " phoneFirst";
-                    isPhoneFirst = !isPhoneFirst;
-                };
-                
                 //attach the event handler
                 var defaultDisplyInput = document.getElementById("defaultDisplay");
                 defaultDisplyInput.onchange = (function() {
-                    
-                        
-                    
-                    
-                    var eventHandler = buildDefaultDisplayEventHandler(emailElements, phoneElements, blah);
+                    var eventHandler = buildDefaultDisplayEventHandler(contactsContainer, emailElements, phoneElements);
                     return function() {
                         eventHandler(defaultDisplyInput.value);
                     };
                 })();
                 
-                //show the elements based on the deafult selection
-                document.getElementById("defaultDisplay").onchange(defaultDisplyInput.value);
+                /* reorder the email and phone elements, based on the order of the select list */
+                defaultDisplyInput.onchange();
             })();
         </script>
         <!-- todo - it might be cool to add a search function -->

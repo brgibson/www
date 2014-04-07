@@ -83,13 +83,13 @@ var convertTabularContactData = (function() {
         var _encodeSpecialCharactersFlag;
 
         /* helper function */
-        function encodeSpecialCharacters(str) {
+        var encodeSpecialCharacters = function(str) {
             return str
                     .replace(/</g, "&lt;")
                     .replace(/>/g, "&gt;")
                     .replace(/\//g, "&frasl;")
                     ;
-        }
+        };
 
         /* object to be returned */
         return {
@@ -113,11 +113,13 @@ var convertTabularContactData = (function() {
                                         "</dd>" + 
                     
                                         "<dt>Phone Number</dt>" + 
-                                        "<dd class='phone' data-type='phone' itemprop='telephone'>"+ _dataParser.getPhone() +"</dd>" + 
+                                        "<dd class='phone' data-type='phone'>" + 
+                                            "<a href='tel:"+ _dataParser.getPhone() +" itemprop='telephone'>"+ _dataParser.getPhone() +"</a>" +
+                                        "</dd>" + 
                     
                                         "<dt>Address</dt>" + 
                                         "<dd class='address' itemprop='address' itemscope itemtype='http://schema.org/PostalAddress'>" +
-                                            "<span class='hidden' itemprop='streetAddress'>" + _dataParser.getAddressLine1() +' '+ _dataParser.getAddressLine2() +"</span>" + // todo - hide this guy - added for schema.org markup
+                                            "<meta class='none' itemprop='streetAddress' content='" + _dataParser.getAddressLine1() + " " + _dataParser.getAddressLine2() + "'>" + // added for schema.org microcontent
                                             "<span>" + _dataParser.getAddressLine1() + " - <a href='"+ _dataParser.getMapUrl() +"'>map</a></span>" + 
                                             (_dataParser.getAddressLine2() ? "<span>" + _dataParser.getAddressLine2() + "</span>" : "") + 
                                             "<span class='city' itemprop='addressLocality'>"+ _dataParser.getCity() +"</span>, " + 

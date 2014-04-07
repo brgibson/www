@@ -2,30 +2,40 @@
  * A function which returns the an event handler for the default contacts display.
  * It supports email and phone number options.
  *
- * @param {HTMLElement[]} emailElements   - the email address DOM elements that you want to show/hide
- * @param {HTMLElement[]} phoneElements   - the phone number  DOM elements that you want to show/hide
- * @param      {function} reorder         - a no-arg function that reorders the phone and email elements
+ * @param (HTMLElement)   contactsContainer - the container DOM element of the contacts
+ * @param {HTMLElement[]} emailElements     - the email address DOM elements that you want to show/hide
+ * @param {HTMLElement[]} phoneElements     - the phone number  DOM elements that you want to show/hide
  */
-var buildDefaultDisplayEventHandler = function(emailElements, phoneElements, reorder) {
+var buildDefaultDisplayEventHandler = function(contactsContainer, emailElements, phoneElements) {
                     
     
     /* todo - swap the order of the phone number and the email */
     
     /* setup */
-    var show = function(elems, doNotShowFlag) {
+    var selectorToPrepend = "show ",
+        show = function(elems, doNotShow) {
             for (var i = 0; i < elems.length; i++) {
                 var currentSelector = elems[i].className;
-                if (doNotShowFlag) {
-                    elems[i].className = (currentSelector == "phone" || currentSelector == "email") ? currentSelector : currentSelector.substring(4); //fix this bug
+                if (doNotShow) {
+                    elems[i].className = (currentSelector == "phone" || currentSelector == "email") 
+                                            ? currentSelector 
+                                            : currentSelector.substring(selectorToPrepend.length);
                 } else {
                     elems[i].className = "show " + currentSelector;
                 }
             }
-        }, 
+        },
         hide = function(elems) {
             return show(elems, true);
+        },
+    
+        isPhoneFirst = false,
+        reorder = function(type) {
+            contactsContainer.className = isPhoneFirst ? contactsContainer.className.substring(0, 8) 
+                                                       : contactsContainer.className + " phoneFirst";
+            isPhoneFirst != isPhoneFirst;
         };
-
+    
     /* return the event handler */
     
     /**
@@ -40,12 +50,12 @@ var buildDefaultDisplayEventHandler = function(emailElements, phoneElements, reo
             case "email":
                 show(emailElements);
                 hide(phoneElements);
-                reorder()
+                reorder("email")
                 break;
             case "phone":
                 hide(emailElements);
                 show(phoneElements);
-                reorder();
+                reorder("phone");
                 break;
         }
     };
