@@ -8,7 +8,6 @@ dl, dt, dd, h1, ul {
     padding: 0;
 }
 /* todo - on mouse over - gray out background */
-/* candy coating */
 .widgetContainer {
     border: #5f86be solid 1px; 
     border-radius: 10px;
@@ -78,6 +77,13 @@ dl, dt, dd, h1, ul {
     visibility: hidden;
     width: 0;
 }
+.suppressHover.contacts > dl:hover .details dd {
+    height: 0;
+    position: absolute;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+}
 .contacts .details dt, /* these terms are for screen readers only */
 .contacts .hidden { 
     height: 0;
@@ -87,8 +93,10 @@ dl, dt, dd, h1, ul {
     width: 0;
 }
 .contacts .details .show,
+.suppressHover.contacts > dl:hover .details .show,
 .contacts .pinned .details dd,
 .contacts > dl:hover .details dd,
+.suppressHover .details .show,
 .suppressHover > dl.pinned:hover .details dd {
     height: auto;
     position: inherit;
@@ -96,16 +104,18 @@ dl, dt, dd, h1, ul {
     white-space: nowrap;
     width: auto;
 }
-.contacts > dl {
+.contacts > dl,
+.suppressHover.contacts > dl:hover {
     border-bottom: transparent solid 1px; 
     border-top: transparent solid 1px; 
 }
 .contacts > dl .details {
     border-bottom: transparent solid 1px; 
-    border-top: transparent solid 0px; 
+    border-top: transparent solid 0; 
 }
 .contacts > dl:hover,
-.contacts > .pinned{
+.contacts > .pinned, 
+.suppressHover.contacts > .pinned:hover {
     border-top: #5f86be solid 1px; 
 }
 .contacts > dl:hover .details,
@@ -118,13 +128,18 @@ dl, dt, dd, h1, ul {
 .contacts > .pinned,
 .contacts > .pinned .details,
 .contacts > dl:hover,
-.contacts > dl:hover .details {
+.contacts > dl:hover .details,
+.suppressHover.contacts > .pinned:hover {
     border-bottom: #5f86be solid 1px;
+}
+.suppressHover.contacts > dl:hover,
+.suppressHover.contacts > dl:hover .details {
+    background-color: white;
 }
 .contacts > dl:hover,
 .contacts > dl:hover .details,
 .contacts > .pinned,
-.contacts > .pinned .details{
+.contacts > .pinned .details {
     background-color: #f2f2f2; /* a slightly different color for the un-pinned hover state */
     z-index: 2;
     border-right: #5f86be solid 1px;
@@ -132,11 +147,12 @@ dl, dt, dd, h1, ul {
 .contacts > .pinned,
 .contacts > .pinned .details,
 .contacts > .pinned:hover,
-.contacts > .pinned:hover .details { 
+.contacts > .pinned:hover .details, 
+.suppressHover.contacts > .pinned:hover,
+.suppressHover.contacts > .pinned:hover .details { 
     background-color: #e9e9e9; /* a slightly different color for the pinned state */
     z-index: 2;
 }
-
 .phoneFirst .pinned .details .email,
 .phoneFirst > dl:hover .details .email {
     position: relative;
@@ -147,7 +163,6 @@ dl, dt, dd, h1, ul {
     position: relative;
     top: -16px; /* two more than the font-size */
 }
-
 .contacts .name {
     width: 100px;
 }
@@ -155,29 +170,25 @@ dl, dt, dd, h1, ul {
     left: 100px;
     top:0;
 }
-
 .contacts dl:hover .details dl:after,
-.contacts .pinned .details dl:after {
+.contacts .pinned .details dl:after,
+.suppressHover.contacts .pinned:hover .details dl:after {
     content:"";
-    background: #f2f2f2 ;
+    background: #f2f2f2;
     position: absolute;
-    top: 0px;
+    top: 0;
     left: -2px;
     height: 18px;
     width: 3px;
 }
-
 .contacts .pinned .details dl:after,
-.contacts .pinned:hover .details dl:after {
+.contacts .pinned:hover .details dl:after,
+.suppressHover.contacts .pinned:hover .details dl:after{
     background: #e9e9e9;
 }
 
-
-
-
-.suppressHover > dl:hover .details dd {
+.suppressHover.contacts dl:hover .details dl:after {
+    content: none;
     height: 0;
-    overflow: hidden;
-    visibility: hidden;
     width: 0;
 }
