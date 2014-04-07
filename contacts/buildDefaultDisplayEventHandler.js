@@ -25,15 +25,16 @@ var buildDefaultDisplayEventHandler = function(contactsContainer, emailElements,
         hide = function(elems) {
             return show(elems, true);
         },
+        phoneFirstSelector = " phoneFirst ",
         reorder = function(type) {
             var selector = contactsContainer.className;
             switch(type) {
                 case "email":
-                    contactsContainer.className = selector.replace(" phoneFirst", "");
+                    contactsContainer.className = selector.replace(phoneFirstSelector, "");
                     break;
                 case "phone":
-                    if (selector.indexOf("phoneFirst") == -1) {
-                        contactsContainer.className = selector += " phoneFirst";
+                    if (selector.indexOf(phoneFirstSelector) == -1) {
+                        contactsContainer.className = selector += phoneFirstSelector;
                     }
                     break;
             }
