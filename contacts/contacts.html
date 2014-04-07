@@ -37,11 +37,11 @@
                 (function() {
                     var allowHoverSelector = " allowHover"
                     var pinnedElement = null;
-                    var clickEventHandler = function() {
-                        if (this.parentNode == pinnedElement) {
-                            this.parentNode.className = ""
+                    var clickEventHandler = function(elem) {
+                        if (this.tagName.toLowerCase() == "body" || this.parentNode == pinnedElement) {
+                            pinnedElement.className = "";
                             pinnedElement = null;
-                            if (contactsContainer.className.indexOf(allowHoverSelector) != 1) {
+                            if (contactsContainer.className.indexOf(allowHoverSelector) == -1) {
                                 contactsContainer.className += allowHoverSelector;
                             }
                         } else {
