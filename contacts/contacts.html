@@ -35,15 +35,17 @@
 
                 /* add a click event handler so that we can support pinning the details open on click for touch devices */ //todo - refactor this out into it's own js file
                 (function() {
-                    var allowHoverSelector = " allowHover"
-                    var pinnedSelector = " pinned "
-                    var pinnedElement = null;
+                    var allowHoverSelector = " allowHover",
+                        pinStateSelector = " pinState ",
+                        pinnedSelector = " pinned ",
+                        pinnedElement = null;
                     var clickEventHandler = function(elem) {
                         if (this.tagName.toLowerCase() == "body" || this.parentNode == pinnedElement) {
                             if (pinnedElement) {
                                 pinnedElement.className = pinnedElement.className.replace(pinnedSelector, "");
                             }
                             pinnedElement = null;
+                            contactsContainer.className = contactsContainer.className.replace(pinStateSelector, "");
                             if (contactsContainer.className.indexOf(allowHoverSelector) == -1) {
                                 contactsContainer.className += allowHoverSelector;
                             }
@@ -54,8 +56,12 @@
                             }
                             //update the pinned element to the element that was clicked on
                             pinnedElement = this.parentNode;
-                            if (pinnedElement.className.indexOf(pinnedSelector) == -1) {
+                            if (pinnedElement.className.indexOf(pinnedSelector) == -1) { //todo - create a function append if empty
                                 pinnedElement.className += pinnedSelector;
+                            }
+                            
+                            if (contactsContainer.className.indexOf(pinStateSelector) == -1) {
+                                contactsContainer.className += pinStateSelector;
                             }
                             
                             contactsContainer.className = contactsContainer.className.replace(allowHoverSelector, "");

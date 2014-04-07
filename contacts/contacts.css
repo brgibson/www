@@ -162,10 +162,20 @@ li {
 .phoneFirst .pinned .details .email,
 .allowHover.phoneFirst .singleContact:hover .details .email {
     position: relative;
-    top: 20px; /* two more than the font-size */
+    top: 21px; /* two more than the font-size */
 }
 .phoneFirst .pinned .details .phone,
 .allowHover.phoneFirst .singleContact:hover .details .phone {
     position: relative;
-    top: -20px; /* two more than the font-size */
+    top: -21px; /* two more than the font-size */
+}
+.pinState .singleContact,
+.contacts:hover .singleContact,
+.pinState.contacts .singleContact:hover,
+.contacts .singleContact:hover {
+    opacity: 0.5;
+}
+.contacts .singleContact:hover,
+.pinState.contacts .singleContact.pinned {
+    opacity: 1;
 }
