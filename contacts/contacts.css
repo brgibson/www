@@ -88,7 +88,7 @@ dl, dt, dd, h1, ul {
 }
 .contacts .details .show,
 .contacts .pinned .details dd,
-.contacts > dl:hover .details dd,
+.allowHover > dl:hover .details dd,
 .suppressHover > dl.pinned:hover .details dd {
     height: auto;
     position: inherit;
@@ -104,25 +104,25 @@ dl, dt, dd, h1, ul {
     border-bottom: transparent solid 1px; 
     border-top: transparent solid 0px; 
 }
-.contacts > dl:hover,
+.allowHover > dl:hover,
 .contacts > .pinned{
     border-top: #5f86be solid 1px; 
 }
-.contacts > dl:hover .details,
+.allowHover > dl:hover .details,
 .contacts > .pinned .details {
     border-left: #5f86be solid 1px;
     margin-left: -1px; /* so that the email doesn't move when the border is added*/
 }
-.contacts > dl:hover
-.contacts > dl:hover .details,
+.allowHover > dl:hover
+.allowHover > dl:hover .details,
 .contacts > .pinned,
 .contacts > .pinned .details,
-.contacts > dl:hover,
-.contacts > dl:hover .details {
+.allowHover > dl:hover,
+.allowHover > dl:hover .details {
     border-bottom: #5f86be solid 1px;
 }
-.contacts > dl:hover,
-.contacts > dl:hover .details,
+.allowHover > dl:hover,
+.allowHover > dl:hover .details,
 .contacts > .pinned,
 .contacts > .pinned .details{
     background-color: #f2f2f2; /* a slightly different color for the un-pinned hover state */
@@ -136,18 +136,6 @@ dl, dt, dd, h1, ul {
     background-color: #e9e9e9; /* a slightly different color for the pinned state */
     z-index: 2;
 }
-
-.phoneFirst .pinned .details .email,
-.phoneFirst > dl:hover .details .email {
-    position: relative;
-    top: 16px; /* two more than the font-size */
-}
-.phoneFirst .pinned .details .phone,
-.phoneFirst > dl:hover .details .phone {
-    position: relative;
-    top: -16px; /* two more than the font-size */
-}
-
 .contacts .name {
     width: 100px;
 }
@@ -155,8 +143,7 @@ dl, dt, dd, h1, ul {
     left: 100px;
     top:0;
 }
-
-.contacts dl:hover .details dl:after,
+.allowHover dl:hover .details dl:after,
 .contacts .pinned .details dl:after {
     content:"";
     background: #f2f2f2 ;
@@ -166,18 +153,17 @@ dl, dt, dd, h1, ul {
     height: 18px;
     width: 3px;
 }
-
 .contacts .pinned .details dl:after,
 .contacts .pinned:hover .details dl:after {
     background: #e9e9e9;
 }
-
-
-
-
-.suppressHover > dl:hover .details dd {
-    height: 0;
-    overflow: hidden;
-    visibility: hidden;
-    width: 0;
+.phoneFirst .pinned .details .email,
+.allowHover.phoneFirst > dl:hover .details .email {
+    position: relative;
+    top: 16px; /* two more than the font-size */
+}
+.phoneFirst .pinned .details .phone,
+.allowHover.phoneFirst > dl:hover .details .phone {
+    position: relative;
+    top: -16px; /* two more than the font-size */
 }
