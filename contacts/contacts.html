@@ -36,10 +36,13 @@
                 /* add a click event handler so that we can support pinning the details open on click for touch devices */ //todo - refactor this out into it's own js file
                 (function() {
                     var allowHoverSelector = " allowHover"
+                    var pinnedSelector = " pinned "
                     var pinnedElement = null;
                     var clickEventHandler = function(elem) {
                         if (this.tagName.toLowerCase() == "body" || this.parentNode == pinnedElement) {
-                            pinnedElement.className = "";
+                            if (pinnedElement) {
+                                pinnedElement.className = pinnedElement.className.replace(pinnedSelector, "");
+                            }
                             pinnedElement = null;
                             if (contactsContainer.className.indexOf(allowHoverSelector) == -1) {
                                 contactsContainer.className += allowHoverSelector;
@@ -47,12 +50,14 @@
                         } else {
                             //clear the styles on the pinned element
                             if (pinnedElement) {
-                                pinnedElement.className = "";
+                                pinnedElement.className = pinnedElement.className.replace(pinnedSelector, "");
                             }
-                            //pin the element that was clicked on
+                            //update the pinned element to the element that was clicked on
                             pinnedElement = this.parentNode;
-                            this.parentNode.className = "pinned"
-
+                            if (pinnedElement.className.indexOf(pinnedSelector) == -1) {
+                                pinnedElement.className += pinnedSelector;
+                            }
+                            
                             contactsContainer.className = contactsContainer.className.replace(allowHoverSelector, "");
                         }
                     };
