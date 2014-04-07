@@ -119,16 +119,27 @@ dl, dt, dd, h1, ul {
     border-top: #5f86be solid 1px; 
 }
 .contacts > dl:hover .details,
+.suppressHover > .pinned:hover .details,
 .contacts > .pinned .details {
     border-left: #5f86be solid 1px;
     margin-left: -1px; /* so that the email doesn't move when the border is added*/
 }
-.contacts > dl:hover
-.contacts > dl:hover .details,
+.suppressHover > dl:hover .details {
+    border-left: transparent solid 1px;
+}
 .contacts > .pinned,
 .contacts > .pinned .details,
 .contacts > dl:hover,
 .contacts > dl:hover .details,
+.suppressHover.contacts > .pinned:hover {
+    border-bottom: #5f86be solid 1px;
+}
+.suppressHover.contacts > dl:hover .details {
+    border-bottom: transparent solid 1px;
+}
+.suppressHover.contacts > .pinned:hover .details {
+    border-bottom: #5f86be solid 1px;
+}
 .suppressHover.contacts > .pinned:hover {
     border-bottom: #5f86be solid 1px;
 }
@@ -153,6 +164,7 @@ dl, dt, dd, h1, ul {
     background-color: #e9e9e9; /* a slightly different color for the pinned state */
     z-index: 2;
 }
+.suppressedHover .contacts
 .phoneFirst .pinned .details .email,
 .phoneFirst > dl:hover .details .email {
     position: relative;
