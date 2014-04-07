@@ -7,12 +7,12 @@ dl, dt, dd, h1, ul {
     margin: 0;
     padding: 0;
 }
-
+/* todo - on mouse over - gray out background */
 /* candy coating */
 .widgetContainer {
     border: #5f86be solid 1px; 
     border-radius: 10px;
-    width: 300px;
+    width: 361px;
 }
 .widgetContainer ul {
     padding: 6px 0;
@@ -47,13 +47,6 @@ dl, dt, dd, h1, ul {
     font-size: 16px;
     margin: 6px;
 }
-
-/* functional css */
-.contacts > dl {
-    position: relative;
-    padding-bottom: 2px
-}
-
 .contacts .address span {
     display: block;
 }
@@ -61,12 +54,16 @@ dl, dt, dd, h1, ul {
 .contacts .address .state {
     display: inline;
 }
+.contacts > dl {
+    position: relative;
+    padding-bottom: 2px
+}
 .contacts > dl > dt,
 .contacts > dl > dd {
     display: inline-block;
 }
 .contacts .details {
-    min-width: 180px;
+    min-width: 201px;
     position: absolute;
     padding-right: 60px; /* space for the images */
     z-index: 1;
@@ -100,33 +97,45 @@ dl, dt, dd, h1, ul {
     white-space: nowrap;
     width: auto;
 }
-.contacts > dl,
+.contacts > dl {
+    border-bottom: transparent solid 1px; 
+    border-top: transparent solid 1px; 
+}
 .contacts > dl .details {
-    border: transparent solid 1px; 
-}
-.contacts > dl:hover {
-    border: #5f86be solid 1px; 
-}
-.contacts > dl:hover .details {
-    border-right: #5f86be solid 1px;
-    border-bottom: #5f86be solid 1px; 
+    border-bottom: transparent solid 1px; 
+    border-top: transparent solid 0px; 
 }
 .contacts > dl:hover,
+.contacts > .pinned{
+    border-top: #5f86be solid 1px; 
+}
+.contacts > dl:hover .details,
+.contacts > .pinned .details {
+    border-left: #5f86be solid 1px;
+    margin-left: -1px; /* so that the email doesn't move when the border is added*/
+}
+.contacts > dl:hover
+.contacts > dl:hover .details,
+.contacts > .pinned,
+.contacts > .pinned .details,
+.contacts > dl:hover,
 .contacts > dl:hover .details {
-    background-color: #f2f2f2; /* slightly different color for the un-pinned hover state */
+    border-bottom: #5f86be solid 1px;
+}
+.contacts > dl:hover,
+.contacts > dl:hover .details,
+.contacts > .pinned,
+.contacts > .pinned .details{
+    background-color: #f2f2f2; /* a slightly different color for the un-pinned hover state */
     z-index: 2;
+    border-right: #5f86be solid 1px;
 }
 .contacts > .pinned,
 .contacts > .pinned .details,
 .contacts > .pinned:hover,
-.contacts > .pinned:hover .details { /* slightly different color for the pinned state */
-    background-color: #e9e9e9;
+.contacts > .pinned:hover .details { 
+    background-color: #e9e9e9; /* a slightly different color for the pinned state */
     z-index: 2;
-    box-shadow: 3px 7px 14px 7px #cccccc; 
-}
-.contacts > .pinned .details,
-.contacts > .pinned:hover .details {
-    box-shadow: 3px 28px 30px -8px #cccccc; 
 }
 
 .phoneFirst .pinned .details .email,
@@ -140,20 +149,26 @@ dl, dt, dd, h1, ul {
     top: -16px; /* two more than the font-size */
 }
 
-/* CSS Transitions - not important so only using the non-browser targeted version - also not sure if I like them, but felt like playing :) */
-/*
-.contacts .details {
-transition: background .1s;
-}
-.contacts .details dd {
-    transition: opacity .1s;
-}
-*/
-
-.contacts .name {
+/*.contacts .name {
     width: 120px;
-}
+}*/
 .contacts .details {
     left: 100px;
     top:0;
+}
+
+.contacts dl:hover .details dl:after,
+.contacts .pinned .details dl:after {
+    content:"";
+    background: #f2f2f2 ;
+    position: absolute;
+    top: 0px;
+    left: -2px;
+    height: 18px;
+    width: 3px;
+}
+
+.contacts .pinned .details dl:after,
+.contacts .pinned:hover .details dl:after {
+    background: #e9e9e9;
 }

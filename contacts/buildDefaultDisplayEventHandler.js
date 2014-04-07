@@ -7,9 +7,6 @@
  * @param {HTMLElement[]} phoneElements     - the phone number  DOM elements that you want to show/hide
  */
 var buildDefaultDisplayEventHandler = function(contactsContainer, emailElements, phoneElements) {
-                    
-    
-    /* todo - swap the order of the phone number and the email */
     
     /* setup */
     var selectorToPrepend = "show ",
