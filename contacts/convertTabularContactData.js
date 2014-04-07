@@ -121,41 +121,43 @@ var convertTabularContactData = (function() {
                 _encodeSpecialCharactersFlag = encodeSpecialCharactersFlag;
             },
             getMarkup : function() { 
-                var markup = "<dl itemscope itemtype='http://schema.org/Person'>" + 
-                                "<dt class='name' data-type='name' itemprop='name'>"+ _dataParser.getName() +"</dt>" + 
-                                "<dd class='details'>" + //wrapping the details in one term so styling can be easily applied
-                                    "<dl>" +
-                                        "<dt>Photo</dt>" +
-                                        "<dd class='image'><img src='./images/"+ _dataParser.getName().toLowerCase() +".gif' itemprop='image'></dd>" +                     
-                    
-                                        "<dt>Email</dt>" + 
-                                        "<dd class='email' data-type='email'>" +
-                                            "<a href='mailto:"+ _dataParser.getEmail() +"' itemprop='email'>"+ _dataParser.getEmail() +"</a>" + 
-                                        "</dd>" + 
-                    
-                                        "<dt>Phone Number</dt>" + 
-                                        "<dd class='phone' data-type='phone'>" + 
-                                            "<a href='tel:"+ _dataParser.getPhone() +" itemprop='telephone'>"+ _dataParser.getPhone() +"</a>" +
-                                        "</dd>" + 
-                    
-                                        "<dt>Address</dt>" + 
-                                        "<dd class='address' itemprop='address' itemscope itemtype='http://schema.org/PostalAddress'>" +
-                                            "<meta class='none' itemprop='streetAddress' content='" + _dataParser.getAddressLine1() + " " + _dataParser.getAddressLine2() + "'>" + // added for schema.org microcontent
-                                            "<span>" + _dataParser.getAddressLine1() + " - <a href='"+ _dataParser.getMapUrl() +"'>map</a></span>" + 
-                                            (_dataParser.getAddressLine2() ? "<span>" + _dataParser.getAddressLine2() + "</span>" : "") + 
-                                            "<span class='city' itemprop='addressLocality'>"+ _dataParser.getCity() +"</span>, " + 
-                                            "<span class='state' itemprop='addressRegion '>"+ _dataParser.getState() +"</span>" + 
-                                            "<span itemprop='postalCode'>"+ _dataParser.getZip() +"</span>" + 
-                                        "</dd>" +
-                                        
-                                        "<dt>Chats</dt>" +
-                                        "<dd><a href='"+ _dataParser.getChatsUrl() +"'>Chats</a></dd>" + 
-                                        
-                                        "<dt>Emails</dt>" + 
-                                        "<dd><a href='"+ _dataParser.getEmailsUrl() +"'>Emails</a></dd>" + 
-                                    "</dl>" + 
-                                "</dd>" + 
-                             "</dl>";
+                var markup = "<li>" +
+                                "<dl class='singleContact' itemscope itemtype='http://schema.org/Person'>" + 
+                                    "<dt class='name' data-type='name' itemprop='name'>"+ _dataParser.getName() +"</dt>" + 
+                                    "<dd class='details'>" + //wrapping the details in one term so styling can be easily applied
+                                        "<dl>" +
+                                            "<dt>Photo</dt>" +
+                                            "<dd class='image'><img src='./images/"+ _dataParser.getName().toLowerCase() +".gif' itemprop='image'></dd>" +                     
+
+                                            "<dt>Email</dt>" + 
+                                            "<dd class='email' data-type='email'>" +
+                                                "<a href='mailto:"+ _dataParser.getEmail() +"' itemprop='email'>"+ _dataParser.getEmail() +"</a>" + 
+                                            "</dd>" + 
+
+                                            "<dt>Phone Number</dt>" + 
+                                            "<dd class='phone' data-type='phone'>" + 
+                                                "<a href='tel:"+ _dataParser.getPhone() +" itemprop='telephone'>"+ _dataParser.getPhone() +"</a>" +
+                                            "</dd>" + 
+
+                                            "<dt>Address</dt>" + 
+                                            "<dd class='address' itemprop='address' itemscope itemtype='http://schema.org/PostalAddress'>" +
+                                                "<meta class='none' itemprop='streetAddress' content='" + _dataParser.getAddressLine1() + " " + _dataParser.getAddressLine2() + "'>" + // added for schema.org microcontent
+                                                "<span>" + _dataParser.getAddressLine1() + " - <a href='"+ _dataParser.getMapUrl() +"'>map</a></span>" + 
+                                                (_dataParser.getAddressLine2() ? "<span>" + _dataParser.getAddressLine2() + "</span>" : "") + 
+                                                "<span class='city' itemprop='addressLocality'>"+ _dataParser.getCity() +"</span>, " + 
+                                                "<span class='state' itemprop='addressRegion '>"+ _dataParser.getState() +"</span>" + 
+                                                "<span itemprop='postalCode'>"+ _dataParser.getZip() +"</span>" + 
+                                            "</dd>" +
+
+                                            "<dt>Chats</dt>" +
+                                            "<dd><a href='"+ _dataParser.getChatsUrl() +"'>Chats</a></dd>" + 
+
+                                            "<dt>Emails</dt>" + 
+                                            "<dd><a href='"+ _dataParser.getEmailsUrl() +"'>Emails</a></dd>" + 
+                                        "</dl>" + 
+                                    "</dd>" + 
+                                "</dl>" + 
+                             "</li>"
                 
                 return _encodeSpecialCharactersFlag ? encodeSpecialCharacters(markup + "\n") : markup;    
             },

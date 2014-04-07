@@ -3,9 +3,13 @@ body {
     font-family: helvetica;
     font-size: 14px;
 }
-dl, dt, dd, h1, ul {
+dl, dt, dd, h1, li, ul {
     margin: 0;
     padding: 0;
+}
+li {
+    position:relative;
+    
 }
 /* todo - on mouse over - gray out background */
 /* candy coating */
@@ -54,12 +58,12 @@ dl, dt, dd, h1, ul {
 .contacts .address .state {
     display: inline;
 }
-.contacts > dl {
+.contacts .singleContact {
     position: relative;
     padding-bottom: 2px
 }
-.contacts > dl > dt,
-.contacts > dl > dd {
+.contacts .singleContact > dt,
+.contacts .singleContact > dd {
     display: inline-block;
 }
 .contacts .details {
@@ -75,6 +79,7 @@ dl, dt, dd, h1, ul {
 .contacts .details dd {
     height: 0;
     overflow: hidden;
+    padding-bottom: 5px;
     visibility: hidden;
     width: 0;
 }
@@ -88,8 +93,7 @@ dl, dt, dd, h1, ul {
 }
 .contacts .details .show,
 .contacts .pinned .details dd,
-.allowHover > dl:hover .details dd,
-.suppressHover > dl.pinned:hover .details dd {
+.allowHover .singleContact:hover .details dd {
     height: auto;
     position: inherit;
     visibility: visible;
@@ -102,7 +106,7 @@ dl, dt, dd, h1, ul {
 }
 .contacts > dl .details {
     border-bottom: transparent solid 1px; 
-    border-top: transparent solid 0px; 
+    border-top: transparent solid 0; 
 }
 .allowHover > dl:hover,
 .contacts > .pinned{
@@ -148,7 +152,7 @@ dl, dt, dd, h1, ul {
     content:"";
     background: #f2f2f2 ;
     position: absolute;
-    top: 0px;
+    top: 0;
     left: -2px;
     height: 18px;
     width: 3px;
