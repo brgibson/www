@@ -1,10 +1,12 @@
 ## Solution
 
-### Things to note
+### Summary
 
 I believe I have good documentation in my code, but I will quickly summarize the files here and mention any
 decisions that I think are noteworthy.  When you are ready to view the solution, please look at the 
 `contacts.html` file.
+
+#### Things to note
 
 As i started development I wanted a way to generate the markup based on the contact entries from the data file
 you provided me with.  This was important to me, because I didn't want to do a bunch of find/replace logic in
@@ -34,7 +36,7 @@ Two quick helper functions I wrote to deal with adding and removing selectors
 - appendSelector.js
 - removeSelector.js 
 
-### Code design decisions
+#### Code design decisions
 
 Even though it would probably not be necessary for a contacts widget, I added schema.org microdata for each
 entry because it is important for any customer facing website to use microdata.
@@ -44,7 +46,7 @@ think it was necessary to add extra css or javascript to support for feature.
 
 For IE7, I decided not to spend time adding hacks in the css in favor of adding a click event handler to support touch devices
 
-### Things I would do differently
+#### Things I would do differently
 
 While trying to be clever, I believe I unintentionally started the great specificity war of 2014.  Initially I 
 thought it would be good to specify my styles in terms of html elements (so I could save some markup on selectors)
