@@ -11,7 +11,7 @@ decisions that I think are noteworthy.  When you are ready to view the solution,
 As i started development I wanted a way to generate the markup based on the contact entries from the data file
 you provided me with.  This was important to me, because I didn't want to do a bunch of find/replace logic in
 my editor each time I wanted to refactor my HTML, which is what would have happened had I hardcoded my markup
-in the 'contacts.html' file.  
+in the `contacts.html` file.  
 
 While this was quite a bit of work upfront, it saved me enormous amounts of time
 in the long run by allowing me to iterate quickly on my markup as I thought of more semantic ways to build it.
