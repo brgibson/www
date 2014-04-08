@@ -19,12 +19,10 @@ The js also supports returning the contacts as JSON, which I was planning to use
 did not have time to implement (although I think it would only take an hour or two more to implement now that
 the framework is built out).
 - `convertTabularContactData.js` 
--- the file that creates the markup for the contacts list. a single update here will update all of the contacts.
--- also supports returning the contacts as JSON, which I was planning to use to create a search box, but I did 
+..* the file that creates the markup for the contacts list. a single update here will update all of the contacts.
+..* also supports returning the contacts as JSON, which I was planning to use to create a search box, but I did 
    not have time to implement (although I think it would only take an hour or two more to implement now that 
    the framework is built out).
-
-
 - `formatContactData.html` - a test page I used while I was building the convertTabularContactData.js
 - `tabularContactData.js` - a javascript file containing a string version of table rows of the original contact 
 data you provided me with
