@@ -1,7 +1,7 @@
 /* resets */
 body {
     font-family: helvetica;
-    font-size: 24px;
+    font-size: 16px;
 }
 dl, dt, dd, h1, li, ul {
     margin: 0;
@@ -78,7 +78,7 @@ li {
 }
 .contacts img {
     background-color: transparent;
-    width: 5em;
+    width: 4.5em;
 }
 .contacts .details dd {
     height: 0;
@@ -173,12 +173,12 @@ li {
 .phoneFirst .pinned .details .email,
 .allowHover.phoneFirst .singleContact:hover .details .email {
     position: relative;
-    top: 1.5em; /* two more than the font-size */
+    top: 1.4em; /* two more than the font-size */
 }
 .phoneFirst .pinned .details .phone,
 .allowHover.phoneFirst .singleContact:hover .details .phone {
     position: relative;
-    top: -1.5em; /* two more than the font-size */
+    top: -1.4em; /* two more than the font-size */
 }
 .pinState .singleContact,
 .contacts:hover .singleContact,
