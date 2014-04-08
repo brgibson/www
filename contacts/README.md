@@ -23,7 +23,7 @@ the framework is built out).
     - Also supports returning the contacts as JSON, which I was planning to use to create a search box, but I did 
       not have time to implement (although I think it would only take an hour or two more to implement now that 
       the framework is built out).
-- `formatContactData.html` - A test page I used while I was building the convertTabularContactData.js.
+- `formatContactData.html` - A test page I used while I was building the `convertTabularContactData.js.`
 - `tabularContactData.js` - Containins a string version of table rows of the original contact data.
 
 To add the event handlers to the contacts list, I originally had one big anonymous function in contacts.html so 
