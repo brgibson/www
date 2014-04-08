@@ -60,7 +60,7 @@ possible and depend on classnames instead of the html markup for my styling.
 
 Also, if this were not in a challenge setting, I would have reached out to my co-workers with a couple of css questions.
 For example, I'm wondering if there is a better and more maintainable way to partially hide the top-left border for the
-contact details (so when the contact is expanded, it appears that the name flows into the full contact details. I 
+contact details (so when the contact is expanded, it appears that the name flows into the full contact details). I 
 implemented this with the :after pseudo-selector, but I'm curious if there is a better solution.
 
 ## Challenge Description
