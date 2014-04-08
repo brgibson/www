@@ -1,13 +1,14 @@
 /**
  * Attaches the click handlers for pinning a contact's details open.
  * 
- * @param {HTMLElement} contactsContainer - the container that contains the list of contacts
+ * @param {HTMLElement} contactsContainer - the container DOM element for the list of contacts
  */
 var attachClickHandlers = function(contactsContainer) {
     var allowHoverSelector = "allowHover",
         pinStateSelector = "pinState",
         pinnedSelector = "pinned",
         pinnedElement = null;
+    
     var clickEventHandler = function(elem) {
         if (this.tagName.toLowerCase() == "body" || this.parentNode == pinnedElement) {
             removeSelector(pinnedElement, pinnedSelector);
@@ -27,8 +28,9 @@ var attachClickHandlers = function(contactsContainer) {
     };
 
     //attach the event handler to the elements of the contacts list
-    var dtElements = contactsContainer.getElementsByTagName("dt");
-    for (var i = 0; i < dtElements.length; i++) {
+    for (var dtElements = contactsContainer.getElementsByTagName("dt"),
+             i = 0; i < dtElements.length; i++) {
+        
         switch (dtElements[i].getAttribute("data-type")) {
             case "name": dtElements[i].onclick = clickEventHandler; break;
         }
@@ -41,7 +43,7 @@ var attachClickHandlers = function(contactsContainer) {
     contactsContainer.onclick = function() {
         if (event.stopPropogation) {
             event.stopPropagation();
-        } else {
+        } else { // for IE
             window.event.cancelBubble = true;
         }
     };

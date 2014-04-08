@@ -8,6 +8,6 @@
  */
 var appendSelector = function(elem, selector) {
     if (elem && selector && elem.className.indexOf(selector) == -1) {
-        elem.className += " " + pinnedSelector;
+        elem.className += " " + selector + " ";
     }    
 }

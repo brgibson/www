@@ -8,6 +8,6 @@
  */
 var removeSelector = function(elem, selector) {
     if (elem && selector) {
-        elem.className += elem.className.replace(" " + selector, "");
+        elem.className = elem.className.replace(" " + selector + " ", "");
     }    
 }

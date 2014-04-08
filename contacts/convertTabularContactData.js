@@ -149,11 +149,10 @@ var convertTabularContactData = (function() {
                                                 "<span itemprop='postalCode'>"+ _dataParser.getZip() +"</span>" + 
                                             "</dd>" +
 
-                                            "<dt>Chats</dt>" +
-                                            "<dd><a href='"+ _dataParser.getChatsUrl() +"'>Chats</a></dd>" + 
-
-                                            "<dt>Emails</dt>" + 
-                                            "<dd><a href='"+ _dataParser.getEmailsUrl() +"'>Emails</a></dd>" + 
+                                            "<dt>Chats and Email</dt>" +
+                                            "<dd><a href='"+ _dataParser.getChatsUrl() +"'>Chats</a> - " + 
+                                                "<a href='"+ _dataParser.getEmailsUrl() +"'>Emails</a>" + 
+                                            "</dd>" + 
                                         "</dl>" + 
                                     "</dd>" + 
                                 "</dl>" + 
