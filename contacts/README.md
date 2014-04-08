@@ -3,7 +3,8 @@
 ### Things to note
 
 I believe I have good documentation in my code, but I will quickly summarize the files here and mention any
-decisions that I think are noteworthy.  The `contacts.html` file to look at for the display 
+decisions that I think are noteworthy.  When you are ready to view the solution, please look at the 
+`contacts.html` file.
 
 As i started development I wanted a way to generate the markup based on the contact entries from the data file
 you provided me with.  This was important to me, because I didn't want to do a bunch of find/replace logic in
