@@ -31,6 +31,7 @@ and readability, it seemed like a good trade-off for having a few one-time-use f
 scope page.
 - `attachClickHandlers.js` - attaches the click handler to support seeing the contact details on touch devices
 - `buildDefaultDisplayEventHandler.js` - returns the event handler for the email/phone default display select list
+- `getEmailAndPhoneElements.js` - gets the email and phone dom elements from the contact list
 
 Two quick helper functions I wrote to deal with adding and removing selectors
 - `appendSelector.js`
