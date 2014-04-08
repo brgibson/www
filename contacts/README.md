@@ -38,7 +38,7 @@ Two quick helper functions I wrote to deal with adding and removing selectors
 
 #### Code design decisions
 
-Even though it would probably not be necessary for a contacts widget, I added [http://schema.org/](schema.org microdata)
+Even though it would probably not be necessary for a contacts widget, I added [schema.org microdata](http://schema.org/)
 for each entry because it is important for any customer facing website to use microdata.
 
 For EI8, there is no graying out the other contacts on click or hover.  Since it still looked ok, I didn't
