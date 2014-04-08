@@ -19,22 +19,21 @@ The js also supports returning the contacts as JSON, which I was planning to use
 did not have time to implement (although I think it would only take an hour or two more to implement now that
 the framework is built out).
 - `convertTabularContactData.js` 
-    - the file that creates the markup for the contacts list. a single update here will update all of the contacts.
-    - also supports returning the contacts as JSON, which I was planning to use to create a search box, but I did 
+    - The file that creates the markup for the contacts list. A single update here will update all of the contacts.
+    - Also supports returning the contacts as JSON, which I was planning to use to create a search box, but I did 
       not have time to implement (although I think it would only take an hour or two more to implement now that 
       the framework is built out).
-- `formatContactData.html` - a test page I used while I was building the convertTabularContactData.js
-- `tabularContactData.js` - a javascript file containing a string version of table rows of the original contact 
-data you provided me with
+- `formatContactData.html` - A test page I used while I was building the convertTabularContactData.js.
+- `tabularContactData.js` - Containins a string version of table rows of the original contact data.
 
 To add the event handlers to the contacts list, I originally had one big anonymous function in contacts.html so 
 that I would avoid having extra variables hanging around in my global scope, but I decided it was better for 
 refactor these out into their own .js files for easier maintainability.  Because of the benefits of maintainability
 and readability, it seemed like a good trade-off for having a few one-time-use functions floating around my global
 scope page.
-- `attachClickHandlers.js` - attaches the click handler to support seeing the contact details on touch devices
-- `buildDefaultDisplayEventHandler.js` - returns the event handler for the email/phone default display select list
-- `getEmailAndPhoneElements.js` - gets the email and phone dom elements from the contact list
+- `attachClickHandlers.js` - Attaches the click handler to support seeing the contact details on touch devices.
+- `buildDefaultDisplayEventHandler.js` - Returns the event handler for the email/phone default display select list.
+- `getEmailAndPhoneElements.js` - Gets the email and phone dom elements from the contact list.
 
 Two quick helper functions I wrote to deal with adding and removing selectors
 - `appendSelector.js`
