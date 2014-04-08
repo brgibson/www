@@ -9,10 +9,8 @@ dl, dt, dd, h1, li, ul {
 }
 li {
     position: relative;
-    list-style-type: none; /* todo - need a fix for this in IE7/8 */
+    list-style-type: none;
 }
-/* todo - on mouse over - gray out background */
-/* candy coating */
 .widgetContainer {
     border: #5f86be solid 1px; 
     border-radius: 10px;
