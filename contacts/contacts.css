@@ -1,7 +1,7 @@
 /* resets */
 body {
     font-family: helvetica;
-    font-size: 14px;
+    font-size: 24px;
 }
 dl, dt, dd, h1, li, ul {
     margin: 0;
@@ -12,40 +12,42 @@ li {
     list-style-type: none;
 }
 .widgetContainer {
-    border: #5f86be solid 1px; 
-    border-radius: 10px;
-    width: 361px;
+    border-color: #5f86be;
+    border-style: solid;
+    border-width: .071em; 
+    border-radius: .714em;
+    width: 25.785em;
 }
 .widgetContainer dl {
-    padding: 0 10px;
+    padding: 0 .744em;
 }
 .widgetContainer h1 {
     background-color: #e0edfe; /* fallback */
     background-image: linear-gradient(to left, #e0edfe, #edf2fa);
-    font-size: 17px;
-    margin-bottom: 10px;
-    padding: 5px 10px;
+    font-size: 1.214em;
+    margin-bottom: .714em;
+    padding: .357em .714em;
 }
 .widgetContainer {
-    border-radius: 10px;
+    border-radius: .714em;
 }
 .widgetContainer h1 {
-    border-radius: 10px 10px 0 0;
+    border-radius: .714em .714em 0 0;
 }
 .widgetContainer div {
-    border-radius: 0 0 10px 10px;
+    border-radius: 0 0 .714em .714em;
 }
 .widgetContainer .dropdown {
     background-color: #e0edfe; /* fallback */
     background-image: linear-gradient(to top, #e0edfe, #ffffff);
-    margin-top: 10px;
+    margin-top: .714em;
     overflow: auto;
 	width: 100%
 }
 .widgetContainer select {
     float: right;
-    font-size: 16px;
-    margin: 6px;
+    font-size: 1.143em;
+    margin: .428em;
 }
 .contacts .address span {
     display: block;
@@ -56,21 +58,27 @@ li {
 }
 .contacts .singleContact {
     position: relative;
-    padding-bottom: 2px
+    padding-bottom: .142em;
 }
 .contacts .singleContact > dt,
 .contacts .singleContact > dd {
     display: inline-block;
 }
 .contacts .details {
-    min-width: 201px;
+    min-width: 14.357em;
     position: absolute;
-    padding-right: 60px; /* space for the images */
+    padding-right: 4.33em; /* space for the images */
     z-index: 1;
 }
 .contacts .details .image {
+    background-color: transparent;
     float: right;
-    margin-right: -60px;
+    margin-right: -4.286em;
+    margin-top: .4em;
+}
+.contacts img {
+    background-color: transparent;
+    width: 5em;
 }
 .contacts .details dd {
     height: 0;
@@ -90,7 +98,7 @@ li {
 .contacts .pinned .details dd,
 .allowHover .singleContact:hover .details dd {
     height: auto;
-    padding-bottom: 5px;
+    padding-bottom: .357em;
     position: inherit;
     visibility: visible;
     white-space: nowrap;
@@ -100,27 +108,27 @@ li {
     cursor: pointer;
 }
 .contacts .singleContact {
-    border-bottom: transparent solid 1px; 
-    border-top: transparent solid 1px; 
+    border-bottom: transparent solid .071em; 
+    border-top: transparent solid .071em; 
 }
 .contacts .singleContact .details {
-    border-bottom: transparent solid 1px; 
+    border-bottom: transparent solid .071em; 
     border-top: transparent solid 0; 
 }
 .allowHover .singleContact:hover,
 .contacts .pinned{
-    border-top: #5f86be solid 1px; 
+    border-top: #5f86be solid .071em; 
 }
 .allowHover .singleContact:hover .details,
 .contacts .pinned .details {
-    border-left: #5f86be solid 1px;
-    margin-left: -1px; /* so that the email doesn't move when the border is added*/
+    border-left: #5f86be solid .071em;
+    margin-left: -.071em; /* so that the email doesn't move when the border is added*/
 }
 .contacts .pinned,
 .contacts .pinned .details,
 .allowHover .singleContact:hover,
 .allowHover .singleContact:hover .details {
-    border-bottom: #5f86be solid 1px;
+    border-bottom: #5f86be solid .071em;
 }
 .allowHover .singleContact:hover,
 .allowHover .singleContact:hover .details,
@@ -128,7 +136,7 @@ li {
 .contacts .pinned .details{
     background-color: #f2f2f2; /* a slightly different color for the un-pinned hover state */
     z-index: 2;
-    border-right: #5f86be solid 1px;
+    border-right: #5f86be solid .071em;
 }
 .contacts .pinned,
 .contacts .pinned .details,
@@ -138,10 +146,10 @@ li {
     z-index: 2;
 }
 .contacts .name {
-    width: 100px;
+    width: 7.143em;
 }
 .contacts .details {
-    left: 100px;
+    left: 7.143em;
     top:0;
 }
 .allowHover dl:hover .details dl:after,
@@ -150,9 +158,13 @@ li {
     background: #f2f2f2 ;
     position: absolute;
     top: 0;
-    left: -2px;
-    height: 18px;
-    width: 3px;
+    left: -.143em;
+    height: 1.3em;
+    width: .214em;
+}
+.allowHover dl:hover .details .hasAddressLine2:after,
+.contacts .pinned .details .hasAddressLine2:after {
+    height: 1.285em;
 }
 .contacts .pinned .details dl:after,
 .contacts .pinned:hover .details dl:after {
@@ -161,12 +173,12 @@ li {
 .phoneFirst .pinned .details .email,
 .allowHover.phoneFirst .singleContact:hover .details .email {
     position: relative;
-    top: 21px; /* two more than the font-size */
+    top: 1.5em; /* two more than the font-size */
 }
 .phoneFirst .pinned .details .phone,
 .allowHover.phoneFirst .singleContact:hover .details .phone {
     position: relative;
-    top: -21px; /* two more than the font-size */
+    top: -1.5em; /* two more than the font-size */
 }
 .pinState .singleContact,
 .contacts:hover .singleContact,

@@ -121,11 +121,13 @@ var convertTabularContactData = (function() {
                 _encodeSpecialCharactersFlag = encodeSpecialCharactersFlag;
             },
             getMarkup : function() { 
-                var markup = "<li>" +
+                
+                var hasLine2 = _dataParser.getAddressLine2() != "</td>",
+                    markup = "<li>" +
                                 "<dl class='singleContact' itemscope itemtype='http://schema.org/Person'>" + 
                                     "<dt class='name' data-type='name' itemprop='name'>"+ _dataParser.getName() +"</dt>" + 
                                     "<dd class='details'>" + //wrapping the details in one term so styling can be easily applied
-                                        "<dl>" +
+                                        "<dl class='"+ (hasLine2 ? "hasAddressLine2" : "") +"'>" + //this selector is needed for sizing the :after div needed to hide part of the border left
                                             "<dt>Photo</dt>" +
                                             "<dd class='image'><img src='./images/"+ _dataParser.getName().toLowerCase() +".gif' itemprop='image'></dd>" +                     
 
@@ -143,7 +145,7 @@ var convertTabularContactData = (function() {
                                             "<dd class='address' itemprop='address' itemscope itemtype='http://schema.org/PostalAddress'>" +
                                                 "<meta class='none' itemprop='streetAddress' content='" + _dataParser.getAddressLine1() + " " + _dataParser.getAddressLine2() + "'>" + // added for schema.org microcontent
                                                 "<span>" + _dataParser.getAddressLine1() + " - <a href='"+ _dataParser.getMapUrl() +"'>map</a></span>" + 
-                                                (_dataParser.getAddressLine2() ? "<span>" + _dataParser.getAddressLine2() + "</span>" : "") + 
+                                    (hasLine2 ? "<span>" + _dataParser.getAddressLine2() + "</span>" : "") + 
                                                 "<span class='city' itemprop='addressLocality'>"+ _dataParser.getCity() +"</span>, " + 
                                                 "<span class='state' itemprop='addressRegion '>"+ _dataParser.getState() +"</span>" + 
                                                 "<span itemprop='postalCode'>"+ _dataParser.getZip() +"</span>" + 
