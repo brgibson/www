@@ -3,18 +3,18 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>Ben's Experiments - Slider</title>
-		<link rel="stylesheet" href="../fontawesome/fontawesome.css" />
-		<link rel="stylesheet" href="../base.css"/>
-		<link rel="stylesheet" href="./slider.css"/>
-		<script src="board.js"></script>
-		<script src="boards.js"></script>
+		<link rel="stylesheet" href="/fontawesome/fontawesome.css" />
+		<link rel="stylesheet" href="/base.css"/>
+		<link rel="stylesheet" href="/slider/slider.css"/>
+		<script src="/slider/board.js"></script>
+		<script src="/slider/boards.js"></script>
 		<script type="text/javascript">
 
 			/* todo - add local storage */
 			var boardnum = function() {
 				var s = 0;
 
-				//	var url = "brgibson.com/slider/slider.html?board=100"
+				//	var url = "brgibson.com/slider/board/100"
 				var url = window.location.href;
 				var index = url.search("board=");
 				if (index != -1) {
@@ -37,7 +37,7 @@
 
 					board.read(readstr);
 					board.writeBoard();
-					history.replaceState(null, "Board " + boardnum, "./slider.html?board=" + boardnum);
+					history.replaceState(null, "Board " + boardnum, "/slider/?board=" + boardnum);
 
 					//fade out the next win-overlay		
 					document.getElementById('win-overlay').style.opacity = 0;
