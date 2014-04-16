@@ -150,11 +150,13 @@ hr {
 .experiments a {
 	display: block;
 	padding: 1em;
-	padding-top: 5em;
 	color: white;
 	border: solid lightgreen; 
 	border-radius: .6em;
 	text-decoration: none;
+}
+.experiments .icon {
+	padding-top: 5em;
 }
 
 /* experiments icons */
