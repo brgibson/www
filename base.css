@@ -105,15 +105,13 @@ hr {
 	text-align: center;
 	margin-top: 2em;
 }
-.about ul {
+.about .links ul {
 	padding-left: 0;
+    text-align: center;
 }
-.about li {
+.about .links li {
 	display: inline-block;
 	padding: 0 .5em;
-}
-.about ul {
-	text-align: center;
 }
 .about a {
 	display: inline-block;
