@@ -215,46 +215,28 @@ hr {
 	color: lightgreen;
 }
 
-/* music library and shows pages */
-.music-library .quick-links,
+/* shows attended */
 .shows .quick-links {
 	text-align: center;
 }
-.music-library .quick-links ol,
 .shows .quick-links ol {
 	padding: 0;
 }
-.music-library .quick-links li,
 .shows .quick-links li {
 	display: inline;
 }
-.music-library .content ol,
 .shows .content ol {
 	border-bottom: lightgreen solid;
 	padding-bottom: 2em;
 	white-space: nowrap;
 	overflow: hidden;
 }
-.music-library .content li,
 .shows .content li {
 	display: block;
 }
-.music-library h1, 
 .shows h1 {
 	padding-top: 0;
 	border-bottom: solid lightgreen;
-}
-.music-library .title-container {
-	text-align: center;
-}
-.music-library h2 {
-	display: inline;
-}
-.music-library .content a {
-	float: right;
-}
-.music-library r { /* html tag represeting artist */
-	padding-right: 2em;
 }
 
 /* movies */
