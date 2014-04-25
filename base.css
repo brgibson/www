@@ -244,19 +244,25 @@ hr {
 	text-align: center;
 }
 .movieviewer iframe {
-	width: 13.5em;
 	height: 12em;
 	padding: .3em;
+    width: 13.5em;
 }
 
 /* music */
 .musicviewer {
 	text-align: center;
 }
+.musicviewer div {
+    display: inline-block;
+    text-align: center;
+    width: 21em;
+}
 .musicviewer iframe {
-	width: 20em;
+	border: 0 none;
 	height: 18em;
 	padding: 1em;
+    width: 20em;
 }
 
 /* media query section */
