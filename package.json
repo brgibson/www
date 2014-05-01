@@ -1,0 +1,22 @@
+{
+  "name": "www",
+  "version": "0.0.0",
+  "description": "brgibson.com",
+  "main": "web.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@heroku.com:brgibson-www.git"
+  },
+  "keywords": [
+    "brgibson",
+    "www"
+  ],
+  "author": "brgibson",
+  "license": "ISC"
+}
