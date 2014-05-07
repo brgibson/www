@@ -31,59 +31,6 @@ hr {
     transition: none !important;
 }
 
-/* Grid System */ /* todo- try a grid with inline-block instead of floating? */
-.row {
-    display: block;
-    clear:both;
-}
-.c1 {
-    float: left;
-    width: 8.33%;
-}
-.c2 {
-    float: left;
-    width: 16.66%;
-}
-.c3 {
-    float: left;
-    width: 25%;
-}
-.c4 {
-    float: left;
-    width: 33.33%;
-}
-.c5 {
-    float: left;
-    width: 41.66%;
-}
-.c6 {
-    float: left;
-    width: 50%;
-}
-.c7 {
-    float: left;
-    width: 58.33%;
-}
-.c8 {
-    float: left;
-    width: 66.66%;
-}
-.c9 {
-    float: left;
-    width: 75%;
-}
-.c10 {
-    float: left;
-    width: 83.33%;
-}
-.c11 {
-    float: left;
-    width: 91.66%;
-}
-.c12 {
-    display: block;
-}
-
 /* begin css */
 
 /* games */
@@ -167,17 +114,4 @@ hr {
     width: 20em;
     height: 18em;
     padding: 1em;
-}
-
-/* media query section */
-@media screen and (orientation:portrait) {
-    body {
-        font-size: 25pt;
-    }
-    .beaker {
-        display: none;
-    }
-    .c6 {
-        width: 100%;
-    }
 }
