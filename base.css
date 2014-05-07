@@ -1,279 +1,183 @@
 /* resets */
 h1, h2, h3, h4 ,h5, h6, p {
-	margin: 0;
-	padding: .5em 1em;
+    margin: 0;
+    padding: .5em 1em;
+    color: black;
 }
 h1 {
-	text-align: center;
+    text-align: center;
 }
 body {
-	background-color: #000000;
-	color: #ffffff;
-	font-family: Futura, Gill Sans, Helvetica;
-	font-size: 16pt;
+    background-color: white;
+    color: black;
+    font-family: Futura, Gill Sans, Helvetica;
+    font-size: 16pt;
 }
 a {
-	color: lightgreen;
-}
-a:visited {
-	color: green;
+    color: black;
 }
 hr {
-	color: lightgreen;
+    color: lightgray;
 }
 
 /* Re-usable */
 .hidden {
-	visibility: hidden;
+    visibility: hidden;
 }
 .no-transition {
-	-moz-transition: none !important;
-	-o-transition: none !important;
-	-webkit-transition: none !important;
-	transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    -webkit-transition: none !important;
+    transition: none !important;
 }
 
 /* Grid System */ /* todo- try a grid with inline-block instead of floating? */
 .row {
-	display: block;
-	clear:both;
+    display: block;
+    clear:both;
 }
 .c1 {
-	float: left;
-	width: 8.33%;
+    float: left;
+    width: 8.33%;
 }
 .c2 {
-	float: left;
-	width: 16.66%;
+    float: left;
+    width: 16.66%;
 }
 .c3 {
-	float: left;
-	width: 25%;
+    float: left;
+    width: 25%;
 }
 .c4 {
-	float: left;
-	width: 33.33%;
+    float: left;
+    width: 33.33%;
 }
 .c5 {
-	float: left;
-	width: 41.66%;
+    float: left;
+    width: 41.66%;
 }
 .c6 {
-	float: left;
-	width: 50%;
+    float: left;
+    width: 50%;
 }
 .c7 {
-	float: left;
-	width: 58.33%;
+    float: left;
+    width: 58.33%;
 }
 .c8 {
-	float: left;
-	width: 66.66%;
+    float: left;
+    width: 66.66%;
 }
 .c9 {
-	float: left;
-	width: 75%;	
+    float: left;
+    width: 75%;
 }
 .c10 {
-	float: left;
-	width: 83.33%;
+    float: left;
+    width: 83.33%;
 }
 .c11 {
-	float: left;
-	width: 91.66%;
+    float: left;
+    width: 91.66%;
 }
 .c12 {
-	display: block;
+    display: block;
 }
 
 /* begin css */
 
-/* beaker gutter */
-.left .beaker {
-    float: left;
-}
-.right .beaker {
-    float: right;
-}
-.beaker {
-	height: 100%;
-	width: 100%;
-}
-
-/* about section */
-.about .photos {
-	text-align: center;
-	margin-top: 2em;
-}
-.about .links ul {
-	padding-left: 0;
-    text-align: center;
-}
-.about .links li {
-	display: inline-block;
-	padding: 0 .5em;
-}
-.about a {
-	display: inline-block;
-	padding: 1em;
-	color: white;
-	border: solid lightgreen; 
-	border-radius: .6em;
-	text-decoration: none;
-}
-
-/* experiments section */
-.experiments {
-	text-align: center;
-}
-.experiments ul {
-	padding: 0;
-}
-.experiments dl {
-	display: inline;
-}
-.experiments .outer-item {
-	display: inline;
-	margin: 0;
-}
-.experiments li,
-.experiments dt,
-.experiments dd {
-	display: inline-block;
-	padding: 0;
-	margin: 1em;
-	width: 8em;
-	text-align: center;
-}
-.experiments a {
-	display: block;
-	padding: 1em;
-	color: white;
-	border: solid lightgreen; 
-	border-radius: .6em;
-	text-decoration: none;
-}
-.experiments .icon {
-	padding-top: 5em;
-}
-
-/* experiments icons */
-.experiments a {
-	position:relative;
-}
-.experiments a:before {
-	position:absolute;
-	width:6em;
-	height:4.5em;
-	content:'';
-	top:.5em;
-	right:.8em;
-}
-.experiments .slider:before {
-	background: url('./icons.jpg') -19em -16em;
-	background-size: 40em;
-}
-.experiments .sudoku:before {
-	background: url('./icons.jpg') -12.2em -11.4em;
-	background-size: 40em;
-}
-.experiments .games:before {
-	background: url('./icons.jpg') -9em -3.9em;
-	background-size: 32em;
-}
-.experiments .movies:before {
-	background: url('./icons.jpg') -31.8em -16.7em;
-	background-size: 40em;
-}
-.experiments .music:before {
-	background: url('./icons.jpg') -25.4em -14.6em;
-	background-size: 40em;
-}
-.experiments .photos:before {
-	background: url('./icons.jpg') -27.4em -8.9em;
-	background-size: 40em;
-}
-
 /* games */
 .games a.wrapper {
-	display: block;
-	text-decoration: none;
-	border: solid lightgreen; 
-	border-radius: .6em;
-	color: white;
+    display: block;
+    text-decoration: none;
+    border: solid lightgray;
+    border-radius: .6em;
+
 }
 .games a.wrapper:visited {
-	color: white;
+    color: gray;
 }
 .games a {
-	margin: 1em;
+    margin: 1em;
 }
 .games p {
-	padding: .5em 1em;
+    padding: .5em 1em;
 }
 .games h2 {
-	color: lightgreen;
+    color: lightgray;
 }
 
-/* shows attended */
+/* music library and shows pages */
+.music-library .quick-links,
 .shows .quick-links {
-	text-align: center;
+    text-align: center;
 }
+.music-library .quick-links ol,
 .shows .quick-links ol {
-	padding: 0;
+    padding: 0;
 }
+.music-library .quick-links li,
 .shows .quick-links li {
-	display: inline;
+    display: inline;
 }
+.music-library .content ol,
 .shows .content ol {
-	border-bottom: lightgreen solid;
-	padding-bottom: 2em;
-	white-space: nowrap;
-	overflow: hidden;
+    border-bottom: lightgray solid;
+    padding-bottom: 2em;
+    white-space: nowrap;
+    overflow: hidden;
 }
+.music-library .content li,
 .shows .content li {
-	display: block;
+    display: block;
 }
+.music-library h1,
 .shows h1 {
-	padding-top: 0;
-	border-bottom: solid lightgreen;
+    padding-top: 0;
+    border-bottom: solid lightgray;
+}
+.music-library .title-container {
+    text-align: center;
+}
+.music-library h2 {
+    display: inline;
+}
+.music-library .content a {
+    float: right;
+}
+.music-library r { /* html tag represeting artist */
+    padding-right: 2em;
 }
 
 /* movies */
 .movieviewer {
-	text-align: center;
+    text-align: center;
 }
 .movieviewer iframe {
-	height: 12em;
-	padding: .3em;
     width: 13.5em;
+    height: 12em;
+    padding: .3em;
 }
 
 /* music */
 .musicviewer {
-	text-align: center;
-}
-.musicviewer div {
-    display: inline-block;
     text-align: center;
-    width: 21em;
 }
 .musicviewer iframe {
-	border: 0 none;
-	height: 18em;
-	padding: 1em;
     width: 20em;
+    height: 18em;
+    padding: 1em;
 }
 
 /* media query section */
 @media screen and (orientation:portrait) {
-	body {
-		font-size: 25pt;
-	}
-	.beaker {
-		display: none;
-	}
-	.c6 {
-		width: 100%;
-	}
+    body {
+        font-size: 25pt;
+    }
+    .beaker {
+        display: none;
+    }
+    .c6 {
+        width: 100%;
+    }
 }

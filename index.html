@@ -5,82 +5,90 @@
         <meta charset="UTF-8"/>
         <title>Ben's Experiments</title>
         <link rel="stylesheet" href="/base.css" />
-        <link rel="stylesheet" href="/drawingtest/svg.css" />
+        <style>
+            .experiments section {
+                border: 2px red solid;
+            }
+            
+            .experiments {
+                text-align: center;
+                padding: 0;
+                margin: 0;
+                background-image: url('/photos/buenosaires/DSCN3369.png');
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+            .experiments h1 {
+                font-size: 1.5em;
+                font-weight: normal;
+            }
+            .experiments a {
+                display: inline-block;
+                padding: 1em;
+                border: solid lightgray;
+                border-radius: .6em;
+                text-decoration: none;
+            }
+            .experiments a:hover {
+                border: solid #888888;
+            }
+            .experiments ul {
+                display: inline-block;
+                padding: 0;
+                margin: 0;
+            }
+            .experiments li {
+                display: inline-block;
+            }
+        </style>
     </head>
 
-    <body>
 
-        <div class="row main">
 
-            <div class="c3 right">
-                <object type="image/svg+xml" data="/drawingtest/beaker.svg" class="beaker">
-                    A volumetric flask bubbles over with color changing liquid.  You could find this glasswear in the laboratory of a mad scientist.
-                </object>
-            </div>
+    <body class="experiments">
 
-            <div class="c6">
+        <section>
+            <h1>Ben's Experiments</h1>
 
-                <div class="row">		
-                    <div class="c12 experiments">
-                        <h1>Ben's Experiments</h1>
+            <ul class="experiment-links">
+                <li><a href="./sudoku/">Sudoku</a></li>
+                <li><a href="./slider/">Slider</a></li>
+                <li><a href="./music/">Music</a></li>
+                <li><a href="./photos/">Photos</a></li>
+                <li><a href="./movies/">Movies</a></li>
+            </ul>
+        </section>
+        
+        <section class="about">
+            <h1>About Ben</h1>
 
-                        <ul>
-                            <li class="outer-item">
-                                <dl>
-                                    <dd><a href="/sudoku" class="sudoku icon">Sudoku</a></dd>
-                                    <dd><a href="/slider" class="slider icon">Slider</a></dd>
-                                </dl>
-                            </li>
-                            <li><a href="/photos" class="photos icon">Photos</a></li>
-                            <li><a href="/movies" class="movies icon">Movies</a></li>
-                            <li><a href="/music"  class="music  icon">Music</a></li>
-                            <li><a href="/tennis">Tennis Standings</a></li>
-                            <li><a href="/contacts">Contacts List Challenge</a></li>
+            <p>
+                Ben is a software engineer at Orbitz Worldwide.
+                He lives with his wife in the Chicago area.
+            </p>
 
-                        </ul>
-                    </div>
-                </div>
+            <p>
+                He created this website for the following reasons:
+            </p>
 
-                <div class="row">
-                    <div class="c12 about">
-                        <h1>About Ben</h1>
-                        
-                        <p>Ben is a software engineer at Orbitz Worldwide.
-                           He lives with his wife in the Chicago area.
-                        </p>
-                        
-                        <p>
-                            He created this website for the following reasons:
-                        </p>
-                        
-                        <ul>
-                            <li>Needed a place to experiment with code outside of work</li>
-                            <li>Having a number of old projects to clean up and make public (there are still many more to come)</li>
-                            <li>Not doing as much UI as he would like</li>
-                        </ul>
-                        
-                        <p>None of the experiments on this site are what he would consider to be his best work, but he believes it is better to push
-                           with a minimum viable product that can be enhanced later in
-                           favor of waiting for perfection that might take years to acheive.  It's better to release small chunks of work and iterate
-                           as time allows.
-                        </p>
-                        
-                        <div class="links">
-                            <ul>
-                                <li><a href="/playlists">Favorite Music</a></li>
-                                <li><a href="/shows">Shows Attended</a></li>
-                            </ul>
-                        </div>
+            <ul>
+                <li>Needed a place to experiment with code outside of work</li>
+                <li>Having a number of old projects to clean up and make public (there are still many more to come)</li>
+                <li>Not doing as much UI as he would like</li>
+            </ul>
 
-                        <div class="photos">
-                            <img src="/photos/selfportrait1.png" alt="Ben's Headshot"/>
-                        </div>
-                    </div>
-                </div>
+            <p>
+                None of the experiments on this site are what he would consider to be his best work, but he believes it is better to push
+                with a minimum viable product that can be enhanced later in
+                favor of waiting for perfection that might take years to acheive.  It's better to release small chunks of work and iterate
+                as time allows.
+            </p>
 
-            </div> <!-- end c6 -->
+            <ul class="about-links">
+                <li><a href="/playlists">Favorite Music</a></li>
+                <li><a href="/shows">Shows Attended</a></li>
+            </ul>
+        </section>
 
-            <div class="c3 left"><embed class="beaker" src="/drawingtest/beaker.svg"></embed></div>
-    </div>
-</body>
+    </body>
 </html>
