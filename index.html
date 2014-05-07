@@ -6,39 +6,54 @@
         <title>Ben's Experiments</title>
         <link rel="stylesheet" href="/base.css" />
         <style>
-            .experiments section {
-                border: 2px red solid;
-            }
-            
-            .experiments {
+            html {
                 text-align: center;
                 padding: 0;
                 margin: 0;
                 background-image: url('/photos/buenosaires/DSCN3369.png');
-                background-size: cover;
                 background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                color: #341701;
+                width: 100%;
+                height: 100%;
+            }
+            .experiments {
+                background: transparent;
+                color: #341701;
+            }
+            .experiments section {
+                border-radius: 60em;
+                background-color: rgba(255, 234, 234, 0.4);
+                box-shadow: 0px 0px 10em 5em rgba(255, 234, 234, .4);
             }
             .experiments h1 {
-                font-size: 1.5em;
-                font-weight: normal;
+                color: #41220b;
             }
             .experiments a {
                 display: inline-block;
                 padding: 1em;
-                border: solid lightgray;
-                border-radius: .6em;
-                text-decoration: none;
+                border: solid .1em;
+                border-color: #8d603e; 
+                background-color: rgba(180, 25, 25, 0.6);
             }
             .experiments a:hover {
-                border: solid #888888;
-            }
-            .experiments ul {
-                display: inline-block;
-                padding: 0;
-                margin: 0;
+                border-color: #888;
+                background-color: rgba(180, 25, 25, .2);
             }
             .experiments li {
                 display: inline-block;
+                margin: -.18em;
+            }
+          
+            .experiments .about {
+                width: 30em;
+                text-align: left;
+                padding: 1.5em;
+            }
+            .experiments .about-links {
+                display: block;
+                text-align: center;
             }
         </style>
     </head>
@@ -66,28 +81,25 @@
                 Ben is a software engineer at Orbitz Worldwide.
                 He lives with his wife in the Chicago area.
             </p>
-
-            <p>
-                He created this website for the following reasons:
-            </p>
-
-            <ul>
-                <li>Needed a place to experiment with code outside of work</li>
-                <li>Having a number of old projects to clean up and make public (there are still many more to come)</li>
-                <li>Not doing as much UI as he would like</li>
-            </ul>
-
-            <p>
-                None of the experiments on this site are what he would consider to be his best work, but he believes it is better to push
-                with a minimum viable product that can be enhanced later in
-                favor of waiting for perfection that might take years to acheive.  It's better to release small chunks of work and iterate
-                as time allows.
-            </p>
-
+            
             <ul class="about-links">
                 <li><a href="/playlists">Favorite Music</a></li>
-                <li><a href="/shows">Shows Attended</a></li>
+                <li><a href="/shows">Some Shows</a></li>
             </ul>
+
+            <p>
+                The main reason Ben created this site is to have a place to experiment with code outside of work.
+                He also has a number of old projects which he would like to clean up and make public.
+            </p>
+
+            <p>
+                None of the experiments on this site are what he would consider to be his best work, 
+                but he believes it is better to push <em>something.</em>  Everything can be enhanced later.
+                It's far better to push what you have completed, instead of waiting for perfection, which 
+                is probably impossible to acheive.
+            </p>
+
+            
         </section>
 
     </body>
