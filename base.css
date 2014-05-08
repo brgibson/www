@@ -30,6 +30,29 @@ hr {
     -webkit-transition: none !important;
     transition: none !important;
 }
+.offscreen,
+.hide-reveal .reveal-content,
+.hide-reveal:hover .reveal-target {
+    visibility: hidden;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.hide-reveal .reveal-target,
+.hide-reveal:hover .reveal-content {
+    visibility: visible;
+    opacity: 1;
+    position: static;
+    width: auto;
+    height: auto;
+}
+.hide-reveal * {
+    transition: opacity 1s;
+}
+
+
 
 /* begin css */
 
