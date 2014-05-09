@@ -1,9 +1,14 @@
 /* resets */
-h1, h2, h3, h4 ,h5, h6, p {
+h1, h2, h3, h4 ,h5, h6, p, dl {
     margin: 0;
     padding: .5em 1em;
     color: black;
 }
+dd {
+    margin: 0;
+    padding: 0;
+}
+
 h1 {
     text-align: center;
 }
@@ -30,9 +35,9 @@ hr {
     -webkit-transition: none !important;
     transition: none !important;
 }
+
 .offscreen,
-.hide-reveal .reveal-content,
-.hide-reveal:hover .reveal-target {
+.hide-reveal .reveal-content {
     visibility: hidden;
     opacity: 0;
     width: 0;
@@ -40,7 +45,6 @@ hr {
     position: absolute;
 }
 
-.hide-reveal .reveal-target,
 .hide-reveal:hover .reveal-content {
     visibility: visible;
     opacity: 1;
@@ -51,8 +55,6 @@ hr {
 .hide-reveal * {
     transition: opacity 1s;
 }
-
-
 
 /* begin css */
 

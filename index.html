@@ -10,15 +10,12 @@
                 text-align: center;
                 padding: 0;
                 margin: 0;
-                background-image: url('/photos/buenosaires/DSCN3369.png');
-                background-repeat: no-repeat;
+                background: url('/photos/buenosaires/DSCN3369.png') no-repeat center center fixed;
                 background-size: cover;
-                background-position: center fixed;
                 color: #341701;
             }
             .experiments {
                 background: transparent;
-                color: #341701;
             }
             .experiments section {
                 border-radius: 60em;
@@ -30,11 +27,13 @@
             }
             .experiments a {
                 text-decoration: none;
+            }
+            .experiments .experiment-links a {
                 display: inline-block;
                 padding: 1em;
                 border-color: #8d603e; 
             }
-            .experiments a:hover {
+            .experiments .experiment-links a:hover {
                 border-color: #888;
                 background-color: rgba(180, 25, 25, .2);
             }
@@ -47,11 +46,14 @@
                 width: 25em;
                 text-align: left;
             }
+            .experiments .about .reveal-content {
+                padding-top: .5em;
+            }
+            .experiments .about a {
+                cursor: default;
+            }
         </style>
     </head>
-
-
-
     <body class="experiments">
 
         <section>
@@ -78,27 +80,31 @@
                 He lives with his wife in the Chicago area.
             </p>
             
-            <p id="about-reasons" class="hide-reveal">
-                <span class="reveal-target">
-                    Why did Ben create this site?
-                </span>
-                <span class="reveal-content">
-                    The main reason Ben created this site is to have a place to experiment with code outside of work.
-                    He also has a number of old projects which he would like to clean up and make public.
-                </span>
-            </p>
+            <div id="about-reasons" class="hide-reveal">
+                <dl>
+                    <dt>
+                        <a href="#" onclick="return false">Why did Ben create this site?</a>
+                    </dt>
+                    <dd class="reveal-content">
+                        The main reason Ben created this site is to have a place to experiment with code outside of work.
+                        He also has a number of old projects which he would like to clean up and make public.
+                    </dd>
+                </dl>
+            </div>
 
-            <p id="about-mvp" class="hide-reveal">
-                <span class="reveal-target">
-                    How pleased is Ben with this website?
-                </span>
-                <span class="reveal-content">
-                    None of the experiments on this site are what he would consider to be his best work, 
-                    but he believes it is better to push <em>something.</em>  Everything can be enhanced later.
-                    It's far better to push what you have completed, instead of waiting for perfection, which 
-                    is probably impossible to acheive.
-                </span>
-            </p>
+            <div id="about-mvp" class="hide-reveal">
+                <dl>
+                    <dt>
+                        <a href="#" onclick="return false">How pleased is Ben with this website?</a>
+                    </dt>
+                    <dd class="reveal-content">
+                        None of the experiments on this site are what he would consider to be his best work, 
+                        but he believes it is better to push <em>something.</em>  Everything can be enhanced later.
+                        It's far better to push what you have completed, instead of waiting for perfection, which 
+                        is probably impossible to acheive.
+                    </dd>
+                </dl>
+            </div>
         </section>
     </body>
 </html>
