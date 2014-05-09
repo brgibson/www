@@ -53,7 +53,7 @@ hr {
     height: auto;
 }
 .hide-reveal * {
-    transition: opacity 1s;
+    transition: opacity 1.4s;
 }
 
 /* begin css */
