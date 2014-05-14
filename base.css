@@ -138,5 +138,10 @@ hr {
 .musicviewer iframe {
     width: 20em;
     height: 18em;
-    padding: 1em;
+    border: none;
+}
+.musicviewer > * {
+    display: inline-block;
+    width: 22em;
+    padding: 0 .6em;
 }
