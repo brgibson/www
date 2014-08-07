@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <title>CSS Flex Box</title>
+		<style>
+		html, body {
+			font-family: sans-serif;
+			height: 100%;
+			margin:0;
+			padding:0;
+		}
+
+		#horzParent {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+
+		header, footer {
+			min-height: 30px;
+			border: 1px solid #000;
+		}
+
+		nav, aside {
+			border: 1px solid #000;
+		}
+
+		nav {
+			order: 1;
+			align-self: stretch;
+			flex-grow: 2;
+		}
+
+		aside {
+			order: 3;
+			align-self: stretch;
+			flex-grow: 2;
+		}
+
+		#flexParent {
+			position: relative;
+			background: green;
+			margin:0;
+			box-sizing: border-box;
+			padding: 5px;
+
+			flex-grow: 4;
+			order: 2;
+			align-self: stretch;
+
+			display: flex;                /* flex, inline-flex */
+			flex-direction: row;       /* row, column, row-reverse, column-reverse */
+			flex-wrap: wrap;              /* wrap, nowrap */
+			justify-content: flex-start;  /* flex-start, flex-end, space-between,space-around */
+			align-items: center;          /* flex-end, center, baseline, stretch */
+		}
+
+		.fc {
+			background: orange;
+			border: 1px solid #222;
+			border-radius: 3px;
+			min-width: 100px;
+			min-height: 50px;
+			font-weight: bold;
+			padding: 5px;
+			text-align:center;
+		}
+
+		.fc1 {
+			order: 1;                /* <non-negative-integer> */
+			flex-grow: 1;            /* <non-negative-integer> */
+			align-self: flex-start;  /* auto, flex-start, flex-end, center, baseline, stretch */
+		}
+
+		.fc2 {
+			order: 2;
+			flex-grow: 1;
+			align-self: flex-end;
+		}
+
+		.fc3 {
+			order: 3;
+			flex-grow: 1;
+			align-self: center;
+		}
+
+		.fc4 {
+			order: 5;
+			flex-grow: 1;
+			align-self: baseline;
+		}
+
+		.fc5 {
+			order: 5;
+			flex-grow: 1;
+			align-self: stretch;
+
+		}
+		</style>
+    </head>
+	<!--
+		w3c canidate - most browsers have implemented it
+
+	 	flex container
+	 	- contains flex items
+	 	- layout agnostic?
+
+	 	main axis
+	 	cross axis
+
+	 	main size
+
+		display: flex or inline-flex
+		flex-direction:
+
+		justify-content: flex-start
+						 center
+						 flex-end
+						 space-between
+						 space-around
+
+
+	-->
+    <body>
+		<header>
+			Header
+		</header>
+
+		<div id="horzParent">
+			<nav>
+				Nav
+			</nav>
+
+			<article id="flexParent">
+				<div class="fc fc1">1</div>
+				<div class="fc fc2">2</div>
+				<div class="fc fc3">3</div>
+				<div class="fc fc4">4</div>
+				<div class="fc fc5">5</div>
+			</article>
+
+			<aside>
+				Aside
+			</aside>
+		</div>
+
+		<footer>
+			Footer
+		</footer>
+
+	</body>
+</html>
