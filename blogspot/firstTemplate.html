@@ -24,8 +24,8 @@ URL:      www.noaesthetic.com
 
    <Group description="Page Text" selector="body">
      <Variable name="body.font" description="Font" type="font"
-         default="normal normal 12px Arial, Tahoma, Helvetica, FreeSans, sans-serif" value="normal normal 12px 'Trebuchet MS', Trebuchet, Verdana, sans-serif"/>
-     <Variable name="body.text.color" description="Text Color" type="color" default="#222222" value="#000000"/>
+         default="normal normal 12px Arial, Tahoma, Helvetica, FreeSans, sans-serif" value="normal normal 14px 'Trebuchet MS', Trebuchet, sans-serif"/>
+     <Variable name="body.text.color" description="Text Color" type="color" default="#222222" value="#242424"/>
    </Group>
 
    <Group description="Backgrounds" selector=".body-fauxcolumns-outer">
@@ -36,8 +36,8 @@ URL:      www.noaesthetic.com
 
    <Group description="Links" selector=".main-outer">
      <Variable name="link.color" description="Link Color" type="color" default="#2288bb" value="#2288bb"/>
-     <Variable name="link.visited.color" description="Visited Color" type="color" default="#888888" value="#2288bb"/>
-     <Variable name="link.hover.color" description="Hover Color" type="color" default="#33aaff" value="#e74f4e"/>
+     <Variable name="link.visited.color" description="Visited Color" type="color" default="#888888" value="#949494"/>
+     <Variable name="link.hover.color" description="Hover Color" type="color" default="#33aaff" value="#df4746"/>
    </Group>
 
    <Group description="Blog Title" selector=".header h1">
@@ -65,7 +65,7 @@ URL:      www.noaesthetic.com
 
    <Group description="Post Title" selector="h3.post-title, .comments h4">
      <Variable name="post.title.font" description="Font" type="font"
-         default="normal normal 22px Arial, Tahoma, Helvetica, FreeSans, sans-serif" value="normal bold 22px 'Trebuchet MS',Trebuchet,Verdana,sans-serif"/>
+         default="normal normal 22px Arial, Tahoma, Helvetica, FreeSans, sans-serif" value="normal bold 22px 'Trebuchet MS', Trebuchet, sans-serif"/>
    </Group>
 
    <Group description="Date Header" selector=".date-header">
@@ -184,6 +184,12 @@ html body $(page.width.selector) {
   min-width: 0;
   max-width: 100%;
   width: $(page.width);
+}
+
+a {
+	-moz-transition: all 0.15s ease-in-out;
+	-webkit-transition: all 0.15s ease-in-out;
+	transition: all 0.15s ease-in-out;
 }
 
 a:link {
@@ -383,6 +389,13 @@ h2 {
 h3.post-title, .comments h4 {
   font: $(post.title.font);
   margin: .75em 0 0;
+}
+
+.post-title a, .post-title a:visited {
+  color: $(body.text.color);
+}
+.post-title a:hover {
+  color: $(link.hover.color);
 }
 
 .post-body {
@@ -661,7 +674,7 @@ body.mobile .AdSense {
         width: auto;
       }
 
-	  @media screen and (max-width:768px) {
+	  @media screen and (max-width:1100px) {
         body {
             min-width: $(content.width.seven);
         }
