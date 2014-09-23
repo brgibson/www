@@ -191,6 +191,12 @@ a:link {
   color: $(link.color);
 }
 
+a img {
+  height: auto! important;
+  max-width: 100%;
+  width: auto! important;
+}
+
 a:visited {
   text-decoration:none;
   color: $(link.visited.color);
@@ -385,7 +391,12 @@ h3.post-title, .comments h4 {
   position: relative;
 }
 
-.post-body img, .post-body .tr-caption-container, .Profile img, .Image img,
+.post-body a {
+  margin-left:  0 !important;
+  margin-right: 0 !important;
+}
+
+/*.post-body img,*/ .post-body .tr-caption-container, .Profile img, .Image img,
 .BlogList .item-thumbnail img {
   padding: $(image.border.small.size);
 
@@ -397,7 +408,7 @@ h3.post-title, .comments h4 {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
 }
 
-.post-body img, .post-body .tr-caption-container {
+/*.post-body img,*/ .post-body .tr-caption-container {
   padding: $(image.border.large.size);
 }
 
@@ -588,24 +599,13 @@ body.mobile .AdSense {
 
       <![CDATA[
       body {
-        min-width: 100%;
+        min-width: $(content.width);
       }
 
       .content-outer, .content-fauxcolumn-outer, .region-inner {
         min-width: $(content.width);
         max-width: $(content.width);
         _width: $(content.width);
-      }
-
-      media="all" @media screen and (min-width:768px) {
-        body {
-            min-width: $(content.width.seven);
-        }
-        .content-outer, .content-fauxcolumn-outer, .region-inner {
-            min-width: $(content.width.seven);
-            max-width: $(content.width.seven);
-            _width: $(content.width.seven);
-        }
       }
 
       .content-outer, .content-fauxcolumn-outer, .region-inner {
@@ -659,6 +659,27 @@ body.mobile .AdSense {
       #layout .region-inner {
         min-width: 0;
         width: auto;
+      }
+
+	  @media screen and (max-width:768px) {
+        body {
+            min-width: $(content.width.seven);
+        }
+        .content-outer, .content-fauxcolumn-outer, .region-inner {
+            min-width: $(content.width.seven);
+            max-width: $(content.width.seven);
+            _width: $(content.width.seven);
+        }
+		.column-center-outer {
+			width: 100%;
+		}
+		.column-left-outer, .column-right-outer {
+			position: static;
+			float: none;
+		}
+		.main-inner .columns {
+			padding-right: 0;
+		}
       }
       ]]>
     </b:template-skin>
