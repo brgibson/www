@@ -2,11 +2,12 @@
 <!DOCTYPE html>
 <html b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
   <head>
-    <b:if cond='data:blog.isMobile'>
+    <!--b:if cond='data:blog.isMobile'>
       <meta content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0' name='viewport'/>
     <b:else/>
       <meta content='width=1100' name='viewport'/>
-    </b:if>
+    </b:if-->
+    <meta content='width=device-width,initial-scale=1' name='viewport'/>
     <b:include data='blog' name='all-head-content'/>
     <title><data:blog.pageTitle/></title>
 
@@ -683,15 +684,17 @@ body.mobile .AdSense {
             max-width: $(content.width.seven);
             _width: $(content.width.seven);
         }
-		.column-center-outer {
+		.column-center-outer, .column-left-outer, .column-right-outer {
 			width: 100%;
-		}
-		.column-left-outer, .column-right-outer {
 			position: static;
 			float: none;
 		}
 		.main-inner .columns {
 			padding-right: 0;
+		}
+		.main-inner .column-right-outer {
+			width: 100%;
+			margin-right: 0;
 		}
       }
       ]]>
