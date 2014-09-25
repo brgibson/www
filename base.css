@@ -4,11 +4,10 @@ h1, h2, h3, h4 ,h5, h6, p, dl {
     padding: .5em 1em;
     color: black;
 }
-dd {
+dd, ul {
     margin: 0;
     padding: 0;
 }
-
 h1 {
     text-align: center;
 }
