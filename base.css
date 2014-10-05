@@ -1,27 +1,24 @@
 /* resets */
-h1, h2, h3, h4 ,h5, h6, p, dl {
-    margin: 0;
-    padding: .5em 1em;
-    color: black;
+body {
+    font-family: "Gill Sans";
+    font-size: 22px;
 }
 dd, ul {
     margin: 0;
     padding: 0;
 }
-h1 {
-    text-align: center;
+h1, h2, h3, h4, h5, h6 {
+    font-family: Futura, "Gill Sans", Helvetica;
 }
-body {
-    background-color: white;
-    color: black;
-    font-family: Futura, Gill Sans, Helvetica;
-    font-size: 16pt;
+h1, h2, h3, h4 ,h5, h6, p, dl {
+    margin: 0;
+    padding: .5em 1em;
 }
-a {
-    color: black;
+li {
+    display: inline-block;
 }
-hr {
-    color: lightgray;
+p {
+    line-height: 140%;
 }
 
 /* Re-usable */
@@ -35,8 +32,7 @@ hr {
     transition: none !important;
 }
 
-.offscreen,
-.hide-reveal .reveal-content {
+.offscreen {
     visibility: hidden;
     opacity: 0;
     width: 0;
@@ -45,18 +41,50 @@ hr {
     position: absolute;
 }
 
-.hide-reveal:hover .reveal-content {
-    visibility: visible;
-    opacity: 1;
-    position: static;
-    width: auto;
-    height: auto;
+/* begin css */
+
+/* background */
+html {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    background: url('/photos/chicagobridgetile/tile01.JPG') no-repeat center center fixed;
+    background-size: cover;
 }
-.hide-reveal * {
-    transition: opacity 1.4s;
+body {
+    background-color: rgba(255, 234, 234, .4);
+    box-shadow: 0px 0px 10em 5em rgba(255, 234, 234, .4);
+    margin: 0;
+    padding: 0;
 }
 
-/* begin css */
+/* headers */
+h1 {
+    text-align: center;
+    background-color: rgba(255, 255, 255, .8);
+}
+
+/* links */
+a {
+    transition: color .1s;
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+    padding: 1em;
+}
+a:hover {
+    background-color: rgba(180, 25, 25, .2);
+    color: #fff;
+}
+
+/* nav */
+nav {
+    background: rgba(50, 198, 211, 0.39);
+    text-align: left;
+}
+nav .current {
+    color: #fff;
+}
 
 /* games */
 .games a.wrapper {

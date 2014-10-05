@@ -6,104 +6,78 @@
         <meta name='viewport' content='width=device-width,initial-scale=1'/>
         <title>Ben's Experiments</title>
         <link rel="stylesheet" href="/base.css" />
+        <link rel="stylesheet" href="/fontawesome/fontawesome.css" />
         <style>
             html {
                 text-align: center;
                 padding: 0;
                 margin: 0;
-                background: url('/photos/buenosaires/DSCN3369.png') no-repeat center center fixed;
+                background: url('/photos/chicagobridgetile/tile01.JPG') no-repeat center center fixed;
                 background-size: cover;
-                color: #341701;
             }
-            .experiments {
-                background: transparent;
-            }
-            .experiments section {
-                border-radius: 60em;
+            body {
                 background-color: rgba(255, 234, 234, .4);
                 box-shadow: 0px 0px 10em 5em rgba(255, 234, 234, .4);
             }
+            .experiments .main {
+                margin: 0 auto;
+                max-width: 32em;
+                padding-top: 1em;
+            }
             .experiments h1 {
-                color: #41220b;
+                background-color: rgba(255, 255, 255, .8);
             }
-            .experiments a {
-                text-decoration: none;
-            }
-            .experiments .experiment-links a {
-                display: inline-block;
-                padding: 1em;
-                border-color: #8d603e; 
-            }
-            .experiments .experiment-links a:hover {
-                border-color: #888;
-                background-color: rgba(180, 25, 25, .2);
-            }
-            .experiments li {
-                display: inline-block;
-                margin: -.18em;
+            .experiments section {
+                background-color: rgba(255, 255, 255, .5);
             }
             .experiments .about {
-                margin: auto;
-                max-width: 25em;
                 text-align: left;
             }
-            .experiments .about .reveal-content {
-                padding-top: .5em;
-            }
-            .experiments .about a {
-                cursor: default;
+            .experiments .about .photo {
+                display: block; /* fixes the pixels of whitespace below the photo */
+                width: 100%;
             }
         </style>
     </head>
     <body class="experiments">
-
-        <section>
-            <h1>Ben's Experiments</h1>
-
-            <ul class="experiment-links">
-                <li><a href="./sudoku/">Sudoku</a></li>
-                <li><a href="./slider/">Slider</a></li>
-                <li><a href="./music/">Music</a></li>
-                <li><a href="./photos/">Photos</a></li>
-                <li><a href="./movies/">Movies</a></li>
-                <li><a href="./tennis/">Tennis Standings</a></li>
-                <li><a href="./contacts/">Contacts Challenge</a></li>
-                <li><a href="/playlists">Favorite Music</a></li>
-                <li><a href="/shows">Some Shows</a></li>
+        <nav>
+            <ul>
+                <li class="current"><a href="/"class="icon-home"><span class="offscreen">Home</span></a></li>
+                <li><a href="/music/" class="icon-music"><span class="offscreen">Music</span></a></li>
+                <li><a href="/photos/" class="icon-camera-retro"><span class="offscreen">Photos</span></a></li>
+                <li><a href="/movies/" class="icon-facetime-video"><span class="offscreen">Movies</span></a></li>
             </ul>
-        </section>
-        
-        <section class="about">
-            <h1>About Ben</h1>
+        </nav>
+        <div class="main">
+            <section>
+                <h1>Experiments</h1>
+                <ul class="experiment-links">
+                    <li><a href="/slider/">Slider</a></li>
+                    <li><a href="/sudoku/">Sudoku</a></li>
+                    <li><a href="/tennis/">Tennis Standings</a></li>
+                    <li><a href="/music/">Music</a></li>
+                    <li><a href="/photos/">Photos</a></li>
+                    <li><a href="/movies/">Movies</a></li>
+                    <li><a href="/playlists">Playlists</a></li>
+                </ul>
+            </section>
 
-            <p>
-                I am a software engineer at Edmunds.com
-                and live with my wife in Santa Monica, CA.
-            </p>
-            
-            <div id="about-reasons" class="hide-reveal">
-                <dl>
-                    <dt>
-                        <a href="#" onclick="return false">Why create this site?</a>
-                    </dt>
-                    <dd class="reveal-content">
-                        I wanted to have a place to experiment with code outside of work,
-                        a place to clean up old projects, and a place to archive my non-development work
-                        (ie. music, photographs, etc).
-                    </dd>
-                </dl>
-            </div>
+            <section class="about">
+                <h1>About Ben</h1>
 
-            <div id="about-mvp" class="hide-reveal">
-                <dl>
-                    <dt>
-                        <a href="#" onclick="return false">Is anything really ever done?</a>
-                    </dt>
-                    <dd class="reveal-content">
-                        None of the experiments on this site are considered to be finished.
-                    </dd>
-                </dl>
-            </div>
-        </section>
+                <p>
+                    I am a software engineer at Edmunds.com
+                    and live with my wife in the Los Angeles area.
+                </p>
+
+                <p>
+                    I created this site to have a place to experiment with code outside of work,
+                    a place to clean up old projects, and a place to archive my non-development work
+                    (music, photographs, etc).
+                </p>
+                
+                <img class="photo" src="/photos/selfportrait1.png" alt="Ben's self portrait."/>
+            </section>
+        </div>
     </body>
 </html>
