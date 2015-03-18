@@ -3,11 +3,22 @@
 
 	<head>
 		<meta charset="UTF-8"/>
+		<meta name='viewport' content='width=device-width,initial-scale=1'/>
 		<title>Ben's Experiments - Movies</title>
-		<link rel="stylesheet" href="/base.css" />	
+		<link rel="stylesheet" href="/base.css" />
+		<link rel="stylesheet" href="/fontawesome/fontawesome.css" />
 	</head>
 
-	<body>
+	<body class="movies">
+		<nav>
+			<ul>
+				<li><a href="/"class="icon-home"><span class="offscreen">Home</span></a></li>
+				<li><a href="/music/" class="icon-music"><span class="offscreen">Music</span></a></li>
+				<li><a href="/photos/" class="icon-camera-retro"><span class="offscreen">Photos</span></a></li>
+				<li class="current"><a href="/movies/" class="icon-facetime-video"><span class="offscreen">Movies</span></a></li>
+				<li><a href="/playlists/" class="icon-heart"><span class="offscreen">Playlists</span></a></li>
+			</ul>
+		</nav>
 		<h1>Movies</h1>
 		<div class="movieviewer">
 			<iframe src="http://www.youtube.com/embed/M2srwg1EKLw" frameborder="0" allowfullscreen></iframe>

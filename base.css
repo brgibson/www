@@ -2,6 +2,8 @@
 body {
     font-family: "Gill Sans";
     font-size: 22px;
+    margin: 0;
+    padding: 0;
 }
 dd, ul {
     margin: 0;
@@ -43,25 +45,9 @@ p {
 
 /* begin css */
 
-/* background */
-html {
-    text-align: center;
-    padding: 0;
-    margin: 0;
-    background: url('/photos/chicagobridgetile/tile01-30-2560.JPG') no-repeat center center fixed;
-    background-size: cover;
-}
-body {
-    background-color: rgba(255, 234, 234, .4);
-    box-shadow: 0px 0px 10em 5em rgba(255, 234, 234, .4);
-    margin: 0;
-    padding: 0;
-}
-
 /* headers */
 h1 {
     text-align: center;
-    background-color: rgba(255, 255, 255, .8);
 }
 
 /* links */
@@ -70,17 +56,24 @@ a {
     color: inherit;
     text-decoration: none;
     display: inline-block;
-    padding: 1em;
+    padding: 1em; /* matches padding of placeholder sudo element */
 }
 a:hover {
-    background-color: rgba(180, 25, 25, .2);
+    background-color: rgb(180, 25, 25);
     color: #fff;
 }
 
 /* nav */
 nav {
-    background: rgba(50, 198, 211, 0.39);
+    background: rgb(50, 198, 211);
+    position: fixed;
     text-align: left;
+    width: 100%;
+}
+nav + *::before {
+    content: '';
+    display: block;
+    padding: 1em; /* matches padding of 'a' tag in the nav */
 }
 nav .current {
     color: #fff;
@@ -172,4 +165,22 @@ nav .current {
     display: inline-block;
     width: 22em;
     padding: 0 .6em;
+}
+
+/* colors */
+.experiments, .experiments a:hover {
+    background: rgb(180, 25, 25);
+}
+.music, .music a:hover {
+    background: coral;
+}
+.movies, .movies a:hover {
+    background: oldlace;
+}
+.photos, .photos a:hover,
+.playlists, .playlists a:hover {
+    background: black;
+}
+.photos h1, .playlists h1, .playlists h2 {
+    color: white;
 }
