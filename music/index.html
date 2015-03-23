@@ -5,13 +5,17 @@
 		<meta charset="UTF-8"/>
         <meta name='viewport' content='width=device-width,initial-scale=1'/>
 		<title>Ben's Experiments - Music</title>
-		<link rel="stylesheet" href="/base.css" />
+		<script src="/base.js" async></script>
+        <link rel="stylesheet" href="/base.css" />
         <link rel="stylesheet" href="/fontawesome/fontawesome.css" />
 	</head>
 
 	<body class="music">
 		<nav>
-            <ul>
+            <ul class="menu-collapsed">
+                <li><a class="icon-reorder"><span class="offscreen">Expand Menu</span></a></li>
+            </ul>
+            <ul class="menu-expanded">
                 <li><a href="/"class="icon-home"><span class="offscreen">Home</span></a></li>
                 <li class="current"><a href="/music/" class="icon-music"><span class="offscreen">Music</span></a></li>
                 <li><a href="/photos/" class="icon-camera-retro"><span class="offscreen">Photos</span></a></li>

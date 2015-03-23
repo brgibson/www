@@ -9,7 +9,7 @@ dd, ul {
     margin: 0;
     padding: 0;
 }
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, nav, nav .offscreen {
     font-family: Futura, "Gill Sans", Helvetica;
 }
 h1, h2, h3, h4 ,h5, h6, p, dl {
@@ -77,6 +77,52 @@ nav + *::before {
 }
 nav .current {
     color: #fff;
+    transition: color 1s;
+}
+nav .menu-collapsed {
+    display: none;
+}
+
+@media (max-width:25em) {
+    nav .menu-collapsed {
+        display: block;
+    }
+    nav .menu-expanded {
+        left: -100%;
+        transition: left .5s;
+    }
+    nav.show-menu .menu-expanded {
+        display: inline-block;
+        left: 0;
+    }
+    nav .menu-expanded {
+        background: rgb(50, 198, 211);
+        border-radius: 0 0 1em 0;
+        max-width: 95%;
+        overflow: hidden;
+        position: absolute;
+    }
+    nav .menu-expanded li {
+        display: block;
+        text-align: left;
+        overflow: hidden;
+    }
+    nav .menu-expanded a {
+        display: block;
+        width: auto;
+        text-align: left;
+    }
+    nav .menu-expanded .offscreen {
+        padding: 0 .4em;
+        visibility: visible;
+        opacity: 100;
+        width: auto;
+        height: auto;
+        overflow: auto;
+        position: static;
+        border-radius: .5em;
+    }
+
 }
 
 /* games */
@@ -138,7 +184,7 @@ nav .current {
 .music-library .content a {
     float: right;
 }
-.music-library r { /* html tag represeting artist */
+.music-library r { /* 'r' html tag representing artist */
     padding-right: 2em;
 }
 
