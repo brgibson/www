@@ -122,7 +122,6 @@ nav .menu-collapsed {
         position: static;
         border-radius: .5em;
     }
-
 }
 
 /* games */
@@ -212,6 +211,27 @@ nav .menu-collapsed {
     width: 22em;
     padding: 0 .6em;
 }
+@media (max-width:32em) {
+    .musicviewer > *,
+    .musicviewer iframe {
+        width: 90%;
+    }
+}
+
+/* photos */
+.photoviewer {
+    text-align: center;
+}
+.photoviewer img {
+    width: 430px;
+    padding: .3em;
+}
+@media (max-width:450px) {
+    .photoviewer img {
+        width: 95%;
+    }
+}
+
 
 /* colors */
 .experiments, .experiments a:hover {
