@@ -83,6 +83,33 @@ nav .menu-collapsed {
     display: none;
 }
 
+/* nav icon effects */
+@keyframes camera-flash {
+    0%   {opacity: 0;}
+    90%  {opacity: 0;}
+    95%  {opacity: 1;}
+    100% {opacity: 0;}
+}
+nav .icon-camera-retro {
+    position: relative;
+}
+nav .icon-camera-retro::after {
+    animation-name: camera-flash;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    opacity: 0;
+    color: white;
+    position: absolute;
+    display: block;
+    left: 2.1em;
+    top: 1.7em;
+    font-size: .5em;
+    width: .3em;
+    height: .3em;
+    content: '★';
+}
+
 @media (max-width:25em) {
     nav .menu-collapsed {
         display: block;
@@ -121,6 +148,12 @@ nav .menu-collapsed {
         overflow: auto;
         position: static;
         border-radius: .5em;
+    }
+
+    /* animation fixes */
+    nav .icon-camera-retro::after {
+        left: 2em;
+        top: 1.9em;
     }
 }
 
@@ -231,7 +264,6 @@ nav .menu-collapsed {
         width: 95%;
     }
 }
-
 
 /* colors */
 .experiments, .experiments a:hover {
