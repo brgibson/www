@@ -269,6 +269,12 @@ nav .icon-camera-retro::after {
 .experiments, .experiments a:hover {
     background: rgb(180, 25, 25);
 }
+.introductions, .introductions a:hover {
+    background: white;
+}
+.introductions nav a:hover {
+    color: #eee;
+}
 .music, .music a:hover {
     background: coral;
 }
