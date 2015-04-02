@@ -12,7 +12,6 @@
             .experiments .main {
                 margin: 0 auto;
                 max-width: 32em;
-                padding-top: 1em;
             }
             .experiments h1 {
                 background-color: rgba(255, 255, 255, .8);
@@ -27,13 +26,26 @@
                 display: block; /* fixes the pixels of whitespace below the photo */
                 width: 100%;
             }
+            .menu-collapsed ul {
+                display: inline;
+            }
+            .menu-collapsed:after {
+                content: "brgibson.com";
+                font-weight: bold;
+                line-height: 3em;
+                margin-right: 1em;
+                position: absolute;
+                right: 0;
+            }
         </style>
     </head>
     <body class="experiments">
         <nav>
-            <ul class="menu-collapsed">
-                <li><a class="icon-reorder"><span class="offscreen">Expand Menu</span></a></li>
-            </ul>
+            <div class="menu-collapsed">
+                <ul>
+                    <li><a class="icon-reorder"><span class="offscreen">Expand Menu</span></a></li>
+                </ul>
+            </div>
             <ul class="menu-expanded">
                 <li class="current"><a href="/"class="icon-home"><span class="offscreen">Home</span></a></li>
                 <li><a href="/music/" class="icon-music"><span class="offscreen">Music</span></a></li>

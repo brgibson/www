@@ -70,10 +70,14 @@ nav {
     text-align: left;
     width: 100%;
 }
-nav + *::before {
+nav + *::before,
+nav + .main::before {
     content: '';
     display: block;
-    padding: 1em; /* matches padding of 'a' tag in the nav */
+    padding-bottom: 1.5em;
+}
+nav + .main::before {
+    padding-bottom: 2.5em;
 }
 nav .current {
     color: #fff;
@@ -111,6 +115,24 @@ nav .icon-camera-retro::after {
 }
 
 @media (max-width:25em) {
+    nav {
+        position: static;
+    }
+    nav + h1 {
+        color: white;
+        position: absolute;
+        top: -.4em;
+        right: 2em;
+        left: 2em;
+        margin-left: 0;
+        margin-right: 0;
+        padding-right: 0;
+        padding-left: 0;
+    }
+    nav + *::before,
+    nav + .main::before {
+        display: none;
+    }
     nav .menu-collapsed {
         display: block;
     }
