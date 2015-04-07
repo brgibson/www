@@ -59,13 +59,13 @@ a {
     padding: 1em; /* matches padding of placeholder sudo element */
 }
 a:hover {
-    background-color: rgb(180, 25, 25);
+    background: dodgerblue;
     color: #fff;
 }
 
 /* nav */
 nav {
-    background: rgb(50, 198, 211);
+    background: turquoise;
     position: fixed;
     text-align: left;
     width: 100%;
@@ -118,16 +118,19 @@ nav .icon-camera-retro::after {
     nav {
         position: static;
     }
-    nav + h1 {
-        color: white;
-        position: absolute;
-        top: -.4em;
-        right: 2em;
+    nav + h1,
+    nav + .main .experiments-container h1 {
         left: 2em;
         margin-left: 0;
         margin-right: 0;
         padding-right: 0;
         padding-left: 0;
+        position: absolute;
+        overflow: hidden;
+        right: 2em;
+        text-overflow: ellipsis;
+        top: -.4em;
+        white-space: nowrap;
     }
     nav + *::before,
     nav + .main::before {
@@ -145,7 +148,7 @@ nav .icon-camera-retro::after {
         left: 0;
     }
     nav .menu-expanded {
-        background: rgb(50, 198, 211);
+        background: turquoise;
         border-radius: 0 0 1em 0;
         max-width: 95%;
         overflow: hidden;
@@ -198,6 +201,22 @@ nav .icon-camera-retro::after {
 }
 .games h2 {
     color: lightgray;
+}
+
+/* homepage */
+.experiments h1 {
+    padding-top: .7em;
+}
+.experiments .main {
+    margin: 0 auto;
+    max-width: 32em;
+}
+.experiments .experiment-links {
+    text-align: center;
+}
+.experiments .photo {
+    display: block; /* fixes the pixels of whitespace below the photo */
+    width: 100%;
 }
 
 /* music library and shows pages */
@@ -289,7 +308,7 @@ nav .icon-camera-retro::after {
 
 /* colors */
 .experiments, .experiments a:hover {
-    background: rgb(180, 25, 25);
+    background: coral;
 }
 .introductions, .introductions a:hover {
     background: white;
@@ -300,6 +319,7 @@ nav .icon-camera-retro::after {
 .music, .music a:hover {
     background: coral;
 }
+.experiments .main,
 .movies, .movies a:hover {
     background: oldlace;
 }

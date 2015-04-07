@@ -8,36 +8,6 @@
         <script src="/base.js" async></script>
         <link rel="stylesheet" href="/base.css" />
         <link rel="stylesheet" href="/fontawesome/fontawesome.css" />
-        <style>
-            .experiments .main {
-                margin: 0 auto;
-                max-width: 32em;
-            }
-            .experiments h1 {
-                background-color: rgba(255, 255, 255, .8);
-            }
-            .experiments section {
-                background-color: rgba(255, 255, 255, .5);
-            }
-            .experiments .about {
-                text-align: left;
-            }
-            .experiments .about .photo {
-                display: block; /* fixes the pixels of whitespace below the photo */
-                width: 100%;
-            }
-            .menu-collapsed ul {
-                display: inline;
-            }
-            .menu-collapsed:after {
-                content: "brgibson.com";
-                font-weight: bold;
-                line-height: 3em;
-                margin-right: 1em;
-                position: absolute;
-                right: 0;
-            }
-        </style>
     </head>
     <body class="experiments">
         <nav>
@@ -55,7 +25,7 @@
             </ul>
         </nav>
         <div class="main">
-            <section>
+            <section class="experiments-container">
                 <h1>Experiments</h1>
                 <ul class="experiment-links">
                     <li><a href="/slider/">Slider</a></li>
@@ -68,8 +38,10 @@
                     <li><a href="/intros">Intros to Artists</a></li>
                 </ul>
             </section>
-
-            <section class="about">
+            <section class="photo-container">
+                <img class="photo" src="/photos/selfportrait1.png" alt="Ben's self portrait."/>
+            </section>
+            <section class="about-container">
                 <h1>About Ben</h1>
 
                 <p>
@@ -82,8 +54,6 @@
                     a place to clean up old projects, and a place to archive my non-development work
                     (music, photographs, etc).
                 </p>
-                
-                <img class="photo" src="/photos/selfportrait1.png" alt="Ben's self portrait."/>
             </section>
         </div>
     </body>
