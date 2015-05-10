@@ -83,21 +83,34 @@ BRG.PROMISES = BRG.PROMISES || {};
         window.location = "/spotify/";
     } else {
         if (access_token) {
-            var apiObj = BRG.SPOTIFY.API.playlists(access_token, 1213507414, 1);
+            var accountId;
+            var apiObj = BRG.SPOTIFY.API.myAccount(access_token);
 
             BRG.PROMISES.get(apiObj.url, apiObj.headers).then(function(response) {
+
+                var accountInfo = JSON.parse(response);
+                accountId = accountInfo.id;
+
+            }).then(function() {
+
+                apiObj = BRG.SPOTIFY.API.playlists(access_token, accountId, 1);
+                return BRG.PROMISES.get(apiObj.url, apiObj.headers);
+
+            }).then(function(response) {
+
                 var playlists = JSON.parse(response);
-
                 playlistsForUserPlaceholder.innerHTML += playlistsForUserTemplate(playlists);
-
                 $('#waiting-message').show();
-
                 return playlists;
+
             }, function(error) {
+
                 console.error("Playlists Failed.", error);
+
             }).then(function(playlists) {
+
                 for (var i = 0; i < playlists.items.length; i++) {
-                    apiObj = BRG.SPOTIFY.API.tracks(access_token, 1213507414, playlists.items[i].id, 1);
+                    apiObj = BRG.SPOTIFY.API.tracks(access_token, accountId, playlists.items[i].id, 1);
 
                     var tracksCallback = (function(playlistIndex) {
                         return function(response) {
