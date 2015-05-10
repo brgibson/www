@@ -23,6 +23,10 @@ p {
     line-height: 140%;
 }
 
+.ad-container {
+    margin: 1em auto;
+}
+
 /* Re-usable */
 .hidden {
     visibility: hidden;
@@ -41,6 +45,26 @@ p {
     height: 0;
     overflow: hidden;
     position: absolute;
+}
+
+.button {
+    display: inline-block;
+    padding: .5em 1em;
+    margin-bottom: 0;
+    font-size: 1em;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: .5em;
 }
 
 /* begin css */
@@ -69,6 +93,7 @@ nav {
     position: fixed;
     text-align: left;
     width: 100%;
+    z-index: 1;
 }
 nav + *::before,
 nav + .main::before {
@@ -142,6 +167,7 @@ nav .icon-camera-retro::after {
     nav .menu-expanded {
         left: -100%;
         transition: left .5s;
+        z-index: 1;
     }
     nav.show-menu .menu-expanded {
         display: inline-block;
@@ -306,6 +332,36 @@ nav .icon-camera-retro::after {
     }
 }
 
+/* spotify */
+.spotify .main {
+    margin: 0 auto;
+    max-width: 50em;
+}
+.spotify .main ol li {
+    display: list-item;
+    line-height: 150%;
+    padding: 0.313em 0;
+}
+.spotify .playlist-image {
+    float: right;
+}
+.spotify .playlist-container {
+    margin: 1em;
+}
+.spotify .artist-name {
+    display: inline-block;
+    width: 39%;
+}
+.spotify .track-name {
+    display: inline-block;
+    width: 590%;
+}
+.spotify .login-button {
+    display: block;
+    margin: 1em auto;
+}
+
+
 /* colors */
 .experiments, .experiments a:hover {
     background: coral;
@@ -329,4 +385,13 @@ nav .icon-camera-retro::after {
 }
 .photos h1, .playlists h1, .playlists h2 {
     color: white;
+}
+
+
+.button {
+    background-color: coral;
+    color: white;
+}
+.button:hover {
+    background-color: turquoise;
 }

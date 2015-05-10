@@ -1,23 +1,69 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en-US">
     <head>
-        <title>Spotify Backup</title>
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-        <style type="text/css">
-            .text-overflow {
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                width: 500px;
-            }
-        </style>
+        <meta charset="UTF-8"/>
+        <meta name='viewport' content='width=device-width,initial-scale=1'/>
+        <title>Spotify Backup - Back Up Your Spotify Playlists</title>
+        <script src="/base.js" async></script>
+        <link rel="stylesheet" href="/base.css" />
+        <link rel="stylesheet" href="/fontawesome/fontawesome.css" />
     </head>
 
-    <body>
-        <div class="container">
-            <div id="login">
-                <h1>Spotify Backup</h1>
-                <button id="login-button" class="btn btn-primary">Log in with Spotify</button>
+    <body class="spotify">
+        <nav>
+            <div class="menu-collapsed">
+                <ul>
+                    <li><a class="icon-reorder"><span class="offscreen">Expand Menu</span></a></li>
+                </ul>
+            </div>
+            <ul class="menu-expanded">
+                <li class="current"><a href="/"class="icon-home"><span class="offscreen">Home</span></a></li>
+                <li><a href="/music/" class="icon-music"><span class="offscreen">Music</span></a></li>
+                <li><a href="/photos/" class="icon-camera-retro"><span class="offscreen">Photos</span></a></li>
+                <li><a href="/movies/" class="icon-facetime-video"><span class="offscreen">Movies</span></a></li>
+                <li><a href="/playlists/" class="icon-heart"><span class="offscreen">Playlists</span></a></li>
+            </ul>
+        </nav>
+        <h1>Spotify Backup</h1>
+
+        <div class="main">
+            <div class="ad-container">
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- Responsive Ad - Standard -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-6093963355659130"
+                     data-ad-slot="8377988760"
+                     data-ad-format="auto"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <div class="blurb">
+                <p>
+                    Do you love spotify as much as I do?  Have you poured countless hours into crafting
+                    the perfect playlists?  Afraid of what will become of them if Spotify disappears!?
+                </p>
+
+                <p>
+                    Well, let's hope that never happens, but in case it does... let's make sure we're backing
+                    up our playlists.
+                </p>
+            </div>
+
+            <button id="login-button" class="login-button button">Backup Spotify Playlists</button>
+
+            <div class="ad-container">
+                <!-- Responsive Ad - Standard -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-6093963355659130"
+                     data-ad-slot="8377988760"
+                     data-ad-format="auto"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
             </div>
         </div>
     </body>
@@ -32,4 +78,14 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="./js/service/auth.js"></script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-62805015-1', 'auto');
+      ga('send', 'pageview');
+    </script>
 </html>

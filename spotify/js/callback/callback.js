@@ -64,17 +64,13 @@ BRG.PROMISES = BRG.PROMISES || {};
         return hashParams;
     }
 
-    var userProfileSource = document.getElementById('user-profile-template').innerHTML,
-        userProfileTemplate = Handlebars.compile(userProfileSource),
-        userProfilePlaceholder = document.getElementById('user-profile');
-
     var playlistsForUserSource = document.getElementById('playlists-for-user-template').innerHTML,
         playlistsForUserTemplate = Handlebars.compile(playlistsForUserSource),
-        playlistsForUserPlaceholder = document.getElementById('user-profile');
+        playlistsForUserPlaceholder = document.getElementById('playlist-names-container');
 
     var tracksForPlaylistSource = document.getElementById('tracks-for-playlist-template').innerHTML,
         tracksForPlaylistTemplate = Handlebars.compile(tracksForPlaylistSource),
-        tracksForPlaylistPlaceholder = document.getElementById('user-profile');
+        tracksForPlaylistPlaceholder = document.getElementById('playlists-container');
 
     var params = getHashParams();
 
@@ -87,7 +83,6 @@ BRG.PROMISES = BRG.PROMISES || {};
         window.location = "/spotify/";
     } else {
         if (access_token) {
-//            var apiObj = BRG.SPOTIFY.API.myAccount(access_token);
             var apiObj = BRG.SPOTIFY.API.playlists(access_token, 1213507414, 1);
 
             BRG.PROMISES.get(apiObj.url, apiObj.headers).then(function(response) {
@@ -95,8 +90,7 @@ BRG.PROMISES = BRG.PROMISES || {};
 
                 playlistsForUserPlaceholder.innerHTML += playlistsForUserTemplate(playlists);
 
-                $('#login').show();
-                $('#loggedin').hide();
+                $('#waiting-message').show();
 
                 return playlists;
             }, function(error) {
@@ -107,16 +101,13 @@ BRG.PROMISES = BRG.PROMISES || {};
 
                     var tracksCallback = (function(playlistIndex) {
                         return function(response) {
-                            console.log("success!", response);
-
-
                             var tracks = JSON.parse(response);
 
                             tracks.images = playlists.items[playlistIndex].images;
                             tracks.playlistName = playlists.items[playlistIndex].name;
                             tracksForPlaylistPlaceholder.innerHTML += tracksForPlaylistTemplate(tracks);
-                            $('#login').hide();
-                            $('#loggedin').show();
+
+                            $('#waiting-message').hide();
                     }})(i);
 
                     if (playlists.items[i].id) { //need this check for Starred playlists, which doesn't have an id
@@ -129,8 +120,7 @@ BRG.PROMISES = BRG.PROMISES || {};
                 console.error("Playlists JSON conversion failed.", error);
             });
         } else {
-            $('#login').show();
-            $('#loggedin').hide();
+            $('#waiting-message').show();
         }
     }
 })();

@@ -1,99 +1,104 @@
-<!doctype html>
-<html>
-  <head>
-    <title>Example of the Implicit Grant flow with Spotify</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <style type="text/css">
-      #login, #loggedin {
-        display: none;
-      }
-      .text-overflow {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        width: 500px;
-      }
-    </style>
-  </head>
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name='viewport' content='width=device-width,initial-scale=1'/>
+        <title>Spotify Backup - Your Playlists!</title>
+        <script src="/base.js" async></script>
+        <link rel="stylesheet" href="/base.css" />
+        <link rel="stylesheet" href="/fontawesome/fontawesome.css" />
+    </head>
 
-  <body>
-    <div class="container">
-      <div id="login">
-        <h1>This is an example of the Implicit Grant flow</h1>
-        <button id="login-button" class="btn btn-primary">Log in with Spotify</button>
-      </div>
-      <div id="loggedin">
-        <div id="user-profile">
-        </div>
-        <div id="oauth">
-        </div>
-      </div>
-    </div>
-  </body>
+    <body class="spotify">
+        <nav>
+            <div class="menu-collapsed">
+                <ul>
+                    <li><a class="icon-reorder"><span class="offscreen">Expand Menu</span></a></li>
+                </ul>
+            </div>
+            <ul class="menu-expanded">
+                <li class="current"><a href="/"class="icon-home"><span class="offscreen">Home</span></a></li>
+                <li><a href="/music/" class="icon-music"><span class="offscreen">Music</span></a></li>
+                <li><a href="/photos/" class="icon-camera-retro"><span class="offscreen">Photos</span></a></li>
+                <li><a href="/movies/" class="icon-facetime-video"><span class="offscreen">Movies</span></a></li>
+                <li><a href="/playlists/" class="icon-heart"><span class="offscreen">Playlists</span></a></li>
+            </ul>
+        </nav>
 
-    <script id="user-profile-template" type="text/x-handlebars-template">
-      <h1>You are logged in as {{display_name}}</h1>
-      <div class="media">
-        <div class="pull-left">
-          <img class="media-object" width="150" src="{{images.0.url}}" />
+        <h1>Your Playlists</h1>
+
+        <div class="main">
+            <div class="ad-container">
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- Responsive Ad - Standard -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-6093963355659130"
+                     data-ad-slot="8377988760"
+                     data-ad-format="auto"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <div id="waiting-message">
+                <p>Please wait, your playlists are coming soon!</p>
+            </div>
+
+            <div id="playlist-names-container">
+            </div>
+
+            <div class="ad-container">
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- Responsive Ad - Standard -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-6093963355659130"
+                     data-ad-slot="8377988760"
+                     data-ad-format="auto"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <div id="playlists-container">
+            </div>
+
         </div>
-        <div class="media-body">
-          <dl class="dl-horizontal">
-            <dt>Display name</dt><dd class="clearfix">{{display_name}}</dd>
-            <dt>Id</dt><dd>{{id}}</dd>
-            <dt>Email</dt><dd>{{email}}</dd>
-            <dt>Spotify URI</dt><dd><a href="{{external_urls.spotify}}">{{external_urls.spotify}}</a></dd>
-            <dt>Link</dt><dd><a href="{{href}}">{{href}}</a></dd>
-            <dt>Profile Image</dt><dd class="clearfix"><a href="{{images.0.url}}">{{images.0.url}}</a></dd>
-            <dt>Country</dt><dd>{{country}}</dd>
-          </dl>
-        </div>
-      </div>
-    </script>
+    </body>
 
     <script id="playlists-for-user-template" type="text/x-handlebars-template">
-      <h1>Here are your playlists</h1>
-      <div class="media">
-        <div class="pull-left">
-          <!--<img class="media-object" width="150" src="{{images.0.url}}" />-->
-        </div>
-        <div class="media-body">
+        <div class="media">
             {{#each items}}
-                <p>{{name}}</p>
+                    <p>{{name}}</p>
             {{else}}
-                <p>You don't have any playlists</p>
+                    <p>You don't have any playlists</p>
             {{/each}}
         </div>
-      </div>
     </script>
 
     <script id="tracks-for-playlist-template" type="text/x-handlebars-template">
-      <h1>{{playlistName}}</h1>
-      <div class="media">
-        <div class="pull-left">
-          <img class="media-object" width="150" src="{{images.0.url}}" />
-        </div>
-        <div class="media-body">
-            {{#each items}}
-                <p>
+        <div class="playlist-container">
+
+            <h2>{{playlistName}}</h2>
+            <img class="playlist-image" width="150" src="{{images.0.url}}" />
+
+            <ol>
+                {{#each items}}
+                <li>
                     {{#each track.artists}}
-                        {{name}}{{#unless @last}},{{/unless}}
+                            {{name}}{{#unless @last}},{{/unless}}
                     {{/each}}
 
                     - {{track.name}}
-                    - {{track.album.name}}</p>
-            {{else}}
-                <p>You don't have any tracks</p>
-            {{/each}}
-        </div>
-      </div>
-    </script>
 
-    <script id="oauth-template" type="text/x-handlebars-template">
-      <h2>oAuth info</h2>
-      <dl class="dl-horizontal">
-        <dt>Access token</dt><dd class="text-overflow">{{access_token}}</dd>
-      </dl>
+                    <!--- {{track.album.name}}-->
+                </li>
+                {{else}}
+                <p>You don't have any tracks</p>
+                {{/each}}
+            </ol>
+        </div>
     </script>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
