@@ -1,39 +1,27 @@
 #### ...to saying no.  
-
-As a software engineer, any code we write or decision we make has the potential for failure.  Failure *will* happen and we must embrace it, learn from our mistakes, and move forward.  Failure should not only be accepted, but embraced.  We experience the most personal growth from our failures.  The key to embracing failure is that we must make it cheap to fail.  If we make it cheap to fail, then we can take calculated risks in order to achieve innovation. 
  
 ## When did we start saying no?
 
-If you are seeing your codebase go to hell in a handbasket because developers are rushing to hack features together and can never find the time to clean it up their crappy code, you might start mandating code reviews or add a set of committers who are the only ones who are allowed to push code.  While this may be a good short term solution (in order to force people to check in clean code), in the long run it can cause horrible problems.  And no only does this cause horrible problems, but it actually does not address the root cause of the unmaintanable codebase.  It just covers up the problems with a Process Band-Aid  *(and not even the good kind! - this one gets really stinky and hurts like a bitch when you rip it off)*.
+If your codebase is going to hell in a handbasket because developers are rushing to hack features together and can never find the time to clean up their crappy code, you might start mandating code reviews and add a vangaurd of senior developers who are the only ones allowed to push code.  
 
-Now, I can hear you crying "sacrilige" from the peanut gallery.  If mandating code reviews and creating a vangaurd of senior developers to protect the code from the evils of development doesn't address the root cause of the problem, the what does?  Well, first we're going to have to figure out what the root cause is.  I propose the following as some possibilities:
+While this may be a good short term solution in order to force people to check in clean code, in the long run it will bring your agility to a standstill and make your job a living hell.  It does not address the root cause of the problem, but merely covers it up with a process Band-Aid (and it will hurt when you are ready to rip it off).
 
-1. Tight and inflexible deadlines are not allowing for time to reduce technical debt
-2. Your developer rampup process is not working
-3. You aren't hiring the right people
+## The Real Issues
 
-The biggest reason why code gets messy and unmaintainable is because of deadlines.  Deadlines aren't inherently bad and they can be great ways to set expectations and get people to bear down and get something accomplished.  However, deadlines only work when they are set by the team who will be implementing the work.  If you were contracting out work to someone, you would ask them how long it is going to take.  If they can't get the work done in the timeframe you need, then you will try someone else.  The problem we often run into in technology is that we hire a number of new contractors to swarm on a feature that involves a tight deadline, but we throw them headfirst into a giant and messy codebase where we have poor rampup and expect them to succeed.  They give us an estimate of how many people it will take to get the work done in a certain amount of time, but the problem is that they don't have any experience in the codebase yet so we can't trust their estimate for time.
+1. Tight and inflexible deadlines do not allow for the reduction of technical debt.
+2. The developer rampup process is not working.
+3. You don't have the right automated tests.
 
-- Quality - You can have something done well
-- Speed - You can have something done quickly
-- Cost - You don't have to pay out the nose
+### Deadlines
+The biggest reason why code gets messy and unmaintainable is because of deadlines.  Deadlines aren't inherently bad, and they can be a great way to set expectations and get people to bear down and get something accomplished.  But after we've completed our first iteration, we need to stop, take a good look at what we've built, and take on any cleanup that is needed.
 
-A teacher once told me that when you are contracting out work (not just technical consulting), there is a certain truth about what you can get.  For each contract, you only get to choose two of the three things above.  For example, if you want something done well and you want it done quickly, you are going to have to pay through the nose for it.  However if you want it done well, but really can't spend much money on it, then you're going to have to be patient, because it's going to take a long time.  But if you need speed and low cost, then you are going to have to sacrifice on quality.
+### Rampup
+Why are we relying on code reviews to pass shared knowledge between developers?  It is better to invest more time and energy into developer rampup and to find ways to share knowledge before a code review.
 
-This is the lesson we miss in the tech industry.  We want it done as cheaply as possible so we hire a bunch of contracters instead of using our higher paid full time employees.  We want it done quickly because business has promised this new functionality to their shareholders.  So that means, the quality of the work is not going to be good.
+### Automation
+A good set of automated tests will not only enforce clean and maintanable code, but they will also act as your safegaurd from catastrophic failure.  When are confident that you can catch bugs and unmaintainable code with automated tests, you can rest easy because you know that any failures will most likely be small.
 
-Now this is not a problem, as long as we know it is the decision we are making.
 
-## If you aren't failing, you're doing something wrong
+## Adding Process Is Not The Answer
 
-If you aren't failing, then you aren't taking big enough risks.  When was the last time you heard someone say, "I made the most important changes to our company in the last ten years, and it was completely uncontroversial."  Never!  In fact, I would bet if you were explaining to someone about an amazing change you made, and you didn't have a story about how it was a big struggle to accomplish it, it would not be as impressive of a story.  It would just be too easy. 
-
-## Important changes cause the most controversy
-
-I would argue that the most impactful changes are the ones that are the most controvertial.  Part of the thing that makes them so impactful is the controversy itself.  It puts more responsibility on the person spearheading the change and forces everybody to hold their breath while they watch the peices fall where they may. changes that force people to pick sides and draw a line in the sand are the ones that people pay the most attention to.
-
-## One final thought!
-
-While adding process might seem like a good idea in order to address code quality issues, it will bring your agility to a standstill and will make working for your company a living hell.  There are always better and more effective ways to improve code quality that adding extra process.
-
-So, let's make it cheap to fail so we can get out there and build some beautiful software!
+While adding process might seem like a good idea in order to address code quality issues, it comes with a lot of overhead, so be wary.  Keep in mind that there are probably more effective ways to improve code quality than by adding process.
