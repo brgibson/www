@@ -24,7 +24,8 @@ p {
 }
 
 .ad-container {
-    margin: 1em auto;
+    margin: 0 auto;
+    padding: 1em 0;
 }
 
 /* Re-usable */

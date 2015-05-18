@@ -6,6 +6,8 @@
         <meta name='viewport' content='width=device-width,initial-scale=1'/>
         <title>Ben's Experiments</title>
         <script src="/base.js" async></script>
+        <script src="/js/promises/promises.js" async></script>
+        <script src="/rssreader/rssreader.js" async></script>
         <link rel="stylesheet" href="/base.css" />
         <link rel="stylesheet" href="/fontawesome/fontawesome.css" />
     </head>
@@ -17,7 +19,7 @@
                 </ul>
             </div>
             <ul class="menu-expanded">
-                <li class="current"><a href="/"class="icon-home"><span class="offscreen">Home</span></a></li>
+                <li class="current"><a href="/" class="icon-home"><span class="offscreen">Home</span></a></li>
                 <li><a href="/music/" class="icon-music"><span class="offscreen">Music</span></a></li>
                 <li><a href="/photos/" class="icon-camera-retro"><span class="offscreen">Photos</span></a></li>
                 <li><a href="/movies/" class="icon-facetime-video"><span class="offscreen">Movies</span></a></li>
@@ -42,6 +44,24 @@
             <section class="photo-container">
                 <img class="photo" src="/photos/selfportrait1.png" alt="Ben's self portrait."/>
             </section>
+            <section id="blog-section">
+                <h1><a id="blog-title-container" href="//blog.brgibson.com">Blog</a></h1>
+                <div id="blog-rss-container"></div>
+            </section>
+            <section>
+                <div class="ad-container">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- Responsive Ad - Standard -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-6093963355659130"
+                         data-ad-slot="8377988760"
+                         data-ad-format="auto"></ins>
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </section>
             <section class="about-container">
                 <h1>About Ben</h1>
 
@@ -56,6 +76,20 @@
                     (music, photographs, etc).
                 </p>
             </section>
+            <section>
+                <div class="ad-container">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- Responsive Ad - Standard -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-6093963355659130"
+                         data-ad-slot="8377988760"
+                         data-ad-format="auto"></ins>
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </section>
         </div>
     </body>
 
@@ -67,5 +101,28 @@
 
       ga('create', 'UA-62805015-1', 'auto');
       ga('send', 'pageview');
+    </script>
+    <script type="text/javascript" async="">
+        (function () {
+            var RETRIES = 10;
+            var RETRY_TIMEOUT = 2000;
+
+            var blogRssContainer = document.getElementById('blog-rss-container');
+            var blogTitleContainer = document.getElementById('blog-title-container');
+
+            function renderRssFeed() {
+                var isSuccessful = BRG && BRG.RSS && BRG.RSS.render({
+                            containerElement: blogRssContainer,
+                            titleContainerElement: blogTitleContainer
+                        }, "//blog.brgibson.com/rss/");
+                if (isSuccessful !== true && RETRIES > 0) {
+                    RETRIES--;
+                    window.console.info("Retrying RSS feed.")
+                    window.setTimeout(renderRssFeed, RETRY_TIMEOUT);
+                }
+            }
+
+            renderRssFeed();
+        })();
     </script>
 </html>
