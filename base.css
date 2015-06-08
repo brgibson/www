@@ -372,16 +372,9 @@ nav .icon-camera-retro::after {
 
 /* band-home */
 .band-home .page-container {
-    margin: 0 2em;
-    max-width: 100%;
-
-}
-.band-home .main {
     margin: 0 auto;
     max-width: 32em;
-}
-.band-home .inner-container {
-    margin: 0 auto;
+
 }
 .band-home .facebook-post {
     text-align: center;
