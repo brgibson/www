@@ -418,10 +418,26 @@ nav .icon-camera-retro::after {
 
 /* colors */
 html {
-    background: url('/photos/color/Blacklight-Large.png') no-repeat center center fixed #0f0306;
-    min-height: 100%;
-    min-width: 100%;
+    background: #0f0306;
     color: white;
+}
+.bkg-img-container {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    z-index: -1;
+}
+.bkg-img-container .bkg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    min-width: 50%;
+    min-height: 50%;
 }
 h1, h2 {
     color: #FFA5CF;
