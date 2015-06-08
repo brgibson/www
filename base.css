@@ -388,9 +388,11 @@ nav .icon-camera-retro::after {
     clear: both;
 }
 .band-home .photo {
+    border: 1px solid white;
     display: inline-block;
     float: left;
     width: 50%;
+
 }
 .band-home .tracklist {
     display: inline-block;
