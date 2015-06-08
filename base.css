@@ -9,14 +9,28 @@ dd, ul {
     margin: 0;
     padding: 0;
 }
-h1, h2, h3, h4, h5, h6, nav, nav .offscreen {
-    font-family: Futura, "Gill Sans", Helvetica;
+h1 {
+    /*font-family: Futura, "Gill Sans", Helvetica;*/
+    font-family: "Open Sans", sans-serif;
 }
+h2, h3, h4, h5, h6, nav, nav .offscreen {
+    font-family: "Open Sans", sans-serif;
+}
+.l-b { font-size: .9em; position:relative; top: .1em;}
+.l-dot { font-size: 1.3em; position:relative; top: -.05em;   }
+.l-r {  font-size: 1.1em; position:relative; top: .05em;   }
+.l-dot2 { font-size: .8em; position:relative; top: -.1em;    }
+.l-g { font-size: 1.3em; position:relative; top: .1em; }
+.l-i { font-size: 1.2em; position:relative; top: -.1em;     }
+.l-b2 { font-size: 1.3em; position:relative; top: .1em;  }
+.l-s { font-size: .7em; position:relative; top: 0em;    }
+.l-o { font-size: 1em; position:relative; top: .2em;    }
+.l-n { font-size: .8em; position:relative; top: 0em;    }
 h1, h2, h3, h4 ,h5, h6, p, dl {
     margin: 0;
     padding: .5em 1em;
 }
-li {
+ul li {
     display: inline-block;
 }
 p {
@@ -83,18 +97,21 @@ a {
     display: inline-block;
     padding: 1em; /* matches padding of placeholder sudo element */
 }
-a:hover {
-    background: dodgerblue;
-    color: #fff;
-}
 
 /* nav */
 nav {
-    background: turquoise;
     position: fixed;
     text-align: left;
     width: 100%;
     z-index: 1;
+}
+nav li {
+    width: 14.25%;
+    text-align: center;
+}
+nav a {
+    padding: 1em 0;
+    width: 100%
 }
 nav + *::before,
 nav + .main::before {
@@ -106,7 +123,6 @@ nav + .main::before {
     padding-bottom: 2.5em;
 }
 nav .current {
-    color: #fff;
     transition: color 1s;
 }
 nav .menu-collapsed {
@@ -129,7 +145,6 @@ nav .icon-camera-retro::after {
     animation-iteration-count: infinite;
     animation-direction: alternate;
     opacity: 0;
-    color: white;
     position: absolute;
     display: block;
     left: 2.1em;
@@ -140,94 +155,87 @@ nav .icon-camera-retro::after {
     content: '★';
 }
 
-@media (max-width:25em) {
-    nav {
-        position: static;
-    }
-    nav + h1,
-    nav + .main .experiments-container h1 {
-        left: 2em;
-        margin-left: 0;
-        margin-right: 0;
-        padding-right: 0;
-        padding-left: 0;
-        position: absolute;
-        overflow: hidden;
-        right: 2em;
-        text-overflow: ellipsis;
-        top: -.4em;
-        white-space: nowrap;
-    }
-    nav + *::before,
-    nav + .main::before {
-        display: none;
-    }
-    nav .menu-collapsed {
-        display: block;
-    }
-    nav .menu-expanded {
-        left: -100%;
-        transition: left .5s;
-        z-index: 1;
-    }
-    nav.show-menu .menu-expanded {
-        display: inline-block;
-        left: 0;
-    }
-    nav .menu-expanded {
-        background: turquoise;
-        border-radius: 0 0 1em 0;
-        max-width: 95%;
-        overflow: hidden;
-        position: absolute;
-    }
-    nav .menu-expanded li {
-        display: block;
-        text-align: left;
-        overflow: hidden;
-    }
-    nav .menu-expanded a {
-        display: block;
-        width: auto;
-        text-align: left;
-    }
-    nav .menu-expanded .offscreen {
-        padding: 0 .4em;
-        visibility: visible;
-        opacity: 100;
-        width: auto;
-        height: auto;
-        overflow: auto;
-        position: static;
-        border-radius: .5em;
-    }
+/*@media (max-width:25em) {*/
+    /*nav {*/
+        /*position: static;*/
+    /*}*/
+    /*nav + h1,*/
+    /*nav + .main .experiments-container h1 {*/
+        /*left: 2em;*/
+        /*margin-left: 0;*/
+        /*margin-right: 0;*/
+        /*padding-right: 0;*/
+        /*padding-left: 0;*/
+        /*position: absolute;*/
+        /*overflow: hidden;*/
+        /*right: 2em;*/
+        /*text-overflow: ellipsis;*/
+        /*top: -.4em;*/
+        /*white-space: nowrap;*/
+    /*}*/
+    /*nav + *::before,*/
+    /*nav + .main::before {*/
+        /*display: none;*/
+    /*}*/
+    /*nav .menu-collapsed {*/
+        /*display: block;*/
+    /*}*/
+    /*nav .menu-expanded {*/
+        /*left: -100%;*/
+        /*transition: left .5s;*/
+        /*z-index: 1;*/
+    /*}*/
+    /*nav.show-menu .menu-expanded {*/
+        /*display: inline-block;*/
+        /*left: 0;*/
+    /*}*/
+    /*nav .menu-expanded {*/
+        /*border-radius: 0 0 1em 0;*/
+        /*max-width: 95%;*/
+        /*overflow: hidden;*/
+        /*position: absolute;*/
+    /*}*/
+    /*nav .menu-expanded li {*/
+        /*display: block;*/
+        /*text-align: left;*/
+        /*overflow: hidden;*/
+    /*}*/
+    /*nav .menu-expanded a {*/
+        /*display: block;*/
+        /*width: auto;*/
+        /*text-align: left;*/
+    /*}*/
+    /*nav .menu-expanded .offscreen {*/
+        /*padding: 0 .4em;*/
+        /*visibility: visible;*/
+        /*opacity: 100;*/
+        /*width: auto;*/
+        /*height: auto;*/
+        /*overflow: auto;*/
+        /*position: static;*/
+        /*border-radius: .5em;*/
+    /*}*/
 
     /* animation fixes */
-    nav .icon-camera-retro::after {
-        left: 2em;
-        top: 1.9em;
-    }
-}
+    /*nav .icon-camera-retro::after {*/
+        /*left: 2em;*/
+        /*top: 1.9em;*/
+    /*}*/
+/*}*/
 
 /* games */
 .games a.wrapper {
     display: block;
     text-decoration: none;
-    border: solid lightgray;
+    border: solid;
     border-radius: .6em;
 
-}
-.games a.wrapper:visited {
-    color: gray;
 }
 .games a {
     margin: 1em;
 }
 .games p {
     padding: .5em 1em;
-}
-.games h2 {
-    color: lightgray;
 }
 
 /* homepage */
@@ -261,7 +269,7 @@ nav .icon-camera-retro::after {
 }
 .music-library .content ol,
 .shows .content ol {
-    border-bottom: lightgray solid;
+    border-bottom: solid;
     padding-bottom: 2em;
     white-space: nowrap;
     overflow: hidden;
@@ -273,7 +281,7 @@ nav .icon-camera-retro::after {
 .music-library h1,
 .shows h1 {
     padding-top: 0;
-    border-bottom: solid lightgray;
+    border-bottom: solid;
 }
 .music-library .title-container {
     text-align: center;
@@ -362,30 +370,147 @@ nav .icon-camera-retro::after {
     margin: 1em auto;
 }
 
+/* band-home */
+.band-home .page-container {
+    margin: 0 2em;
+    max-width: 100%;
+
+}
+.band-home .main {
+    margin: 0 auto;
+    max-width: 32em;
+}
+.band-home .inner-container {
+    margin: 0 auto;
+}
+.band-home .facebook-post {
+    text-align: center;
+}
+.band-home .album {
+    margin: 1em auto;
+}
+.band-home .album:after {
+    display: block;
+    content: "";
+    clear: both;
+}
+.band-home .photo {
+    display: inline-block;
+    float: left;
+    width: 50%;
+}
+.band-home .tracklist {
+    display: inline-block;
+    vertical-align: top;
+    margin: 1em 2em;
+    line-height: 1.5em;
+}
+.band-home .rail {
+    display: inline-block;
+    min-width: 16em;
+    text-align: center;
+    width: 39%;
+    vertical-align: top;
+}
+.band-home h2 {
+    text-align: center;
+}
 
 /* colors */
-.experiments, .experiments a:hover {
-    background: coral;
+html {
+    background: url('/photos/color/Blacklight-Large.png') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
 }
-.introductions, .introductions a:hover {
-    background: white;
+h1, h2 {
+    color: #FFA5CF;
+    text-shadow: none;
 }
+a:hover {
+    background: rgb(25, 32, 98);
+    color: #FFA5CF;
+    text-shadow: none;
+}
+nav .fa-home:hover,
+nav .fa-info-circle:hover,
+nav .fa-music:hover,
+nav .fa-flask:hover,
+nav .fa-bullhorn:hover,
+nav .fa-facebook-square:hover,
+nav .fa-spotify:hover {
+    background: rgb(25, 32, 98);
+}
+nav .fa-home {
+    color: #FFA5CF;
+}
+nav .fa-info-circle{
+    color: #ff9900;
+}
+nav .fa-music {
+    color: #ff0051;
+}
+nav .fa-flask {
+    color: #59e986;
+}
+nav .fa-bullhorn {
+    color: #3dc1ed;
+}
+nav .fa-facebook-square {
+    color: #1d53af;
+}
+nav .fa-spotify {
+    color: #85cd00;
+}
+
+nav .current {
+    background: rgb(25, 32, 98);
+    color: #FFA5CF;
+}
+nav {
+    border-bottom: solid 2px rgb(25, 32, 98);
+    background: rgba(15,3,6,.75);
+}
+nav,
+nav .menu-expanded,
+nav .icon-camera-retro::after {
+    /*background: #0f0306;*/
+    color: white;
+}
+
+@media (max-width:25em) {
+    nav,
+    nav .menu-expanded,
+    nav .icon-camera-retro::after {
+        background: black;
+    }
+}
+
+.main {
+    text-shadow:
+        -1px -1px 0 #4E4D87,
+        1px -1px 0 #595790,
+        -1px 1px 0 #4E4D87,
+        1px 1px 0 #595790;
+}
+
 .introductions nav a:hover {
     color: #eee;
 }
-.music, .music a:hover {
-    background: coral;
+.games a.wrapper {
+    border: solid lightgray;
 }
-.experiments .main,
-.movies, .movies a:hover {
-    background: oldlace;
+.games a.wrapper:visited {
+    color: gray;
 }
-.photos, .photos a:hover,
-.playlists, .playlists a:hover {
-    background: black;
+.games h2 {
+    color: lightgray;
 }
-.photos h1, .playlists h1, .playlists h2 {
-    color: white;
+
+.music-library .content ol,
+.shows .content ol ,
+.music-library h1,
+.shows h1 {
+    border-bottom: lightgray solid;
 }
 
 
