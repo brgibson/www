@@ -417,16 +417,22 @@ nav .icon-camera-retro::after {
 }
 .band-home .tracklist {
     display: inline-block;
-    vertical-align: top;
-    margin: 1em 2em;
     line-height: 1.5em;
-}
-.band-home .rail {
-    display: inline-block;
-    min-width: 16em;
-    text-align: center;
-    width: 39%;
+    margin: 1em auto;
     vertical-align: top;
+    width: 14em;
+}
+@media (max-width:50em) {
+    .band-home .photo {
+        display: block;
+        float: none;
+        margin: 0 auto;
+        width: 90%;
+    }
+    .band-home .tracklist {
+        margin-top: 2em;
+        display: block;
+    }
 }
 .band-home h2 {
     text-align: center;
