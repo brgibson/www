@@ -98,6 +98,27 @@ a {
     padding: 1em; /* matches padding of placeholder sudo element */
 }
 
+/* main section */
+.main ol {
+     counter-reset: item;
+}
+.main ol li {
+  list-style: none;
+}
+.main ol li:before {
+    content: counter(item) ". ";
+    counter-increment: item;
+    margin-right: .25em;
+}
+.main,
+.main ol li:before {
+    text-shadow:
+    -1px -1px 0 #4E4D87,
+    1px -1px 0 #595790,
+    -1px 1px 0 #4E4D87,
+    1px 1px 0 #595790;
+}
+
 /* nav */
 nav {
     position: fixed;
@@ -496,15 +517,6 @@ nav .icon-camera-retro::after {
         background: black;
     }
 }
-
-.main {
-    text-shadow:
-        -1px -1px 0 #4E4D87,
-        1px -1px 0 #595790,
-        -1px 1px 0 #4E4D87,
-        1px 1px 0 #595790;
-}
-
 .introductions nav a:hover {
     color: #eee;
 }
