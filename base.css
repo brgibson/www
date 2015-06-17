@@ -39,7 +39,7 @@ p {
 
 .ad-container {
     margin: 0 auto;
-    padding: 1em 0;
+    padding: 2em 0;
 }
 
 /* Re-usable */
@@ -401,6 +401,7 @@ nav .icon-camera-retro::after {
 }
 .band-home .album {
     margin: 1em auto;
+    padding: 1em 0;
 }
 .band-home .album:after {
     display: block;
@@ -413,10 +414,15 @@ nav .icon-camera-retro::after {
     float: left;
     width: 50%;
 }
+.band-home .hero-img-container {
+    width: 100%;
+    height: 100vh;
+    min-height: 9em;
+}
 .band-home .logo {
-    position:absolute;
-    top: 3%;
-    left: 3%;
+    padding-top: 10%;
+    padding-left: 15%;
+    text-align: left;
 }
 .band-home .tracklist {
     display: inline-block;
@@ -454,7 +460,6 @@ html .band-home {
 }
 .band-home .main-wrapper {
     background: white;
-    padding: 1em;
 }
 .see-through-container {
     width: 100%;
@@ -479,20 +484,24 @@ html .band-home {
     width: 100vw;
 }
 @media (max-width:63em) {
+    .band-home .hero-img-container,
     .see-through-container {
         height: 50vw;
         width: 100vw;
+    }
+    .band-home .logo {
+        padding: 1.25em 0;
+        text-align: center;
     }
     .bkg-img-container {
         top: -75%;
     }
 }
 .band-home .photo-slice-section {
-    height: 10em;
-    overflow: hidden;
-    line-height: 9em;
-    color: white;
     background-size: cover;
+    color: white;
+    line-height: 3.5em;
+    padding-bottom: 3.5em;
 }
 .band-home .the-nature-sessions {
     background-image:  url(/photos/brgibson/the-nature-sessions/the-nature-sessions.jpg);
@@ -512,9 +521,7 @@ html .band-home {
         top: -75%;
     }
     .band-home .photo-slice-section {
-        height: 100vw;
-        width: 100vw;
-        color: transparent;
+        padding: 0;
     }
 }
 
