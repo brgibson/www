@@ -38,8 +38,11 @@ p {
 }
 
 .ad-container {
+    text-align: center;
+    margin: 1em 0;
+}
+.adsbygoogle {
     margin: 0 auto;
-    padding: 2em 0;
 }
 
 /* Re-usable */
@@ -440,6 +443,7 @@ nav .icon-camera-retro::after {
     }
     .band-home .tracklist {
         margin-top: 2em;
+        margin-bottom: 0;
         display: block;
     }
 }
@@ -454,9 +458,6 @@ html {
 }
 html .band-home {
     color: #0f0306;
-}
-.band-home .ad-wrapper {
-    background: black;
 }
 .band-home .main-wrapper {
     background: white;
@@ -500,9 +501,15 @@ html .band-home {
 .band-home .photo-slice-section {
     background-size: cover;
     color: white;
-    line-height: 3.5em;
-    padding-bottom: 3.5em;
+    padding: 3em 0 1em;
 }
+.band-home .photo-slice-section h2 {
+    padding: 0;
+}
+.band-home .photo-slice-section .main {
+    padding-top: 1em;
+}
+
 .band-home .the-nature-sessions {
     background-image:  url(/photos/brgibson/the-nature-sessions/the-nature-sessions.jpg);
 }
@@ -513,6 +520,10 @@ html .band-home {
     background-image: url(/photos/brgibson/for-dad/for-dad.jpg);
 }
 @media (max-width:30em) {
+    .band-home .hero-img-container {
+        height: 100vh;
+        width: 100vw;
+    }
     .see-through-container {
         height: 50vw;
         width: 100vw;
@@ -520,8 +531,17 @@ html .band-home {
     .bkg-img-container {
         top: -75%;
     }
+    .band-home .album {
+        margin: 0 auto;
+        padding-bottom: 0;
+    }
     .band-home .photo-slice-section {
-        padding: 0;
+        padding: 1em 0 0;
+    }
+    .ad-container {
+        /*background: #0f0306;*/
+        margin: 0 auto;
+        padding: 3em 0;
     }
 }
 
