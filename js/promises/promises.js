@@ -13,6 +13,8 @@ BRG.PROMISES = BRG.PROMISES || {};
      * @returns {Promise}
      */
     PROMISES.get = function get(url, headersObj, options) {
+        options = options || {};
+
         // Return a new promise.
         return new Promise(function(resolve, reject) {
             // Do the usual XHR stuff
