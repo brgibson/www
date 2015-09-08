@@ -510,14 +510,20 @@ html .band-home {
     padding-top: 1em;
 }
 
-.band-home .the-nature-sessions {
-    background-image:  url(/photos/brgibson/the-nature-sessions/the-nature-sessions.jpg);
+.band-home .a-winters-tale {
+    background-image:  url(/photos/brgibson/a-winters-tale/a-winters-tale.jpg);
 }
 .band-home .an-adventure-in-space {
     background-image: url(/photos/brgibson/an-adventure-in-space/an-adventure-in-space.jpg);
 }
 .band-home .for-dad {
     background-image: url(/photos/brgibson/for-dad/for-dad.jpg);
+}
+.band-home .roads {
+    background-image:  url(/photos/brgibson/roads/roads.jpg);
+}
+.band-home .the-nature-sessions {
+    background-image:  url(/photos/brgibson/the-nature-sessions/the-nature-sessions.jpg);
 }
 @media (max-width:30em) {
     .band-home .hero-img-container {
