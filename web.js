@@ -1,7 +1,115 @@
 // web.js
-var express = require("express");
-var logfmt = require("logfmt");
+var express = require('express');
+var logfmt = require('logfmt');
 var app = express();
+
+var mustacheExpress = require('mustache-express');
+app.engine('html', mustacheExpress());
+app.set('view engine', 'html');
+app.set('views', __dirname + '/');
+app.get('/', function(req, res) {
+    res.render('index', {
+        title: 'page title',
+        albumSection: [
+            { 
+                albumTitle: 'A Winter\'s Tale',
+                albumImageSelector: 'a-winters-tale',
+                albumLinks: {
+                    'spotify': 'https://goo.gl/tDyHKg',
+                    'itunes': 'https://goo.gl/lMJ62W',
+                    'googlePlay': 'https://goo.gl/Gt8ixc',
+                    'amazon': 'http://goo.gl/wHkFLP'
+                },
+                albumTracks: [
+                    'The Chase',
+                    'A Walk In The Sun',
+                    'Mountain Song',
+                    'Through The Pines',
+                    'Fields Of Snowmen',
+                    'A Cabin Full Of Books'
+                ],
+                albumReleaseDate: 'September 7, 2015'
+            },
+            {
+                albumTitle: 'Roads',
+                albumImageSelector: 'roads',
+                albumLinks: {
+                    'spotify': 'https://open.spotify.com/album/3Lt5PaNz30jGmzqE3HGdwt',
+                    'itunes': 'https://itunes.apple.com/us/album/roads-ep/id1031773208',
+                    'googlePlay': 'https://goo.gl/GQwsqg',
+                    'amazon': 'http://www.amazon.com/Roads-b-r-gibson/dp/B0146FWW8C/'
+                },
+                albumTracks: [
+                    'US-231',
+                    'IN-45',
+                    'Rte. 66',
+                    'CA-1',
+                    'Main St.',
+                    'A134'
+                ],
+                albumReleaseDate: 'August 21, 2015'
+            },
+            {
+                albumTitle: 'An Adventure In Space',
+                albumImageSelector: 'an-adventure-in-space',
+                albumLinks: {
+                    'spotify': 'https://open.spotify.com/album/6iF2r50OTHBMYXPF4Us3mF',
+                    'itunes': 'https://itunes.apple.com/us/album/an-adventure-in-space/id1020031489',
+                    'googlePlay': 'https://goo.gl/jX14C6',
+                    'amazon': 'http://www.amazon.com/Adventure-Space-b-r-gibson/dp/B011EGZ8R8/'
+                },
+                albumTracks: [
+                    'A New City',
+                    'Prepare For Launch',
+                    'No Sleep In Space',
+                    'Reunion',
+                    'The Arrival',
+                    'No Escape',
+                    'Lost And Alone',
+                    'Rebuilding',
+                    'The Lullaby'
+                ],
+                albumReleaseDate: 'June 2, 2015'
+            },
+            {
+                albumTitle: 'The Nature Sessions (2009-20011)',
+                albumImageSelector: 'the-nature-sessions',
+                albumLinks: {
+                    'spotify': 'https://goo.gl/tDyHKg',
+                    'itunes': 'https://goo.gl/lMJ62W',
+                    'googlePlay': 'https://goo.gl/Gt8ixc',
+                    'amazon': 'http://goo.gl/wHkFLP'
+                },
+                albumTracks: [
+                    'Meadow',
+                    'Mountain',
+                    'Woodland One',
+                    'Caves',
+                    'Woodland Two',
+                    'Waves',
+                    'Marshes'
+                ],
+                albumReleaseDate: 'May 31, 2015'
+            },
+            {
+                albumTitle: 'For Dad',
+                albumImageSelector: 'for-dad',
+                albumLinks: {
+                    'spotify': 'https://goo.gl/tDyHKg',
+                    'itunes': 'https://goo.gl/lMJ62W',
+                    'googlePlay': 'https://goo.gl/Gt8ixc',
+                    'amazon': 'http://goo.gl/wHkFLP'
+                },
+                albumTracks: [
+                    'On the Coast of Massachusetts',
+                    'Mega-Bugs at the Yorkshire Museum',
+                    'Summertime',
+                    'In Train'
+                ],
+                albumReleaseDate: 'December 30, 2014'
+            }
+        ]});
+    });
 
 app.use(logfmt.requestLogger());
 
@@ -14,5 +122,6 @@ app.use(express.static(__dirname + '/'));
 
 var port = Number(process.env.PORT || 5000);
 app.listen(port, function() {
-	console.log("Listening on " + port);
+	console.log('Listening on ' + port);
     });
+

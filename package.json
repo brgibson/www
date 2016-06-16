@@ -18,5 +18,8 @@
     "www"
   ],
   "author": "brgibson",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mustache-express": "^1.2.2"
+  }
 }
