@@ -1,0 +1,25 @@
+# Permalinks
+#
+# Use of `relative_permalinks` ensures post links from the index work properly.
+permalink:           pretty
+
+# Assets
+#
+# We specify the directory for Jekyll so we can use @imports.
+sass:
+  sass_dir:          _sass
+  style:            :compressed
+
+# About/contact
+author:
+  name:              Ben Gibosn
+
+# Additional Files To Exclude
+exclude: ["README.md"]
+
+# Custom vars
+version:             2.0.0
+
+# Site Map
+gems:
+  - jekyll-sitemap
