@@ -1,131 +1,76 @@
-<!DOCTYPE html>
-<html lang="en-US">
+---
+layout: default
+category: experiments
+bodySelector: experiments
 
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name='viewport' content='width=device-width,initial-scale=1'/>
-        <title>Ben's Experiments</title>
-        <script src="/base.js" async></script>
-        <script src="/js/promises/promises.js" async></script>
-        <script src="/rssreader/rssreader.js" async></script>
-        <link rel="stylesheet" href="/base.css" />
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    </head>
-    <body class="experiments">
-        <nav>
-            <div class="menu-collapsed">
-                <ul>
-                    <li><a class="fa fa-navicon"><span class="offscreen">Expand Menu</span></a></li>
-                </ul>
-            </div>
-            <ul class="menu-expanded">
-                <li><a href="/" class="fa fa-home"><span class="offscreen">Home</span></a></li
-                ><li><a href="/music/" class="fa fa-music"><span class="offscreen">Releases</span></a></li
-                ><li><a href="/about/" class="fa fa-info-circle"><span class="offscreen">About</span></a></li
-                ><li><a href="//music.brgibson.com" class="fa fa-bullhorn"><span class="offscreen">Music Blog</span></a></li
-                ><li class="current"><a href="/experiments/" class="fa fa-flask"><span class="offscreen">Tech Experiments</span></a></li
-                ><li><a href="//facebook.com/brgibsonmusic/" class="fa fa-facebook-square" ><span class="offscreen">Facebook</span></a></li
-                ><li><a href="https://open.spotify.com/artist/7dMjvLu2viBJjBzqh2qizh" class="fa fa-spotify" ><span class="offscreen">Spotify</span></a></li>
-            </ul>
-        </nav>
-        <div class="main">
-            <section class="experiments-container">
-                <h1>Experiments</h1>
-                <ul class="experiment-links">
-                    <li><a href="/spotify/">Spotify Playlist Backup</a></li>
-                    <li><a href="/slider/">Slider</a></li>
-                    <li><a href="/sudoku/">Sudoku</a></li>
-                    <li><a href="/tennis/">Tennis Standings</a></li>
-                    <li><a href="/music/">Music</a></li>
-                    <li><a href="/photos/">Photos</a></li>
-                    <li><a href="/movies/">Movies</a></li>
-                    <li><a href="/playlists">Playlists</a></li>
-                    <li><a href="/intros/">Intros to Artists</a></li>
-                </ul>
-            </section>
-            <section class="photo-container">
-                <img class="photo" src="/photos/selfportrait1.png" alt="Ben's self portrait."/>
-            </section>
-            <section id="blog-section">
-                <h1><a id="blog-title-container" href="//blog.brgibson.com">Blog</a></h1>
-                <div id="blog-rss-container"></div>
-            </section>
-            <section>
-                <div class="ad-container">
-                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                    <!-- Responsive Ad - Standard -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-6093963355659130"
-                         data-ad-slot="8377988760"
-                         data-ad-format="auto"></ins>
-                    <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
-            </section>
-            <section class="about-container">
-                <h1>About Ben</h1>
+title: Ben's Experiments
+keywords: b.r.gibson, brgibson, ben gibson, benjamin roberts gibson, code, tech, experiments
+description: Experimentation and side-projects.
+---
 
-                <p>
-                    I am a software engineer at Edmunds.com
-                    and live with my wife in the Los Angeles area.
-                </p>
+<div class="main">
+    <section class="experiments-container">
+        <h1>Experiments</h1>
+        <ul class="experiment-links">
+            <li><a href="/spotify/">Spotify Playlist Backup</a></li>
+            <li><a href="/slider/">Slider</a></li>
+            <li><a href="/sudoku/">Sudoku</a></li>
+            <li><a href="/tennis/">Tennis Standings</a></li>
+            <li><a href="/music/">Music</a></li>
+            <li><a href="/photos/">Photos</a></li>
+            <li><a href="/movies/">Movies</a></li>
+            <li><a href="/playlists">Playlists</a></li>
+            <li><a href="/intros/">Intros to Artists</a></li>
+        </ul>
+    </section>
+    <section class="photo-container">
+        <img class="photo" src="/photos/selfportrait1.png" alt="Ben's self portrait."/>
+    </section>
+    <section id="blog-section">
+        <h1><a id="blog-title-container" href="//blog.brgibson.com">Blog</a></h1>
+        <div id="blog-rss-container"></div>
+    </section>
+    <section>
+        {% include global/ad-responsive.html %}
+    </section>
+    <section class="about-container">
+        <h1>About Ben</h1>
+        <p>
+            I am a software engineer and live with my wife in the Los Angeles area.
+        </p>
+        <p>
+            I created this site to have a place to experiment with code outside of work,
+            a place to clean up old projects, and a place to archive my non-development work
+            (music, photographs, etc).
+        </p>
+    </section>
+    <section>
+        {% include global/ad-responsive.html %}
+    </section>
+</div>
 
-                <p>
-                    I created this site to have a place to experiment with code outside of work,
-                    a place to clean up old projects, and a place to archive my non-development work
-                    (music, photographs, etc).
-                </p>
-            </section>
-            <section>
-                <div class="ad-container">
-                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                    <!-- Responsive Ad - Standard -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-6093963355659130"
-                         data-ad-slot="8377988760"
-                         data-ad-format="auto"></ins>
-                    <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
-            </section>
-        </div>
-    </body>
+<script src="/js/promises/promises.js" async></script>
+<script src="/rssreader/rssreader.js" async></script>
+<script type="text/javascript" async="">
+    (function () {
+        var RETRIES = 10;
+        var RETRY_TIMEOUT = 2000;
 
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        var blogRssContainer = document.getElementById('blog-rss-container');
+        var blogTitleContainer = document.getElementById('blog-title-container');
 
-      ga('create', 'UA-62805015-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-    <script type="text/javascript" async="">
-        (function () {
-            var RETRIES = 10;
-            var RETRY_TIMEOUT = 2000;
-
-            var blogRssContainer = document.getElementById('blog-rss-container');
-            var blogTitleContainer = document.getElementById('blog-title-container');
-
-            function renderRssFeed() {
-                var isSuccessful = BRG && BRG.RSS && BRG.RSS.render({
-                            containerElement: blogRssContainer,
-                            titleContainerElement: blogTitleContainer
-                        }, "//blog.brgibson.com/rss/");
-                if (isSuccessful !== true && RETRIES > 0) {
-                    RETRIES--;
-                    window.console.info("Retrying RSS feed.")
-                    window.setTimeout(renderRssFeed, RETRY_TIMEOUT);
-                }
+        function renderRssFeed() {
+            var isSuccessful = BRG && BRG.RSS && BRG.RSS.render({
+                        containerElement: blogRssContainer,
+                        titleContainerElement: blogTitleContainer
+                    }, "//blog.brgibson.com/rss/");
+            if (isSuccessful !== true && RETRIES > 0) {
+                RETRIES--;
+                window.console.info("Retrying RSS feed.")
+                window.setTimeout(renderRssFeed, RETRY_TIMEOUT);
             }
+        }
 
-            renderRssFeed();
-        })();
-    </script>
-    <script src="/js/bkg-img/bkg-img.js" async></script>
-</html>
+        renderRssFeed();
+    })();
+</script>

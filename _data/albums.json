@@ -1,6 +1,6 @@
 [
     {
-        "albumTitle": "A Winter\"s Tale",
+        "albumTitle": "A Winter's Tale",
         "albumImageSelector": "a-winters-tale",
         "albumLinks": {
             "spotify": "https://goo.gl/tDyHKg",
@@ -16,7 +16,8 @@
             "Fields Of Snowmen",
             "A Cabin Full Of Books"
         ],
-        "albumReleaseDate": "September 7, 2015"
+        "albumReleaseDate": "September 7, 2015",
+        "albumSpotifyKey": "5y0CjChfu9NLNiTfg8PGdK"
     },
     {
         "albumTitle": "Roads",
@@ -35,7 +36,8 @@
             "Main St.",
             "A134"
         ],
-        "albumReleaseDate": "August 21, 2015"
+        "albumReleaseDate": "August 21, 2015",
+        "albumSpotifyKey": "3Lt5PaNz30jGmzqE3HGdwt"
     },
     {
         "albumTitle": "An Adventure In Space",
@@ -57,7 +59,8 @@
             "Rebuilding",
             "The Lullaby"
         ],
-        "albumReleaseDate": "June 2, 2015"
+        "albumReleaseDate": "June 2, 2015",
+        "albumSpotifyKey": "6iF2r50OTHBMYXPF4Us3mF"
     },
     {
         "albumTitle": "The Nature Sessions (2009-20011)",
@@ -77,7 +80,8 @@
             "Waves",
             "Marshes"
         ],
-        "albumReleaseDate": "May 31, 2015"
+        "albumReleaseDate": "May 31, 2015",
+        "albumSpotifyKey": "0SmgvvES17ycjzugQjtin5"
     },
     {
         "albumTitle": "For Dad",
@@ -94,6 +98,7 @@
             "Summertime",
             "In Train"
         ],
-        "albumReleaseDate": "December 30, 2014"
+        "albumReleaseDate": "December 30, 2014",
+        "albumSpotifyKey": "4mcWVibcYie656KjxwqHFg"
     }
 ]

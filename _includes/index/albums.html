@@ -1,15 +1,15 @@
+{% for album in site.data.albums %}
 <div class="main-wrapper">
-    <div class="photo-slice-section {{albumImageSelector}}">
-        <h2>{{albumTitle}}</h2>
+    <div class="photo-slice-section {{album.albumImageSelector}}">
+        <h2>{{album.albumTitle}}</h2>
         <div class="main">
             <section class="inner-container facebook-post">
-                <p>Listen to {{albumTitle}}.  Released {{albumReleaseDate}}.</p>
-
+                <p>Listen to {{album.albumTitle}}.  Released {{album.albumReleaseDate}}.</p>
                 <ul>
-                    <li>Spotify: <a href="{{albumLinks.spotify}}">{{albumLinks.spotify}}</a></li>
-                    <li>iTunes: <a href="{{albumLinks.itunes}}">{{albumLinks.itunes}}</a></li>
-                    <li>Google Play: <a href="{{albumLinks.googlePlay}}">{{albumLinks.googlePlay}}</a></li>
-                    <li>Amazon: <a href="{{albumLinks.googlePlay}}">{{albumLinks.amazon}}</a></li>
+                    <li>Spotify: <a href="{{album.albumLinks.spotify}}">{{album.albumLinks.spotify}}</a></li>
+                    <li>iTunes: <a href="{{album.albumLinks.itunes}}">{{album.albumLinks.itunes}}</a></li>
+                    <li>Google Play: <a href="{{album.albumLinks.googlePlay}}">{{album.albumLinks.googlePlay}}</a></li>
+                    <li>Amazon: <a href="{{album.albumLinks.googlePlay}}">{{album.albumLinks.amazon}}</a></li>
                 </ul>
             </section>
             <div class="ad-container">
@@ -27,3 +27,4 @@
         </div>
     </div>
 </div>
+{% endfor %}

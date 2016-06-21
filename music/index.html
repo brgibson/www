@@ -1,69 +1,15 @@
-<!DOCTYPE html>
-<html lang="en-US">
+---
+layout: default
+category: music
 
-	<head>
-		<meta charset="UTF-8"/>
-        <meta name='viewport' content='width=device-width,initial-scale=1'/>
-		<title>Ben's Experiments - Music</title>
-		<script src="/base.js" async></script>
-        <link rel="stylesheet" href="/base.css" />
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-	</head>
+title: b.r.gibson Music - listen, follow, enjoy
+keywords: b.r.gibson, brgibson, band, music, ben gibson, benjamin roberts gibson
+description: Listen to music of b.r.gibson.
+---
 
-	<body class="music">
-		<nav>
-            <div class="menu-collapsed">
-                <ul>
-                    <li><a class="fa fa-navicon"><span class="offscreen">Expand Menu</span></a></li>
-                </ul>
-            </div>
-            <ul class="menu-expanded">
-                <li><a href="/" class="fa fa-home"><span class="offscreen">Home</span></a></li
-                ><li class="current"><a href="/music/" class="fa fa-music"><span class="offscreen">Releases</span></a></li
-                ><li><a href="/about/" class="fa fa-info-circle"><span class="offscreen">About</span></a></li
-                ><li><a href="//music.brgibson.com" class="fa fa-bullhorn"><span class="offscreen">Music Blog</span></a></li
-                ><li><a href="/experiments/" class="fa fa-flask"><span class="offscreen">Tech Experiments</span></a></li
-                ><li><a href="//facebook.com/brgibsonmusic/" class="fa fa-facebook-square" ><span class="offscreen">Facebook</span></a></li
-                ><li><a href="https://open.spotify.com/artist/7dMjvLu2viBJjBzqh2qizh" class="fa fa-spotify" ><span class="offscreen">Spotify</span></a></li>
-            </ul>
-        </nav>
-        <h1>Music</h1>
-		<div class="musicviewer">
-            <div>
-                <h2>A Winter's Tale</h2>
-                <iframe src="https://embed.spotify.com/?uri=spotify%3Aalbum%3A5y0CjChfu9NLNiTfg8PGdK" allowtransparency="true" frameborder="no"></iframe>
-            </div>
-
-            <div>
-                <h2>Roads</h2>
-                <iframe src="https://embed.spotify.com/?uri=spotify%3Aalbum%3A3Lt5PaNz30jGmzqE3HGdwt" allowtransparency="true" frameborder="no"></iframe>
-            </div>
-
-            <div>
-                <h2>An Adventure In Space</h2>
-                <iframe src="https://embed.spotify.com/?uri=spotify%3Aalbum%3A6iF2r50OTHBMYXPF4Us3mF" allowtransparency="true" frameborder="no"></iframe>
-            </div>
-
-            <div>
-                <h2>The Nature Sessions <span style="white-space: nowrap">(2009-2011)</span></h2>
-                <iframe src="https://embed.spotify.com/?uri=spotify%3Aalbum%3A0SmgvvES17ycjzugQjtin5" allowtransparency="true" frameborder="no"></iframe>
-            </div>
-
-            <div>
-                <h2>For Dad <em>(on his 80th birthday 12/30/2011)</em></h2>
-                <iframe src="https://embed.spotify.com/?uri=spotify%3Aalbum%3A4mcWVibcYie656KjxwqHFg" allowtransparency="true" frameborder="no"></iframe>
-            </div>
-		</div>
-	</body>
-
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-62805015-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-    <script src="/js/bkg-img/bkg-img.js" async></script>
-</html>
+<h1>Music</h1>
+<div class="musicviewer">
+    {% for album in site.data.albums %}
+        {% include music/spotify-player.html header=album.albumTitle spotifyKey=album.albumSpotifyKey %}
+    {% endfor %}
+</div>
