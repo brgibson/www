@@ -1,0 +1,5 @@
+{% for albumTmp in site.data.albums %}
+    {% if albumTmp.albumImageSelector == page.albumKey %}
+         {% assign album=albumTmp %}
+    {% endif %}
+{% endfor %}
