@@ -19,29 +19,36 @@ const SmashApp = React.createClass({
             highlightedPlayer: null
         }
     },
-    isClearHighlight(highlightedPlayer, highlightedMatchup) {
-        // not a th
-        // not a
+    isDoNothing(event) {
+        //don't change the highlighting when clicking on a th
+        if (event.target.tagName.toLowerCase() == 'th') {
+            return true;
+        }
+    },
+    isClearHighlight(event, highlightedPlayer, highlightedMatchup) {
+        if (event.target.tagName.toLowerCase() == 'td') {
+            //only clear if the state is the same
+            return this.state.isHighlightSelected &&
+                   this.state.highlightedPlayer == highlightedPlayer &&
+                   JSON.stringify(this.state.highlightedMatchup) == JSON.stringify(highlightedMatchup);
+        }
 
-
-        return this.state.isHighlightSelected &&
-            this.state.highlightedPlayer == highlightedPlayer &&
-            JSON.stringify(this.state.highlightedMatchup) == JSON.stringify(highlightedMatchup);
-
+        //otherwise clear the highlighting
+        return true;
     },
     setHighlight(event) {
+        if (this.isDoNothing(event)) {
+            return;
+        }
+
         let highlightedPlayer = event.target.getAttribute('data-player');
-        let highlightedMatchup = null;
+        let highlightedMatchup = [];
 
         if (!highlightedPlayer && event.target.parentElement) {
             highlightedMatchup = event.target.parentElement.getAttribute('data-players') || [];
         }
 
-        if (!highlightedPlayer && !highlightedMatchup) {
-            return; //short circuit - we don't want to update the highlighting
-        }
-
-        if (this.isClearHighlight(highlightedPlayer, highlightedMatchup)) {
+        if (this.isClearHighlight(event, highlightedPlayer, highlightedMatchup)) {
             this.setState({isHighlightSelected: false});
         } else {
             this.setState({
