@@ -122,7 +122,7 @@ const comparators = (function() {
 
 SmashStandings = React.createClass({
     getInitialState() {
-        let initialSortKey = 'numWins';
+        let initialSortKey = 'winRatio';
         comparators.get(initialSortKey).reverseSortOrder();
         return {
             sortFunction: comparators.get(initialSortKey).comparator
@@ -145,7 +145,7 @@ SmashStandings = React.createClass({
             <table>
                 <thead>
                     <tr>
-                        <th onClick={() => this.sortBy('playerName')}>Player</th>
+                        <th className="player-header" onClick={() => this.sortBy('playerName')}>Player</th>
                         <th onClick={() => this.sortBy('numPlayed')}>Played</th>
                         <th onClick={() => this.sortBy('numWins')}>Wins</th>
                         <th onClick={() => this.sortBy('numLosses')}>Losses</th>
