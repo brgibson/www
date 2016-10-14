@@ -1,0 +1,42 @@
+[
+    {
+        "playerIds": ["ben", "geoff"],
+        "score": {
+            "ben": 2,
+            "geoff": 0
+        },
+        "date": "2016-09-29"
+    },
+    {
+        "playerIds": ["ben", "geoff"],
+        "score": {
+            "geoff": 2,
+            "ben": 0
+        },
+        "date": "2016-10-13"
+    },
+    {
+        "playerIds": ["ben", "geoff"],
+        "score": {
+            "geoff": 2,
+            "ben": 0
+        },
+        "date": "2016-10-13"
+    },
+    {
+        "playerIds": ["ben", "geoff"],
+        "score": {
+            "geoff": 2,
+            "ben": 0
+        },
+        "date": "2016-10-13"
+    },
+    {
+        "playerIds": ["vinh", "ben"],
+        "score": {
+            "vinh": 2,
+            "ben": 1
+        },
+        "date": "2016-10-13"
+    }
+]

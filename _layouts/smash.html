@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<style>
+        body {
+            font-family: helvetica;
+            font-weight: 300;
+        }
+        table {
+            border-collapse: collapse;
+            background-color: #efe;
+            text-transform: capitalize;
+            /*cursor: pointer;*/
+            /*
+            -moz-box-shadow:    3px 3px 5px 6px #ccc;
+            -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+            box-shadow:         3px 3px 5px 6px #ccc;
+            */
+        }
+        tr {
+            border: solid 1px green;
+        }
+        thead {
+            background-color: #fff;
+        }
+        th {
+            padding: 1em;
+            /*cursor: pointer;*/
+        }
+        .smash-standings th {
+            cursor: pointer;
+        }
+        td {
+            font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+            padding: .7em 1em;
+        }
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            display:block;
+        }
+        .opponent {
+            white-space: nowrap;
+        }
+        .win {
+            background-color: lightgreen;
+        }
+        .lose {
+            background-color: lightpink;
+        }
+        .oof {
+            opacity: 0.4;
+        }
+        @media all and (max-width: 1080px) and (orientation: landscape) {
+            body {
+                font-size: .84em;
+            }
+            h1 {
+                display: none;
+            }
+        }
+        @media all and (max-width: 980px) and (orientation: portrait) {
+            body {
+                font-size: .95em;
+            }
+        }
+        @media all and (orientation: landscape) {
+            .score {
+                white-space: nowrap;
+            }
+            .score li {
+                display: inline;
+                margin-right: -.3em;
+            }
+        }
+        @media all and (orientation: portrait) {
+            .score span {
+                display: none;
+            }
+        }
+
+        table, thead, tr, td, th {
+            -moz-transition: background 1s;
+            -o-transition: background 1s;
+            -webkit-transition: background 1s;
+            transition: background 1s;
+        }
+    </style>
+
+	<!--{% include global/head.html %}-->
+	<body class="{{page.bodySelector}}">
+		<!--{% include global/nav.html %}-->
+        <center>{{content}}</center>
+	</body>
+    {% include global/google-analytics.html %}
+    <!--<script src="/js/bkg-img/bkg-img.js" async></script>-->
+</html>
