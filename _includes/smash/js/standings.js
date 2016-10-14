@@ -1,6 +1,5 @@
----
-#we need this yaml block to get the jekyll templating
----
+var SmashStandings;
+
 (function() {
 /** ------------------------------------------------------------------------ */
 
@@ -121,7 +120,7 @@ const comparators = (function() {
 
 /** ------------------------------------------------------------------------ */
 
-const App = React.createClass({
+SmashStandings = React.createClass({
     getInitialState() {
         let initialSortKey = 'numWins';
         comparators.get(initialSortKey).reverseSortOrder();
@@ -193,9 +192,5 @@ const TableRow = React.createClass({
         )
     }
 });
-
-/** ------------------------------------------------------------------------ */
-
-ReactDOM.render(<App/>, document.getElementById('smash-standings-container'));
 
 })();
