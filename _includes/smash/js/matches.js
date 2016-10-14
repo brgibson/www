@@ -97,7 +97,10 @@ SmashMatches = React.createClass({
                     </tr>
                 </thead>
                 <TableBody smashMatches={smashMatches}
-                           sortFunction={this.state.sortFunction} />
+                           sortFunction={this.state.sortFunction}
+                           isHighlightSelected={this.props.isHighlightSelected}
+                           highlightedMatchup={this.props.highlightedMatchup}
+                           highlightedPlayer={this.props.highlightedPlayer}/>
             </table>
             )
     }
@@ -106,39 +109,6 @@ SmashMatches = React.createClass({
 /** ------------------------------------------------------------------------ */
 
 const TableBody = React.createClass({
-    getInitialState() {
-        return {
-            isHighlightSelected: false,
-            highlightedMatchup: [],
-            highlightedPlayer: null
-        }
-    },
-    isClearHighlight(highlightedPlayer, highlightedMatchup) {
-        let toret = this.state.isHighlightSelected &&
-            this.state.highlightedPlayer == highlightedPlayer &&
-            JSON.stringify(this.state.highlightedMatchup) == JSON.stringify(highlightedMatchup);
-
-        return toret;
-
-    },
-    setHighlight(event) {
-        let highlightedPlayer = event.target.getAttribute('data-player');
-        let highlightedMatchup = [];
-
-        if (!highlightedPlayer && event.target.parentElement) {
-            highlightedMatchup = event.target.parentElement.getAttribute('data-players');
-        }
-
-        if (this.isClearHighlight(highlightedPlayer, highlightedMatchup)) {
-            this.setState({isHighlightSelected: false});
-        } else {
-            this.setState({
-                isHighlightSelected: true,
-                highlightedPlayer: highlightedPlayer,
-                highlightedMatchup: highlightedMatchup
-            })
-        }
-    },
     render() {
         let _self = this;
 
@@ -150,11 +120,11 @@ const TableBody = React.createClass({
                                          player1={match.playerIds[0]}
                                          player2={match.playerIds[1]}
                                          score={match.score}
-                                         highlightedMatchup={_self.state.highlightedMatchup}
-                                         highlightedPlayer={_self.state.highlightedPlayer}
-                                         isHighlightSelected={_self.state.isHighlightSelected}/>);
+                                         highlightedMatchup={_self.props.highlightedMatchup}
+                                         highlightedPlayer={_self.props.highlightedPlayer}
+                                         isHighlightSelected={_self.props.isHighlightSelected}/>);
         });
-        return (<tbody onClick={_self.setHighlight}>{tableRows}</tbody>);
+        return (<tbody>{tableRows}</tbody>);
     }
 });
 

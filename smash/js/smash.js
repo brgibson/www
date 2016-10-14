@@ -20,19 +20,25 @@ const SmashApp = React.createClass({
         }
     },
     isClearHighlight(highlightedPlayer, highlightedMatchup) {
-        let toret = this.state.isHighlightSelected &&
+        // not a th
+        // not a
+
+
+        return this.state.isHighlightSelected &&
             this.state.highlightedPlayer == highlightedPlayer &&
             JSON.stringify(this.state.highlightedMatchup) == JSON.stringify(highlightedMatchup);
-
-        return toret;
 
     },
     setHighlight(event) {
         let highlightedPlayer = event.target.getAttribute('data-player');
-        let highlightedMatchup = [];
+        let highlightedMatchup = null;
 
         if (!highlightedPlayer && event.target.parentElement) {
-            highlightedMatchup = event.target.parentElement.getAttribute('data-players');
+            highlightedMatchup = event.target.parentElement.getAttribute('data-players') || [];
+        }
+
+        if (!highlightedPlayer && !highlightedMatchup) {
+            return; //short circuit - we don't want to update the highlighting
         }
 
         if (this.isClearHighlight(highlightedPlayer, highlightedMatchup)) {
@@ -41,7 +47,7 @@ const SmashApp = React.createClass({
             this.setState({
                 isHighlightSelected: true,
                 highlightedPlayer: highlightedPlayer,
-                highlightedMatchup: highlightedMatchup
+                highlightedMatchup: highlightedMatchup || []
             })
         }
     },

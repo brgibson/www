@@ -153,7 +153,10 @@ SmashStandings = React.createClass({
                     </tr>
                 </thead>
                 <TableBody playerStandings={playerStandings}
-                           sortFunction={this.state.sortFunction} />
+                           sortFunction={this.state.sortFunction}
+                           isHighlightSelected={this.props.isHighlightSelected}
+                           highlightedMatchup={this.props.highlightedMatchup}
+                           highlightedPlayer={this.props.highlightedPlayer}/>
             </table>
             )
     }
@@ -163,6 +166,7 @@ SmashStandings = React.createClass({
 
 const TableBody = React.createClass({
     render() {
+        var _self = this;
         var tableRows = [];
         this.props.playerStandings
             .sort(this.props.sortFunction)
@@ -171,7 +175,10 @@ const TableBody = React.createClass({
                                             played={playerStanding.played}
                                             wins={playerStanding.wins}
                                             losses={playerStanding.losses}
-                                            winRatio={playerStanding.winRatio}/>);
+                                            winRatio={playerStanding.winRatio}
+                                            isHighlightSelected={_self.props.isHighlightSelected}
+                                            highlightedMatchup={_self.props.highlightedMatchup}
+                                            highlightedPlayer={_self.props.highlightedPlayer}/>);
         });
         return (<tbody>{tableRows}</tbody>);
     }
@@ -180,14 +187,27 @@ const TableBody = React.createClass({
 /** ------------------------------------------------------------------------ */
 
 const TableRow = React.createClass({
+    isOutOfFocus() {
+        if (!this.props.isHighlightSelected) {
+            return false; //short circuit so nothing is out of focus
+        }
+
+        let isHighlightedMatchup = this.props.highlightedMatchup.indexOf(this.props.name) >= 0;
+
+        return !(isHighlightedMatchup || this.props.highlightedPlayer == this.props.name);
+    },
+    isEmphasized() {
+        return this.props.isHighlightSelected &&
+            (this.props.name == this.props.highlightedPlayer || (!this.isOutOfFocus() && !this.props.highlightedPlayer));
+    },
     render() {
         return (
-            <tr>
-                <td>{this.props.name}</td>
-                <td>{this.props.played}</td>
-                <td>{this.props.wins}</td>
-                <td>{this.props.losses}</td>
-                <td>{Math.round(this.props.winRatio)}%</td>
+            <tr className={this.isOutOfFocus()  ? 'oof' : ''}>
+                <td className={this.isEmphasized() ? 'em' : ''} data-player={this.props.name}>{this.props.name}</td>
+                <td data-player={this.props.name}>{this.props.played}</td>
+                <td data-player={this.props.name}>{this.props.wins}</td>
+                <td data-player={this.props.name}>{this.props.losses}</td>
+                <td data-player={this.props.name}>{Math.round(this.props.winRatio)}%</td>
             </tr>
         )
     }
