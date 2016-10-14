@@ -1,7 +1,7 @@
 ---
 #we need this yaml block to get the jekyll templating
 ---
-
+(function() {
 /** ------------------------------------------------------------------------ */
 
 const playerStandings = (function() {
@@ -197,3 +197,5 @@ const TableRow = React.createClass({
 /** ------------------------------------------------------------------------ */
 
 ReactDOM.render(<App/>, document.getElementById('smash-standings-container'));
+
+})();

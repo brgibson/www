@@ -1,24 +1,6 @@
-<h2>Individual Matches (non-sortable)</h2>
-<table>
-    <thead>
-        <tr>
-            <th>Date</th>
-            <th>Player 1</th>
-            <th>Player 2</th>
-            <th>Score</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for match in site.data.smash %}
-            {% assign player1=match.playerIds[0] %}
-            {% assign player2=match.playerIds[1] %}
-            <tr>
-                <td>{{match.date}}</td>
-                {% for playerId in match.playerIds %}
-                    <td>{{playerId}}</td>
-                {% endfor %}
-                <td>{{match.score[player1]}}-{{match.score[player2]}}</td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<script type="text/babel" src="/smash/js/matches.js"></script>
+
+<div class="smash-matches">
+    <h2>Individual Matches</h2>
+    <div id="smash-matches-container"></div>
+</div>
