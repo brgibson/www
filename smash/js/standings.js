@@ -59,30 +59,35 @@ const playerStandings = (function() {
 
 const comparators = (function() {
 
+    //needed for ios sorting
+    function forComparator(value) {
+        return value ? 1 : -1;
+    }
+
     let reversePlayerName = true;
     const comparatorPlayerName = (a,b) => {
-        return reversePlayerName ? a.id < b.id : a.id > b.id;
+        return forComparator(reversePlayerName ? a.id < b.id : a.id > b.id);
     }
 
     let reverseNumPlayed = true;
     const comparatorNumPlayed = (a,b) => {
-        return reverseNumPlayed ? a.played > b.played : a.played < b.played;
+        return forComparator(reverseNumPlayed ? a.played > b.played : a.played < b.played);
     }
 
     let reverseNumWins = true;
     const comparatorNumWins = (a,b) => {
-        return reverseNumWins ? a.wins > b.wins : a.wins < b.wins;
+        return forComparator(reverseNumWins ? a.wins > b.wins : a.wins < b.wins);
     }
 
     let reverseNumLosses = true;
     const comparatorNumLosses = (a,b) => {
-        return reverseNumLosses ? a.losses < b.losses : a.losses > b.losses;
+        return forComparator(reverseNumLosses ? a.losses < b.losses : a.losses > b.losses);
     }
 
 
     let reverseWinRatio = true;
     const comparatorWinRatio = (a,b) => {
-        return reverseWinRatio ? a.winRatio > b.winRatio : a.winRatio < b.winRatio;
+        return forComparator(reverseWinRatio ? a.winRatio > b.winRatio : a.winRatio < b.winRatio);
     }
 
     return new Map([
@@ -136,10 +141,6 @@ const App = React.createClass({
             }
         });
     },
-    sortByWinRatio() {
-        ;
-    },
-
     render(){
         return (
             <table>
