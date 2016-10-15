@@ -1,5 +1,47 @@
 [
     {
+        "albumTitle": "Let's Play",
+        "albumImageSelector": "",
+        "albumLinks": {
+            "spotify": "https://open.spotify.com/album/2FIAhzVK9HbdD59JmN42QX",
+            "itunes": "",
+            "googlePlay": "",
+            "amazon": ""
+        },
+        "albumTracks": [
+            "Let's Play",
+            "Breakfast With the Monkeys",
+            "Intermission",
+            "Treetop Bonanza Extravaganza",
+            "Goodbyes",
+            "The Ride Home"
+        ],
+        "albumReleaseDate": "May 03, 2016",
+        "albumImage": "",
+        "albumSpotifyKey": "2FIAhzVK9HbdD59JmN42QX"
+    },
+    {
+        "albumTitle": "J.R.",
+        "albumImageSelector": "",
+        "albumLinks": {
+            "spotify": "https://open.spotify.com/album/2OmbfEQbZ0uRNbuveG7GRz",
+            "itunes": "",
+            "googlePlay": "",
+            "amazon": ""
+        },
+        "albumTracks": [
+            "Death By Dinosaur Ninjas",
+            "Death By Conga",
+            "Death By Counting Sheep",
+            "Death By Sea Monsters",
+            "Death By Toads",
+            "Death By Credits"
+        ],
+        "albumReleaseDate": "October 11, 2015",
+        "albumImage": "",
+        "albumSpotifyKey": "2OmbfEQbZ0uRNbuveG7GRz"
+    },
+    {
         "albumTitle": "A Winter's Tale",
         "albumImageSelector": "a-winters-tale",
         "albumLinks": {
@@ -66,7 +108,7 @@
         "albumSpotifyKey": "6iF2r50OTHBMYXPF4Us3mF"
     },
     {
-        "albumTitle": "The Nature Sessions (2009-20011)",
+        "albumTitle": "The Nature Sessions (2009-2011)",
         "albumImageSelector": "the-nature-sessions",
         "albumLinks": {
             "spotify": "https://goo.gl/tDyHKg",

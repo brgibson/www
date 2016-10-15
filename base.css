@@ -4,17 +4,21 @@ body {
     font-size: 22px;
     margin: 0;
     padding: 0;
+    letter-spacing: .3em;
 }
 dd, ul {
     margin: 0;
     padding: 0;
 }
 h1 {
-    /*font-family: Futura, "Gill Sans", Helvetica;*/
     font-family: "Open Sans", sans-serif;
+    letter-spacing: .2em;
+    text-transform: uppercase;
 }
 h2, h3, h4, h5, h6, nav, nav .offscreen {
     font-family: "Open Sans", sans-serif;
+    letter-spacing: 0;
+    text-transform: uppercase;
 }
 .l-b { font-size: .9em; position:relative; top: .1em;}
 .l-dot { font-size: 1.3em; position:relative; top: -.05em;   }
@@ -35,6 +39,7 @@ ul li {
 }
 p {
     line-height: 140%;
+    text-align: justify;
 }
 
 .ad-container {
@@ -205,7 +210,10 @@ nav .icon-camera-retro::after {
 .experiments .experiment-links {
     text-align: center;
 }
-.experiments .photo {
+.experiments .experiment-links li {
+    display: block;
+}
+.experiments .photo { /*still used on the about page */
     display: block; /* fixes the pixels of whitespace below the photo */
     width: 100%;
 }
@@ -358,7 +366,9 @@ nav .icon-camera-retro::after {
     padding-top: 10%;
     padding-left: 15%;
     text-align: left;
+    text-transform: none;
 }
+
 .band-home .tracklist {
     display: inline-block;
     line-height: 1.5em;

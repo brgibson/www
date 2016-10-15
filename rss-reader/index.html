@@ -1,0 +1,40 @@
+---
+layout: default
+category: experiments
+bodySelector: experiments
+
+title: RSS Reader Experiment
+keywords: b.r.gibson, brgibson, ben gibson, benjamin roberts gibson, code, tech, experiments, rss reader, rss
+description: RSS Reader - Experiment
+---
+
+<section id="blog-section">
+    <h1><a id="blog-title-container" href="//blog.brgibson.com">Blog</a></h1>
+    <div id="blog-rss-container"></div>
+</section>
+
+<script src="/js/promises/promises.js" async></script>
+<script src="/rss-reader/rssreader.js" async></script>
+<script type="text/javascript" async="">
+    (function () {
+        var RETRIES = 10;
+        var RETRY_TIMEOUT = 2000;
+
+        var blogRssContainer = document.getElementById('blog-rss-container');
+        var blogTitleContainer = document.getElementById('blog-title-container');
+
+        function renderRssFeed() {
+            var isSuccessful = BRG && BRG.RSS && BRG.RSS.render({
+                        containerElement: blogRssContainer,
+                        titleContainerElement: blogTitleContainer
+                    }, "//blog.brgibson.com/rss/");
+            if (isSuccessful !== true && RETRIES > 0) {
+                RETRIES--;
+                window.console.info("Retrying RSS feed.")
+                window.setTimeout(renderRssFeed, RETRY_TIMEOUT);
+            }
+        }
+
+        renderRssFeed();
+    })();
+</script>
