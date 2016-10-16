@@ -6,10 +6,11 @@ title: b.r.gibson Music - listen, follow, enjoy
 keywords: b.r.gibson, brgibson, band, music, ben gibson, benjamin roberts gibson
 description: Listen to music of b.r.gibson.
 ---
-
-<h1>Music</h1>
-<div class="musicviewer">
-    {% for album in site.data.albums %}
-        {% include music/spotify-player.html header=album.albumTitle spotifyKey=album.albumSpotifyKey %}
-    {% endfor %}
+<div>
+    <h1>Music</h1>
+    <div class="musicviewer">
+        {% for album in site.data.albums %}
+            {% include music/spotify-player.html header=album.albumTitle spotifyKey=album.albumSpotifyKey %}
+        {% endfor %}
+    </div>
 </div>

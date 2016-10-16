@@ -6,15 +6,29 @@ body {
     padding: 0;
     letter-spacing: .3em;
 }
-dd, ul {
-    margin: 0;
+h1, h2, h3, h4 ,h5, h6, p {
+    margin: .5em 1em;
     padding: 0;
 }
 h1 {
     font-family: "Open Sans", sans-serif;
     letter-spacing: .2em;
     text-transform: uppercase;
+    font-size: 1.5em;
+    padding-top: .25em;
 }
+h2 {
+    font-size: 1.25em;
+}
+dl {
+    margin: 0;
+    padding: .5em 1em;
+}
+dd, ul {
+    margin: 0;
+    padding: 0;
+}
+
 h2, h3, h4, h5, h6, nav, nav .offscreen {
     font-family: "Open Sans", sans-serif;
     letter-spacing: 0;
@@ -30,10 +44,6 @@ h2, h3, h4, h5, h6, nav, nav .offscreen {
 .l-s { font-size: .7em; position:relative; top: 0em;    }
 .l-o { font-size: 1em; position:relative; top: .2em;    }
 .l-n { font-size: .8em; position:relative; top: 0em;    }
-h1, h2, h3, h4 ,h5, h6, p, dl {
-    margin: 0;
-    padding: .5em 1em;
-}
 ul li {
     display: inline-block;
 }
@@ -146,10 +156,7 @@ nav + *::before,
 nav + .main::before {
     content: '';
     display: block;
-    padding-bottom: 1.5em;
-}
-nav + .main::before {
-    padding-bottom: 2.5em;
+    padding-bottom: 3em;
 }
 nav .current {
     transition: color 1s;
@@ -200,9 +207,6 @@ nav .icon-camera-retro::after {
 }
 
 /* homepage */
-.experiments h1 {
-    padding-top: .7em;
-}
 .experiments .main {
     margin: 0 auto;
     max-width: 32em;
@@ -272,6 +276,7 @@ nav .icon-camera-retro::after {
 
 /* music */
 .musicviewer {
+    margin-top: -1em;
     text-align: center;
 }
 .musicviewer iframe {
@@ -363,6 +368,7 @@ nav .icon-camera-retro::after {
     min-height: 9em;
 }
 .band-home .logo {
+    font-size: 2em;
     padding-top: 10%;
     padding-left: 15%;
     text-align: left;
