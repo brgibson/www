@@ -11,6 +11,7 @@
         body {
             font-family: helvetica;
             font-weight: 300;
+            /*text-align: center;*/
         }
         table {
             border-collapse: collapse;
@@ -24,6 +25,7 @@
         }
         .smash-container {
             margin-top: -5.5em;
+            display: inline-block;
         }
         tr {
             border: solid 1px green;
@@ -33,10 +35,12 @@
         }
         th {
             padding: 1em;
+            white-space: nowrap;
         }
         td {
             font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
             padding: .7em 1em;
+            white-space: nowrap;
         }
         ul {
             padding: 0;
@@ -66,31 +70,12 @@
         .smash-standings td:first-of-type {
             text-align: center;
         }
-        @media all and (max-width: 1080px) and (orientation: landscape) {
-            body {
-                font-size: .84em;
-            }
-            h1 {
-                display: none;
-            }
+        .main {
+            display: inline-block;
         }
-        @media all and (max-width: 980px) and (orientation: portrait) {
-            body {
-                font-size: .95em;
-            }
-        }
-        @media all and (orientation: landscape) {
-            .score {
-                white-space: nowrap;
-            }
-            .score li {
-                display: inline;
-                margin-right: -.3em;
-            }
-        }
-        @media all and (orientation: portrait) {
-            .score span {
-                display: none;
+        @media all and (max-width: 500px) {
+            .smash-container {
+                margin-top: -3em;
             }
         }
 
@@ -103,13 +88,11 @@
     </style>
 
 	<body class="{{page.bodySelector}}">
-        <center>
-            {{content}}
+            <center>{{content}}</center>
 
             <div style="margin:1.5em 0 1.5em">
                 {% include global/ad-responsive.html %}
             </div>
-        </center>
 	</body>
     {% include global/google-analytics.html %}
 
