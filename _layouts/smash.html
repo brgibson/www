@@ -88,11 +88,13 @@
     </style>
 
 	<body class="{{page.bodySelector}}">
-            <center>{{content}}</center>
+            <center>
+                {{content}}
 
-            <div style="margin:1.5em 0 1.5em">
-                {% include global/ad-responsive.html %}
-            </div>
+                <div style="margin:1.5em 0 1.5em">
+                    {% include global/ad-responsive.html %}
+                </div>
+            </center>
 	</body>
     {% include global/google-analytics.html %}
 
