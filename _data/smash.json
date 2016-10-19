@@ -1,82 +1,427 @@
 [
     {
-        "playerIds": ["crowley", "geuff"],
+        "playerIds": ["jason", "mike"],
         "score": {
-            "crowley": 0,
-            "geuff": 2
+            "jason": 0,
+            "mike": 2
         },
-        "date": "2016-09-29"
+        "games": [{
+                "corrin": 1,
+                "villager": 2,
+                "winner": "mike"
+            }, {
+                "corrin": 0,
+                "villager": 2,
+                "winner": "mike",
+                "spikes": {
+                    "mike": 1
+                },
+                "tree": {
+                    "mike": 1
+                }
+            }
+        ],
+        "date": "2016-10-18  No. 01"
+    },{
+        "playerIds": ["vinh", "lloyd"],
+        "score": {
+            "vinh": 0,
+            "lloyd": 2
+        },
+        "games": [{
+                "lucina": 1,
+                "pauletena": 2,
+                "winner": "lloyd"
+            }, {
+                "lucina": "1",
+                "marth": "2",
+                "winner": "lloyd"
+            }
+        ],
+        "date": "2016-10-18  No. 02"
+    },{
+        "playerIds": ["geoff", "matt"],
+        "score": {
+            "geoff": 2,
+            "matt": 0
+        },
+        "games": [{
+                "pikachu": 0,
+                "captain falcon": 2,
+                "winner": "geoff",
+                "spikes": {
+                    "geoff": 1
+                }
+            }, {
+                "megaman": 0,
+                "captain falcon": 2,
+                "winner": "geoff",
+                "spikes": {
+                    "geoff": 1
+                }
+            }
+        ],
+        "date": "2016-10-18  No. 03"
     },
     {
-        "playerIds": ["bean", "geuff"],
+        "playerIds": ["ben", "vinh"],
         "score": {
-            "geuff": 2,
-            "bean": 0
+            "ben": 2,
+            "vinh": 1
         },
-        "date": "2016-10-13"
+        "games": [{
+                "lucina": 2,
+                "duck hunt": 1,
+                "winner": "vinh"
+            }, {
+                "lucina": 1,
+                "sonic": 2,
+                "winner": "ben"
+            },{
+                "lucina": 0,
+                "sonic": 2,
+                "winner": "ben",
+                "sds": {
+                    "vinh":1
+                }
+            }
+        ],
+        "date": "2016-10-18  No. 04"
     },
     {
-        "playerIds": ["bean", "crowley"],
+        "playerIds": ["mike", "geoff"],
         "score": {
-            "crowley": 0,
-            "bean": 2
+            "mike": 2,
+            "geoff": 0
         },
-        "date": "2016-10-16"
+        "games": [{
+                "villager": 2,
+                "captain falcon": 1,
+                "winner": "mike",
+                "spikes": {
+                    "geoff": 1
+                },
+                "bowling ball": {
+                    "mike": 1
+                }
+            },{
+                "villager": 2,
+                "mario": 1,
+                "winner": "mike"
+            }
+        ],
+        "date": "2016-10-18  No. 05"
     },
     {
-        "playerIds": ["crowley", "geuff"],
+        "playerIds": ["matt", "ben"],
         "score": {
-            "geuff": 2,
-            "crowley": 0
+            "matt": 0,
+            "ben": 2
         },
-        "date": "2016-10-19"
+        "games": [{
+                "duck hunt": 2,
+                "zero suit samus": 0,
+                "winner": "ben",
+                "spikes": {
+                }
+            },
+            {
+                "duck hunt": 2,
+                "mega man": 0,
+                "winner": "ben",
+                "spikes": {
+                }
+            }
+        ],
+        "date": "2016-10-18  No. 06"
     },
     {
-        "playerIds": ["jayzam", "bean"],
+        "playerIds": ["geoff", "lloyd"],
         "score": {
-            "jayzam": 2,
-            "bean": 1
+            "geoff": 2,
+            "lloyd": 1
         },
-        "date": "2016-10-20"
+        "games": [{
+                "cloud": 2,
+                "link": 1,
+                "winner": "geoff"
+            },
+            {
+                "cloud": 1,
+                "charizard": 2,
+                "winner": "lloyd",
+                "spikes": {
+                },
+                "flare blitz": {
+                    "lloyd": 1
+                }
+            },
+            {
+                "ganondorf": 2,
+                "charizard": 1,
+                "winner": "geoff"
+            }
+        ],
+        "date": "2016-10-18  No. 07"
     },
     {
-        "playerIds": ["bean", "geuff"],
+        "playerIds": ["mike", "vinh"],
         "score": {
-            "bean": 2,
-            "geuff": 1
+            "mike": 1,
+            "vinh": 2
         },
-        "date": "2016-09-20"
+        "games": [{
+                "villager": 1,
+                "lucina": 2,
+                "winner": "vinh"
+            },
+            {
+                "villager": 2,
+                "lucina": 1,
+                "winner": "mike",
+                "bowling ball": {
+                    "mike": 1
+                }
+            },
+            {
+                "villager": 1,
+                "lucina": 2,
+                "winner": "mike",
+                "bowling ball": {
+                    "mike": 1
+                }
+            }
+        ],
+        "date": "2016-10-18  No. 08"
     },
     {
-        "playerIds": ["crowley", "vanh"],
+        "playerIds": ["geoff", "ben"],
         "score": {
-            "vanh": 2,
-            "crowley": 0
+            "geoff": 2,
+            "ben": 0
         },
-        "date": "2016-10-21"
+        "games": [{
+                "captain falcon": 2,
+                "duck hunt": 1,
+                "winner": "geoff",
+                "spikes": {
+                    "geoff": 1
+                }
+            },
+            {
+                "ganondorf": 2,
+                "duck hunt": 0,
+                "winner": "geoff",
+                "warlock punch": {
+                    "geoff": 1
+                }
+            }
+        ],
+        "date": "2016-10-18  No. 09"
+    },{
+        "playerIds": ["lloyd", "mike"],
+        "score": {
+            "lloyd": 2,
+            "mike": 1
+        },
+        "games": [{
+                "villager": 2,
+                "marth": 0,
+                "winner": "mike",
+                "stage spike": {
+                    "mike": 1
+                }
+            },
+            {
+                "villager": 1,
+                "link": 2,
+                "winner": "lloyd"
+            },
+            {
+                "villager": 0,
+                "link": 2,
+                "winner": "lloyd"
+            }
+        ],
+        "date": "2016-10-18  No. 10"
     },
     {
-        "playerIds": ["jayzam", "geuff"],
+        "playerIds": ["vinh", "geoff"],
         "score": {
-            "jayzam": 2,
-            "geuff": 0
+            "vinh": 2,
+            "geoff": 1
         },
-        "date": "2016-10-25"
+        "games": [{
+                "lucina": 0,
+                "captain falcon": 2,
+                "winner": "geoff",
+                "spike": {
+                    "geoff": 2
+                }
+            },
+            {
+                "lucina": 2,
+                "captain falcon": 1,
+                "winner": "vinh"
+            },
+            {
+                "lucina": 2,
+                "captain falcon": 1,
+                "winner": "vinh",
+                "sd" : {
+                    "geoff": 1
+                }
+            }
+        ],
+        "date": "2016-10-18  No. 11"
     },
     {
-        "playerIds": ["bean", "geuff"],
+        "playerIds": ["ben", "mike"],
         "score": {
-            "geuff": 2,
-            "bean": 0
+            "ben": 1,
+            "mike": 2
         },
-        "date": "2016-10-30"
+        "games": [{
+                "sonic": 2,
+                "little mac": 0,
+                "winner": "ben",
+                "sd" : {
+                    "mike": 1
+                }
+            },
+            {
+                "sonic": 1,
+                "villager": 2,
+                "winner": "mike",
+                "tree" : {
+                    "mike": 1
+                }
+            },
+            {
+                "zelda": 1,
+                "village": 2,
+                "winner": "mike",
+                "bowling ball" : {
+                    "mike": 2
+                }
+            }
+        ],
+        "date": "2016-10-18  No. 12"
+    },
+     {
+        "playerIds": ["ben", "lloyd"],
+        "score": {
+            "ben": 1,
+            "lloyd": 1
+        },
+        "games": [{
+                "kirby": 2,
+                "palutena": 1,
+                "winner": "ben"
+            },
+            {
+                "charizard": 2,
+                "kirby": 0,
+                "winner": "lloyd",
+                "flare blitz" : {
+                    "lloyd": 1
+                }
+            },
+            {
+                "charizard": 2,
+                "sonic": 1,
+                "winner": "",
+                "sd" : {
+                    "ben": 1
+                }
+            }
+        ],
+        "date": "2016-10-18  No. 13"
     },
     {
-        "playerIds": ["vanh", "jayzam"],
+        "playerIds": ["vinh", "mike"],
         "score": {
-            "vanh": 2,
-            "jayzam": 3
+            "vinh": 0,
+            "mike": 2
         },
-        "date": "2016-10-30"
+        "games": [{
+                "cloud": 2,
+                "cloud": 1,
+                "winner": "mike",
+                "murder-suicide": {
+                    "vinh": 1
+                }
+            }
+        ],
+        "date": "2016-10-18  No. 14"
+    },
+    {
+        "playerIds": ["ben", "vinh"],
+        "score": {
+            "ben": 1,
+            "vinh": 2
+        },
+        "games": [{
+                "lucina": 1,
+                "sonic": 2,
+                "winner": "ben"
+            },
+            {
+                "lucina": 2,
+                "sonic": 0,
+                "winner": "vinh",
+                "sd" : {
+                    "ben": 1
+                }
+            },
+            {
+                "lucina": 2,
+                "sonic": 1,
+                "winner": "vinh"
+            }
+        ],
+        "date": "2016-10-18  No. 15"
+    },
+    {
+        "playerIds": ["geoff", "mike"],
+        "score": {
+            "geoff": 1,
+            "mike": 0
+        },
+        "games": [{
+                "captain falcon": 2,
+                "villager": 1,
+                "winner": "geoff"
+            },{
+                "captain falcon": 2,
+                "villager": 1,
+                "winner": "geoff"
+            }
+        ],
+        "date": "2016-10-18  No. 16"
+    },
+    {
+        "playerIds": ["vinh", "geoff"],
+        "score": {
+            "vinh": 0,
+            "geoff": 0
+        },
+        "games": [{
+                "captain falcon": 2,
+                "lucina": 1,
+                "winner": "geoff"
+            },{
+                "mario": 2,
+                "lucina": 1,
+                "winner": "",
+                "flood+footstool": {
+                    "geoff": 1
+                }
+
+
+            }
+        ],
+        "date": "2016-10-18  No. 17"
     }
+
 ]
