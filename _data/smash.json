@@ -290,7 +290,7 @@
         "playerIds": ["vinh", "mike"],
         "games": [{
                 "cloud": 2,
-                "cloud": 1,
+                "repeat-cloud": 1,
                 "winner": "mike",
                 "murder-suicide": {
                     "vinh": 1

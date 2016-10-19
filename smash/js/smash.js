@@ -21,12 +21,14 @@ const SmashApp = React.createClass({
     },
     isDoNothing(event) {
         //don't change the highlighting when clicking on a th
-        if (event.target.tagName.toLowerCase() == 'th') {
+        if (event.target.tagName.toLowerCase() == 'th' ||
+            event.target.classList.contains('th')) {
             return true;
         }
     },
     isClearHighlight(event, highlightedPlayer, highlightedMatchup) {
-        if (event.target.tagName.toLowerCase() == 'td') {
+        if (event.target.tagName.toLowerCase() == 'td' ||
+            event.target.classList.contains('td')) {
             //only clear if the state is the same
             return this.state.isHighlightSelected &&
                    this.state.highlightedPlayer == highlightedPlayer &&

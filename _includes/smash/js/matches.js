@@ -107,21 +107,21 @@ SmashMatches = React.createClass({
     },
     render(){
         return (
-            <table>
-                <thead>
-                    <tr>
-                        <th onClick={() => this.sortBy('date')}>Date</th>
-                        <th onClick={() => this.sortBy('player1')}>Player 1</th>
-                        <th onClick={() => this.sortBy('player2')}>Player 2</th>
-                        <th onClick={() => this.sortBy('score')}>Score</th>
-                    </tr>
-                </thead>
+            <div className="table">
+                <div className="thead">
+                    <div className="tr">
+                        <div className="th" onClick={() => this.sortBy('date')}>Date</div>
+                        <div className="th" onClick={() => this.sortBy('player1')}>Player 1</div>
+                        <div className="th" onClick={() => this.sortBy('player2')}>Player 2</div>
+                        <div className="th" onClick={() => this.sortBy('score')}>Score</div>
+                    </div>
+                </div>
                 <TableBody smashMatches={smashMatches}
                            sortFunction={this.state.sortFunction}
                            isHighlightSelected={this.props.isHighlightSelected}
                            highlightedMatchup={this.props.highlightedMatchup}
                            highlightedPlayer={this.props.highlightedPlayer}/>
-            </table>
+            </div>
             )
     }
 });
@@ -144,7 +144,7 @@ const TableBody = React.createClass({
                                          highlightedPlayer={_self.props.highlightedPlayer}
                                          isHighlightSelected={_self.props.isHighlightSelected}/>);
         });
-        return (<tbody>{tableRows}</tbody>);
+        return (<div className="tbody">{tableRows}</div>);
     }
 });
 
@@ -169,17 +169,17 @@ const TableRow = React.createClass({
     },
     render() {
         return (
-            <tr className={this.isOutOfFocus()  ? 'oof' : ''}
-                data-players={[this.props.player1,this.props.player2]}>
-                <td>{this.props.date}</td>
-                <td className={this.isEmphasized(this.props.player1) ? 'em' : ''} data-player={this.props.player1}>
-                    {this.props.player1}
-                </td>
-                <td className={this.isEmphasized(this.props.player2) ? 'em' : ''} data-player={this.props.player2}>
-                    {this.props.player2}
-                </td>
-                <td>{this.props.score[this.props.player1]}-{this.props.score[this.props.player2]}</td>
-            </tr>
+                <div className={'tr ' + (this.isOutOfFocus()  ? 'oof' : '')}
+                    data-players={[this.props.player1,this.props.player2]}>
+                    <div className="td">{this.props.date}</div>
+                    <div className={'td ' + (this.isEmphasized(this.props.player1) ? 'em' : '')} data-player={this.props.player1}>
+                        {this.props.player1}
+                    </div>
+                    <div className={'td ' + (this.isEmphasized(this.props.player2) ? 'em' : '')} data-player={this.props.player2}>
+                        {this.props.player2}
+                    </div>
+                    <div className="td">{this.props.score[this.props.player1]}-{this.props.score[this.props.player2]}</div>
+                </div>
         )
     }
 });

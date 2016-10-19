@@ -13,11 +13,12 @@
             font-weight: 300;
             /*text-align: center;*/
         }
-        table {
+        table, .table {
             border-collapse: collapse;
             background-color: #efe;
             text-transform: capitalize;
             cursor: pointer;
+            display: table;
         }
         h1 {
             padding:0;
@@ -27,20 +28,27 @@
             margin-top: -5.5em;
             display: inline-block;
         }
-        tr {
+        tr, .tr {
             border: solid 1px green;
+            display: table-row;
         }
-        thead {
+        thead, .thead {
             background-color: #fff;
+            display: table-header-group;
         }
-        th {
+        .tbody {
+            display: table-row-group;
+        }
+        th, .th {
             padding: 1em;
             white-space: nowrap;
+            display: table-cell;
         }
-        td {
+        td, .td {
             font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
             padding: .7em 1em;
             white-space: nowrap;
+            display: table-cell;
         }
         ul {
             padding: 0;
