@@ -146,9 +146,9 @@ SmashStandings = React.createClass({
                 <thead>
                     <tr>
                         <th className="player-header" onClick={() => this.sortBy('playerName')}>Player</th>
-                        <th onClick={() => this.sortBy('numPlayed')}>Played</th>
                         <th onClick={() => this.sortBy('numWins')}>Wins</th>
                         <th onClick={() => this.sortBy('numLosses')}>Losses</th>
+                        <th onClick={() => this.sortBy('numPlayed')}>Played</th>
                         <th onClick={() => this.sortBy('winRatio')}>Win Ratio</th>
                     </tr>
                 </thead>
@@ -204,9 +204,9 @@ const TableRow = React.createClass({
         return (
             <tr className={this.isOutOfFocus()  ? 'oof' : ''}>
                 <td className={this.isEmphasized() ? 'em' : ''} data-player={this.props.name}>{this.props.name}</td>
-                <td data-player={this.props.name}>{this.props.played}</td>
                 <td data-player={this.props.name}>{this.props.wins}</td>
                 <td data-player={this.props.name}>{this.props.losses}</td>
+                <td data-player={this.props.name}>{this.props.played}</td>
                 <td data-player={this.props.name}>{Math.round(this.props.winRatio)}%</td>
             </tr>
         )
