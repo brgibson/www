@@ -1,10 +1,6 @@
 [
     {
         "playerIds": ["jason", "mike"],
-        "score": {
-            "jason": 0,
-            "mike": 2
-        },
         "games": [{
                 "corrin": 1,
                 "villager": 2,
@@ -24,10 +20,6 @@
         "date": "2016-10-18  No. 01"
     },{
         "playerIds": ["vinh", "lloyd"],
-        "score": {
-            "vinh": 0,
-            "lloyd": 2
-        },
         "games": [{
                 "lucina": 1,
                 "pauletena": 2,
@@ -41,10 +33,6 @@
         "date": "2016-10-18  No. 02"
     },{
         "playerIds": ["geoff", "matt"],
-        "score": {
-            "geoff": 2,
-            "matt": 0
-        },
         "games": [{
                 "pikachu": 0,
                 "captain falcon": 2,
@@ -65,10 +53,6 @@
     },
     {
         "playerIds": ["ben", "vinh"],
-        "score": {
-            "ben": 2,
-            "vinh": 1
-        },
         "games": [{
                 "lucina": 2,
                 "duck hunt": 1,
@@ -90,10 +74,6 @@
     },
     {
         "playerIds": ["mike", "geoff"],
-        "score": {
-            "mike": 2,
-            "geoff": 0
-        },
         "games": [{
                 "villager": 2,
                 "captain falcon": 1,
@@ -114,10 +94,6 @@
     },
     {
         "playerIds": ["matt", "ben"],
-        "score": {
-            "matt": 0,
-            "ben": 2
-        },
         "games": [{
                 "duck hunt": 2,
                 "zero suit samus": 0,
@@ -137,10 +113,6 @@
     },
     {
         "playerIds": ["geoff", "lloyd"],
-        "score": {
-            "geoff": 2,
-            "lloyd": 1
-        },
         "games": [{
                 "cloud": 2,
                 "link": 1,
@@ -166,10 +138,6 @@
     },
     {
         "playerIds": ["mike", "vinh"],
-        "score": {
-            "mike": 1,
-            "vinh": 2
-        },
         "games": [{
                 "villager": 1,
                 "lucina": 2,
@@ -196,10 +164,6 @@
     },
     {
         "playerIds": ["geoff", "ben"],
-        "score": {
-            "geoff": 2,
-            "ben": 0
-        },
         "games": [{
                 "captain falcon": 2,
                 "duck hunt": 1,
@@ -220,10 +184,6 @@
         "date": "2016-10-18  No. 09"
     },{
         "playerIds": ["lloyd", "mike"],
-        "score": {
-            "lloyd": 2,
-            "mike": 1
-        },
         "games": [{
                 "villager": 2,
                 "marth": 0,
@@ -247,10 +207,6 @@
     },
     {
         "playerIds": ["vinh", "geoff"],
-        "score": {
-            "vinh": 2,
-            "geoff": 1
-        },
         "games": [{
                 "lucina": 0,
                 "captain falcon": 2,
@@ -277,10 +233,6 @@
     },
     {
         "playerIds": ["ben", "mike"],
-        "score": {
-            "ben": 1,
-            "mike": 2
-        },
         "games": [{
                 "sonic": 2,
                 "little mac": 0,
@@ -310,10 +262,6 @@
     },
      {
         "playerIds": ["ben", "lloyd"],
-        "score": {
-            "ben": 1,
-            "lloyd": 1
-        },
         "games": [{
                 "kirby": 2,
                 "palutena": 1,
@@ -330,7 +278,7 @@
             {
                 "charizard": 2,
                 "sonic": 1,
-                "winner": "",
+                "winner": "lloyd",
                 "sd" : {
                     "ben": 1
                 }
@@ -340,10 +288,6 @@
     },
     {
         "playerIds": ["vinh", "mike"],
-        "score": {
-            "vinh": 0,
-            "mike": 2
-        },
         "games": [{
                 "cloud": 2,
                 "cloud": 1,
@@ -357,10 +301,6 @@
     },
     {
         "playerIds": ["ben", "vinh"],
-        "score": {
-            "ben": 1,
-            "vinh": 2
-        },
         "games": [{
                 "lucina": 1,
                 "sonic": 2,
@@ -384,10 +324,6 @@
     },
     {
         "playerIds": ["geoff", "mike"],
-        "score": {
-            "geoff": 1,
-            "mike": 0
-        },
         "games": [{
                 "captain falcon": 2,
                 "villager": 1,
@@ -402,10 +338,6 @@
     },
     {
         "playerIds": ["vinh", "geoff"],
-        "score": {
-            "vinh": 0,
-            "geoff": 0
-        },
         "games": [{
                 "captain falcon": 2,
                 "lucina": 1,
@@ -413,15 +345,12 @@
             },{
                 "mario": 2,
                 "lucina": 1,
-                "winner": "",
+                "winner": "geoff",
                 "flood+footstool": {
                     "geoff": 1
                 }
-
-
             }
         ],
         "date": "2016-10-18  No. 17"
     }
-
 ]

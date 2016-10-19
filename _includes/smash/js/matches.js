@@ -5,7 +5,27 @@ var SmashMatches;
 (function() {
 /** ------------------------------------------------------------------------ */
 
-const smashMatches = {{site.data.smash | jsonify}};
+const smashMatches = (function() {
+
+    const smashData = {{site.data.smash | jsonify}};
+
+    //set num wins/losses/played
+    let getScore = (match, player) => () => match.games.reduce(
+        (wins, game) => (player == game.winner ? wins + 1 : wins),
+        0);
+
+
+    smashData.forEach(function(match) {
+        let playerOne = match.playerIds[0];
+        let playerTwo = match.playerIds[1];
+
+        match.score = {};
+        match.score[playerOne] = getScore(match, playerOne)();
+        match.score[playerTwo] = getScore(match, playerTwo)();
+    });
+
+    return smashData;
+})();
 
 /** ------------------------------------------------------------------------ */
 

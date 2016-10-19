@@ -26,11 +26,20 @@ const playerStandings = (function() {
         });
 
         //set num wins/losses/played
-        smashData.forEach(function(obj) {
-            let playerOne = obj.playerIds[0];
-            let playerTwo = obj.playerIds[1];
-            let playerOneScore = obj.score[playerOne];
-            let playerTwoScore = obj.score[playerTwo];
+        let getScore = (match, player) => () => match.games.reduce((wins, game) => {
+            if (player == game.winner) {
+                return wins + 1;
+            } else {
+                return wins;
+            }
+        }, 0);
+
+
+        smashData.forEach(function(match) {
+            let playerOne = match.playerIds[0];
+            let playerTwo = match.playerIds[1];
+            let playerOneScore = getScore(match, playerOne)();
+            let playerTwoScore = getScore(match, playerTwo)();
 
             playerStandings[playerOne].played++;
             playerStandings[playerTwo].played++;
