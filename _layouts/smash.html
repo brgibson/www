@@ -30,16 +30,21 @@
         }
         tr, .tr {
             border: solid 1px green;
-            display: table-row;
+        }
+        .tr {
+            display: block;
         }
         thead, .thead {
             background-color: #fff;
-            display: table-header-group;
+        }
+        .thead {
+            display: block;
         }
         .tbody {
-            display: table-row-group;
+            display: block;
         }
         th, .th {
+            font-weight: bold;
             padding: 1em;
             white-space: nowrap;
             display: table-cell;
@@ -48,7 +53,10 @@
             font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
             padding: .7em 1em;
             white-space: nowrap;
-            display: table-cell;
+        }
+        .td {
+            display: inline-block;
+            white-space: nowrap;
         }
         ul {
             padding: 0;
@@ -77,6 +85,17 @@
         }
         .smash-standings td:first-of-type {
             text-align: center;
+        }
+        .smash-matches .additional-info {
+            display: inline-block;
+        }
+        .smash-matches .additional-info .game {
+            display: inline-block;
+            vertical-align: top;
+            margin: 1em;
+        }
+        .smash-matches .additional-info .detail {
+            display: block;
         }
         .main {
             display: inline-block;

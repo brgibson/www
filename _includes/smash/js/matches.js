@@ -143,6 +143,7 @@ const TableBody = React.createClass({
                                          highlightedMatchup={_self.props.highlightedMatchup}
                                          highlightedPlayer={_self.props.highlightedPlayer}
                                          isHighlightSelected={_self.props.isHighlightSelected}/>);
+                tableRows.push(<AdditionalMatchInfo games={match.games} />);
         });
         return (<div className="tbody">{tableRows}</div>);
     }
@@ -180,6 +181,33 @@ const TableRow = React.createClass({
                     </div>
                     <div className="td">{this.props.score[this.props.player1]}-{this.props.score[this.props.player2]}</div>
                 </div>
+        )
+    }
+});
+
+/** ------------------------------------------------------------------------ */
+
+const AdditionalMatchInfo = React.createClass({
+
+    formatGame(game) {
+        return Object.keys(game).reduce(function(arr, key) {
+            arr.push(<p className="detail">{key + ": " + game[key]}</p>);
+            return arr;
+        }, []);
+    },
+
+    formatGames() {
+        let _self = this;
+        return this.props.games.reduce(function(arrTop, game) {
+            arrTop.push(<div className="game">{_self.formatGame(game)}</div>)
+            return arrTop;
+        }, []);
+    },
+    render() {
+        return (
+            <div className="additional-info">
+                {this.formatGames()}
+            </div>
         )
     }
 });
