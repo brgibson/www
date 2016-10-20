@@ -152,7 +152,7 @@ const TableBody = React.createClass({
             if (!_self.props.isHighlightSelected) {
                 return false;
             }
-            
+
             let scoreDiff = score[playerOne] - score[playerTwo];
             if (playerOne == _self.props.highlightedPlayer) {
                 return scoreDiff > 0;
@@ -176,6 +176,11 @@ const TableBody = React.createClass({
                    _self.props.highlightedPlayer == playerTwo);
         };
 
+        function isHideRow(isOutOfFocus) {
+            //hide row if it is out of focus and a highlited matchup is selected
+            return isOutOfFocus && _self.props.highlightedMatchup.length > 0;
+        }
+
         var tableRows = [];
         _self.props.smashMatches
             .sort(_self.props.sortFunction)
@@ -186,21 +191,24 @@ const TableBody = React.createClass({
                 var isLose = computeIsLose(playerOne, playerTwo, match.score);
                 var isWin = computeIsWin(playerOne, playerTwo, match.score);;
 
-                tableRows.push(<TableRow date={match.date}
-                                         player1={playerOne}
-                                         player2={playerTwo}
-                                         score={match.score}
-                                         isWin={isWin}
-                                         isLose={isLose}
-                                         isOutOfFocus={isOutOfFocus}
-                                         highlightedMatchup={_self.props.highlightedMatchup}
-                                         highlightedPlayer={_self.props.highlightedPlayer}
-                                         isHighlightSelected={_self.props.isHighlightSelected}/>);
+                if (!isHideRow(isOutOfFocus)) {
 
-                if (_self.props.isHighlightSelected && !isOutOfFocus) {
-                    tableRows.push(<AdditionalMatchInfo isWin={isWin}
-                                                        isLose={isLose}
-                                                        games={match.games} />);
+                    tableRows.push(<TableRow date={match.date}
+                                             player1={playerOne}
+                                             player2={playerTwo}
+                                             score={match.score}
+                                             isWin={isWin}
+                                             isLose={isLose}
+                                             isOutOfFocus={isOutOfFocus}
+                                             highlightedMatchup={_self.props.highlightedMatchup}
+                                             highlightedPlayer={_self.props.highlightedPlayer}
+                                             isHighlightSelected={_self.props.isHighlightSelected}/>);
+
+                    if (_self.props.isHighlightSelected && !isOutOfFocus) {
+                        tableRows.push(<AdditionalMatchInfo isWin={isWin}
+                                                            isLose={isLose}
+                                                            games={match.games} />);
+                    }
                 }
         });
         return (<div className="tbody">{tableRows}</div>);
