@@ -110,10 +110,10 @@ SmashMatches = React.createClass({
             <div className="table">
                 <div className="thead">
                     <div className="tr">
-                        <div className="th" onClick={() => this.sortBy('date')}>Date</div>
-                        <div className="th" onClick={() => this.sortBy('player1')}>Player 1</div>
-                        <div className="th" onClick={() => this.sortBy('player2')}>Player 2</div>
-                        <div className="th" onClick={() => this.sortBy('score')}>Score</div>
+                        <div className="th date" onClick={() => this.sortBy('date')}>Date</div>
+                        <div className="th player" onClick={() => this.sortBy('player1')}>Player 1</div>
+                        <div className="th player" onClick={() => this.sortBy('player2')}>Player 2</div>
+                        <div className="th score" onClick={() => this.sortBy('score')}>Score</div>
                     </div>
                 </div>
                 <TableBody smashMatches={smashMatches}
@@ -129,21 +129,43 @@ SmashMatches = React.createClass({
 /** ------------------------------------------------------------------------ */
 
 const TableBody = React.createClass({
+
     render() {
         let _self = this;
 
+        function computeIsOutOfFocus(playerOne, playerTwo) {
+            if (!_self.props.isHighlightSelected) {
+                return false; //short circuit so nothing is out of focus
+            }
+
+            let isHighlightedMatchup = _self.props.highlightedMatchup.indexOf(playerOne) >= 0 &&
+                                       _self.props.highlightedMatchup.indexOf(playerTwo) >= 0;
+
+            return !(isHighlightedMatchup ||
+                   _self.props.highlightedPlayer == playerOne ||
+                   _self.props.highlightedPlayer == playerTwo);
+        };
+
         var tableRows = [];
-        this.props.smashMatches
+        _self.props.smashMatches
             .sort(_self.props.sortFunction)
             .forEach(function(match) {
+                var playerOne = match.playerIds[0];
+                var playerTwo = match.playerIds[1];
+                var isOutOfFocus = computeIsOutOfFocus(playerOne, playerTwo);
+
                 tableRows.push(<TableRow date={match.date}
-                                         player1={match.playerIds[0]}
-                                         player2={match.playerIds[1]}
+                                         player1={playerOne}
+                                         player2={playerTwo}
                                          score={match.score}
+                                         isOutOfFocus={isOutOfFocus}
                                          highlightedMatchup={_self.props.highlightedMatchup}
                                          highlightedPlayer={_self.props.highlightedPlayer}
                                          isHighlightSelected={_self.props.isHighlightSelected}/>);
-                tableRows.push(<AdditionalMatchInfo games={match.games} />);
+
+                if (_self.props.isHighlightSelected && !isOutOfFocus) {
+                    tableRows.push(<AdditionalMatchInfo games={match.games} />);
+                }
         });
         return (<div className="tbody">{tableRows}</div>);
     }
@@ -152,34 +174,22 @@ const TableBody = React.createClass({
 /** ------------------------------------------------------------------------ */
 
 const TableRow = React.createClass({
-    isOutOfFocus() {
-        if (!this.props.isHighlightSelected) {
-            return false; //short circuit so nothing is out of focus
-        }
-
-        let isHighlightedMatchup = this.props.highlightedMatchup.indexOf(this.props.player1) >= 0 &&
-                                   this.props.highlightedMatchup.indexOf(this.props.player2) >= 0;
-
-        return !(isHighlightedMatchup ||
-               this.props.highlightedPlayer == this.props.player1 ||
-               this.props.highlightedPlayer == this.props.player2);
-    },
     isEmphasized(player) {
         return this.props.isHighlightSelected &&
-            (player == this.props.highlightedPlayer || (!this.isOutOfFocus() && !this.props.highlightedPlayer));
+            (player == this.props.highlightedPlayer || (!this.props.isOutOfFocus && !this.props.highlightedPlayer));
     },
     render() {
         return (
-                <div className={'tr ' + (this.isOutOfFocus()  ? 'oof' : '')}
+                <div className={'tr ' + (this.props.isOutOfFocus  ? 'oof' : '')}
                     data-players={[this.props.player1,this.props.player2]}>
-                    <div className="td">{this.props.date}</div>
-                    <div className={'td ' + (this.isEmphasized(this.props.player1) ? 'em' : '')} data-player={this.props.player1}>
+                    <div className="td date">{this.props.date}</div>
+                    <div className={'td player' + ' ' + (this.isEmphasized(this.props.player1) ? 'em' : '')} data-player={this.props.player1}>
                         {this.props.player1}
                     </div>
-                    <div className={'td ' + (this.isEmphasized(this.props.player2) ? 'em' : '')} data-player={this.props.player2}>
+                    <div className={'td player' + ' ' + (this.isEmphasized(this.props.player2) ? 'em' : '')} data-player={this.props.player2}>
                         {this.props.player2}
                     </div>
-                    <div className="td">{this.props.score[this.props.player1]}-{this.props.score[this.props.player2]}</div>
+                    <div className="td score">{this.props.score[this.props.player1]}-{this.props.score[this.props.player2]}</div>
                 </div>
         )
     }

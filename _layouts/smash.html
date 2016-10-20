@@ -19,6 +19,7 @@
             text-transform: capitalize;
             cursor: pointer;
             display: table;
+            border: solid 1px green;
         }
         h1 {
             padding:0;
@@ -28,11 +29,22 @@
             margin-top: -5.5em;
             display: inline-block;
         }
-        tr, .tr {
+        tr {
+            line-height: 20px;
             border: solid 1px green;
         }
         .tr {
+            line-height: 20px;
             display: block;
+            border-top: solid 1px green;
+        }
+        .thead .tr,
+        .additional-info + .tr {
+            border-top: none;
+        }
+        .smash-matches .additional-info {
+            border-bottom: solid 1px green;
+            border-top: solid 1px green;
         }
         thead, .thead {
             background-color: #fff;
@@ -86,9 +98,6 @@
         .smash-standings td:first-of-type {
             text-align: center;
         }
-        .smash-matches .additional-info {
-            display: inline-block;
-        }
         .smash-matches .additional-info .game {
             display: inline-block;
             vertical-align: top;
@@ -96,6 +105,17 @@
         }
         .smash-matches .additional-info .detail {
             display: block;
+        }
+        .smash-matches .date {
+            width: 9em;
+            margin-left: 1em;
+        }
+        .smash-matches .score {
+            width: 5em;
+            margin-right: 1em;
+        }
+        .smash-matches .player {
+            width: 7em;
         }
         .main {
             display: inline-block;
