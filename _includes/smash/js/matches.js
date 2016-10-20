@@ -133,6 +133,36 @@ const TableBody = React.createClass({
     render() {
         let _self = this;
 
+        function computeIsLose(playerOne, playerTwo, score) {
+            if (!_self.props.isHighlightSelected) {
+                return false;
+            }
+
+            let scoreDiff = score[playerOne] - score[playerTwo];
+            if (playerOne == _self.props.highlightedPlayer) {
+                return scoreDiff < 0;
+            }
+            if (playerTwo == _self.props.highlightedPlayer) {
+                return scoreDiff > 0;
+            }
+            return false;
+        }
+
+        function computeIsWin(playerOne, playerTwo, score) {
+            if (!_self.props.isHighlightSelected) {
+                return false;
+            }
+            
+            let scoreDiff = score[playerOne] - score[playerTwo];
+            if (playerOne == _self.props.highlightedPlayer) {
+                return scoreDiff > 0;
+            }
+            if (playerTwo == _self.props.highlightedPlayer) {
+                return scoreDiff < 0;
+            }
+            return false;
+        }
+
         function computeIsOutOfFocus(playerOne, playerTwo) {
             if (!_self.props.isHighlightSelected) {
                 return false; //short circuit so nothing is out of focus
@@ -153,18 +183,24 @@ const TableBody = React.createClass({
                 var playerOne = match.playerIds[0];
                 var playerTwo = match.playerIds[1];
                 var isOutOfFocus = computeIsOutOfFocus(playerOne, playerTwo);
+                var isLose = computeIsLose(playerOne, playerTwo, match.score);
+                var isWin = computeIsWin(playerOne, playerTwo, match.score);;
 
                 tableRows.push(<TableRow date={match.date}
                                          player1={playerOne}
                                          player2={playerTwo}
                                          score={match.score}
+                                         isWin={isWin}
+                                         isLose={isLose}
                                          isOutOfFocus={isOutOfFocus}
                                          highlightedMatchup={_self.props.highlightedMatchup}
                                          highlightedPlayer={_self.props.highlightedPlayer}
                                          isHighlightSelected={_self.props.isHighlightSelected}/>);
 
                 if (_self.props.isHighlightSelected && !isOutOfFocus) {
-                    tableRows.push(<AdditionalMatchInfo games={match.games} />);
+                    tableRows.push(<AdditionalMatchInfo isWin={isWin}
+                                                        isLose={isLose}
+                                                        games={match.games} />);
                 }
         });
         return (<div className="tbody">{tableRows}</div>);
@@ -180,7 +216,10 @@ const TableRow = React.createClass({
     },
     render() {
         return (
-                <div className={'tr ' + (this.props.isOutOfFocus  ? 'oof' : '')}
+                <div className={'tr'
+                                 + (this.props.isOutOfFocus  ? ' oof' : '')
+                                 + (this.props.isWin  ? ' win' : '')
+                                 + (this.props.isLose ? ' lose' : '')}
                     data-players={[this.props.player1,this.props.player2]}>
                     <div className="td date">{this.props.date}</div>
                     <div className={'td player' + ' ' + (this.isEmphasized(this.props.player1) ? 'em' : '')} data-player={this.props.player1}>
@@ -215,7 +254,9 @@ const AdditionalMatchInfo = React.createClass({
     },
     render() {
         return (
-            <div className="additional-info">
+            <div className={"additional-info"
+                + (this.props.isLose  ? ' lose' : '')
+                + (this.props.isWin  ? ' win' : '')}>
                 {this.formatGames()}
             </div>
         )
