@@ -9,12 +9,8 @@
                 "corrin": 0,
                 "villager": 2,
                 "winner": "mike",
-                "spikes": {
-                    "mike": 1
-                },
-                "tree": {
-                    "mike": 1
-                }
+                "spikes": "mike",
+                "tree": "mike"
             }
         ],
         "date": "2016-10-18  No. 01"
@@ -37,16 +33,12 @@
                 "pikachu": 0,
                 "captain falcon": 2,
                 "winner": "geoff",
-                "spikes": {
-                    "geoff": 1
-                }
+                "spikes": "geoff"
             }, {
                 "megaman": 0,
                 "captain falcon": 2,
                 "winner": "geoff",
-                "spikes": {
-                    "geoff": 1
-                }
+                "spikes": "geoff"
             }
         ],
         "date": "2016-10-18  No. 03"
@@ -65,9 +57,7 @@
                 "lucina": 0,
                 "sonic": 2,
                 "winner": "ben",
-                "sds": {
-                    "vinh":1
-                }
+                "sd": "vinh"
             }
         ],
         "date": "2016-10-18  No. 04"
@@ -78,12 +68,8 @@
                 "villager": 2,
                 "captain falcon": 1,
                 "winner": "mike",
-                "spikes": {
-                    "geoff": 1
-                },
-                "bowling ball": {
-                    "mike": 1
-                }
+                "spikes": "geoff",
+                "bowling ball": "mike"
             },{
                 "villager": 2,
                 "mario": 1,
@@ -97,16 +83,12 @@
         "games": [{
                 "duck hunt": 2,
                 "zero suit samus": 0,
-                "winner": "ben",
-                "spikes": {
-                }
+                "winner": "ben"
             },
             {
                 "duck hunt": 2,
                 "mega man": 0,
-                "winner": "ben",
-                "spikes": {
-                }
+                "winner": "ben"
             }
         ],
         "date": "2016-10-18  No. 06"
@@ -122,11 +104,7 @@
                 "cloud": 1,
                 "charizard": 2,
                 "winner": "lloyd",
-                "spikes": {
-                },
-                "flare blitz": {
-                    "lloyd": 1
-                }
+                "flare blitz": "lloyd"
             },
             {
                 "ganondorf": 2,
@@ -147,17 +125,13 @@
                 "villager": 2,
                 "lucina": 1,
                 "winner": "mike",
-                "bowling ball": {
-                    "mike": 1
-                }
+                "bowling ball": "mike"
             },
             {
                 "villager": 1,
                 "lucina": 2,
                 "winner": "mike",
-                "bowling ball": {
-                    "mike": 1
-                }
+                "bowling ball": "mike"
             }
         ],
         "date": "2016-10-18  No. 08"
@@ -168,17 +142,13 @@
                 "captain falcon": 2,
                 "duck hunt": 1,
                 "winner": "geoff",
-                "spikes": {
-                    "geoff": 1
-                }
+                "spikes": "geoff"
             },
             {
                 "ganondorf": 2,
                 "duck hunt": 0,
                 "winner": "geoff",
-                "warlock punch": {
-                    "geoff": 1
-                }
+                "warlock punch": "geoff"
             }
         ],
         "date": "2016-10-18  No. 09"
@@ -188,9 +158,7 @@
                 "villager": 2,
                 "marth": 0,
                 "winner": "mike",
-                "stage spike": {
-                    "mike": 1
-                }
+                "stage spikes": "mike"
             },
             {
                 "villager": 1,
@@ -211,9 +179,7 @@
                 "lucina": 0,
                 "captain falcon": 2,
                 "winner": "geoff",
-                "spike": {
-                    "geoff": 2
-                }
+                "spikes": ["geoff","geoff"]
             },
             {
                 "lucina": 2,
@@ -224,9 +190,7 @@
                 "lucina": 2,
                 "captain falcon": 1,
                 "winner": "vinh",
-                "sd" : {
-                    "geoff": 1
-                }
+                "sd": "geoff"
             }
         ],
         "date": "2016-10-18  No. 11"
@@ -237,25 +201,19 @@
                 "sonic": 2,
                 "little mac": 0,
                 "winner": "ben",
-                "sd" : {
-                    "mike": 1
-                }
+                "sd": "mike"
             },
             {
                 "sonic": 1,
                 "villager": 2,
                 "winner": "mike",
-                "tree" : {
-                    "mike": 1
-                }
+                "tree":"mike"
             },
             {
                 "zelda": 1,
                 "village": 2,
                 "winner": "mike",
-                "bowling ball" : {
-                    "mike": 2
-                }
+                "bowling ball": ["mike","mike"]
             }
         ],
         "date": "2016-10-18  No. 12"
@@ -271,17 +229,13 @@
                 "charizard": 2,
                 "kirby": 0,
                 "winner": "lloyd",
-                "flare blitz" : {
-                    "lloyd": 1
-                }
+                "flare blitz": "lloyd"
             },
             {
                 "charizard": 2,
                 "sonic": 1,
                 "winner": "lloyd",
-                "sd" : {
-                    "ben": 1
-                }
+                "sd": "ben"
             }
         ],
         "date": "2016-10-18  No. 13"
@@ -292,9 +246,7 @@
                 "cloud": 2,
                 "repeat-cloud": 1,
                 "winner": "mike",
-                "murder-suicide": {
-                    "vinh": 1
-                }
+                "murder-suicide": "vinh"
             }
         ],
         "date": "2016-10-18  No. 14"
@@ -346,11 +298,42 @@
                 "mario": 2,
                 "lucina": 1,
                 "winner": "geoff",
-                "flood+footstool": {
-                    "geoff": 1
-                }
+                "flood+footstool": "geoff"
             }
         ],
         "date": "2016-10-18  No. 17"
+    },
+    {
+        "playerIds": ["lloyd", "geoff"],
+        "games": [{
+                "captain falcon": 1,
+                "link": 2,
+                "winner": "lloyd",
+                "spikes": ["lloyd"]
+            },{
+                "cloud": 1,
+                "link": 2,
+                "winner": "lloyd"
+            }
+        ],
+        "date": "2016-10-19  No. 1"
+    },
+    {
+        "playerIds": ["ben", "geoff"],
+        "games": [{
+                "zero suit samus": 2,
+                "kirby": 1,
+                "winner": "geoff"
+            },{
+                "samus": 2,
+                "lucas": 0,
+                "winner": "geoff"
+            },{
+                "ganondorf": 2,
+                "lucas": 0,
+                "winner": "geoff"
+            }
+        ],
+        "date": "2016-10-19  No. 2"
     }
 ]
