@@ -262,9 +262,7 @@
                 "lucina": 2,
                 "sonic": 0,
                 "winner": "vinh",
-                "sd" : {
-                    "ben": 1
-                }
+                "sd": "ben"
             },
             {
                 "lucina": 2,

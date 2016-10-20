@@ -178,7 +178,7 @@ const TableBody = React.createClass({
 
         function isHideRow(isOutOfFocus) {
             //hide row if it is out of focus and a highlited matchup is selected
-            return isOutOfFocus && _self.props.highlightedMatchup.length > 0;
+            return isOutOfFocus;
         }
 
         var tableRows = [];
