@@ -234,10 +234,10 @@ const TableRow = React.createClass({
                     data-players={[this.props.player1,this.props.player2]}
                     data-expand={this.props.isHighlightSelected && !this.props.isOutOfFocus ? 'expand' : '' }>
                     <div className="td date">{this.props.date}</div>
-                    <div className={'td player' + ' ' + (this.isEmphasized(this.props.player1) ? 'em' : '')} data-player={this.props.player1}>
+                    <div className={'td player' + ' ' + (this.isEmphasized(this.props.player1) ? 'em' : '')}>
                         {this.props.player1}
                     </div>
-                    <div className={'td player' + ' ' + (this.isEmphasized(this.props.player2) ? 'em' : '')} data-player={this.props.player2}>
+                    <div className={'td player' + ' ' + (this.isEmphasized(this.props.player2) ? 'em' : '')}>
                         {this.props.player2}
                     </div>
                     <div className="td score">{this.props.score[this.props.player1]}-{this.props.score[this.props.player2]}</div>
