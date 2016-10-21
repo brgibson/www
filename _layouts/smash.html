@@ -39,7 +39,7 @@
             border-top: solid 1px green;
         }
         .thead .tr,
-        .additional-info + .tr {
+        *[data-expand="expand"] + .additional-info + .tr {
             border-top: none;
         }
         .smash-matches .additional-info {
@@ -97,6 +97,12 @@
         }
         .smash-standings td:first-of-type {
             text-align: center;
+        }
+        .smash-matches .additional-info {
+            display: none;
+        }
+        .smash-matches *[data-expand="expand"] + .additional-info {
+            display: block;
         }
         .smash-matches .additional-info .game {
             display: inline-block;

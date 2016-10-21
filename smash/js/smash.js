@@ -15,8 +15,7 @@ const SmashApp = React.createClass({
     getInitialState() {
         return {
             isHighlightSelected: false,
-            highlightedMatchup: [],
-            highlightedPlayer: null
+            highlightedPlayers: []
         }
     },
     isDoNothing(event) {
@@ -26,37 +25,48 @@ const SmashApp = React.createClass({
             return true;
         }
     },
-    isClearHighlight(event, highlightedPlayer, highlightedMatchup) {
+    isClearHighlight(event, highlightedPlayers) {
         if (event.target.tagName.toLowerCase() == 'td' ||
             event.target.classList.contains('td')) {
             //only clear if the state is the same
-            return this.state.isHighlightSelected &&
-                   this.state.highlightedPlayer == highlightedPlayer &&
-                   JSON.stringify(this.state.highlightedMatchup) == JSON.stringify(highlightedMatchup);
+            return this.state.highlightedPlayers.length == 0;
         }
 
         //otherwise clear the highlighting
         return true;
     },
+    setExpanded(event) {
+        let isNonPlayerTdElement =
+             (event.target.tagName.toLowerCase() == 'td' || event.target.classList.contains('td'))
+             && !event.target.hasAttribute('data-player');
+
+        if (isNonPlayerTdElement && event.target.parentElement.getAttribute('data-expand') == 'expand') {
+            event.target.parentElement.setAttribute('data-expand', '');
+        } else if (isNonPlayerTdElement) {
+            event.target.parentElement.setAttribute('data-expand', 'expand');
+        }
+    },
     setHighlight(event) {
+        this.setExpanded(event);
+
         if (this.isDoNothing(event)) {
             return;
         }
 
-        let highlightedPlayer = event.target.getAttribute('data-player');
-        let highlightedMatchup = [];
+        let playerToHighlight = event.target.getAttribute('data-player');
 
-        if (!highlightedPlayer && event.target.parentElement) {
-            highlightedMatchup = event.target.parentElement.getAttribute('data-players') || [];
+        if (playerToHighlight && this.state.highlightedPlayers.indexOf(playerToHighlight) < 0) {
+            this.state.highlightedPlayers.push(playerToHighlight);
+        } else if (playerToHighlight && this.state.highlightedPlayers.indexOf(playerToHighlight) >= 0) {
+            this.state.highlightedPlayers.splice(this.state.highlightedPlayers.indexOf(playerToHighlight), 1);
         }
 
-        if (this.isClearHighlight(event, highlightedPlayer, highlightedMatchup)) {
+        if (this.isClearHighlight(event, this.state.highlightedPlayers)) {
             this.setState({isHighlightSelected: false});
         } else {
             this.setState({
                 isHighlightSelected: true,
-                highlightedPlayer: highlightedPlayer,
-                highlightedMatchup: highlightedMatchup || []
+                highlightedPlayers: this.state.highlightedPlayers
             })
         }
     },
@@ -66,15 +76,13 @@ const SmashApp = React.createClass({
             <div className="smash-standings">
                 <h2>Standings</h2>
                 <SmashStandings isHighlightSelected={this.state.isHighlightSelected}
-                                highlightedMatchup={this.state.highlightedMatchup}
-                                highlightedPlayer={this.state.highlightedPlayer}/>
+                                highlightedPlayers={this.state.highlightedPlayers}/>
             </div>
 
             <div className="smash-matches">
                 <h2>Individual Matches</h2>
                 <SmashMatches isHighlightSelected={this.state.isHighlightSelected}
-                              highlightedMatchup={this.state.highlightedMatchup}
-                              highlightedPlayer={this.state.highlightedPlayer}/>
+                              highlightedPlayers={this.state.highlightedPlayers}/>
             </div>
         </div>
         )
