@@ -333,5 +333,23 @@
             }
         ],
         "date": "2016-10-19  No. 2"
+    },
+    {
+        "playerIds": ["ben", "jason"],
+        "games": [{
+                "duck hunt": 2,
+                "shulk": 1,
+                "winner": "ben"
+            },{
+                "jigglypuff": 1,
+                "corrin": 2,
+                "winner": "jason"
+            },{
+                "sonic": 2,
+                "bayonetta": 1,
+                "winner": "ben"
+            }
+        ],
+        "date": "2016-10-24  No. 1"
     }
 ]
