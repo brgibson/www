@@ -7,53 +7,195 @@ title: Arena Cutoff Trends for Marvel Contest of Champions
 keywords: mcoc, marvel contest of champions, arena, cutoff, trends, chart
 description: An arena cutoff chart to help predict what the next cutoff will be by looking at trending.
 ---
+<p>
+    <a href="http://mbch.guide/en/arenas/istoriya-proxodnyx/">Arena Cutoff Data</a>
+    <a href="https://docs.google.com/spreadsheets/d/1sJtSVnjhhRNxpiuMR5uXrsTlrsXMjp9TNO7JHDXhtsk/">Raw Arena Cutoff Data</a>
+</p>
 
-<a href="http://mbch.guide/en/arenas/istoriya-proxodnyx/">Arena Cutoff Data</a>
-<a href="https://docs.google.com/spreadsheets/d/1sJtSVnjhhRNxpiuMR5uXrsTlrsXMjp9TNO7JHDXhtsk/">Raw Arena Cutoff Data</a>
+<style>
 
-<pre>
-{{site.data.arena | jsonify}}
-</pre>
+    .axis--x path {
+        display: none;
+    }
+
+    .line {
+        fill: none;
+        stroke: steelblue;
+        stroke-width: 1.5px;
+    }
+
+</style>
+<svg width="960" height="500"></svg>
+<script src="//d3js.org/d3.v4.min.js"></script>
+<!--<script src="//d3js.org/d3.v4.js"></script>-->
+<script>
+
+    var svg = d3.select("svg"),
+            margin = {top: 20, right: 80, bottom: 30, left: 70},
+            width = svg.attr("width") - margin.left - margin.right,
+            height = svg.attr("height") - margin.top - margin.bottom,
+            g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var parseTime = d3.timeParse("%m/%d/%Y");
+
+    var x = d3.scaleTime().range([0, width]),
+            y = d3.scaleLinear().range([height, 0]),
+            z = d3.scaleOrdinal(d3.schemeCategory10);
+
+    var line = d3.line()
+            .curve(d3.curveBasis)
+            .x(function (d) {
+                return x(d.date);
+            })
+            .y(function (d) {
+                return y(d.temperature);
+            });
 
 
+    var getIntValue = (function() {
+        var previousInt = 0;
+        return function(numStr) {
+            var toReturn;
+            try {
+                toReturn = parseInt(numStr.replace(/,/g, '')) || previousInt;
+            } catch(ex) {
+                toReturn = previousInt;
+            } finally {
+                previousInt = toReturn;
+                return toReturn;
+            }
+        };
+    })();
 
+    d3.json("arena.json", function (error, data) {
+
+        if (error) {
+            throw error;
+        }
+
+        var cities = [
+            {
+                id: "Featured",
+                values: data.map(function (d) {
+                    return {
+                        date: parseTime(d.date),
+                        temperature: getIntValue(d.scores[0])
+                    };
+                })
+            },
+            {
+                id: "Basic",
+                values: data.map(function (d) {
+                    return {
+                        date: parseTime(d.date),
+                        temperature: getIntValue(d.scores[1])
+                    };
+                })
+            }
+        ];
+
+        x.domain(d3.extent(cities[0].values, function (d) {
+            return d.date;
+        }));
+
+        y.domain([
+            d3.min(cities, function (c) {
+                return d3.min(c.values, function (d) {
+                    return d.temperature;
+                });
+            }),
+            d3.max(cities, function (c) {
+                return d3.max(c.values, function (d) {
+                    return d.temperature;
+                });
+            })
+        ]);
+
+        z.domain(cities.map(function (c) {
+            return c.id;
+        }));
+
+        g.append("g")
+                .attr("class", "axis axis--x")
+                .attr("transform", "translate(0," + height + ")")
+                .call(d3.axisBottom(x));
+
+        g.append("g")
+                .attr("class", "axis axis--y")
+                .call(d3.axisLeft(y))
+                .append("text")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 6)
+                .attr("dy", "0.71em")
+                .attr("fill", "#000")
+                .text("Points");
+
+        var city = g.selectAll(".city")
+                .data(cities)
+                .enter().append("g")
+                .attr("class", "city");
+
+        city.append("path")
+                .attr("class", "line")
+                .attr("d", function (d) {
+                    return line(d.values);
+                })
+                .style("stroke", function (d) {
+                    return z(d.id);
+                });
+
+        city.append("text")
+                .datum(function (d) {
+                    return {id: d.id, value: d.values[0]};
+                })
+                .attr("transform", function (d) {
+                    return "translate(" + x(d.value.date) + "," + y(d.value.temperature) + ")";
+                })
+                .attr("x", 3)
+                .attr("dy", "0.35em")
+                .style("font", "10px sans-serif")
+                .text(function (d) {
+                    return d.id;
+                });
+    });
+</script>
 
 
 <!--<script type="text/babel" src="/smash/js/smash.js"></script>-->
 
 <!--<div class="main">-->
-    <!--<h1><img style="width:100%; max-width: 600px; height: auto;" title="Do You Even Smash, Bro?" alt="Do You Even Smash, Bro?" src="/smash/smash-logo.png"/></h1>-->
-    <!--<div id="smash-container" class="smash-container" >-->
-         <!--&lt;!&ndash; placeholder data &ndash;&gt;-->
-        <!--<div data-reactroot="">-->
-            <!--<div class="smash-standings"><h2>Standings</h2>-->
-                <!--<table>-->
-                    <!--<thead>-->
-                    <!--<tr>-->
-                        <!--<th class="player-header">Player</th>-->
-                        <!--<th>Played</th>-->
-                        <!--<th>Wins</th>-->
-                        <!--<th>Losses</th>-->
-                        <!--<th>Win Ratio</th>-->
-                    <!--</tr>-->
-                    <!--</thead>-->
-                    <!--<tbody>-->
-                    <!--</tbody>-->
-                <!--</table>-->
-            <!--</div>-->
+<!--<h1><img style="width:100%; max-width: 600px; height: auto;" title="Do You Even Smash, Bro?" alt="Do You Even Smash, Bro?" src="/smash/smash-logo.png"/></h1>-->
+<!--<div id="smash-container" class="smash-container" >-->
+<!--&lt;!&ndash; placeholder data &ndash;&gt;-->
+<!--<div data-reactroot="">-->
+<!--<div class="smash-standings"><h2>Standings</h2>-->
+<!--<table>-->
+<!--<thead>-->
+<!--<tr>-->
+<!--<th class="player-header">Player</th>-->
+<!--<th>Played</th>-->
+<!--<th>Wins</th>-->
+<!--<th>Losses</th>-->
+<!--<th>Win Ratio</th>-->
+<!--</tr>-->
+<!--</thead>-->
+<!--<tbody>-->
+<!--</tbody>-->
+<!--</table>-->
+<!--</div>-->
 
-            <!--<div class="smash-matches"><h2>Individual Matches</h2>-->
-                <!--<div class="table">-->
-                    <!--<div class="thead">-->
-                        <!--<div class="tr">-->
-                            <!--<div class="th date">Date</div>-->
-                            <!--<div class="th player">Player 1</div>-->
-                            <!--<div class="th player">Player 2</div>-->
-                            <!--<div class="th score">Score</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
+<!--<div class="smash-matches"><h2>Individual Matches</h2>-->
+<!--<div class="table">-->
+<!--<div class="thead">-->
+<!--<div class="tr">-->
+<!--<div class="th date">Date</div>-->
+<!--<div class="th player">Player 1</div>-->
+<!--<div class="th player">Player 2</div>-->
+<!--<div class="th score">Score</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
 <!--</div>-->

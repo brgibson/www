@@ -1,0 +1,4 @@
+---
+#we need this yaml block to get the jekyll templating
+---
+{{site.data.arena | jsonify}}
