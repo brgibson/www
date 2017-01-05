@@ -1,0 +1,24 @@
+//expected format
+[{
+    "basic": "Vision (Age of Ultron)"
+    "featured": "Memory Lane Crystal (1st)"
+    "date": "12/29/2016"
+    "scores": [
+        8537959,
+        3735014,
+        2180688,
+        1227260
+    ]
+}]
+
+//given
+Memory Lane Crystal (1st),"8,537,959","3,735,014","2,180,688","1,227,260",,"294,012",,Vision (Age of Ultron),,12/29/2016
+
+//scores as strings
+-----
+(.*?),"(.*?)","(.*?)","(.*?)","(.*?)",,.*,,(.*?),,(.*)
+-----
+[
+{\n\t"basic": "$6",\n\t"featured": "$1",\n\t"date": "$7",\n\t"scores": [\n\t\t"$2",\n\t\t"$3",\n\t\t"$4",\n\t\t"$5"\n\t]\n},
+]
+
