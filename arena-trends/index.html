@@ -27,7 +27,6 @@ description: An arena cutoff chart to help predict what the next cutoff will be 
 </style>
 <svg width="960" height="500"></svg>
 <script src="//d3js.org/d3.v4.min.js"></script>
-<!--<script src="//d3js.org/d3.v4.js"></script>-->
 <script>
 
     var svg = d3.select("svg"),
@@ -67,12 +66,14 @@ description: An arena cutoff chart to help predict what the next cutoff will be 
         };
     })();
 
-    d3.json("arena.json", function (error, data) {
 
-        if (error) {
-            throw error;
-        }
 
+    ////////////////////////////////////////////////////////////////////////////
+    var path;
+    var axisX;
+    var axisY;
+
+    function formatJsonForD3(data) {
         var cities = [
             {
                 id: "Featured",
@@ -93,11 +94,14 @@ description: An arena cutoff chart to help predict what the next cutoff will be 
                 })
             }
         ];
-
+        return cities;
+    }
+    function setDomainX(cities) {
         x.domain(d3.extent(cities[0].values, function (d) {
             return d.date;
         }));
-
+    }
+    function setDomainY(cities) {
         y.domain([
             d3.min(cities, function (c) {
                 return d3.min(c.values, function (d) {
@@ -110,40 +114,46 @@ description: An arena cutoff chart to help predict what the next cutoff will be 
                 });
             })
         ]);
-
+    }
+    function setDomainZ(cities) {
         z.domain(cities.map(function (c) {
             return c.id;
         }));
-
-        g.append("g")
-                .attr("class", "axis axis--x")
-                .attr("transform", "translate(0," + height + ")")
-                .call(d3.axisBottom(x));
-
-        g.append("g")
-                .attr("class", "axis axis--y")
-                .call(d3.axisLeft(y))
-                .append("text")
-                .attr("transform", "rotate(-90)")
-                .attr("y", 6)
-                .attr("dy", "0.71em")
-                .attr("fill", "#000")
-                .text("Points");
-
-        var city = g.selectAll(".city")
-                .data(cities)
-                .enter().append("g")
-                .attr("class", "city");
-
-        city.append("path")
-                .attr("class", "line")
-                .attr("d", function (d) {
-                    return line(d.values);
-                })
-                .style("stroke", function (d) {
-                    return z(d.id);
-                });
-
+    }
+    function updateAxisX() {
+        if (!axisX) {
+            axisX = g.append("g").attr("class", "axis axis--x");
+        }
+        axisX
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x));
+    }
+    function updateAxisY() {
+        if (!axisY) {
+            axisY = g.append("g").attr("class", "axis axis--y")
+        }
+        axisY
+            .call(d3.axisLeft(y))
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", "0.71em")
+            .attr("fill", "#000")
+            .text("Points");
+    }
+    function appendGraphData(city) {
+        if (!path) {
+            path = city.append("path");
+        }
+        path.attr("class", "line")
+            .attr("d", function (d) {
+                return line(d.values);
+            })
+            .style("stroke", function (d) {
+                return z(d.id);
+            });
+    }
+    function appendGraphDataLabels(city) {
         city.append("text")
                 .datum(function (d) {
                     return {id: d.id, value: d.values[0]};
@@ -157,45 +167,143 @@ description: An arena cutoff chart to help predict what the next cutoff will be 
                 .text(function (d) {
                     return d.id;
                 });
+    }
+    ////////////////////////////////////////////////////////////////////////////
+
+    var cities;
+    var city;
+    var data;
+
+    d3.json("arena.json", function (error, jsonData) {
+
+        if (error) {
+            throw error;
+        }
+
+        data = jsonData;
+        cities = formatJsonForD3(data);
+
+        setDomainX(cities);
+        setDomainY(cities);
+        setDomainZ(cities);
+
+        updateAxisX();
+        updateAxisY();
+
+        city = g.selectAll(".city")
+                .data(cities)
+                .enter().append("g")
+                .attr("class", "city");
+
+        appendGraphData(city);
+        appendGraphDataLabels(city);
     });
+
+    function updateXBounds(min, max) {
+        updateAll(min, max, null, null);
+    }
+
+    function updateYBounds(min, max) {
+        updateAll(null, null, min, max);
+    }
+
+    function updateAll(minX, maxX, minY, maxY) {
+        var cities = formatJsonForD3(data);
+
+        if (minX && maxX) {
+            x.domain([
+                minX,
+                maxX
+            ]);
+        } else {
+//            setDomainX(cities);
+        }
+
+        if (minY && maxY) {
+            y.domain([
+                minY,
+                maxY
+            ]);
+        } else {
+//            setDomainY(cities);
+        }
+
+        setDomainZ(cities);
+
+        updateAxisX();
+        updateAxisY();
+
+        city = g.selectAll(".city")
+                .data(cities)
+                .enter().append("g")
+                .attr("class", "city");
+
+        appendGraphData(city);
+        appendGraphDataLabels(city);
+    }
 </script>
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
 
-<!--<script type="text/babel" src="/smash/js/smash.js"></script>-->
+function formatRange(min, max) {
+    $("#amount").text(min.toLocaleString() + " - " + max.toLocaleString() );
+}
 
-<!--<div class="main">-->
-<!--<h1><img style="width:100%; max-width: 600px; height: auto;" title="Do You Even Smash, Bro?" alt="Do You Even Smash, Bro?" src="/smash/smash-logo.png"/></h1>-->
-<!--<div id="smash-container" class="smash-container" >-->
-<!--&lt;!&ndash; placeholder data &ndash;&gt;-->
-<!--<div data-reactroot="">-->
-<!--<div class="smash-standings"><h2>Standings</h2>-->
-<!--<table>-->
-<!--<thead>-->
-<!--<tr>-->
-<!--<th class="player-header">Player</th>-->
-<!--<th>Played</th>-->
-<!--<th>Wins</th>-->
-<!--<th>Losses</th>-->
-<!--<th>Win Ratio</th>-->
-<!--</tr>-->
-<!--</thead>-->
-<!--<tbody>-->
-<!--</tbody>-->
-<!--</table>-->
-<!--</div>-->
+$(function() {
+    var startingMin = 2000000;
+    var startingMax = 20000000;
+    $( "#slider-range" ).slider({
+      range: true,
+      min: startingMin,
+      max: startingMax,
+      values: [ startingMin, startingMax ],
+      slide: function( event, ui ) {
+          updateYBounds(ui.values[ 0 ], ui.values[ 1 ]);
+          formatRange(ui.values[0],ui.values[1]);
+      }
+    });
+    formatRange(startingMin, startingMax);
+});
+</script>
 
-<!--<div class="smash-matches"><h2>Individual Matches</h2>-->
-<!--<div class="table">-->
-<!--<div class="thead">-->
-<!--<div class="tr">-->
-<!--<div class="th date">Date</div>-->
-<!--<div class="th player">Player 1</div>-->
-<!--<div class="th player">Player 2</div>-->
-<!--<div class="th score">Score</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
+<p>
+  <label for="amount">Point range:</label>
+  <p type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;"></p>
+</p>
+
+<div style="display:inline-block;width:300px" id="slider-range"></div>
+
+
+
+<script>
+
+$(function() {
+
+    var startingMin = 1;
+    var startingMax = {{site.data.arena.size}} - 1;
+    $( "#slider-time" ).slider({
+      range: true,
+      min: startingMin,
+      max: startingMax,
+      values: [ startingMin, startingMax ],
+      slide: function( event, ui ) {
+          if (cities) {
+              var start = cities[0].values[startingMax - ui.values[0]].date;
+              var end = cities[0].values[startingMax - ui.values[1]].date;
+              updateXBounds(start, end);
+              $("#time").text(start.toLocaleDateString() + " - " + end.toLocaleDateString());
+          }
+      }
+    });
+});
+</script>
+
+<p>
+  <label for="time">Time range:</label>
+  <p type="text" id="time" style="border:0; color:#f6931f; font-weight:bold;"></p>
+</p>
+
+<div style="display:inline-block;width:300px;transform: scale(1, -1);" id="slider-time"></div>
