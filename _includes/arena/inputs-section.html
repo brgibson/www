@@ -9,8 +9,8 @@ function formatRange(min, max) {
 }
 
 $(function() {
-    var startingMin = 2000000;
-    var startingMax = 20000000;
+    var startingMin = BRG.ARENA.CONFIG.pointsMin;
+    var startingMax = BRG.ARENA.CONFIG.pointsMax;
     $( "#slider-range" ).slider({
       range: true,
       min: startingMin,
@@ -36,20 +36,23 @@ $(function() {
 
 <script>
 $(function() {
+    var absoluteMin = 0;
+    var absoluteMax = {{site.data.arena.size}} - 1;
+    var startValueMin = absoluteMax - BRG.ARENA.CONFIG.dateIndexMin;
+    var startValueMax = absoluteMax - BRG.ARENA.CONFIG.dateIndexMax;
 
-    var startingMin = 1;
-    var startingMax = {{site.data.arena.size}} - 1;
     $( "#slider-time" ).slider({
       range: true,
-      min: startingMin,
-      max: startingMax,
-      values: [ startingMin, startingMax ],
+      min: absoluteMin,
+      max: absoluteMax,
+      values: [ startValueMin, startValueMax ],
       slide: function( event, ui ) {
           if (BRG.ARENA.dataForD3) {
-              var start = BRG.ARENA.dataForD3[0].values[startingMax - ui.values[0]].date;
-              var end = BRG.ARENA.dataForD3[0].values[startingMax - ui.values[1]].date;
-              BRG.ARENA.updateXBounds(start, end);
-              $("#time").text(start.toLocaleDateString() + " - " + end.toLocaleDateString());
+              var startIndex = absoluteMax - ui.values[0];
+              var endIndex = absoluteMax - ui.values[1];
+
+              BRG.ARENA.updateXBounds(startIndex, endIndex);
+              BRG.ARENA.updateTimeDisplay()
           }
       }
     });

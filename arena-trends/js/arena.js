@@ -4,7 +4,11 @@ var BRG = BRG || {};
     BRG.ARENA = BRG.ARENA || {};
     BRG.ARENA.CONFIG = {
         isShowBasic: true,
-        isShowFeatured: false
+        isShowFeatured: false,
+        dateIndexMin: 10,
+        dateIndexMax: 0,
+        pointsMin: 0,
+        pointsMax: 20000000
     };
 
     var svg = d3.select("svg"),
@@ -42,6 +46,10 @@ var BRG = BRG || {};
         };
     })();
 
+    BRG.ARENA.getDateBasedOnIndex = function(index) {
+        return BRG.ARENA.dataForD3[0].values[index].date
+    };
+
     ////////////////////////////////////////////////////////////////////////////
     var axisX;
     var axisY;
@@ -76,24 +84,29 @@ var BRG = BRG || {};
         return dataForD3;
     };
 
-    BRG.ARENA.setDomainX = function(dataForD3) {
+    BRG.ARENA.setDomainXBasedOnData = function(dataForD3) {
+        //set x domain based on the data to be displayed
         scaleX.domain(d3.extent(dataForD3[0].values, function (d) {
             return d.date;
         }));
     };
 
-    BRG.ARENA.setDomainY = function(dataForD3) {
+    BRG.ARENA.setDomainYBasedOnData = function(dataForD3) {
+        BRG.ARENA.CONFIG.pointsMin = d3.min(dataForD3, function (c) {
+            return d3.min(c.values, function (d) {
+                return d.score;
+            });
+        });
+
+        BRG.ARENA.CONFIG.pointsMax = d3.max(dataForD3, function (c) {
+            return d3.max(c.values, function (d) {
+                return d.score;
+            });
+        });
+
         scaleY.domain([
-            d3.min(dataForD3, function (c) {
-                return d3.min(c.values, function (d) {
-                    return d.score;
-                });
-            }),
-            d3.max(dataForD3, function (c) {
-                return d3.max(c.values, function (d) {
-                    return d.score;
-                });
-            })
+            BRG.ARENA.CONFIG.pointsMin,
+            BRG.ARENA.CONFIG.pointsMax
         ]);
     };
 
@@ -165,7 +178,6 @@ var BRG = BRG || {};
     BRG.ARENA.dataForD3 = null;
     BRG.ARENA.jsonData = null;
     var champLines;
-    var champLabels;
 
     d3.json("arena.json", function (error, jsonData) {
         if (error) { throw error; }
@@ -174,32 +186,38 @@ var BRG = BRG || {};
     });
 
     BRG.ARENA.updateXBounds = function(min, max) {
-        updateAll(min, max, null, null);
+        BRG.ARENA.CONFIG.dateIndexMin = min;
+        BRG.ARENA.CONFIG.dateIndexMax = max;
+        updateAll();
     };
 
     BRG.ARENA.updateYBounds = function(min, max) {
-        updateAll(null, null, min, max);
+        BRG.ARENA.CONFIG.pointsMin = min;
+        BRG.ARENA.CONFIG.pointsMax = max;
+        updateAll();
     };
 
-    function updateAll(minX, maxX, minY, maxY) {
+    BRG.ARENA.updateAll = updateAll;
+    function updateAll() {
         BRG.ARENA.dataForD3 = BRG.ARENA.formatJsonForD3(BRG.ARENA.jsonData);
+        BRG.ARENA.updateTimeDisplay();
 
-        if (minX && maxX) {
+        if (BRG.ARENA.CONFIG.dateIndexMin !== null && BRG.ARENA.CONFIG.dateIndexMax !== null) { //will be null until interaction with slider
             scaleX.domain([
-                minX,
-                maxX
+                BRG.ARENA.getDateBasedOnIndex(BRG.ARENA.CONFIG.dateIndexMin),
+                BRG.ARENA.getDateBasedOnIndex(BRG.ARENA.CONFIG.dateIndexMax)
             ]);
         } else {
-            BRG.ARENA.setDomainX(BRG.ARENA.dataForD3);
+            BRG.ARENA.setDomainXBasedOnData(BRG.ARENA.dataForD3);
         }
 
-        if (minY && maxY) {
+        if (BRG.ARENA.CONFIG.pointsMin !== null && BRG.ARENA.CONFIG.pointsMax !== null) { //this will always be true now...
             scaleY.domain([
-                minY,
-                maxY
+                BRG.ARENA.CONFIG.pointsMin,
+                BRG.ARENA.CONFIG.pointsMax
             ]);
         } else {
-            BRG.ARENA.setDomainY(BRG.ARENA.dataForD3);
+            BRG.ARENA.setDomainYBasedOnData(BRG.ARENA.dataForD3);
         }
 
         BRG.ARENA.setDomainZ(BRG.ARENA.dataForD3);
@@ -209,27 +227,21 @@ var BRG = BRG || {};
 
         if (champLines) {
             champLines.data(BRG.ARENA.dataForD3).exit().remove();
-
-            // var thing =     champLines.data(BRG.ARENA.dataForD3);
-            // var thing2 = thing.exit();
-            // var thing3 = thing2.remove();
-
         } else {
-            // champLines = graphWrapper.selectAll(".champLine").order().data(BRG.ARENA.dataForD3).order();
-            // champLines = champLines.exit().remove();
-
-            // BRG.ARENA.removeGraphData(champLines);
-
             champLines = graphWrapper.selectAll(".champLine").order()
                 .data(BRG.ARENA.dataForD3).order()
                 .enter().append("g")
                 .attr("class", "champLine");
         }
 
-        // champLines.exit().remove();
-
         BRG.ARENA.appendGraphData(champLines);
-        // BRG.ARENA.removeGraphData(champLines);
         BRG.ARENA.appendGraphDataLabels(champLines);
+    }
+
+    BRG.ARENA.updateTimeDisplay = function() {
+        var start = BRG.ARENA.getDateBasedOnIndex(BRG.ARENA.CONFIG.dateIndexMin);
+        var end = BRG.ARENA.getDateBasedOnIndex(BRG.ARENA.CONFIG.dateIndexMax);
+
+        $("#time").text(start.toLocaleDateString() + " - " + end.toLocaleDateString());
     }
 })();
