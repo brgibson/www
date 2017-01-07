@@ -2,6 +2,10 @@ var BRG = BRG || {};
 
 (function () {
     BRG.ARENA = BRG.ARENA || {};
+    BRG.ARENA.CONFIG = {
+        isShowBasic: true,
+        isShowFeatured: true
+    };
 
     var svg = d3.select("svg"),
         margin = {top: 20, right: 80, bottom: 30, left: 70},
@@ -21,7 +25,7 @@ var BRG = BRG || {};
             return scaleX(d.date);
         })
         .y(function (d) {
-            return scaleY(d.temperature);
+            return scaleY(d.score);
         });
 
     var getIntValue = (function () {
@@ -44,45 +48,52 @@ var BRG = BRG || {};
     var axisY;
     var path;
 
-    BRG.ARENA.formatJsonForD3 = function(data) {
-        return [
-            {
-                id: "Featured",
-                values: data.map(function (d) {
-                    return {
-                        date: parseTime(d.date),
-                        temperature: getIntValue(d.scores[0])
-                    };
-                })
-            },
-            {
+    BRG.ARENA.formatJsonForD3 = function(jsonData) {
+        var dataForD3 = [];
+
+        if (BRG.ARENA.CONFIG.isShowBasic) {
+            dataForD3.push({
                 id: "Basic",
-                values: data.map(function (d) {
+                values: jsonData.map(function (d) {
                     return {
                         date: parseTime(d.date),
-                        temperature: getIntValue(d.scores[1])
+                        score: getIntValue(d.scores[1])
                     };
                 })
-            }
-        ];
+            });
+        }
+
+        if (BRG.ARENA.CONFIG.isShowFeatured) {
+            dataForD3.push({
+                id: "Featured",
+                values: jsonData.map(function (d) {
+                    return {
+                        date: parseTime(d.date),
+                        score: getIntValue(d.scores[0])
+                    };
+                })
+            });
+        }
+
+        return dataForD3;
     };
 
-    BRG.ARENA.setDomainX = function(cities) {
-        scaleX.domain(d3.extent(cities[0].values, function (d) {
+    BRG.ARENA.setDomainX = function(dataForD3) {
+        scaleX.domain(d3.extent(dataForD3[0].values, function (d) {
             return d.date;
         }));
     };
 
-    BRG.ARENA.setDomainY = function(cities) {
+    BRG.ARENA.setDomainY = function(dataForD3) {
         scaleY.domain([
-            d3.min(cities, function (c) {
+            d3.min(dataForD3, function (c) {
                 return d3.min(c.values, function (d) {
-                    return d.temperature;
+                    return d.score;
                 });
             }),
-            d3.max(cities, function (c) {
+            d3.max(dataForD3, function (c) {
                 return d3.max(c.values, function (d) {
-                    return d.temperature;
+                    return d.score;
                 });
             })
         ]);
@@ -113,7 +124,6 @@ var BRG = BRG || {};
             .attr("transform", "rotate(-90)")
             .attr("y", 6)
             .attr("dy", "0.71em")
-            //            .attr("fill", "#fff")
             .text("Points");
     };
 
@@ -130,13 +140,31 @@ var BRG = BRG || {};
             });
     };
 
+    BRG.ARENA.removeGraphData = function(champLine) {
+        if (!path) {
+            path = champLine.append("path");
+        }
+        path.attr("class", "line")
+            .attr("d", function (d) {
+                return line(d.values);
+            })
+            .style("stroke", function (d) {
+                return scaleZ(d.id);
+            });
+    };
+
+    var championLabels;
     BRG.ARENA.appendGraphDataLabels = function (champLine) {
-        champLine.append("text")
+        if (championLabels) {
+            // championLabels.remove();
+        }
+        championLabels = champLine.append("text");
+        championLabels
             .datum(function (d) {
                 return {id: d.id, value: d.values[0]};
             })
             .attr("transform", function (d) {
-                return "translate(" + scaleX(d.value.date) + "," + scaleY(d.value.temperature) + ")";
+                return "translate(" + scaleX(d.value.date) + "," + scaleY(d.value.score) + ")";
             })
             .attr("x", 3)
             .attr("dy", "0.35em")
@@ -151,6 +179,7 @@ var BRG = BRG || {};
     BRG.ARENA.dataForD3 = null;
     BRG.ARENA.jsonData = null;
     var champLines;
+    var champLabels;
 
     d3.json("arena.json", function (error, jsonData) {
 
@@ -159,22 +188,24 @@ var BRG = BRG || {};
         }
 
         BRG.ARENA.jsonData = jsonData;
-        BRG.ARENA.dataForD3 = BRG.ARENA.formatJsonForD3(BRG.ARENA.jsonData);
+        updateAll();
 
-        BRG.ARENA.setDomainX(BRG.ARENA.dataForD3);
-        BRG.ARENA.setDomainY(BRG.ARENA.dataForD3);
-        BRG.ARENA.setDomainZ(BRG.ARENA.dataForD3);
-
-        BRG.ARENA.updateAxisX();
-        BRG.ARENA.updateAxisY();
-
-        champLines = graphWrapper.selectAll(".champLine")
-            .data(BRG.ARENA.dataForD3)
-            .enter().append("g")
-            .attr("class", "champLine");
-
-        BRG.ARENA.appendGraphData(champLines);
-        BRG.ARENA.appendGraphDataLabels(champLines);
+        // BRG.ARENA.dataForD3 = BRG.ARENA.formatJsonForD3(BRG.ARENA.jsonData);
+        //
+        // BRG.ARENA.setDomainX(BRG.ARENA.dataForD3);
+        // BRG.ARENA.setDomainY(BRG.ARENA.dataForD3);
+        // BRG.ARENA.setDomainZ(BRG.ARENA.dataForD3);
+        //
+        // BRG.ARENA.updateAxisX();
+        // BRG.ARENA.updateAxisY();
+        //
+        // champLines = graphWrapper.selectAll(".champLine")
+        //     .data(BRG.ARENA.dataForD3)
+        //     .enter().append("g")
+        //     .attr("class", "champLine");
+        //
+        // BRG.ARENA.appendGraphData(champLines);
+        // BRG.ARENA.appendGraphDataLabels(champLines);
     });
 
     BRG.ARENA.updateXBounds = function(min, max) {
@@ -186,13 +217,15 @@ var BRG = BRG || {};
     };
 
     function updateAll(minX, maxX, minY, maxY) {
-        var cities = BRG.ARENA.formatJsonForD3(BRG.ARENA.jsonData);
+        BRG.ARENA.dataForD3 = BRG.ARENA.formatJsonForD3(BRG.ARENA.jsonData);
 
         if (minX && maxX) {
             scaleX.domain([
                 minX,
                 maxX
             ]);
+        } else {
+            BRG.ARENA.setDomainX(BRG.ARENA.dataForD3);
         }
 
         if (minY && maxY) {
@@ -200,19 +233,62 @@ var BRG = BRG || {};
                 minY,
                 maxY
             ]);
+        } else {
+            BRG.ARENA.setDomainY(BRG.ARENA.dataForD3);
         }
 
-        BRG.ARENA.setDomainZ(cities);
+        BRG.ARENA.setDomainZ(BRG.ARENA.dataForD3);
 
         BRG.ARENA.updateAxisX();
         BRG.ARENA.updateAxisY();
 
-        champLines = graphWrapper.selectAll(".champLine")
-            .data(cities)
-            .enter().append("g")
-            .attr("class", "champLine");
+        if (false || champLines) {
+            debugger;
+            // champLines.data(BRG.ARENA.dataForD3).exit().remove();
+
+
+
+
+
+            var thing =     champLines.data(BRG.ARENA.dataForD3);
+            var thing2 = thing.exit();
+            var thing3 = thing2.remove();
+
+                // champLines[i]
+                //     .data(BRG.ARENA.dataForD3)
+                //     .enter().append("g")
+                //     .attr("class", "champLine")
+                //     .order();
+            // }
+
+
+            // champLines.datum(BRG.ARENA.dataForD3).enter().append("g")
+            //     .attr("class", "champLine")
+            //     .order();
+            // champLines.enter().merge();
+
+        } else {
+            // champLines = graphWrapper.selectAll(".champLine").order().data(BRG.ARENA.dataForD3).order();
+            debugger;
+            // champLines = champLines.exit().remove();
+
+            // BRG.ARENA.removeGraphData(champLines);
+
+            champLines = graphWrapper.selectAll(".champLine").order()
+                .data(BRG.ARENA.dataForD3).order()
+                .enter().append("g")
+                .attr("class", "champLine");
+
+
+
+        }
+
+
+
+        // champLines.exit().remove();
 
         BRG.ARENA.appendGraphData(champLines);
+        // BRG.ARENA.removeGraphData(champLines);
         BRG.ARENA.appendGraphDataLabels(champLines);
     }
 })();

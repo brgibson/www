@@ -1,15 +1,29 @@
+<script>
+    function stuff(evt) {
+        if (evt.target.value === "basic") {
+            BRG.ARENA.CONFIG.isShowBasic = evt.target.checked;
+        }
+
+        if (evt.target.value === "featured") {
+            BRG.ARENA.CONFIG.isShowFeatured = evt.target.checked;
+        }
+
+        BRG.ARENA.updateYBounds();
+    }
+</script>
 
 <p>
     Champions:
-    <form>
-        <label><input type="checkbox" id="checkbox-featured" value="featured">Featured</label>
-        <label><input type="checkbox" id="checkbox-basic" value="basic">Basic</label>
+    <form onchange="stuff(event)">
+        <label><input type="checkbox" id="checkbox-featured" value="featured" checked=true>Featured</label>
+        <label><input type="checkbox" id="checkbox-basic" value="basic" checked=true>Basic</label>
     </form>
 </p>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <script>
 
 function formatRange(min, max) {
@@ -43,7 +57,6 @@ $(function() {
 
 
 <script>
-
 $(function() {
 
     var startingMin = 1;
