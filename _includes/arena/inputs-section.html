@@ -1,13 +1,12 @@
 <script>
     function stuff(evt) {
         if (evt.target.value === "basic") {
-            BRG.ARENA.CONFIG.isShowBasic = evt.target.checked;
+            BRG.ARENA.CONFIG.isShowBasic = true;
+            BRG.ARENA.CONFIG.isShowFeatured = false;
+        } else if (evt.target.value === "featured") {
+            BRG.ARENA.CONFIG.isShowBasic = false;
+            BRG.ARENA.CONFIG.isShowFeatured = true;
         }
-
-        if (evt.target.value === "featured") {
-            BRG.ARENA.CONFIG.isShowFeatured = evt.target.checked;
-        }
-
         BRG.ARENA.updateYBounds();
     }
 </script>
@@ -15,8 +14,8 @@
 <p>
     Champions:
     <form onchange="stuff(event)">
-        <label><input type="checkbox" id="checkbox-featured" value="featured" checked=true>Featured</label>
-        <label><input type="checkbox" id="checkbox-basic" value="basic" checked=true>Basic</label>
+        <label><input type="radio" name="champion-type" id="input-featured" value="featured" checked=true>Featured</label>
+        <label><input type="radio" name="champion-type" id="input-basic" value="basic" checked=false>Basic</label>
     </form>
 </p>
 

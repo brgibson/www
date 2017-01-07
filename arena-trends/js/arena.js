@@ -4,7 +4,7 @@ var BRG = BRG || {};
     BRG.ARENA = BRG.ARENA || {};
     BRG.ARENA.CONFIG = {
         isShowBasic: true,
-        isShowFeatured: true
+        isShowFeatured: false
     };
 
     var svg = d3.select("svg"),
@@ -46,7 +46,6 @@ var BRG = BRG || {};
     ////////////////////////////////////////////////////////////////////////////
     var axisX;
     var axisY;
-    var path;
 
     BRG.ARENA.formatJsonForD3 = function(jsonData) {
         var dataForD3 = [];
@@ -128,9 +127,11 @@ var BRG = BRG || {};
     };
 
     BRG.ARENA.appendGraphData = function(champLine) {
-        if (!path) {
-            path = champLine.append("path");
+        var path = champLine.selectAll("path");
+        if (path) {
+            path.remove();
         }
+        path = champLine.append("path");
         path.attr("class", "line")
             .attr("d", function (d) {
                 return line(d.values);
@@ -140,23 +141,10 @@ var BRG = BRG || {};
             });
     };
 
-    BRG.ARENA.removeGraphData = function(champLine) {
-        if (!path) {
-            path = champLine.append("path");
-        }
-        path.attr("class", "line")
-            .attr("d", function (d) {
-                return line(d.values);
-            })
-            .style("stroke", function (d) {
-                return scaleZ(d.id);
-            });
-    };
-
-    var championLabels;
     BRG.ARENA.appendGraphDataLabels = function (champLine) {
+        var championLabels = champLine.selectAll("text");
         if (championLabels) {
-            // championLabels.remove();
+            championLabels.remove();
         }
         championLabels = champLine.append("text");
         championLabels
@@ -182,30 +170,9 @@ var BRG = BRG || {};
     var champLabels;
 
     d3.json("arena.json", function (error, jsonData) {
-
-        if (error) {
-            throw error;
-        }
-
+        if (error) { throw error; }
         BRG.ARENA.jsonData = jsonData;
         updateAll();
-
-        // BRG.ARENA.dataForD3 = BRG.ARENA.formatJsonForD3(BRG.ARENA.jsonData);
-        //
-        // BRG.ARENA.setDomainX(BRG.ARENA.dataForD3);
-        // BRG.ARENA.setDomainY(BRG.ARENA.dataForD3);
-        // BRG.ARENA.setDomainZ(BRG.ARENA.dataForD3);
-        //
-        // BRG.ARENA.updateAxisX();
-        // BRG.ARENA.updateAxisY();
-        //
-        // champLines = graphWrapper.selectAll(".champLine")
-        //     .data(BRG.ARENA.dataForD3)
-        //     .enter().append("g")
-        //     .attr("class", "champLine");
-        //
-        // BRG.ARENA.appendGraphData(champLines);
-        // BRG.ARENA.appendGraphDataLabels(champLines);
     });
 
     BRG.ARENA.updateXBounds = function(min, max) {
@@ -242,34 +209,15 @@ var BRG = BRG || {};
         BRG.ARENA.updateAxisX();
         BRG.ARENA.updateAxisY();
 
-        if (false || champLines) {
-            debugger;
-            // champLines.data(BRG.ARENA.dataForD3).exit().remove();
+        if (champLines) {
+            champLines.data(BRG.ARENA.dataForD3).exit().remove();
 
-
-
-
-
-            var thing =     champLines.data(BRG.ARENA.dataForD3);
-            var thing2 = thing.exit();
-            var thing3 = thing2.remove();
-
-                // champLines[i]
-                //     .data(BRG.ARENA.dataForD3)
-                //     .enter().append("g")
-                //     .attr("class", "champLine")
-                //     .order();
-            // }
-
-
-            // champLines.datum(BRG.ARENA.dataForD3).enter().append("g")
-            //     .attr("class", "champLine")
-            //     .order();
-            // champLines.enter().merge();
+            // var thing =     champLines.data(BRG.ARENA.dataForD3);
+            // var thing2 = thing.exit();
+            // var thing3 = thing2.remove();
 
         } else {
             // champLines = graphWrapper.selectAll(".champLine").order().data(BRG.ARENA.dataForD3).order();
-            debugger;
             // champLines = champLines.exit().remove();
 
             // BRG.ARENA.removeGraphData(champLines);
@@ -278,12 +226,7 @@ var BRG = BRG || {};
                 .data(BRG.ARENA.dataForD3).order()
                 .enter().append("g")
                 .attr("class", "champLine");
-
-
-
         }
-
-
 
         // champLines.exit().remove();
 
