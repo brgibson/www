@@ -1,24 +1,3 @@
-<script>
-    function stuff(evt) {
-        if (evt.target.value === "basic") {
-            BRG.ARENA.CONFIG.isShowBasic = true;
-            BRG.ARENA.CONFIG.isShowFeatured = false;
-        } else if (evt.target.value === "featured") {
-            BRG.ARENA.CONFIG.isShowBasic = false;
-            BRG.ARENA.CONFIG.isShowFeatured = true;
-        }
-        BRG.ARENA.updateYBounds();
-    }
-</script>
-
-<p>
-    Champions:
-    <form onchange="stuff(event)">
-        <label><input type="radio" name="champion-type" id="input-featured" value="featured" checked=true>Featured</label>
-        <label><input type="radio" name="champion-type" id="input-basic" value="basic" checked=false>Basic</label>
-    </form>
-</p>
-
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

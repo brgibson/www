@@ -20,7 +20,6 @@ var BRG = BRG || {};
         scaleZ = d3.scaleOrdinal(d3.schemeCategory10);
 
     var line = d3.line()
-        //.curve(d3.curveBasis)
         .x(function (d) {
             return scaleX(d.date);
         })
@@ -132,12 +131,11 @@ var BRG = BRG || {};
             path.remove();
         }
         path = champLine.append("path");
-        path.attr("class", "line")
+        path.attr("class", function (d) {
+                return "line " + d.id;
+            })
             .attr("d", function (d) {
                 return line(d.values);
-            })
-            .style("stroke", function (d) {
-                return scaleZ(d.id);
             });
     };
 

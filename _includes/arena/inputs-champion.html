@@ -1,0 +1,40 @@
+<script>
+    function handleChampionChange(evt) {
+        if (evt.target.getAttribute("value") === "basic") {
+            BRG.ARENA.CONFIG.isShowBasic = false;
+            BRG.ARENA.CONFIG.isShowFeatured = true;
+            evt.currentTarget.classList.remove("basic");
+            evt.currentTarget.classList.add("featured");
+
+        } else if (evt.target.getAttribute("value")  === "featured") {
+            BRG.ARENA.CONFIG.isShowBasic = true;
+            BRG.ARENA.CONFIG.isShowFeatured = false;
+            evt.currentTarget.classList.add("basic");
+            evt.currentTarget.classList.remove("featured");
+
+        }
+        BRG.ARENA.updateYBounds();
+    }
+</script>
+
+<style>
+    .faux-select {
+        display: inline-block;
+        cursor: pointer;
+        width: 16rem;
+        margin: 0 auto;
+        text-align: right;
+        line-height: 1rem;
+    }
+    .faux-select.basic [value="featured"],
+    .faux-select.featured [value="basic"]{
+        display: none;
+    }
+</style>
+
+<p>
+    <div class="faux-select basic" onclick="handleChampionChange(event)">
+        <h2 value="basic">Basic Champion &#9660;</h2>
+        <h2 value="featured">Featured Champion &#9650;</h2>
+    </div>
+</p>
