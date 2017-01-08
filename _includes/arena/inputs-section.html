@@ -38,8 +38,8 @@ $(function() {
 $(function() {
     var absoluteMin = 0;
     var absoluteMax = {{site.data.arena.size}} - 1;
-    var startValueMin = absoluteMax - BRG.ARENA.CONFIG.dateIndexMin;
-    var startValueMax = absoluteMax - BRG.ARENA.CONFIG.dateIndexMax;
+    var startValueMin = BRG.ARENA.CONFIG.dateIndexMin;
+    var startValueMax = BRG.ARENA.CONFIG.dateIndexMax;
 
     $( "#slider-time" ).slider({
       range: true,
@@ -48,8 +48,8 @@ $(function() {
       values: [ startValueMin, startValueMax ],
       slide: function( event, ui ) {
           if (BRG.ARENA.dataForD3) {
-              var startIndex = absoluteMax - ui.values[0];
-              var endIndex = absoluteMax - ui.values[1];
+              var startIndex = ui.values[0];
+              var endIndex = ui.values[1];
 
               BRG.ARENA.updateXBounds(startIndex, endIndex);
               BRG.ARENA.updateTimeDisplay()

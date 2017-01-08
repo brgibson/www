@@ -1,3 +1,6 @@
+---
+#we need this yaml block to get the jekyll templating
+---
 var BRG = BRG || {};
 
 (function () {
@@ -5,17 +8,19 @@ var BRG = BRG || {};
     BRG.ARENA.CONFIG = {
         isShowBasic: true,
         isShowFeatured: false,
-        dateIndexMin: 10,
-        dateIndexMax: 0,
+        dateIndexMin: {{site.data.arena.size}} - 11,
+        dateIndexMax: {{site.data.arena.size}} - 1,
         pointsMin: 0,
         pointsMax: 20000000
     };
 
     var svg = d3.select("svg"),
         margin = {top: 20, right: 80, bottom: 30, left: 70},
+        // margin = {top: 0, right: 0, bottom: 0, left: 0},
         width = svg.attr("width") - margin.left - margin.right,
         height = svg.attr("height") - margin.top - margin.bottom,
-        graphWrapper = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        graphWrapper = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")"),
+        graphDataWrapper= graphWrapper.append("g");
 
     var parseTime = d3.timeParse("%m/%d/%Y");
 
@@ -160,7 +165,7 @@ var BRG = BRG || {};
         championLabels = champLine.append("text");
         championLabels
             .datum(function (d) {
-                return {id: d.id, value: d.values[0]};
+                return {id: d.id, value: d.values[d.values.length - 1]};
             })
             .attr("transform", function (d) {
                 return "translate(" + scaleX(d.value.date) + "," + scaleY(d.value.score) + ")";
@@ -181,7 +186,7 @@ var BRG = BRG || {};
 
     d3.json("arena.json", function (error, jsonData) {
         if (error) { throw error; }
-        BRG.ARENA.jsonData = jsonData;
+        BRG.ARENA.jsonData = jsonData.reverse();
         updateAll();
     });
 
@@ -228,8 +233,8 @@ var BRG = BRG || {};
         if (champLines) {
             champLines.data(BRG.ARENA.dataForD3).exit().remove();
         } else {
-            champLines = graphWrapper.selectAll(".champLine").order()
-                .data(BRG.ARENA.dataForD3).order()
+            champLines = graphDataWrapper.selectAll(".champLine")
+                .data(BRG.ARENA.dataForD3)
                 .enter().append("g")
                 .attr("class", "champLine");
         }
@@ -242,6 +247,52 @@ var BRG = BRG || {};
         var start = BRG.ARENA.getDateBasedOnIndex(BRG.ARENA.CONFIG.dateIndexMin);
         var end = BRG.ARENA.getDateBasedOnIndex(BRG.ARENA.CONFIG.dateIndexMax);
 
-        $("#time").text(start.toLocaleDateString() + " - " + end.toLocaleDateString());
+        if (window.$) {
+            $("#time").text(start.toLocaleDateString() + " - " + end.toLocaleDateString());
+        }
+    };
+
+
+
+
+
+//finds the closest date using a bisect search
+var bisectDate = d3.bisector(function(d) {
+    return d.date;
+}).left;
+
+
+// var lineSvg = svg.append("g");
+var focus = graphWrapper.append("g").style("display", "none");
+
+//add circle
+focus.append("circle").attr("class", "selected-data");
+
+
+//capture mouse movements
+graphWrapper.append("rect")
+        .attr("width", width)
+        .attr("height", height)
+        .style("fill", "none")
+        .style("pointer-events", "all")
+        .on("mouseover", function() { focus.style("display", null); })
+        .on("mouseout", function() { focus.style("display", "none"); })
+        .on("mousemove", mousemove);
+
+
+
+  function mousemove() {
+
+      //determine which will be highlighted
+        var x0 = scaleX.invert(d3.mouse(this)[0]),
+            i = bisectDate(BRG.ARENA.dataForD3[0].values, x0, 1),
+            d0 = BRG.ARENA.dataForD3[0].values[i - 1] || {},
+            d1 = BRG.ARENA.dataForD3[0].values[i] || {},
+            d = x0 - d0.date > d1.date - x0 ? d1 : d0;
+
+      //move the circle to the right spot
+        focus.select("circle.selected-data")
+            .attr("transform","translate(" + scaleX(d.date) + "," + scaleY(d.score) + ")");
     }
 })();
+
