@@ -3,74 +3,74 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script>
+(function() {
+    function formatRange(min, max) {
+        $("#amount").text(min.toLocaleString() + " - " + max.toLocaleString() );
+    }
 
-function formatRange(min, max) {
-    $("#amount").text(min.toLocaleString() + " - " + max.toLocaleString() );
-}
-
-$(function() {
-    var startingMin = BRG.ARENA.CONFIG.pointsMin;
-    var startingMax = BRG.ARENA.CONFIG.pointsMax;
-    $( "#slider-range" ).slider({
-      range: true,
-      min: startingMin,
-      max: startingMax,
-      values: [ startingMin, startingMax ],
-      slide: function( event, ui ) {
-          BRG.ARENA.updateYBounds(ui.values[ 0 ], ui.values[ 1 ]);
-          formatRange(ui.values[0],ui.values[1]);
-      }
+    $(function() {
+        var startingMin = BRG.ARENA.CONFIG.pointsMin;
+        var startingMax = BRG.ARENA.CONFIG.pointsMax;
+        $( "#slider-range" ).slider({
+          range: true,
+          min: startingMin,
+          max: startingMax,
+          values: [ startingMin, startingMax ],
+          slide: function( event, ui ) {
+              BRG.ARENA.updateYBounds(ui.values[ 0 ], ui.values[ 1 ]);
+              formatRange(ui.values[0],ui.values[1]);
+          }
+        });
+        formatRange(startingMin, startingMax);
     });
-    formatRange(startingMin, startingMax);
-});
+})();
 </script>
 
-<p>
-  <label for="amount">Point range:</label>
-  <p type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;"></p>
-</p>
-
-<div style="display:inline-block;width:300px" id="slider-range"></div>
-
+<div class="panel">
+    <label for="amount">Points</label>
+    <p type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;"></p>
+    <div style="display:inline-block;width:300px" id="slider-range"></div>
+</div>
 
 
 <script>
-$(function() {
-    var absoluteMin = 0;
-    var absoluteMax = {{site.data.arena.size}} - 1;
-    var startValueMin = BRG.ARENA.CONFIG.dateIndexMin;
-    var startValueMax = BRG.ARENA.CONFIG.dateIndexMax;
+(function() {
+    $(function() {
+        var absoluteMin = 0;
+        var absoluteMax = {{site.data.arena.size}} - 1;
+        var startValueMin = BRG.ARENA.CONFIG.dateIndexMin;
+        var startValueMax = BRG.ARENA.CONFIG.dateIndexMax;
 
-    $( "#slider-time" ).slider({
-      range: true,
-      min: absoluteMin,
-      max: absoluteMax,
-      values: [ startValueMin, startValueMax ],
-      slide: function( event, ui ) {
-          if (BRG.ARENA.dataForD3) {
-              var startIndex = ui.values[0];
-              var endIndex = ui.values[1];
+        $( "#slider-time" ).slider({
+          range: true,
+          min: absoluteMin,
+          max: absoluteMax,
+          values: [ startValueMin, startValueMax ],
+          slide: function( event, ui ) {
+              if (BRG.ARENA.dataForD3) {
+                  var startIndex = ui.values[0];
+                  var endIndex = ui.values[1];
 
-              BRG.ARENA.updateXBounds(startIndex, endIndex);
-              BRG.ARENA.updateTimeDisplay()
+                  BRG.ARENA.updateXBounds(startIndex, endIndex);
+                  BRG.ARENA.updateTimeDisplay()
+              }
           }
-      }
+        });
     });
-});
+})();
 </script>
 
-<p>
-  <label for="time">Time range:</label>
-  <p type="text" id="time" style="border:0; color:#f6931f; font-weight:bold;"></p>
-</p>
+<div class="panel">
+    <label for="time">Dates</label>
+    <p type="text" id="time" style="border:0; color:#f6931f; font-weight:bold;"></p>
+    <div style="display:inline-block;width:300px;transform: scale(1, -1);" id="slider-time"></div>
+</div>
 
-<div style="display:inline-block;width:300px;transform: scale(1, -1);" id="slider-time"></div>
-
-<p>
-    Projections:
-    <form>
-        <label><input type="checkbox" id="checkbox-weekend" value="weekend">Weekend</label>
-        <label><input type="checkbox" id="checkbox-t4bc" value="t4bc">During T4BC</label>
-        <label><input type="checkbox" id="checkbox-second" value="t4bc">Second Round</label>
-    </form>
-</p>
+<!--<div class="panel">-->
+    <!--Projections-->
+    <!--<form>-->
+        <!--<label><input type="checkbox" id="checkbox-weekend" value="weekend">Weekend</label>-->
+        <!--<label><input type="checkbox" id="checkbox-t4bc" value="t4bc">During T4BC</label>-->
+        <!--<label><input type="checkbox" id="checkbox-second" value="t4bc">Second Round</label>-->
+    <!--</form>-->
+<!--</div>-->

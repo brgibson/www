@@ -34,6 +34,23 @@ description: An arena cutoff chart to help predict what the next cutoff will be 
 
         max-width: 200px;
     }
+
+    .panel {
+        border: solid 1px white;
+        padding: 1rem;
+    }
+    .graph-section,
+    .filters-section {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .tooltip {
+        letter-spacing: 5px;
+        font-weight: bold;
+    }
+    .tooltip * {
+        background-color: rgba(11,18,37,.4);
+    }
 </style>
 
 <style>
@@ -69,19 +86,26 @@ description: An arena cutoff chart to help predict what the next cutoff will be 
 
 </style>
 
-{% include arena/inputs-champion.html %}
-{% include arena/detail-section.html %}
 
-<svg width="960" height="500"></svg>
-<script src="//d3js.org/d3.v4.js"></script>
-<script src="/arena-trends/js/arena.js"></script>
 
-{% include arena/inputs-section.html %}
+<div class="graph-section">
+    {% include arena/inputs-champion.html %}
+    {% include arena/detail-section.html %}
 
-<p>
-    <a href="http://mbch.guide/en/arenas/istoriya-proxodnyx/">Arena Cutoff Data</a>
-    <a href="https://docs.google.com/spreadsheets/d/1sJtSVnjhhRNxpiuMR5uXrsTlrsXMjp9TNO7JHDXhtsk/">Raw Arena Cutoff Data</a>
-</p>
+    <svg width="960" height="500"></svg>
+    <script src="//d3js.org/d3.v4.min.js"></script>
+    <script src="/arena-trends/js/arena.js"></script>
+
+    <p>
+        <a href="http://mbch.guide/en/arenas/istoriya-proxodnyx/">Arena Cutoff Data</a>
+        <a href="https://docs.google.com/spreadsheets/d/1sJtSVnjhhRNxpiuMR5uXrsTlrsXMjp9TNO7JHDXhtsk/">Raw Arena Cutoff Data</a>
+    </p>
+</div>
+
+
+<div class="filters-section">
+    {% include arena/inputs-section.html %}
+</div>
 
 <img class="crossbones" src="./img/crossbones.png" alt="Crossbones Peaking at You"/>
 <img class="mcoc-logo" src="./img/logo.png" alt="Marvel Contest of Champions Logo"/>

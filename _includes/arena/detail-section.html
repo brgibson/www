@@ -1,5 +1,17 @@
+<style>
+    .detail-section {
+        display:inline-block;
+        font-weight: bold;
+        font-size: 1.5rem;
+        letter-spacing:4px;
+        min-width: 32rem;
+        margin: 0 auto;
+    }
+</style>
 <div>
-    <div id="champ-date">Date</div>
-    <div id="champ-name">Name</div>
-    <div id="champ-score">Score</div>
+    <div class="panel detail-section">
+        <div id="champ-date">{{site.data.arena[0].date}}</div>
+        <div id="champ-name">{{site.data.arena[0].basic}}</div>
+        <div id="champ-score">{{site.data.arena[0].scores[1]}}</div>
+    </div>
 </div>

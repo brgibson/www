@@ -8,7 +8,7 @@ var BRG = BRG || {};
     BRG.ARENA.CONFIG = {
         isShowBasic: true,
         isShowFeatured: false,
-        dateIndexMin: {{site.data.arena.size}} - 11,
+        dateIndexMin: {{site.data.arena.size}} - 20,
         dateIndexMax: {{site.data.arena.size}} - 1,
         pointsMin: 0,
         pointsMax: 20000000
@@ -208,6 +208,7 @@ var BRG = BRG || {};
     function updateAll() {
         BRG.ARENA.dataForD3 = BRG.ARENA.formatJsonForD3(BRG.ARENA.jsonData);
         BRG.ARENA.updateTimeDisplay();
+        BRG.ARENA.hideTooltip();
 
         if (BRG.ARENA.CONFIG.dateIndexMin !== null && BRG.ARENA.CONFIG.dateIndexMax !== null) { //will be null until interaction with slider
             scaleX.domain([
@@ -259,6 +260,10 @@ var BRG = BRG || {};
         document.getElementById('champ-date').innerHTML = d.date && d.date.toLocaleDateString();
         document.getElementById('champ-name').innerHTML = d.name && d.name || "foo";
         document.getElementById('champ-score').innerHTML = d.score && d.score.toLocaleString();
+
+        document.getElementById('tooltip-champ-date').innerHTML = document.getElementById('champ-date').innerHTML;
+        document.getElementById('tooltip-champ-name').innerHTML = document.getElementById('champ-name').innerHTML;
+        document.getElementById('tooltip-champ-score').innerHTML = document.getElementById('champ-score').innerHTML;
     };
 
     (function() {
@@ -271,6 +276,23 @@ var BRG = BRG || {};
         var focus = graphWrapper.append("g").style("display", "none");
         focus.append("circle").attr("class", "selected-data");
 
+        //add tooltip
+        var tooltipHeight = 64;
+        var tooltipWidth = 600;
+        focus.append("g")
+            .attr("class", "tooltip-container")
+            .html('<foreignObject class="node" width="' + tooltipWidth + '" height="' + tooltipHeight + '"><body xmlns="http://www.w3.org/1999/xhtml">' +
+                '<div class="tooltip">' +
+                        '<span id="tooltip-champ-date"></span><br>' +
+                        '<span id="tooltip-champ-name"></span><br>' +
+                        '<span id="tooltip-champ-score"></span>' +
+                '</div>' +
+                '</body></foreignObject>');
+
+        BRG.ARENA.hideTooltip = function() {
+            focus.style("display", "none");
+        };
+
         //capture mouse movements
         graphWrapper.append("rect")
                 .attr("width", width)
@@ -278,7 +300,7 @@ var BRG = BRG || {};
                 .style("fill", "none")
                 .style("pointer-events", "all")
                 .on("mouseover", function() { focus.style("display", null); })
-                .on("mouseout", function() { focus.style("display", "none"); })
+                .on("mouseout", function() { /*BRG.ARENA.hideTooltip()*/ })
                 .on("mousemove", mousemove);
 
         function mousemove() {
@@ -294,6 +316,10 @@ var BRG = BRG || {};
             //move the circle to the right spot
             focus.select("circle.selected-data")
                 .attr("transform","translate(" + scaleX(d.date) + "," + scaleY(d.score) + ")");
+            focus.select(".tooltip-container")
+                .attr("transform","translate(" +
+                    (scaleX(d.date) - tooltipWidth/2) + "," +
+                    (scaleY(d.score) - tooltipHeight) + ")");
         }
     })();
 })();
