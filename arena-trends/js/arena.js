@@ -68,6 +68,7 @@ var BRG = BRG || {};
                 values: jsonData.map(function (d) {
                     return {
                         date: parseTime(d.date),
+                        name: d.basic,
                         score: getIntValue(d.scores[1])
                     };
                 })
@@ -80,6 +81,7 @@ var BRG = BRG || {};
                 values: jsonData.map(function (d) {
                     return {
                         date: parseTime(d.date),
+                        name: d.featured,
                         score: getIntValue(d.scores[0])
                     };
                 })
@@ -253,46 +255,46 @@ var BRG = BRG || {};
     };
 
 
+    BRG.ARENA.updateDetailDisplay = function(d) {
+        document.getElementById('champ-date').innerHTML = d.date && d.date.toLocaleDateString();
+        document.getElementById('champ-name').innerHTML = d.name && d.name || "foo";
+        document.getElementById('champ-score').innerHTML = d.score && d.score.toLocaleString();
+    };
 
+    (function() {
+        //finds the closest date using a bisect search
+        var bisectDate = d3.bisector(function(d) {
+            return d.date;
+        }).left;
 
+        //add circle
+        var focus = graphWrapper.append("g").style("display", "none");
+        focus.append("circle").attr("class", "selected-data");
 
-//finds the closest date using a bisect search
-var bisectDate = d3.bisector(function(d) {
-    return d.date;
-}).left;
+        //capture mouse movements
+        graphWrapper.append("rect")
+                .attr("width", width)
+                .attr("height", height)
+                .style("fill", "none")
+                .style("pointer-events", "all")
+                .on("mouseover", function() { focus.style("display", null); })
+                .on("mouseout", function() { focus.style("display", "none"); })
+                .on("mousemove", mousemove);
 
+        function mousemove() {
+          //determine which will be highlighted
+            var x0 = scaleX.invert(d3.mouse(this)[0]),
+                i = bisectDate(BRG.ARENA.dataForD3[0].values, x0, 1),
+                d0 = BRG.ARENA.dataForD3[0].values[i - 1] || {},
+                d1 = BRG.ARENA.dataForD3[0].values[i] || {},
+                d = x0 - d0.date > d1.date - x0 ? d1 : d0;
 
-// var lineSvg = svg.append("g");
-var focus = graphWrapper.append("g").style("display", "none");
+            BRG.ARENA.updateDetailDisplay(d);
 
-//add circle
-focus.append("circle").attr("class", "selected-data");
-
-
-//capture mouse movements
-graphWrapper.append("rect")
-        .attr("width", width)
-        .attr("height", height)
-        .style("fill", "none")
-        .style("pointer-events", "all")
-        .on("mouseover", function() { focus.style("display", null); })
-        .on("mouseout", function() { focus.style("display", "none"); })
-        .on("mousemove", mousemove);
-
-
-
-  function mousemove() {
-
-      //determine which will be highlighted
-        var x0 = scaleX.invert(d3.mouse(this)[0]),
-            i = bisectDate(BRG.ARENA.dataForD3[0].values, x0, 1),
-            d0 = BRG.ARENA.dataForD3[0].values[i - 1] || {},
-            d1 = BRG.ARENA.dataForD3[0].values[i] || {},
-            d = x0 - d0.date > d1.date - x0 ? d1 : d0;
-
-      //move the circle to the right spot
-        focus.select("circle.selected-data")
-            .attr("transform","translate(" + scaleX(d.date) + "," + scaleY(d.score) + ")");
-    }
+            //move the circle to the right spot
+            focus.select("circle.selected-data")
+                .attr("transform","translate(" + scaleX(d.date) + "," + scaleY(d.score) + ")");
+        }
+    })();
 })();
 
