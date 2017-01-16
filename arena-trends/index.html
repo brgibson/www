@@ -9,11 +9,14 @@ description: An arena cutoff chart to help predict what the next cutoff will be 
 ---
 <style>
     html {
-        /*background: #0b1225 url('./img/crossbones.png') bottom right no-repeat;*/
         background: #0b1225;
-        /*background-position-x: center;*/
-        /*filter: blur(5px);*/
         color: white;
+        letter-spacing: 2px;
+        text-shadow:
+           -1px -1px 0 #0a0e1c,
+            1px -1px 0 #0a0e1c,
+            -1px 1px 0 #0a0e1c,
+             1px 1px 0 #0a0e1c
     }
     .crossbones {
         transform: rotate(180deg);
@@ -21,20 +24,16 @@ description: An arena cutoff chart to help predict what the next cutoff will be 
         left: -4px;
         position: fixed;
         z-index: -1;
-
         max-width: 200px;
 
     }
     .mcoc-logo {
         top: 1%;
         right: 1%;
-
         position: fixed;
         z-index: -101;
-
         max-width: 200px;
     }
-
     .panel {
         border: solid 1px white;
         padding: 1rem;
@@ -43,6 +42,7 @@ description: An arena cutoff chart to help predict what the next cutoff will be 
     .filters-section {
         display: inline-block;
         vertical-align: middle;
+        margin: 1em 0;
     }
     .tooltip {
         letter-spacing: 5px;
@@ -51,9 +51,44 @@ description: An arena cutoff chart to help predict what the next cutoff will be 
     .tooltip * {
         background-color: rgba(11,18,37,.4);
     }
-</style>
+    h2,h3 {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        white-space: nowrap;
+        display: inline-block;
+    }
+    p {
+        max-width: 80%;
+        text-align: justify;
+    }
+    @media (min-width:70em) {
+        p {
+            max-width: 67em;
+        }
+    }
+    a {
+        color: #f48100;
+    }
+    a:hover,
+    a:active,
+    a:focus {
+        color: #46a4d6;
+    }
 
-<style>
+    .screenshots {
+        text-align: left;
+        margin: 0 auto;
+        max-width: 930px;
+        padding-top: 1rem;
+    }
+    .screenshot {
+        width: 400px;
+        display: inline-block;
+        margin: 1rem 2rem;
+    }
+
+
+
 
     .axis--y path,
     .tick {
@@ -86,25 +121,47 @@ description: An arena cutoff chart to help predict what the next cutoff will be 
 
 </style>
 
+<h1>
+    Marvel Contest of Champions Arena Trends
+</h1>
 
+{% include arena/inputs-champion.html %}
+{% include arena/detail-section.html %}
 
 <div class="graph-section">
-    {% include arena/inputs-champion.html %}
-    {% include arena/detail-section.html %}
-
     <svg width="960" height="500"></svg>
     <script src="//d3js.org/d3.v4.min.js"></script>
     <script src="/arena-trends/js/arena.js"></script>
 
-    <p>
+    <div>
         <a href="http://mbch.guide/en/arenas/istoriya-proxodnyx/">Arena Cutoff Data</a>
         <a href="https://docs.google.com/spreadsheets/d/1sJtSVnjhhRNxpiuMR5uXrsTlrsXMjp9TNO7JHDXhtsk/">Raw Arena Cutoff Data</a>
-    </p>
+    </div>
 </div>
-
 
 <div class="filters-section">
     {% include arena/inputs-section.html %}
+</div>
+
+<p>
+    In <a href="http://marvel.com/games/170/marvel_contest_of_champions">Marvel Contest of Champions</a> summoners compete
+    in four star arenas for basic and featured champions.  Featured champions are awarded to the top 400 scorers.  Basic
+    champions are awarded to the top 1-5% of scorers, excluding the top 400.
+</p>
+
+<p>
+    Above you can see the number of points that were needed to win either the basic or featured champs.
+</p>
+
+<div class="screenshots">
+    <h2 class="screenshot" style="float: left;clear:both;">Cap WWII 4* Arena</h2>
+    <img class="screenshot" style="float:left;clear:both;" src="./img/screenshots/arena.jpg" alt="Arena entry panel"/>
+
+    <h3>Cap WWII - Featured (Top 400)</h3>
+    <img class="screenshot" src="./img/screenshots/featured-2.jpg" alt="Featured champion cutoff for Cap WWII (400 top scorers)"/><br>
+
+    <h3>Nightcrawler - Basic (Top 1-5%)</h3>
+    <img class="screenshot" src="./img/screenshots/basic.jpg" alt="Basic champion cutoff for Nightcrawler (1-5% of top scorers)"/>
 </div>
 
 <img class="crossbones" src="./img/crossbones.png" alt="Crossbones Peaking at You"/>
