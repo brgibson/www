@@ -1,5 +1,72 @@
 [
     {
+        "albumTitle": "Sway",
+        "albumImageSelector": "",
+        "albumLinks": {
+            "spotify": "https://open.spotify.com/album/61oPU2SHfPP76TJKU6cKCs",
+            "itunes": "",
+            "googlePlay": "",
+            "amazon": ""
+        },
+        "albumTracks": [
+            "Float",
+            "Drag",
+            "Toss",
+            "Pitch",
+            "Drift",
+            "Sway"
+        ],
+        "albumReleaseDate": "December 30, 2016",
+        "albumImage": "",
+        "albumSpotifyKey": "61oPU2SHfPP76TJKU6cKCs"
+    },
+    {
+        "albumTitle": "The Gemstone Sessions",
+        "albumImageSelector": "",
+        "albumLinks": {
+            "spotify": "https://open.spotify.com/album/30lfkWRdz04Bn6tipoHfWv",
+            "itunes": "",
+            "googlePlay": "",
+            "amazon": ""
+        },
+        "albumTracks": [
+            "Digging",
+            "Hollowing",
+            "Tunneling",
+            "Hammering",
+            "Inspecting",
+            "Celebrating"
+        ],
+        "albumReleaseDate": "December 24, 2016",
+        "albumImage": "",
+        "albumSpotifyKey": "30lfkWRdz04Bn6tipoHfWv"
+    },
+    {
+        "albumTitle": "Byzantine Tales",
+        "albumImageSelector": "",
+        "albumLinks": {
+            "spotify": "https://open.spotify.com/album/4v8cZxNsC7DEgZEFpZyNWc",
+            "itunes": "",
+            "googlePlay": "",
+            "amazon": ""
+        },
+        "albumTracks": [
+            "Relaxing Stream",
+            "Happy Mountain",
+            "Bustling Cavern",
+            "Royal Harvest",
+            "The Grand Marketplace",
+            "Flowering Meadow",
+            "Meadowlark's Song",
+            "Minstrel's Tale",
+            "Shifting Desert",
+            "Happy Mountain (Reprise)"
+        ],
+        "albumReleaseDate": "December 21, 2016",
+        "albumImage": "",
+        "albumSpotifyKey": "4v8cZxNsC7DEgZEFpZyNWc"
+    },
+    {
         "albumTitle": "Let's Play",
         "albumImageSelector": "",
         "albumLinks": {
