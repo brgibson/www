@@ -1,4 +1,27 @@
-[{
+[
+ {
+	"basic": "Civil Warrior",
+	"featured": "Gwenpool (1st)",
+	"date": "01/05/2017",
+	"scores": [
+		"14,020,078",
+		"5,280,463",
+		"2,540,809",
+		"1,531,214"
+	]
+},
+ {
+	"basic": "Vision (Age of Ultron)",
+	"featured": "Memory Lane Crystal (2nd)",
+	"date": "01/02/2017",
+	"scores": [
+		"6,460,000",
+		"2,829,851",
+		"1,775,955",
+		"1,192,580"
+	]
+},
+ {
 	"basic": "Vision (Age of Ultron)",
 	"featured": "Memory Lane Crystal (1st)",
 	"date": "12/29/2016",
@@ -8,8 +31,8 @@
 		"2,180,688",
 		"1,227,260"
 	]
-},
-{
+}, 
+ {
 	"basic": "Falcon",
 	"featured": "Howard the Duck (2nd)",
 	"date": "12/26/2016",
@@ -19,8 +42,8 @@
 		"2,109,176",
 		"1,377,973"
 	]
-},
-{
+}, 
+ {
 	"basic": "Falcon",
 	"featured": "Howard the Duck (1st)",
 	"date": "12/22/2016",
@@ -30,8 +53,8 @@
 		"1,940,275",
 		"1,046,437"
 	]
-},
-{
+}, 
+ {
 	"basic": "Hawkeye",
 	"featured": "Superior Iron Man (2nd)",
 	"date": "12/19/2016",
@@ -41,8 +64,8 @@
 		"2,393,390",
 		"1,503,331"
 	]
-},
-{
+}, 
+ {
 	"basic": "Hawkeye",
 	"featured": "Superior Iron Man (1st)",
 	"date": "12/15/2016",
@@ -52,8 +75,8 @@
 		"1,588,119",
 		"1,019,988"
 	]
-},
-{
+}, 
+ {
 	"basic": "Black Panther (Civil War)",
 	"featured": "Hyperion (2nd)",
 	"date": "12/12/2016",
@@ -63,8 +86,8 @@
 		"2,030,819",
 		"1,167,915"
 	]
-},
-{
+}, 
+ {
 	"basic": "Black Panther (Civil War)",
 	"featured": "Hyperion (1st)",
 	"date": "12/08/2016",
@@ -74,8 +97,8 @@
 		"2,330,956",
 		"1,101,240"
 	]
-},
-{
+}, 
+ {
 	"basic": "Black Widow",
 	"featured": "Joe Fixit (2nd)",
 	"date": "12/05/2016",
@@ -85,8 +108,8 @@
 		"2,008,432",
 		"1,099,151"
 	]
-},
-{
+}, 
+ {
 	"basic": "Black Widow",
 	"featured": "Joe Fixit (1st)",
 	"date": "12/01/2016",
@@ -96,8 +119,8 @@
 		"2,948,363",
 		"1,266,081"
 	]
-},
-{
+}, 
+ {
 	"basic": "Crossbones",
 	"featured": "Doctor Voodoo (2nd)",
 	"date": "11/28/2016",
@@ -107,8 +130,8 @@
 		"1,917,576",
 		"1,048,109"
 	]
-},
-{
+}, 
+ {
 	"basic": "Crossbones",
 	"featured": "Doctor Voodoo (1st)",
 	"date": "11/24/2016",
@@ -118,8 +141,8 @@
 		"2,830,992",
 		"1,506,116"
 	]
-},
-{
+}, 
+ {
 	"basic": "Winter Soldier",
 	"featured": "Dr Strange (2nd)",
 	"date": "11/21/2016",
@@ -129,8 +152,8 @@
 		"2,205,583",
 		"1,500,942"
 	]
-},
-{
+}, 
+ {
 	"basic": "Winter Soldier",
 	"featured": "Dr Strange (1st)",
 	"date": "11/17/2016",
@@ -140,8 +163,8 @@
 		"1,695,439",
 		"1,010,260"
 	]
-},
-{
+}, 
+ {
 	"basic": "Red Hulk",
 	"featured": "Mordo (2nd)",
 	"date": "11/14/2016",
@@ -151,8 +174,8 @@
 		"2,576,612",
 		"1,219,921"
 	]
-},
-{
+}, 
+ {
 	"basic": "Red Hulk",
 	"featured": "Mordo (1st)",
 	"date": "11/10/2016",
@@ -162,8 +185,8 @@
 		"1,956,154",
 		"1,011,007"
 	]
-},
-{
+}, 
+ {
 	"basic": "Yellowjacket",
 	"featured": "Magik (2nd)",
 	"date": "11/07/2016",
@@ -173,8 +196,8 @@
 		"1,729,117",
 		"1,024,036"
 	]
-},
-{
+}, 
+ {
 	"basic": "Yellowjacket",
 	"featured": "Magik (1st)",
 	"date": "11/03/2016",
@@ -184,8 +207,8 @@
 		"2,106,039",
 		"1,211,625"
 	]
-},
-{
+}, 
+ {
 	"basic": "Agent Venom ",
 	"featured": "Ghost Rider (2nd)",
 	"date": "10/31/2016",
@@ -195,8 +218,8 @@
 		"1,874,328",
 		"1,012,597"
 	]
-},
-{
+}, 
+ {
 	"basic": "Agent Venom ",
 	"featured": "Ghost Rider (1st)",
 	"date": "10/27/2016",
@@ -206,8 +229,8 @@
 		"3,045,283",
 		"1,193,386"
 	]
-},
-{
+}, 
+ {
 	"basic": "Electro",
 	"featured": "Venompool (2nd)",
 	"date": "10/24/2016",
@@ -217,8 +240,8 @@
 		"1,941,822",
 		"1,146,946"
 	]
-},
-{
+}, 
+ {
 	"basic": "Electro",
 	"featured": "Venompool (1st)",
 	"date": "10/20/2016",
@@ -228,8 +251,8 @@
 		"2,056,843",
 		"1,500,682"
 	]
-},
-{
+}, 
+ {
 	"basic": "Kamala Khan",
 	"featured": "Phoenix (2nd)",
 	"date": "10/17/2016",
@@ -239,8 +262,8 @@
 		"2,309,690",
 		"1,160,801"
 	]
-},
-{
+}, 
+ {
 	"basic": "Kamala Khan",
 	"featured": "Phoenix (1st)",
 	"date": "10/13/2016",
@@ -250,8 +273,8 @@
 		"1,672,961",
 		"1,001,093"
 	]
-},
-{
+}, 
+ {
 	"basic": "Spider-Gwen",
 	"featured": "Black Bolt (2nd)",
 	"date": "10/10/2016",
@@ -261,8 +284,8 @@
 		"2,318,306",
 		"1,250,176"
 	]
-},
-{
+}, 
+ {
 	"basic": "Spider-Gwen",
 	"featured": "Black Bolt (1st)",
 	"date": "10/06/2016",
@@ -272,8 +295,8 @@
 		"1,736,971",
 		"1,056,911"
 	]
-},
-{
+}, 
+ {
 	"basic": "Wolverine (X-23)",
 	"featured": "Quake (2nd)",
 	"date": "10/03/2016",
@@ -283,8 +306,8 @@
 		"1,995,030",
 		"1,012,512"
 	]
-},
-{
+}, 
+ {
 	"basic": "Wolverine (X-23)",
 	"featured": "Quake (1st)",
 	"date": "09/29/2016",
@@ -294,8 +317,8 @@
 		"2,610,240",
 		"1,095,703"
 	]
-},
-{
+}, 
+ {
 	"basic": "Elektra",
 	"featured": "Magneto (MARVEL NOW!) (2nd)",
 	"date": "09/26/2016",
@@ -305,8 +328,8 @@
 		"1,735,415",
 		"1,016,652"
 	]
-},
-{
+}, 
+ {
 	"basic": "Elektra",
 	"featured": "Magneto (MARVEL NOW!) (1st)",
 	"date": "09/22/2016",
@@ -316,8 +339,8 @@
 		"2,013,035",
 		"1,098,628"
 	]
-},
-{
+}, 
+ {
 	"basic": "She-Hulk ",
 	"featured": "Rogue (2nd)",
 	"date": "09/19/2016",
@@ -327,8 +350,8 @@
 		"1,977,487",
 		"1,027,882"
 	]
-},
-{
+}, 
+ {
 	"basic": "She-Hulk ",
 	"featured": "Rogue (1st)",
 	"date": "09/15/2016",
@@ -338,8 +361,8 @@
 		"1,769,067",
 		"1,006,002"
 	]
-},
-{
+}, 
+ {
 	"basic": "Ultron",
 	"featured": "Kamala Khan (2nd)",
 	"date": "09/12/2016",
@@ -349,8 +372,8 @@
 		"2,211,770",
 		"1,110,681"
 	]
-},
-{
+}, 
+ {
 	"basic": "Ultron",
 	"featured": "Kamala Khan (1st)",
 	"date": "09/08/2016",
@@ -360,8 +383,8 @@
 		"2,538,395",
 		"1,067,212"
 	]
-},
-{
+}, 
+ {
 	"basic": "Venompool",
 	"featured": "Karnak (2nd)",
 	"date": "09/05/2016",
@@ -371,8 +394,8 @@
 		"2,235,788",
 		"1,178,102"
 	]
-},
-{
+}, 
+ {
 	"basic": "Venompool",
 	"featured": "Karnak (1st)",
 	"date": "09/01/2016",
@@ -382,8 +405,8 @@
 		"2,533,693",
 		"1,087,745"
 	]
-},
-{
+}, 
+ {
 	"basic": "Deadpool (X-Force)",
 	"featured": "Storm (2nd)",
 	"date": "08/29/2016",
@@ -393,8 +416,8 @@
 		"1,791,944",
 		"1,006,750"
 	]
-},
-{
+}, 
+ {
 	"basic": "Deadpool (X-Force)",
 	"featured": "Storm (1st)",
 	"date": "08/25/2016",
@@ -404,8 +427,8 @@
 		"2,031,388",
 		"1,023,648"
 	]
-},
-{
+}, 
+ {
 	"basic": "Old Man Logan",
 	"featured": "Gambit (2nd)",
 	"date": "08/22/2016",
@@ -415,8 +438,8 @@
 		"2,231,035",
 		"1,121,364"
 	]
-},
-{
+}, 
+ {
 	"basic": "Old Man Logan",
 	"featured": "Gambit (1st)",
 	"date": "08/18/2016",
@@ -426,8 +449,8 @@
 		"2,257,434",
 		"1,093,928"
 	]
-},
-{
+}, 
+ {
 	"basic": "Juggernaut ",
 	"featured": "Thor (Jane Foster) (2nd)",
 	"date": "08/15/2016",
@@ -437,8 +460,8 @@
 		"2,269,203",
 		"1,048,069"
 	]
-},
-{
+}, 
+ {
 	"basic": "Juggernaut ",
 	"featured": "Thor (Jane Foster) (1st)",
 	"date": "08/11/2016",
@@ -448,8 +471,8 @@
 		"1,616,090",
 		"840,321"
 	]
-},
-{
+}, 
+ {
 	"basic": "Cyclops (Blue Team)",
 	"featured": "Loki (2nd)",
 	"date": "08/08/2016",
@@ -459,8 +482,8 @@
 		"2,288,208",
 		"1,101,694"
 	]
-},
-{
+}, 
+ {
 	"basic": "Cyclops (Blue Team)",
 	"featured": "Loki (1st)",
 	"date": "08/04/2016",
@@ -470,8 +493,8 @@
 		"2,509,664",
 		"1,093,081"
 	]
-},
-{
+}, 
+ {
 	"basic": "Symbiote Spider-Man ",
 	"featured": "X-Force Deadpool (2nd)",
 	"date": "08/01/2016",
@@ -481,8 +504,8 @@
 		"1,635,328",
 		"1,033,341"
 	]
-},
-{
+}, 
+ {
 	"basic": "Symbiote Spider-Man ",
 	"featured": "X-Force Deadpool (1st)",
 	"date": "07/28/2016",
@@ -492,8 +515,8 @@
 		"2,039,642",
 		"1,122,010"
 	]
-},
-{
+}, 
+ {
 	"basic": "Spider-Man (Miles Morales)",
 	"featured": "Beast (2nd)",
 	"date": "07/25/2016",
@@ -503,8 +526,8 @@
 		"1,848,806",
 		"1,010,631"
 	]
-},
-{
+}, 
+ {
 	"basic": "Spider-Man (Miles Morales)",
 	"featured": "Beast (1st)",
 	"date": "07/21/2016",
@@ -514,8 +537,8 @@
 		"2,575,857",
 		"1,028,275"
 	]
-},
-{
+}, 
+ {
 	"basic": "Black Panther (Classic)",
 	"featured": "Colossus (2nd)",
 	"date": "07/18/2016",
@@ -525,8 +548,8 @@
 		"1,943,446",
 		"1,021,866"
 	]
-},
-{
+}, 
+ {
 	"basic": "Black Panther (Classic)",
 	"featured": "Colossus (1st)",
 	"date": "07/14/2016",
@@ -536,8 +559,8 @@
 		"1,529,031",
 		"778,580"
 	]
-},
-{
+}, 
+ {
 	"basic": "Groot",
 	"featured": "Nightcrawler (2nd)",
 	"date": "07/11/2016",
@@ -547,8 +570,8 @@
 		"2,283,814",
 		"1,026,379"
 	]
-},
-{
+}, 
+ {
 	"basic": "Groot",
 	"featured": "Nightcrawler (1st)",
 	"date": "07/07/2016",
@@ -558,8 +581,8 @@
 		"2,142,920",
 		"100,863"
 	]
-},
-{
+}, 
+ {
 	"basic": "Rocket Raccoon",
 	"featured": "Civil Warrior (2nd)",
 	"date": "07/04/2016",
@@ -569,8 +592,8 @@
 		"2,125,567",
 		"1,024,567"
 	]
-},
-{
+}, 
+ {
 	"basic": "Rocket Raccoon",
 	"featured": "Civil Warrior (1st)",
 	"date": "06/30/2016",
@@ -580,8 +603,8 @@
 		"2,195,161",
 		"1,012,421"
 	]
-},
-{
+}, 
+ {
 	"basic": "Thor (Jane Foster)",
 	"featured": "The Vision (2nd)",
 	"date": "06/27/2016",
@@ -591,8 +614,8 @@
 		"1,603,512",
 		"793,651"
 	]
-},
-{
+}, 
+ {
 	"basic": "Thor (Jane Foster)",
 	"featured": "The Vision (1st)",
 	"date": "06/23/2016",
@@ -602,8 +625,8 @@
 		"2,505,367",
 		"1,024,294"
 	]
-},
-{
+}, 
+ {
 	"basic": "Iron Fist",
 	"featured": "Discord | Strife Crystal (2nd)",
 	"date": "06/20/2016",
@@ -613,8 +636,8 @@
 		"1,974,083",
 		"1,011,771"
 	]
-},
-{
+}, 
+ {
 	"basic": "Iron Fist",
 	"featured": "Discord | Strife Crystal (1st)",
 	"date": "06/16/2016",
@@ -624,8 +647,8 @@
 		"1,806,239",
 		"1,013,794"
 	]
-},
-{
+}, 
+ {
 	"basic": "Luke Cage",
 	"featured": "Falcon (2nd)",
 	"date": "06/13/2016",
@@ -635,8 +658,8 @@
 		"2,044,195",
 		"1,014,013"
 	]
-},
-{
+}, 
+ {
 	"basic": "Luke Cage",
 	"featured": "Falcon (1st)",
 	"date": "06/09/2016",
@@ -646,8 +669,8 @@
 		"1,758,001",
 		"740,878"
 	]
-},
-{
+}, 
+ {
 	"basic": "Daredevil (Netflix)",
 	"featured": "Hawkeye (2nd)",
 	"date": "06/06/2016",
@@ -657,8 +680,8 @@
 		"1,885,270",
 		"1,040,605"
 	]
-},
-{
+}, 
+ {
 	"basic": "Daredevil (Netflix)",
 	"featured": "Hawkeye (1st)",
 	"date": "06/02/2016",
@@ -668,8 +691,8 @@
 		"1,884,427",
 		"1,018,398"
 	]
-},
-{
+}, 
+ {
 	"basic": "Spider-Gwen",
 	"featured": "Black Panther (Theatrical) (2nd)",
 	"date": "05/30/2016",
@@ -679,8 +702,8 @@
 		"1,713,208",
 		"827,928"
 	]
-},
-{
+}, 
+ {
 	"basic": "Spider-Gwen",
 	"featured": "Black Panther (Theatrical) (1st)",
 	"date": "05/26/2016",
@@ -690,8 +713,8 @@
 		"1,932,040",
 		"1,003,118"
 	]
-},
-{
+}, 
+ {
 	"basic": "Spider-Man",
 	"featured": "Black Widow (2nd)",
 	"date": "05/23/2016",
@@ -701,8 +724,8 @@
 		"1,526,922",
 		"1,002,075"
 	]
-},
-{
+}, 
+ {
 	"basic": "Spider-Man",
 	"featured": "Black Widow (1st)",
 	"date": "05/19/2016",
@@ -712,8 +735,8 @@
 		"1,953,824",
 		"1,003,950"
 	]
-},
-{
+}, 
+ {
 	"basic": "Venom",
 	"featured": "Crossbones (2nd)",
 	"date": "05/16/2016",
@@ -723,8 +746,8 @@
 		"2,231,237",
 		"1,357,892"
 	]
-},
-{
+}, 
+ {
 	"basic": "Venom",
 	"featured": "Crossbones (1st)",
 	"date": "05/12/2016",
@@ -734,8 +757,8 @@
 		"1,807,127",
 		"802,869"
 	]
-},
-{
+}, 
+ {
 	"basic": "Guillotine",
 	"featured": "Winter Soldier (2nd)",
 	"date": "05/09/2016",
@@ -745,8 +768,8 @@
 		"2,144,682",
 		"1,007,298"
 	]
-},
-{
+}, 
+ {
 	"basic": "Guillotine",
 	"featured": "Winter Soldier (1st)",
 	"date": "05/05/2016",
@@ -756,8 +779,8 @@
 		"1,939,729",
 		"1,001,097"
 	]
-},
-{
+}, 
+ {
 	"basic": "Joe Fixit",
 	"featured": "Red Hulk (2nd)",
 	"date": "05/02/2016",
@@ -767,8 +790,8 @@
 		"1,766,016",
 		"907,269"
 	]
-},
-{
+}, 
+ {
 	"basic": "Joe Fixit",
 	"featured": "Red Hulk (1st)",
 	"date": "04/28/2016",
@@ -778,8 +801,8 @@
 		"1,706,208",
 		"1,001,200"
 	]
-},
-{
+}, 
+ {
 	"basic": "Elektra",
 	"featured": "Yellowjacket (2nd)",
 	"date": "04/25/2016",
@@ -789,8 +812,8 @@
 		"1,506,707",
 		"639,512"
 	]
-},
-{
+}, 
+ {
 	"basic": "Elektra",
 	"featured": "Yellowjacket (1st)",
 	"date": "04/21/2016",
@@ -800,8 +823,8 @@
 		"1,595,385",
 		"968,475"
 	]
-},
-{
+}, 
+ {
 	"basic": "Star-Lord",
 	"featured": "Agent Venom (2nd)",
 	"date": "04/18/2016",
@@ -811,8 +834,8 @@
 		"1,814,038",
 		"814,803"
 	]
-},
-{
+}, 
+ {
 	"basic": "Star-Lord",
 	"featured": "Agent Venom (1st)",
 	"date": "04/14/2016",
@@ -822,8 +845,8 @@
 		"2,537,212",
 		"1,008,673"
 	]
-},
-{
+}, 
+ {
 	"basic": "Moon Knight",
 	"featured": "Electro (2nd)",
 	"date": "04/11/2016",
@@ -833,8 +856,8 @@
 		"1,761,016",
 		"1,000,000"
 	]
-},
-{
+}, 
+ {
 	"basic": "Moon Knight",
 	"featured": "Electro (1st)",
 	"date": "04/07/2016",
@@ -844,8 +867,8 @@
 		"1,549,737",
 		"702,954"
 	]
-},
-{
+}, 
+ {
 	"basic": "Deadpool (X-Force)",
 	"featured": "Ms. Marvel (Kamala Khan) (2nd)",
 	"date": "04/04/2016",
@@ -855,8 +878,8 @@
 		"1,745,276",
 		"1,001,805"
 	]
-},
-{
+}, 
+ {
 	"basic": "Deadpool (X-Force)",
 	"featured": "Ms. Marvel (Kamala Khan) (1st)",
 	"date": "03/31/2016",
@@ -866,8 +889,8 @@
 		"1,703,037",
 		"842,000"
 	]
-},
-{
+}, 
+ {
 	"basic": "Symbiote Spider-Man",
 	"featured": "Spider-Gwen (2nd)",
 	"date": "03/28/2016",
@@ -877,8 +900,8 @@
 		"1,548,166",
 		"727,116"
 	]
-},
-{
+}, 
+ {
 	"basic": "Symbiote Spider-Man",
 	"featured": "Spider-Gwen (1st)",
 	"date": "03/24/2016",
@@ -888,8 +911,8 @@
 		"2,021,304",
 		"1,005,343"
 	]
-},
-{
+}, 
+ {
 	"basic": "Magik",
 	"featured": "Wolverine (X-23) (2nd)",
 	"date": "03/21/2016",
@@ -899,8 +922,8 @@
 		"1,564,463",
 		"730,046"
 	]
-},
-{
+}, 
+ {
 	"basic": "Magik",
 	"featured": "Wolverine (X-23) (1st)",
 	"date": "03/17/2016",
@@ -910,8 +933,8 @@
 		"1,650,000",
 		"1,018,458"
 	]
-},
-{
+}, 
+ {
 	"basic": "Magneto (Marvel Now)",
 	"featured": "Elektra (2nd)",
 	"date": "03/14/2016",
@@ -921,8 +944,8 @@
 		"1,868,678",
 		"1,002,110"
 	]
-},
-{
+}, 
+ {
 	"basic": "Magneto (Marvel Now)",
 	"featured": "Elektra (1st)",
 	"date": "03/10/2016",
@@ -932,8 +955,8 @@
 		"1,511,497",
 		"666,936"
 	]
-},
-{
+}, 
+ {
 	"basic": "Black Panther",
 	"featured": "She-Hulk (2nd)",
 	"date": "03/07/2016",
@@ -943,8 +966,8 @@
 		"1,937,668",
 		"1,004,846"
 	]
-},
-{
+}, 
+ {
 	"basic": "Black Panther",
 	"featured": "She-Hulk (1st)",
 	"date": "03/03/2016",
@@ -954,8 +977,8 @@
 		"1,518,367",
 		"685,635"
 	]
-},
-{
+}, 
+ {
 	"basic": "War Machine",
 	"featured": "Ultron (2nd)",
 	"date": "02/29/2016",
@@ -965,8 +988,8 @@
 		"1,516,000",
 		"741,834"
 	]
-},
-{
+}, 
+ {
 	"basic": "War Machine",
 	"featured": "Ultron (1st)",
 	"date": "02/25/2016",
@@ -976,8 +999,8 @@
 		"1,925,087",
 		"1,007,544"
 	]
-},
-{
+}, 
+ {
 	"basic": "Yellowjacket",
 	"featured": "Venompool (2nd)",
 	"date": "02/22/2016",
@@ -987,8 +1010,8 @@
 		"1,593,483",
 		"686,675"
 	]
-},
-{
+}, 
+ {
 	"basic": "Yellowjacket",
 	"featured": "Venompool (1st)",
 	"date": "02/18/2016",
@@ -998,8 +1021,8 @@
 		"2,110,797",
 		"1,008,494"
 	]
-},
-{
+}, 
+ {
 	"basic": "Ant-Man",
 	"featured": "X-Force Deadpool (2nd)",
 	"date": "02/15/2016",
@@ -1009,8 +1032,8 @@
 		"1,605,213",
 		"913,387"
 	]
-},
-{
+}, 
+ {
 	"basic": "-",
 	"featured": "Deadpool (Healing Factor)",
 	"date": "02/11/2016",
@@ -1020,8 +1043,8 @@
 		"3,901,413*",
 		"771,093*"
 	]
-},
-{
+}, 
+ {
 	"basic": "Ant-Man",
 	"featured": "X-Force Deadpool (1st)",
 	"date": "02/11/2016",
@@ -1031,8 +1054,8 @@
 		"1,516,042",
 		"719,520"
 	]
-},
-{
+}, 
+ {
 	"basic": "Black Bolt",
 	"featured": "Old Man Logan (2nd)",
 	"date": "02/08/2016",
@@ -1042,8 +1065,8 @@
 		"2,169,522",
 		"1,008,601"
 	]
-},
-{
+}, 
+ {
 	"basic": "Black Bolt",
 	"featured": "Old Man Logan (1st)",
 	"date": "02/04/2016",
@@ -1053,8 +1076,8 @@
 		"1,701,549",
 		"710,659"
 	]
-},
-{
+}, 
+ {
 	"basic": "Iron Patriot",
 	"featured": "Juggernaut (2nd)",
 	"date": "02/01/2016",
@@ -1064,8 +1087,8 @@
 		"1,661,368",
 		"1,011,891"
 	]
-},
-{
+}, 
+ {
 	"basic": "Iron Patriot",
 	"featured": "Juggernaut (1st)",
 	"date": "01/28/2016",
@@ -1075,8 +1098,8 @@
 		"1,708,404",
 		"1,002,220"
 	]
-},
-{
+}, 
+ {
 	"basic": "WW2 Captain America",
 	"featured": "Cyclops (Classic) (2nd)",
 	"date": "01/25/2016",
@@ -1086,8 +1109,8 @@
 		"1,571,162",
 		"762,775"
 	]
-},
-{
+}, 
+ {
 	"basic": "WW2 Captain America",
 	"featured": "Cyclops (Classic) (1st)",
 	"date": "01/21/2016",
@@ -1097,8 +1120,8 @@
 		"1,531,977",
 		"674,332"
 	]
-},
-{
+}, 
+ {
 	"basic": "Scarlet Witch",
 	"featured": "Black Suit Spider-Man (2nd)",
 	"date": "01/18/2016",
@@ -1108,8 +1131,8 @@
 		"1,523,785",
 		"669,283"
 	]
-},
-{
+}, 
+ {
 	"basic": "Scarlet Witch",
 	"featured": "Black Suit Spider-Man (1st)",
 	"date": "01/14/2016",
@@ -1119,8 +1142,8 @@
 		"2,860,000",
 		"1,003,369"
 	]
-},
-{
+}, 
+ {
 	"basic": "Magneto",
 	"featured": "Spider-Man (Miles Morales) (2nd)",
 	"date": "01/11/2016",
@@ -1130,8 +1153,8 @@
 		"1,959,612",
 		"903,426"
 	]
-},
-{
+}, 
+ {
 	"basic": "Magneto",
 	"featured": "Spider-Man (Miles Morales) (1st)",
 	"date": "01/07/2016",
@@ -1141,8 +1164,8 @@
 		"1,623,601",
 		"674,788"
 	]
-},
-{
+}, 
+ {
 	"basic": "Abomination",
 	"featured": "Black Panther (2nd)",
 	"date": "01/04/2016",
@@ -1152,8 +1175,8 @@
 		"1,806,133",
 		"911,536"
 	]
-},
-{
+}, 
+ {
 	"basic": "Abomination",
 	"featured": "Black Panther (1st)",
 	"date": "12/31/2015",
@@ -1163,8 +1186,8 @@
 		"1,510,246",
 		"635,066"
 	]
-},
-{
+}, 
+ {
 	"basic": "Ultron",
 	"featured": "Groot (2nd)",
 	"date": "12/28/2015",
@@ -1174,8 +1197,8 @@
 		"1,923,580",
 		"787,691"
 	]
-},
-{
+}, 
+ {
 	"basic": "Ultron",
 	"featured": "Groot (1st)",
 	"date": "12/24/2015",
@@ -1185,8 +1208,8 @@
 		"2,094,062",
 		"752,218"
 	]
-},
-{
+}, 
+ {
 	"basic": "Hulkbuster",
 	"featured": "Rocket Raccoon (2nd)",
 	"date": "12/21/2015",
@@ -1196,8 +1219,8 @@
 		"1,419,134",
 		"668,687"
 	]
-},
-{
+}, 
+ {
 	"basic": "Hulkbuster",
 	"featured": "Rocket Raccoon (1st)",
 	"date": "12/17/2015",
@@ -1207,8 +1230,8 @@
 		"1,519,063",
 		"660,000"
 	]
-},
-{
+}, 
+ {
 	"basic": "The Vision",
 	"featured": "Thor (Jane Foster) (2nd)",
 	"date": "12/14/2015",
@@ -1218,8 +1241,8 @@
 		"1,789,977",
 		"744,074"
 	]
-},
-{
+}, 
+ {
 	"basic": "The Vision",
 	"featured": "Thor (Jane Foster) (1st)",
 	"date": "12/10/2015",
@@ -1229,8 +1252,8 @@
 		"1,692,531",
 		"647,210"
 	]
-},
-{
+}, 
+ {
 	"basic": "Dr. Strange",
 	"featured": "Iron Fist (2nd)",
 	"date": "12/07/2015",
@@ -1240,8 +1263,8 @@
 		"2,541,315",
 		"835,054"
 	]
-},
-{
+}, 
+ {
 	"basic": "Dr. Strange",
 	"featured": "Iron Fist (1st)",
 	"date": "12/03/2015",
@@ -1251,8 +1274,8 @@
 		"1,986,304",
 		"628,654"
 	]
-},
-{
+}, 
+ {
 	"basic": "Black Widow",
 	"featured": "Luke Cage (2nd)",
 	"date": "11/30/2015",
@@ -1262,8 +1285,8 @@
 		"1,699,344",
 		"708,741"
 	]
-},
-{
+}, 
+ {
 	"basic": "Black Widow",
 	"featured": "Luke Cage (1st)",
 	"date": "11/26/2015",
@@ -1273,8 +1296,8 @@
 		"1,925,226",
 		"757,645"
 	]
-},
-{
+}, 
+ {
 	"basic": "Captain America",
 	"featured": "Daredevil (2nd)",
 	"date": "11/23/2015",
@@ -1284,8 +1307,8 @@
 		"1,508,412",
 		"671,079"
 	]
-},
-{
+}, 
+ {
 	"basic": "Captain America",
 	"featured": "Daredevil (1st)",
 	"date": "11/19/2015",
@@ -1295,8 +1318,8 @@
 		"1,865,384",
 		"798,837"
 	]
-},
-{
+}, 
+ {
 	"basic": "Daredevil",
 	"featured": "Spider-Gwen (2nd)",
 	"date": "11/16/2015",
@@ -1306,8 +1329,8 @@
 		"1,516,701",
 		"630,508"
 	]
-},
-{
+}, 
+ {
 	"basic": "Daredevil",
 	"featured": "Spider-Gwen (1st)",
 	"date": "11/12/2015",
@@ -1317,8 +1340,8 @@
 		"2,030,736",
 		"709,167"
 	]
-},
-{
+}, 
+ {
 	"basic": "Iron Fist",
 	"featured": "Spiderman (2nd)",
 	"date": "11/09/2015",
@@ -1328,8 +1351,8 @@
 		"1,933,337",
 		"823,252"
 	]
-},
-{
+}, 
+ {
 	"basic": "Iron Fist",
 	"featured": "Spiderman (1st)",
 	"date": "11/05/2015",
@@ -1339,8 +1362,8 @@
 		"1,516,216",
 		"650,659"
 	]
-},
-{
+}, 
+ {
 	"basic": "Ms. Marvel",
 	"featured": "Venom (2nd)",
 	"date": "11/02/2015",
@@ -1350,8 +1373,8 @@
 		"1,996,486",
 		"769,357"
 	]
-},
-{
+}, 
+ {
 	"basic": "Ms. Marvel",
 	"featured": "Venom (1st)",
 	"date": "10/29/2015",
@@ -1361,8 +1384,8 @@
 		"1,508,979",
 		"621,149"
 	]
-},
-{
+}, 
+ {
 	"basic": "Wolverine",
 	"featured": "Guillotine (2nd)",
 	"date": "10/26/2015",
@@ -1372,8 +1395,8 @@
 		"1,915,647",
 		"723,825"
 	]
-},
-{
+}, 
+ {
 	"basic": "Wolverine",
 	"featured": "Guillotine (1st)",
 	"date": "10/22/2015",
@@ -1383,8 +1406,8 @@
 		"1,980,632",
 		"682,679"
 	]
-},
-{
+}, 
+ {
 	"basic": "Spider-Man",
 	"featured": "Joe Fixit (2nd)",
 	"date": "10/19/2015",
@@ -1394,8 +1417,8 @@
 		"1,508,640",
 		"645,384"
 	]
-},
-{
+}, 
+ {
 	"basic": "Spider-Man",
 	"featured": "Joe Fixit (1st)",
 	"date": "10/15/2015",
@@ -1405,8 +1428,8 @@
 		"1,890,000",
 		"687,080"
 	]
-},
-{
+}, 
+ {
 	"basic": "Rocket",
 	"featured": "Elektra 2nd",
 	"date": "10/12/2015",
@@ -1416,4 +1439,5 @@
 		"1,605,544",
 		"691,514"
 	]
-}]
+}
+]
