@@ -1,0 +1,255 @@
+Life style - roll - board never changes (152 squares total - not optional)
+Sorry Style - pull from deck to move - board never changes
+Monopoly - roll - board never changes, but chance spots
+Candyland - deck - shortcuts - and random spots on board (130 squares)
+Shoots and ladders - roll - static board
+River's Roads - build your own path
+
+
+Set board is more fun
+Pull
+
+15 stops (3 inbetween each )  = 60spaces
+
+
+
+life - longest path 135
+
+135 * .6 81 max path
+
+
+----
+HAPPENINGS
+----
+
+You have reached Big Blue River Crossing.
+You must cross the River to continue.
+(/) A thief stole 6 oxen from your wagon.
+(/) You had a wagon wheel break but -were able to replace it from supplies.- (A wagon wheel broke.  You must fix it before moving)
+(/) You've lost the trail. 
+You have reached Fort Kearney
+You decided to rest for 7 days.
+(/) Bob has dysentery
+(/) Bob has measles
+(/) Bob has typhoid
+(/) Bob has a fever.
+(/) You have cholera
+(/) Mary has a broken arm.
+(/) Jill has a broken leg.
+(/) Bob was bitten by a snake.
+(/) You have a snakebite.
+(/) You have exhaustion.
+(/) Bob is well again. 
+Your wagon sank while crossing the river. You lose:
+The wagon tipped over while floating.  You lose:
+	3 sets of clothing
+	84 bullets
+	1 wagon wheel
+	Bob (drowned)
+(/) Inadequate grass. 
+Bob has died.
+(/) You have died of dysentery.
+Everyone in your party has died.  Many wagons fail to make it all the way to Oregon.
+You wagon tipped. Fortunately, nobody was injured and you recovered all your supplies. 
+(/) You had a wagon axel break but were able to replace it from supplies.
+(/) You found some wild fruit.
+(/) No grass for the Oxen.
+(/) No water.
+(/) Bad water.
+(/) Heavy fog.
+(/) Rough Trail.
+(/) The trail is impassable.
+(/) You took the wrong trail.
+
+
+
+
+fog/snow/ice/rain/drought
+
+Abandoned wagons
+
+Clean water
+
+You decided to hunt.
+
+
+----
+NEW THINGS
+----
+Movement
+- Roll a 1 to fix an ailment
+- Roll a 6 and one player or oxen from your party will die only from an existing ailment in play
+
+Tiles
+	Cures for illnesses
+	Have a baby... Add a player
+	2 instant death tiles
+	4 food tiles (turn in 200lb of food when you pass)
+		- If no food left... then you have to hunt (lose one player per turn until you find food)
+
+1 Always heals one member at a time
+6 Die if existing illness
+
+Resting (uses one turn)
+- Roll an even to fix an ailment
+
+Hunting (uses one turn)
+	Play a bullet card and roll
+	- 1   - 0 
+	- 2   - 2 (100lb)
+	- 3   - 3 (150lb)
+	- 4-6 - 4 (200lb) 
+
+Trading (uses one turn)
+	swap any one card in your inventory with one card left in the shop
+
+
+
+Dead bufallo to mark hunted on tiles
+
+
+
+Cards
+	Illnesses
+	Supplies
+	
+
+Money
+
+
+
+
+
+
+
+
+----
+OPTIONS
+----
+River Crossings:
+
+	1. Roll to see how deep?
+	
+		
+
+	2a.	Attempt to ford the river
+			If you roll less than the deepness you fail
+			If you roll greater than or equal to the deepness you succeed
+
+			What happens when you lose?
+				6 - lose a person
+				2-5 - Lose an oxen
+				1 - Recover Everything			
+		
+
+	2b.	Caulk the wagon and float it
+			Roll an even to succeed
+			Roll an odd to fail			
+
+			What happens when you lose?
+				6 - lose a person
+				1-5 - Lose an oxen
+			
+				
+			
+
+	2c.	Take ferry for $X.00 (not always present) - no one dies
+	2d.	Hire an Indian to help for 3 sets of clothing - no one dies
+
+Forts: 
+	You can buy anything from the shop
+
+----
+SUPPLIES
+----
+
+oxen - 20
+sets of clothing - 10
+20 bullets (1 card) - 2
+wagon wheels - 10
+wagon axels - 10
+wagon tongues - 10
+50lb of food (1 card)- 20
+
+
+----
+STARTS
+----
+10 oxen
+2 clothing
+10 sets bullets
+1 wheel
+1 axel
+1 tongue
+4 food cards
+
+----
+STOPS
+----
+
+Kansas River (3 options)
+Big Blue River (no ferry)
+Fort Kearney
+Chimney Rock
+Fort Laramie
+Independence Rock
+South Pass
+The Green River Crossing
+Soda Springs
+Fort Hall
+
+Snake River Crossing (Hire an Indian - no ferry)
+Fort Boise
+Grande Ronde in the Blue Mountains
+	Head to Fort Walla Walla to buy supplies
+	Take the shortcut to the Dalles 
+The Dalles
+	Take the Barlow Toll Road (
+	Raft down the river
+		Even moves to next tile and continue rolling
+		Odd - stop moving (wait for your next turn)
+		On last river tile (if you roll a one, a party member dies) - you do not move forward
+
+
+
+----
+PROFESSIONS
+----
+Cards like life
+
+banker - 160 - 1
+doctor - 120 - 1.5 - roll a 2 to heal people
+merchant - 120 - 2
+blacksmith - 80 - 2 - on breaking part - roll even to fix without using supply
+carpenter - 80 - 2 - on breaking part - roll even to fix without using supply
+saddlemaker - 80 - 2.5
+farmer - 40 - 3 - roll a 2 to heal oxen
+teacher - 40 - 3.5
+
+----
+Game ending
+-----
+Congratulations!
+You have reached the Willamette Valley.
+
+people x 300 (100)
+wagon x 50
+oxen x4
+wagon parts x2
+clothes x2
+bullets x50
+food x25
+dollars x5
+Player type bonus
+
+First person to arrive gets x
+Trade in all left over supplies for their sell-back value
+Count your money
+Multiply by profession multiplies (we'll have to test this at the end and see how the professions really play out)
+
+
+
+
+55
+19.2 x 2.864
+4.2in
