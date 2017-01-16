@@ -118,7 +118,6 @@
         <div class="playlist-container">
 
             <h2>{{playlistName}}</h2>
-            <!--<img class="playlist-image" width="150" src="{{images.0.url}}" />-->
 
             <ul>
                 {{#each items}}
@@ -130,15 +129,18 @@
                 {{/each}}
             </ul>
             <pre>
-                &lt;iframe class="albums-playlist" src="https://embed.spotify.com/?uri=spotify%3Auser%3A1213507414%3Aplaylist%{{id}}" allowtransparency="true" width="100%"&gt;&lt;/iframe&gt;
 
-                &lt;div&gt;&lt;ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6093963355659130" data-ad-slot="8377988760" data-ad-format="auto"&gt;&lt;/ins&gt;&lt;/div&gt;
+&lt;iframe class="albums-playlist" src="https://embed.spotify.com/?uri=spotify%3Auser%3A1213507414%3Aplaylist%3A{{id}}" allowtransparency="true" width="100%"&gt;&lt;/iframe&gt;
 
-                &lt;div class="fb-comments" data-href="http://music.brgibson.com/{{playlistName}}/" data-width="100%" data-numposts="5"&gt;&lt;/div&gt;
+&lt;div&gt;&lt;ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6093963355659130" data-ad-slot="8377988760" data-ad-format="auto"&gt;&lt;/ins&gt;&lt;/div&gt;
+
+&lt;div class="fb-comments" data-href="http://music.brgibson.com/{{playlistName}}/" data-width="100%" data-numposts="5"&gt;&lt;/div&gt;
             </pre>
 
-            <h3>Blog Post Tags</h3>
-            <p>{{#each blogPostTags}} {{this}} {{/each}}</p>
+
+            <p><b>Blog Post Tags: </b>{{#each blogPostTags}} {{this}} {{/each}}</p>
+            <p><b>Blog Date: </b>{{date}}</p>
+            <p><b>Image: </b>{{images.0.url}}</p>
         </div>
     </script>
 

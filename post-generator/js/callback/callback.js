@@ -105,12 +105,18 @@
                                 return albums;
                             }, []);
 
-                            albums.blogPostTags= albums.items.reduce(function(tags, album) {
+                            albums.blogPostTags = albums.items.reduce(function(tags, album) {
                                   if (tags.indexOf(album.artists) < 0) {
-                                      tags.push(album.artists.toLowerCase().replace(' ', '-'));
+                                      tags.push(album.artists.toLowerCase().replace(/ /g, '-'));
                                   }
                                   return tags;
                             }, []);
+
+
+                            var date = new Date(albums.playlistName);
+
+
+                            albums.date = date.getDate() + " " + date.toDateString().substring(4, 7) + " " + date.getFullYear() + " @ 12:01";
 
                             // playlistPlaceholder.innerHTML += tracksForPlaylistTemplate(tracks);
                             playlistPlaceholder.innerHTML += albumsForPlaylistTemplate(albums);
