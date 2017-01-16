@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name='viewport' content='width=device-width,initial-scale=1'/>
+        <title>Spotify Backup - Your Playlists!</title>
+        <script src="/base.js" async></script>
+        <link rel="stylesheet" href="/base.css" />
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <style>
+            .spotify .main ul li {
+                display: list-item;
+                line-height: 150%;
+                padding: 0.313em 0;
+            }
+            .main ul li {
+                list-style: none;
+            }
+        </style>
+    </head>
+
+
+    <body class="spotify">
+        <nav>
+            <div class="menu-collapsed">
+                <ul>
+                    <li><a class="fa fa-navicon"><span class="offscreen">Expand Menu</span></a></li>
+                </ul>
+            </div>
+            <ul class="menu-expanded">
+                <li><a href="/" class="fa fa-home"><span class="offscreen">Home</span></a></li
+                ><li><a href="/music/" class="fa fa-music"><span class="offscreen">Releases</span></a></li
+                ><li><a href="/about/" class="fa fa-info-circle"><span class="offscreen">About</span></a></li
+                ><li><a href="//music.brgibson.com" class="fa fa-bullhorn"><span class="offscreen">Music Blog</span></a></li
+                ><li><a href="/experiments/" class="fa fa-flask"><span class="offscreen">Tech Experiments</span></a></li
+                ><li><a href="//facebook.com/brgibsonmusic/" class="fa fa-facebook-square" ><span class="offscreen">Facebook</span></a></li
+                ><li><a href="https://open.spotify.com/artist/7dMjvLu2viBJjBzqh2qizh" class="fa fa-spotify" ><span class="offscreen">Spotify</span></a></li>
+            </ul>
+        </nav>
+
+        <h1>Your Playlists</h1>
+
+        <div class="main">
+            <div class="ad-container">
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- Responsive Ad - Standard -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-6093963355659130"
+                     data-ad-slot="8377988760"
+                     data-ad-format="auto"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <div id="waiting-message">
+                <p>Please wait, your playlists are coming soon!</p>
+            </div>
+
+            <!--<div id="playlist-names-container">-->
+            <!--</div>-->
+
+            <!--<div class="ad-container">-->
+                <!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
+                <!--&lt;!&ndash; Responsive Ad - Standard &ndash;&gt;-->
+                <!--<ins class="adsbygoogle"-->
+                     <!--style="display:block"-->
+                     <!--data-ad-client="ca-pub-6093963355659130"-->
+                     <!--data-ad-slot="8377988760"-->
+                     <!--data-ad-format="auto"></ins>-->
+                <!--<script>-->
+                <!--(adsbygoogle = window.adsbygoogle || []).push({});-->
+                <!--</script>-->
+            <!--</div>-->
+
+            <div id="playlists-container">
+            </div>
+
+        </div>
+    </body>
+
+    <script id="playlists-for-user-template" type="text/x-handlebars-template">
+        <div class="media">
+            {{#each items}}
+                    <p>{{name}}</p>
+            {{else}}
+                    <p>You don't have any playlists</p>
+            {{/each}}
+        </div>
+    </script>
+
+    <script id="tracks-for-playlist-template" type="text/x-handlebars-template">
+        <div class="playlist-container">
+
+            <h2>{{playlistName}}</h2>
+            <img class="playlist-image" width="150" src="{{images.0.url}}" />
+
+            <ol>
+                {{#each items}}
+                <li>
+                    {{#each track.artists}}
+                            {{name}}{{#unless @last}},{{/unless}}
+                    {{/each}}
+
+                    - {{track.name}}
+
+                    <!--- {{track.album.name}}-->
+                </li>
+                {{else}}
+                <p>You don't have any tracks</p>
+                {{/each}}
+            </ol>
+        </div>
+    </script>
+
+    <script id="albums-for-playlist-template" type="text/x-handlebars-template">
+        <div class="playlist-container">
+
+            <h2>{{playlistName}}</h2>
+            <!--<img class="playlist-image" width="150" src="{{images.0.url}}" />-->
+
+            <ul>
+                {{#each items}}
+                <li>
+                    - {{artists}} - {{name}}
+                </li>
+                {{else}}
+                <p>You don't have any albums in this playlist</p>
+                {{/each}}
+            </ul>
+            <pre>
+                &lt;iframe class="albums-playlist" src="https://embed.spotify.com/?uri=spotify%3Auser%3A1213507414%3Aplaylist%{{id}}" allowtransparency="true" width="100%"&gt;&lt;/iframe&gt;
+
+                &lt;div&gt;&lt;ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6093963355659130" data-ad-slot="8377988760" data-ad-format="auto"&gt;&lt;/ins&gt;&lt;/div&gt;
+
+                &lt;div class="fb-comments" data-href="http://music.brgibson.com/{{playlistName}}/" data-width="100%" data-numposts="5"&gt;&lt;/div&gt;
+            </pre>
+
+            <h3>Blog Post Tags</h3>
+            <p>{{#each blogPostTags}} {{this}} {{/each}}</p>
+        </div>
+    </script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="/js/promises/promises.js"></script>
+    <script src="../js/service/api.js"></script>
+    <script src="../js/callback/callback.js"></script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-62805015-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script src="/js/bkg-img/bkg-img.js" async></script>
+</html>
