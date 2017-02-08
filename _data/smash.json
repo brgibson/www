@@ -351,5 +351,41 @@
             }
         ],
         "date": "2016-10-24  No. 1"
+    },
+    {
+        "playerIds": ["ben", "vinh"],
+        "games": [{
+                "sonic": 2,
+                "marth": 3,
+                "winner": "vinh",
+                "sd": "ben"
+            },{
+                "kirby": 2,
+                "marth": 3,
+                "winner": "vinh"
+            }
+        ],
+        "date": "2017-01-07  No. 1"
+    },
+    {
+        "playerIds": ["ben", "vinh"],
+        "games": [{
+                "mario": 2,
+                "cloud": 3,
+                "winner": "vinh",
+                "sliding edge-guard spike": "ben"
+            },
+            {
+                "sonic": 2,
+                "marth": 1,
+                "winner": "ben"
+            },
+            {
+                "sonic": 2,
+                "marth": 3,
+                "winner": "vinh"
+            }
+        ],
+        "date": "2017-01-07  No. 2"
     }
 ]
