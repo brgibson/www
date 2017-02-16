@@ -378,7 +378,8 @@
             {
                 "sonic": 2,
                 "marth": 1,
-                "winner": "ben"
+                "winner": "ben",
+                "floor spring to uair to up+b to uair": "ben"
             },
             {
                 "sonic": 2,
@@ -387,5 +388,58 @@
             }
         ],
         "date": "2017-01-07  No. 2"
+    },
+    {
+        "playerIds": ["ben", "vinh"],
+        "games": [{
+                "mario": 2,
+                "cloud": 3,
+                "winner": "vinh",
+                "sliding edge-guard spike": "ben"
+            },
+            {
+                "sonic": 2,
+                "marth": 1,
+                "winner": "ben",
+                "floor spring to uair to up+b to uair": "ben"
+            },
+            {
+                "sonic": 2,
+                "marth": 3,
+                "winner": "vinh"
+            }
+        ],
+        "date": "2017-01-07  No. 2"
+    },
+    {
+        "playerIds": ["ben", "geoff"],
+        "games": [{
+                "kirby": 1,
+                "cloud": 2,
+                "winner": "geoff"
+            }
+        ],
+        "date": "2017-01-08  No. 1"
+    },
+    {
+        "playerIds": ["ben", "vinh"],
+        "games": [{
+                "sonic": 1,
+                "cloud": 2,
+                "winner": "ben"
+            },
+            {
+                "sonic": 2,
+                "marth": 1,
+                "winner": "vinh"
+            },
+            {
+                "toon link": 2,
+                "marth": 1,
+                "winner": "ben",
+                "accidental stage spike": "ben"
+            }
+        ],
+        "date": "2017-01-15  No. 1"
     }
 ]
