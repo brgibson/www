@@ -1,5 +1,33 @@
 [
     {
+        "albumTitle": "Victory Garden",
+        "albumImageSelector": "",
+        "albumLinks": {
+            "spotify": "https://open.spotify.com/album/2hfqLoarqKF4ILLKcv3xm1",
+            "itunes": "",
+            "googlePlay": "",
+            "amazon": ""
+        },
+        "albumTracks": [],
+        "albumReleaseDate": "July 28, 2017",
+        "albumImage": "",
+        "albumSpotifyKey": "2hfqLoarqKF4ILLKcv3xm1"
+    },
+    {
+        "albumTitle": "Glass",
+        "albumImageSelector": "",
+        "albumLinks": {
+            "spotify": "https://open.spotify.com/album/6HbdjWJbbwOU4FrzC504DZ",
+            "itunes": "",
+            "googlePlay": "",
+            "amazon": ""
+        },
+        "albumTracks": [],
+        "albumReleaseDate": "July 21, 2017",
+        "albumImage": "",
+        "albumSpotifyKey": "6HbdjWJbbwOU4FrzC504DZ"
+    },
+    {
         "albumTitle": "Sway",
         "albumImageSelector": "",
         "albumLinks": {
