@@ -222,6 +222,14 @@ nav .icon-camera-retro::after {
     width: 100%;
 }
 
+/* studio pages */
+.rp-300 .main ol {
+    counter-reset: initial;
+}
+.rp-300 {
+    counter-reset: item;
+}
+
 /* music library and shows pages */
 .music-library .quick-links,
 .shows .quick-links {
