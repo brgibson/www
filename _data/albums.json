@@ -1,5 +1,19 @@
 [
     {
+        "albumTitle": "Arms",
+        "albumImageSelector": "",
+        "albumLinks": {
+            "spotify": "https://open.spotify.com/album/1OS2qfJkMz2bACerWR1c95",
+            "itunes": "",
+            "googlePlay": "https://goo.gl/cyjfaP",
+            "amazon": ""
+        },
+        "albumTracks": [],
+        "albumReleaseDate": "May 25, 2018",
+        "albumImage": "",
+        "albumSpotifyKey": "1OS2qfJkMz2bACerWR1c95"
+    },
+    {
         "albumTitle": "Victory Garden",
         "albumImageSelector": "",
         "albumLinks": {
