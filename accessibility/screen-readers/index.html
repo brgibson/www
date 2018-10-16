@@ -1,0 +1,264 @@
+---
+layout: plain
+category: accessibility
+bodySelector: smash
+
+title: Screen Readers - Accessibility
+keywords: accessibility screen readers cheat sheet
+description: Various tips and tricks about how to test with screen readers.
+---
+<h1 id="screen-reader-cheat-sheets">Screen Reader Cheat Sheets</h1>
+
+<div class="text-left" style="margin:0 2em 2em; ">
+    <h2 class="text-center">Table Of Contents</h2>
+    <ul>
+        <li><a href="#mac">Mac Cheat Sheet for Voice Over</a></li>
+        <li><a href="#windows-10">Windows 10 Cheat Sheet for Narrator</a></li>
+        <li><a href="#windows-7">Windows 7 Cheat Sheet for NVDA</a></li>
+    </ul>
+</div>
+
+<div class="section">
+    <h2 id="mac">Mac Cheat Sheet for Voice Over</h2>
+
+    <h3 id="basic-commands">Basic Commands</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>command</th>
+          <th>description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>cmd + f5</td>
+          <td>turn on/off Voice Over</td>
+        </tr>
+        <tr>
+          <td>cmd + fn + doubletap f5</td>
+          <td>turn on/off Voice Over (touchbar mac)</td>
+        </tr>
+        <tr>
+          <td>ctrl</td>
+          <td>pause/unpause reading</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><em>Note: The VO (voice-over) command is set to “ctrl + opt” by default.  You will see ctrl + opt below in a number of commands below and will also see it referred to as the VO command in the apple documentation.</em></p>
+
+    <p>Working with text: <a href="https://www.apple.com/voiceover/info/guide/_1128.html">https://www.apple.com/voiceover/info/guide/_1128.html</a></p>
+
+    <h3 id="browsing-with-quick-nav-on">Browsing With Quick Nav On</h3>
+
+    <p>“Quick Nav” (often referred to as Web Rotor) is a very important to Assistive Technology users.  This allows users to scan and browse the page using different types of html elements.  Often, if one html element is not working well, AT users will try a different a different HTML element.</p>
+
+    <p><a href="https://www.apple.com/voiceover/info/guide/_1133.html#vo27943">Apple Voice Over Guide</a></p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>command</th>
+          <th>description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>← + →</td>
+          <td>turn on/off quick nav</td>
+        </tr>
+        <tr>
+          <td>↑ + → <br /> ↑ + ←</td>
+          <td>toggle through types of elements</td>
+        </tr>
+        <tr>
+          <td>↑ <br /> ↓</td>
+          <td>moves to the previous/next element of the selected type</td>
+        </tr>
+        <tr>
+          <td>→ <br /> ←</td>
+          <td>browse to next/previous element (ignoring the selected type)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><em>Note: If your function key (eg. f5) is doing something unexpected, you might need to hold down the “fn” key while pushing it.  If you are having trouble, you might find <a href="http://www.dummies.com/computers/macs/how-to-use-your-macs-function-keys/">this article</a> helpful.</em></p>
+
+    <h3 id="browsing-with-quick-nav-off">Browsing With Quick Nav Off</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>command</th>
+          <th>description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>tab <br /> tab + shift</td>
+          <td>browse to next focusable element <br /> browse to previous focusable element</td>
+        </tr>
+        <tr>
+          <td>ctrl + opt  + → <br /> ctrl + opt  + ←</td>
+          <td>browse to next element <br /> browse to previous element</td>
+        </tr>
+        <tr>
+          <td>cmd + alt + shift + ↓</td>
+          <td>dig deeper into the element that is selected</td>
+        </tr>
+        <tr>
+          <td>cmd + ←</td>
+          <td>browser back button</td>
+        </tr>
+        <tr>
+          <td>cmd + →</td>
+          <td>browser forward button</td>
+        </tr>
+        <tr>
+          <td>ctrl + opt + a</td>
+          <td>read from current position to the bottom of the page</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+<div class="section">
+    <h2 id="windows-10">Windows 10 Cheat Sheet for Narrator</h2>
+    <p class="text-center"><em>⚠ Note: we will be using ❖ to represent the Windows Logo Key ⚠</em></p>
+
+    <h3 id="basic-commands-1">Basic Commands</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>command</th>
+          <th>description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>❖ + ctrl + enter</td>
+          <td>turn on/off Narrator</td>
+        </tr>
+        <tr>
+          <td>❖ + enter</td>
+          <td>turn on/off Narrator (older windows)</td>
+        </tr>
+        <tr>
+          <td>ctrl</td>
+          <td>stop reading</td>
+        </tr>
+        <tr>
+          <td>capslock + r</td>
+          <td>continue reading</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 id="basic-browsing">Basic Browsing</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>command</th>
+          <th>description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>capslock + spacebar</td>
+          <td>turn on/off quick scan mode</td>
+        </tr>
+        <tr>
+          <td>→ <br /> ←</td>
+          <td>move the to the next/previous character (with quick scan mode on)</td>
+        </tr>
+        <tr>
+          <td>↑ <br /> ↓</td>
+          <td>move to the next/previous word (with quick scan mode on)</td>
+        </tr>
+        <tr>
+          <td>capslock + ↓ <br /> capslock + ↑</td>
+          <td>toggle through types of elements</td>
+        </tr>
+        <tr>
+          <td>capslock + → <br /> capslock + ←</td>
+          <td>Moves to the previous/next element of the selected type</td>
+        </tr>
+        <tr>
+          <td>capslock + h</td>
+          <td>read the complete page from the beginning</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><a href="https://support.microsoft.com/en-us/help/22817/windows-10-narrator-introducing">https://support.microsoft.com/en-us/help/22817/windows-10-narrator-introducing</a>
+    <a href="https://support.microsoft.com/en-us/help/22809/windows-10-narrator-using-scan-mode">https://support.microsoft.com/en-us/help/22809/windows-10-narrator-using-scan-modeintroducing</a></p>
+
+</div>
+
+<div class="section">
+    <h2 id="windows-7">Windows 7 Cheat Sheet for NVDA</h2>
+    <p>Note: ⚠ Unfortunately the built in Narrator for Windows 7 is not very good.  I recommend installing the open source NVDA screen reader: <a href="https://www.nvaccess.org/download/">https://www.nvaccess.org/download/</a> ⚠</p>
+
+    <h3 id="basic-commands-2">Basic Commands</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>command</th>
+          <th>description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ctrl</td>
+          <td>stop reading</td>
+        </tr>
+        <tr>
+          <td>ctrl + alt + n</td>
+          <td>turn on NVDA</td>
+        </tr>
+        <tr>
+          <td>insert + q</td>
+          <td>turn off NVDA</td>
+        </tr>
+        <tr>
+          <td>insert + ↓</td>
+          <td>continue reading</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 id="basic-browsing-1">Basic Browsing</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>command</th>
+          <th>description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>↑ <br /> ↓</td>
+          <td>move to the next/previous item</td>
+        </tr>
+        <tr>
+          <td>→ <br /> ←</td>
+          <td>move the to the next/previous character</td>
+        </tr>
+        <tr>
+          <td>h <br /> shift + h</td>
+          <td>move to the next/previous heading</td>
+        </tr>
+        <tr>
+          <td>tab <br /> shift + tab</td>
+          <td>move to the next focusable element (link or button)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Full list of shortcuts: <a href="https://dequeuniversity.com/screenreaders/nvda-keyboard-shortcuts">https://dequeuniversity.com/screenreaders/nvda-keyboard-shortcuts</a></p>
+</div>
