@@ -1,5 +1,20 @@
 [
-    {
+  {
+        "albumTitle": "Lost & Found",
+        "albumImageSelector": "",
+        "albumLinks": {
+            "spotify": "https://open.spotify.com/album/3syWFmenf1VNeHYJM0diXN",
+            "itunes": "https://apple.co/2I3DN3t",
+            "googlePlay": "https://bit.ly/2Gl8bVn",
+            "amazon": "https://amzn.to/2GBRGTV",
+            "youtube": "https://bit.ly/2E3hgQk"
+        },
+        "albumTracks": [],
+        "albumReleaseDate": "February 8, 2019",
+        "albumImage": "",
+        "albumSpotifyKey": "3syWFmenf1VNeHYJM0diXN"
+  },
+  {
         "albumTitle": "Arms",
         "albumImageSelector": "",
         "albumLinks": {
