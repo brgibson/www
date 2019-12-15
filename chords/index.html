@@ -9,6 +9,7 @@ title: Chord Progressions - Verse, Chorus, Bridge, Etc
 keywords: chord progressions chorus verse bridge full song examples list
 description: List of chord progression for songs, including verse, chorus, bridge.
 ---
+<style>.chord { font-family: "Courier New",serif }</style>
 <div>
     <h1 id="chord-progressions">Chord Progressions</h1>
     <table>
@@ -30,11 +31,11 @@ description: List of chord progression for songs, including verse, chorus, bridg
                     <td>{{song.band}}</td>
                     <td>{{song.title}}</td>
                     <td>{{song.key}}</td>
-                    <td>{{song.intro}}</td>
-                    <td>{{song.verse}}</td>
-                    <td>{{song.chorus}}</td>
-                    <td>{{song.bridge}}</td>
-                    <td>{{song.outro}}</td>
+                    <td class="chord">{{song.intro}}</td>
+                    <td class="chord">{{song.verse}}</td>
+                    <td class="chord">{{song.chorus}}</td>
+                    <td class="chord">{{song.bridge}}</td>
+                    <td class="chord">{{song.outro}}</td>
                 </tr>
             {% endfor %}
         </tbody>

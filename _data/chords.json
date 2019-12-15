@@ -3,14 +3,14 @@
     "band": "Bad Religion",
     "title": "Sorrow",
     "key": "G",
-    "intro": "( vi IV V I )  ( I IV vi V )  (  I IV V vi ) (  vi IV V I )",
-    "verse": "( ii ?VII? I IV vi ) (  ii ?VII? IV I ) (  ii IV I ) (  ii ?VII? I IV )",
-    "chorus": "( vi IV I V (2x) ) (  vi IV I vi V ) (  I )",
+    "intro": "vi IV V I <br> I IV vi V <br> I IV V vi <br> vi IV V I",
+    "verse": "ii ?VII? I IV vi <br> ii ?VII? IV I <br> ii IV I <br> ii ?VII? I IV",
+    "chorus": " vi IV I V (2x) <br> vi IV I vi V <br> I",
     "bridge": "(same as verse)",
     "outro": "(same as chorus)",
     "notes": [
-      "https://www.hooktheory.com/theorytab/view/bad-religion/sorrow",
-      "https://tabs.ultimate-guitar.com/tab/bad_religion/sorrow_chords_614929",
+      "https://www.hooktheory.com/theorytab/view/bad<br>religion/sorrow",
+      "https://tabs.ultimate<br>guitar.com/tab/bad_religion/sorrow_chords_614929",
     ]
   },
   {
@@ -19,10 +19,10 @@
     "key": "G",
     "intro": "(same as verse)",
     "verse": "I vi IV",
-    "chorus": "( I vi IV ) ( I vi (3x) ) ( IV I )",
-    "bridge": "( ii IV (4x) ) ( V )",
+    "chorus": "I vi IV <br> I vi (3x) <br> IV I",
+    "bridge": "ii IV (4x)  <br>  V",
     "outro": "",
-    "notes": "https://tabs.ultimate-guitar.com/tab/best_coast/the_only_place_chords_1173488",
+    "notes": "https://tabs.ultimate<br>guitar.com/tab/best_coast/the_only_place_chords_1173488",
   },
   {
     "band": "Bloodhound Gang",
@@ -31,9 +31,9 @@
     "intro": "(same as verse)",
     "verse": "I vi iii V",
     "chorus": "(same as verse)",
-    "bridge": "( IV ) ( IV ) ( I ) ( iii ) ( IV ) ( i V i )",
+    "bridge": "IV <br> IV <br> I <br> iii <br> IV <br> i V i",
     "outro": "(same as verse)",
-    "notes": "https://tabs.ultimate-guitar.com/tab/bloodhound_gang/foxtrot_uniform_charlie_kilo_chords_1048130"
+    "notes": "https://tabs.ultimate<br>guitar.com/tab/bloodhound_gang/foxtrot_uniform_charlie_kilo_chords_1048130"
   },
   {
     "band": "Green Day",
