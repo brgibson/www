@@ -1,0 +1,40 @@
+---
+layout: plain
+category: accessibility
+bodySelector: smash
+
+title: Chord Progressions - Verse, Chorus, Bridge, Etc
+keywords: chord progressions chorus verse bridge full song examples list
+description: List of chord progression for songs, including verse, chorus, bridge.
+---
+<div>
+    <h1 id="chord-progressions">Chord Progressions</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Band</th>
+                <th>Song</th>
+                <th>Key</th>
+                <th>Intro</th>
+                <th>Verse</th>
+                <th>Chorus</th>
+                <th>Bridge</th>
+                <th>Outro</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for song in site.data.chords %}
+                <tr>
+                    <td>{{song.band}}</td>
+                    <td>{{song.title}}</td>
+                    <td>{{song.key}}</td>
+                    <td>{{song.intro}}</td>
+                    <td>{{song.verse}}</td>
+                    <td>{{song.chorus}}</td>
+                    <td>{{song.bridge}}</td>
+                    <td>{{song.outro}}</td>
+                </tr>
+            {% endfortd}
+        </tbody>
+    </table>
+</div>

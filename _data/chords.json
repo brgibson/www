@@ -1,0 +1,22 @@
+[
+  {
+    "band": "Green Day",
+    "title": "When I Come Around",
+    "key": "G",
+    "intro": "(same as verse)",
+    "verse": "I V vi IV",
+    "chorus": "ii IV",
+    "bridge": "(same as verse)",
+    "outro": "(same as verse)"
+  },
+  {
+    "band": "Jimmy Eat World",
+    "title": "The Middle",
+    "key": "D",
+    "intro": "",
+    "verse": "I V IV V I",
+    "chorus": "I V IV I",
+    "bridge": "I V/I I V/I IV V/I I",
+    "outro": ""
+  }
+]

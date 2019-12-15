@@ -8,7 +8,7 @@ I created this website for the following reasons:
 
 None of the experiments on this site are what I would consider to be my best work (including the design which looks like 
 it was done third grader).  But isn't better to push with an MVP that can be enhanced later in
-favor of waiting for perfection that might take years to acheive?
+favor of waiting for perfection that might take years to achieve?
 
 Please keep in mind that there is plenty of code here that I am not proud of :)
 
