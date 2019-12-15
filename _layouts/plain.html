@@ -14,7 +14,7 @@
         body {
             font-family: helvetica;
             font-weight: 300;
-            max-width: 48em;
+            max-width: {{page.maxWidth | default: "48em"}};
             margin: 0 auto;
         }
         a {
@@ -28,14 +28,14 @@
         table, .table {
             border-collapse: collapse;
             background-color: #fff;
-            text-transform: capitalize;
+            text-transform: {{page.tableTextTransform | default: 'capitalize'}};
             display: table;
             border: solid 1px #c8e1ff;
         }
 
         h1 {
             padding:0;
-            margin:0;
+            margin: 1em 0 1.25em;
         }
         .smash-container {
             margin-top: -5.5em;

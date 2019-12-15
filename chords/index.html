@@ -2,6 +2,8 @@
 layout: plain
 category: accessibility
 bodySelector: smash
+maxWidth: none
+tableTextTransform: none;
 
 title: Chord Progressions - Verse, Chorus, Bridge, Etc
 keywords: chord progressions chorus verse bridge full song examples list
@@ -34,7 +36,7 @@ description: List of chord progression for songs, including verse, chorus, bridg
                     <td>{{song.bridge}}</td>
                     <td>{{song.outro}}</td>
                 </tr>
-            {% endfortd}
+            {% endfor %}
         </tbody>
     </table>
 </div>

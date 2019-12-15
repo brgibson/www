@@ -1,5 +1,41 @@
 [
   {
+    "band": "Bad Religion",
+    "title": "Sorrow",
+    "key": "G",
+    "intro": "( vi IV V I )  ( I IV vi V )  (  I IV V vi ) (  vi IV V I )",
+    "verse": "( ii ?VII? I IV vi ) (  ii ?VII? IV I ) (  ii IV I ) (  ii ?VII? I IV )",
+    "chorus": "( vi IV I V (2x) ) (  vi IV I vi V ) (  I )",
+    "bridge": "(same as verse)",
+    "outro": "(same as chorus)",
+    "notes": [
+      "https://www.hooktheory.com/theorytab/view/bad-religion/sorrow",
+      "https://tabs.ultimate-guitar.com/tab/bad_religion/sorrow_chords_614929",
+    ]
+  },
+  {
+    "band": "Best Coast",
+    "title": "The Only Place",
+    "key": "G",
+    "intro": "(same as verse)",
+    "verse": "I vi IV",
+    "chorus": "( I vi IV ) ( I vi (3x) ) ( IV I )",
+    "bridge": "( ii IV (4x) ) ( V )",
+    "outro": "",
+    "notes": "https://tabs.ultimate-guitar.com/tab/best_coast/the_only_place_chords_1173488",
+  },
+  {
+    "band": "Bloodhound Gang",
+    "title": "Foxtrot Uniform Charlie Kilo",
+    "key": "C",
+    "intro": "(same as verse)",
+    "verse": "I vi iii V",
+    "chorus": "(same as verse)",
+    "bridge": "( IV ) ( IV ) ( I ) ( iii ) ( IV ) ( i V i )",
+    "outro": "(same as verse)",
+    "notes": "https://tabs.ultimate-guitar.com/tab/bloodhound_gang/foxtrot_uniform_charlie_kilo_chords_1048130"
+  },
+  {
     "band": "Green Day",
     "title": "When I Come Around",
     "key": "G",
