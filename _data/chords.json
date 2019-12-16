@@ -9,8 +9,8 @@
     "bridge": "(same as verse)",
     "outro": "(same as chorus)",
     "notes": [
-      "https://www.hooktheory.com/theorytab/view/bad<br>religion/sorrow",
-      "https://tabs.ultimate<br>guitar.com/tab/bad_religion/sorrow_chords_614929",
+      "https://www.hooktheory.com/theorytab/view/bad-religion/sorrow",
+      "https://tabs.ultimate-guitar.com/tab/bad_religion/sorrow_chords_614929",
     ]
   },
   {
@@ -22,7 +22,18 @@
     "chorus": "I I vi IV (2x) <br> I vi I vi <br> I I IV IV",
     "bridge": "ii ii IV IV (3x)  <br> ii ii IV V",
     "outro": "I I IV IV",
-    "notes": "https://tabs.ultimate<br>guitar.com/tab/best_coast/the_only_place_chords_1173488",
+    "notes": "https://tabs.ultimate-guitar.com/tab/best_coast/the_only_place_chords_1173488",
+  },
+  {
+    "band": "Blink 182",
+    "title": "What's My Age Again",
+    "key": "F#",
+    "intro": "(same as verse)",
+    "verse": "I V vi IV (3x) <br> I V V IV IV",
+    "chorus": "I V vi IV (3x) <br> I V vi vi V V (IV) (IV)",
+    "bridge": "vi V IV V",
+    "outro": "(same as chorus)",
+    "notes": "https://www.hooktheory.com/theorytab/view/blink-182/whats-my-age-again",
   },
   {
     "band": "Bloodhound Gang",
@@ -33,7 +44,7 @@
     "chorus": "(same as verse)",
     "bridge": "IV IV I V <br> IV IV vi V",
     "outro": "(same as verse)",
-    "notes": "https://tabs.ultimate<br>guitar.com/tab/bloodhound_gang/foxtrot_uniform_charlie_kilo_chords_1048130"
+    "notes": "https://tabs.ultimate-guitar.com/tab/bloodhound_gang/foxtrot_uniform_charlie_kilo_chords_1048130"
   },
   {
     "band": "Green Day",
