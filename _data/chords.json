@@ -30,7 +30,7 @@
     "key": "F#",
     "intro": "(same as verse)",
     "verse": "I V vi IV (3x) <br> I V V IV IV",
-    "chorus": "I V vi IV (3x) <br> I V vi vi V V (IV) (IV)",
+    "chorus": "I V vi IV (3x) <br> I V vi vi V V (IV IV)",
     "bridge": "vi V IV V",
     "outro": "(same as chorus)",
     "notes": "https://www.hooktheory.com/theorytab/view/blink-182/whats-my-age-again",
@@ -57,6 +57,17 @@
     "outro": "(same as verse)"
   },
   {
+    "band": "Jake Bugg",
+    "title": "Lightning Bolt",
+    "key": "E",
+    "intro": "(same as verse)",
+    "verse": "I I V IV <br> I I I I (last)",
+    "chorus": "IV IV IV IV <br> I I I I <br> IV IV IV IV <br> I I V IV",
+    "bridge": "(same as verse)",
+    "outro": "(same as verse)",
+    "notes": "https://www.hooktheory.com/theorytab/view/jake-bugg/lightning-bolt",
+  },
+  {
     "band": "Jimmy Eat World",
     "title": "The Middle",
     "key": "D",
@@ -64,6 +75,16 @@
     "verse": "I V IV I",
     "chorus": "I V IV I",
     "bridge": "V I V I <br> IV I V V",
+    "outro": ""
+  },
+  {
+    "band": "Vampire Weekend",
+    "title": "A-Punk",
+    "key": "D",
+    "intro": "",
+    "verse": "V IV I I",
+    "chorus": "I I IV I <br> I I IV IV (last)",
+    "bridge": "",
     "outro": ""
   }
 ]
