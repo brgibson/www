@@ -1,0 +1,6 @@
+#{{include.name}} ~ table tr > *:nth-of-type({{include.index}}) { display: none; }
+#{{include.name}} ~ form label[for="{{include.name}}"] { content: '+ ' ; background-color: initial; }
+#{{include.name}} ~ form label[for="{{include.name}}"]:before { content: '+ '}
+#{{include.name}}:checked ~ table tr > *:nth-of-type({{include.index}}) { display: table-cell; }
+#{{include.name}}:checked ~ form label[for="{{include.name}}"] { content: '+ ' ; background-color: #eee; }
+#{{include.name}}:checked ~ form label[for="{{include.name}}"]:before { content: '✓ '}

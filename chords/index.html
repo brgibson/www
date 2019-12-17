@@ -10,12 +10,59 @@ keywords: chord progressions chorus verse bridge full song examples list
 description: List of chord progression for songs, including verse, chorus, bridge.
 ---
 <style>
+    h1 { margin-bottom: .5em; }
     .chord { font-family: "Courier New",serif; }
+
+    .filters { text-align: left; display: inline-block; padding-bottom: .5em; }
+    .filters ul { display: inline; }
+    .filters li { display: inline-block; margin: .25em 0; }
+
+    label { border: 1px solid #000; border-radius: .625em; padding: 0.125em 0.5em; line-height: 1.5em; background-color: #f1f8ff; color: #000}
+    label:before { display: inline-block; width: 1em; }
+
+    .col-filter-checkbox { display: none }
+
+    legend { display: inline; }
+
     tbody tr { cursor: pointer; }
     tbody tr:focus { background-color: #f1f8ff; text-shadow: 0 0 .2px #000; outline-width: 0; }
+
+    {% include chords/checkbox-interaction-css.html name="band" index=1 %}
+    {% include chords/checkbox-interaction-css.html name="song" index=2 %}
+    {% include chords/checkbox-interaction-css.html name="key" index=3 %}
+    {% include chords/checkbox-interaction-css.html name="intro" index=4 %}
+    {% include chords/checkbox-interaction-css.html name="verse" index=5 %}
+    {% include chords/checkbox-interaction-css.html name="chorus" index=6 %}
+    {% include chords/checkbox-interaction-css.html name="bridge" index=7 %}
+    {% include chords/checkbox-interaction-css.html name="outro" index=8 %}
 </style>
 <div>
     <h1 id="chord-progressions">Chord Progressions</h1>
+
+    <!-- inputs up here so the css selectors work and no js is required for the filtering -->
+    <input class="col-filter-checkbox" id="band" type="checkbox" checked>
+    <input class="col-filter-checkbox" id="song" type="checkbox" checked>
+    <input class="col-filter-checkbox" id="key" type="checkbox" checked>
+    <input class="col-filter-checkbox" id="intro" type="checkbox">
+    <input class="col-filter-checkbox" id="verse" type="checkbox" checked>
+    <input class="col-filter-checkbox" id="chorus" type="checkbox" checked>
+    <input class="col-filter-checkbox" id="bridge" type="checkbox" checked>
+    <input class="col-filter-checkbox" id="outro" type="checkbox">
+    <!-- inputs up here so the css selectors work and no js is required for the filtering -->
+
+    <form class="filters">
+        Columns:
+        <ul>
+            <li><label for="band">Band</label></li>
+            <li><label for="song">Song</label></li>
+            <li><label for="key">Key</label></li>
+            <li><label for="intro">Intro</label></li>
+            <li><label for="verse">Verse</label></li>
+            <li><label for="chorus">Chorus</label></li>
+            <li><label for="bridge">Bridge</label></li>
+            <li><label for="outro">Outro</label></li>
+        </ul>
+    </form>
     <table>
         <thead>
             <tr>
