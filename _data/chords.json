@@ -48,6 +48,16 @@
   },
   {
     "band": "Green Day",
+    "title": "She",
+    "key": "F#",
+    "intro": "I I I I",
+    "verse": "I V IV I (IV I)",
+    "chorus": "V V IV I (2x) <br> IV I IV I <br> IV I V V",
+    "bridge": "(same as verse)",
+    "outro": "(same as chorus)"
+  },
+  {
+    "band": "Green Day",
     "title": "When I Come Around",
     "key": "F#",
     "intro": "(same as verse)",
@@ -75,6 +85,16 @@
     "verse": "I V IV I",
     "chorus": "I V IV I",
     "bridge": "V I V I <br> IV I V V",
+    "outro": ""
+  },
+  {
+    "band": "Motion City Soundtrack",
+    "title": "Attractive Today",
+    "key": "",
+    "intro": "",
+    "verse": "",
+    "chorus": "",
+    "bridge": "",
     "outro": ""
   },
   {
