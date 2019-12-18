@@ -89,13 +89,13 @@
   },
   {
     "band": "Kurt Vile",
-    "title": "",
-    "key": "",
-    "intro": "",
+    "title": "Pretty Pimpin",
+    "key": "G#",
+    "intro": "(same as chorus)",
     "verse": "",
-    "chorus": "",
-    "bridge": "",
-    "outro": ""
+    "chorus": "ii ii IV IV <br> vi I IV V",
+    "bridge": "IV IV ii ii <br> vi I IV V <br> (3x)",
+    "outro": "(same as chorus)"
   },
   {
     "band": "Motion City Soundtrack",
@@ -109,13 +109,13 @@
   },
   {
     "band": "Sea Wolf",
-    "title": "",
-    "key": "",
-    "intro": "",
-    "verse": "",
-    "chorus": "",
-    "bridge": "",
-    "outro": ""
+    "title": "Ram's Head",
+    "key": "G",
+    "intro": "(same as verse)",
+    "verse": "vi I ii IV",
+    "chorus": "iii IV I ii",
+    "bridge": "iii IV I ii <br>iii IV IV IV",
+    "outro": "iii I IV ii (ii ii)"
   },
   {
     "band": "Vampire Weekend",
