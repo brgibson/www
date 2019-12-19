@@ -108,6 +108,16 @@
     "outro": "vi V/vii IV IV <br> vi V/vii IV IV <br> vi V/vii V vi <br> V vi V vi <br> V vi V vi"
   },
   {
+    "band": "Saves the Day",
+    "title": "At Your Funeral",
+    "key": "D",
+    "intro": "I V/vii ii IV",
+    "verse": "I V ii IV",
+    "chorus": "IV I V V",
+    "bridge": "V ii vi V",
+    "outro": "IV I V V"
+  },
+  {
     "band": "Sea Wolf",
     "title": "Ram's Head",
     "key": "G",
@@ -116,6 +126,16 @@
     "chorus": "iii IV I ii",
     "bridge": "iii IV I ii <br>iii IV IV IV",
     "outro": "iii I IV ii (ii ii)"
+  },
+  {
+    "band": "Third Eye Blind",
+    "title": "How's It Gonna Be",
+    "key": "F",
+    "intro": "(same as verse)",
+    "verse": "I I V IV",
+    "chorus": "ii ii (I/vi) V V <br> ii ii (I/iii) IV IV",
+    "bridge": "ii IV I V <br> ii IV - - (last)",
+    "outro": "(same as verse)"
   },
   {
     "band": "Vampire Weekend",
