@@ -3,6 +3,11 @@
 # Use of `relative_permalinks` ensures post links from the index work properly.
 permalink:           pretty
 
+#Setup
+paginate:            6
+paginate_path:       "/blog/:num/"
+excerpt_separator:   <!--end-featured-content-->
+
 # Assets
 #
 # We specify the directory for Jekyll so we can use @imports.
@@ -23,3 +28,6 @@ version:             2.0.0
 # Site Map
 gems:
   - jekyll-sitemap
+
+plugins:
+  - jekyll-paginate

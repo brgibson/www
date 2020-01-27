@@ -1,0 +1,27 @@
+.post {
+    max-width: 60rem;
+    margin: 0 auto;
+
+    h2 {
+        margin: 1em 1em;
+    }
+    p {
+        letter-spacing: 1px;
+    }
+
+    ul, ol {
+        margin-left: .5rem;
+        list-style: initial;
+
+    }
+
+    li {
+        display: list-item;
+        margin-left: 2rem;
+    }
+
+    .musicviewer {
+        margin-top: 0;
+        text-align: center;
+    }
+}
