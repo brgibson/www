@@ -42,9 +42,19 @@
     "intro": "(same as verse)",
     "verse": "I vi iii V",
     "chorus": "(same as verse)",
-    "bridge": "IV IV I V <br> IV IV vi V",
+    "bridge": "V V vi vi <br>IV IV I I <br> vi vi ii ii",
     "outro": "(same as verse)",
     "notes": "https://tabs.ultimate-guitar.com/tab/bloodhound_gang/foxtrot_uniform_charlie_kilo_chords_1048130"
+  },
+  {
+    "band": "Built to Spill",
+    "title": "Liar",
+    "key": "C",
+    "intro": "(same as verse)",
+    "verse": "I V ii IV",
+    "chorus": "(same as verse)",
+    "bridge": "",
+    "outro": "(same as verse)",
   },
   {
     "band": "Green Day",
@@ -106,6 +116,16 @@
     "chorus": "vi V/vii IV IV",
     "bridge": "I I I I",
     "outro": "vi V/vii IV IV <br> vi V/vii IV IV <br> vi V/vii V vi <br> V vi V vi <br> V vi V vi"
+  },
+  {
+    "band": "Motion City Soundtrack",
+    "title": "Last Night",
+    "key": "C#",
+    "intro": "",
+    "verse": "I ii vi V <br>??? ",
+    "chorus": "IV IV V V <br> vi vi vi V",
+    "bridge": "I IV V vi???",
+    "outro": "I I I I"
   },
   {
     "band": "Saves the Day",
