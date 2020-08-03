@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name='viewport' content='width=device-width,initial-scale=1'/>
+    <title>Learn the NATO Phonetic Alphabet</title>
+    <meta name="description" content="Flashcard style way to learn the NATO phonetic alphabet.">
+    <meta name="keywords" content="phonetic alphabet, NATO, learning, flashcards">
+</head>
+<style>
+        body {
+            font-family: helvetica;
+        }
+        table, .table {
+            border-collapse: collapse;
+            background-color: #efe;
+            text-transform: capitalize;
+            cursor: pointer;
+            display: table;
+            border: solid 1px green;
+        }
+        h1 {
+            padding:0;
+            margin:0;
+        }
+        @media all and (max-width: 500px) {
+            .smash-container {
+                margin-top: -3em;
+            }
+        }
+
+        table, thead, tr, td, th {
+            -moz-transition: background 1s;
+            -o-transition: background 1s;
+            -webkit-transition: background 1s;
+            transition: background 1s;
+        }
+    </style>
+
+	<body class="smash">
+            <center>
+                <style>
+    html {
+        font-size: 16px;
+        background: #0b1225;
+        color: white;
+        letter-spacing: 2px;
+        text-shadow:
+           -1px -1px 0 #0a0e1c,
+            1px -1px 0 #0a0e1c,
+            -1px 1px 0 #0a0e1c,
+             1px 1px 0 #0a0e1c
+    }
+
+    dt, dd {
+        margin: 0 auto;
+        font-size: 15vw;
+        text-transform: capitalize
+    }
+
+    dl {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        height: 80vh;
+    }
+    dl > * {
+        display: none;
+    }
+
+    dl > .visible {
+        display: inline-block;
+
+    }
+</style>
+
+<h1>
+    NATO Phonetic Alphabet
+</h1>
+
+<dl id="alphabet-list">
+    
+        <dt>a</dt>
+        <dd>Alfa</dd>
+    
+        <dt>b</dt>
+        <dd>Bravo</dd>
+    
+        <dt>c</dt>
+        <dd>Charlie</dd>
+    
+        <dt>d</dt>
+        <dd>Delta</dd>
+    
+        <dt>e</dt>
+        <dd>Echo</dd>
+    
+        <dt>f</dt>
+        <dd>Foxtrot</dd>
+    
+        <dt>g</dt>
+        <dd>Golf</dd>
+    
+        <dt>h</dt>
+        <dd>Hotel</dd>
+    
+        <dt>i</dt>
+        <dd>India</dd>
+    
+        <dt>j</dt>
+        <dd>Juliett</dd>
+    
+        <dt>k</dt>
+        <dd>Kilo</dd>
+    
+        <dt>l</dt>
+        <dd>Lima</dd>
+    
+        <dt>m</dt>
+        <dd>Mike</dd>
+    
+        <dt>n</dt>
+        <dd>November</dd>
+    
+        <dt>o</dt>
+        <dd>Oscar</dd>
+    
+        <dt>p</dt>
+        <dd>Papa</dd>
+    
+        <dt>q</dt>
+        <dd>Quebec</dd>
+    
+        <dt>r</dt>
+        <dd>Romeo</dd>
+    
+        <dt>s</dt>
+        <dd>Sierra</dd>
+    
+        <dt>t</dt>
+        <dd>Tango</dd>
+    
+        <dt>u</dt>
+        <dd>Uniform</dd>
+    
+        <dt>v</dt>
+        <dd>Victor</dd>
+    
+        <dt>w</dt>
+        <dd>Whiskey</dd>
+    
+        <dt>x</dt>
+        <dd>X-ray</dd>
+    
+        <dt>y</dt>
+        <dd>Yankee</dd>
+    
+        <dt>z</dt>
+        <dd>Zulu</dd>
+    
+</dl>
+
+<script>
+    (function() {
+        function shuffle(array) {
+            var currentIndex = array.length, temporaryValue, randomIndex;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                // And swap it with the current element.
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
+        }
+
+        var list = document.getElementById("alphabet-list");
+
+        var randomChildIndex = [];
+        for (var i = 0; i < list.children.length / 2; i++) {
+            randomChildIndex.push(i * 2);
+        }
+        shuffle(randomChildIndex);
+
+        var curr = { index: 0, isLetter: true, childToDisplay: randomChildIndex[0]};
+        list.children[curr.childToDisplay].classList.add('visible');
+
+        function clickHandler() {
+            list.children[curr.childToDisplay].classList.remove('visible');
+
+            if (curr.isLetter) {
+                curr.childToDisplay++;
+            } else {
+                curr.index++;
+                curr.childToDisplay = randomChildIndex[curr.index % randomChildIndex.length];
+            }
+            curr.isLetter = !curr.isLetter;
+
+            list.children[curr.childToDisplay].classList.add('visible');
+        }
+
+        document.body.onclick = clickHandler;
+    })();
+
+</script>
+
+                <div style="margin:1.5em 0 1.5em">
+                    <div class="ad-container">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Responsive Ad - Standard -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-6093963355659130"
+         data-ad-slot="8377988760"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+                </div>
+            </center>
+	</body>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62805015-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+    <script src="https://npmcdn.com/react@15.3.1/dist/react.js"></script>
+    <script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
+
+</html>

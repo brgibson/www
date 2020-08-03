@@ -1,0 +1,103 @@
+---
+layout: alphabet
+category: experiments
+bodySelector: smash
+
+title: Learn the NATO Phonetic Alphabet
+keywords: phonetic alphabet, NATO, learning, flashcards
+description: Flashcard style way to learn the NATO phonetic alphabet.
+---
+<style>
+    html {
+        font-size: 16px;
+        background: #0b1225;
+        color: white;
+        letter-spacing: 2px;
+        text-shadow:
+           -1px -1px 0 #0a0e1c,
+            1px -1px 0 #0a0e1c,
+            -1px 1px 0 #0a0e1c,
+             1px 1px 0 #0a0e1c
+    }
+
+    dt, dd {
+        margin: 0 auto;
+        font-size: 15vw;
+        text-transform: capitalize
+    }
+
+    dl {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        height: 80vh;
+    }
+    dl > * {
+        display: none;
+    }
+
+    dl > .visible {
+        display: inline-block;
+
+    }
+</style>
+
+<h1>
+    NATO Phonetic Alphabet
+</h1>
+
+<dl id="alphabet-list">
+    {% for letter in site.data['alphabet-nato'] %}
+        <dt>{{letter.letter}}</dt>
+        <dd>{{letter.word}}</dd>
+    {% endfor %}
+</dl>
+
+<script>
+    (function() {
+        function shuffle(array) {
+            var currentIndex = array.length, temporaryValue, randomIndex;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                // And swap it with the current element.
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
+        }
+
+        var list = document.getElementById("alphabet-list");
+
+        var randomChildIndex = [];
+        for (var i = 0; i < list.children.length / 2; i++) {
+            randomChildIndex.push(i * 2);
+        }
+        shuffle(randomChildIndex);
+
+        var curr = { index: 0, isLetter: true, childToDisplay: randomChildIndex[0]};
+        list.children[curr.childToDisplay].classList.add('visible');
+
+        function clickHandler() {
+            list.children[curr.childToDisplay].classList.remove('visible');
+
+            if (curr.isLetter) {
+                curr.childToDisplay++;
+            } else {
+                curr.index++;
+                curr.childToDisplay = randomChildIndex[curr.index % randomChildIndex.length];
+            }
+            curr.isLetter = !curr.isLetter;
+
+            list.children[curr.childToDisplay].classList.add('visible');
+        }
+
+        document.body.onclick = clickHandler;
+    })();
+
+</script>
