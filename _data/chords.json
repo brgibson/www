@@ -128,6 +128,16 @@
     "outro": "I I I I"
   },
   {
+    "band": "Neck Deep",
+    "title": "When You Know",
+    "key": "E♭",
+    "intro": "I V vi iv <br> I V ii IV <br> vi V IV IV <br> I V IV IV",
+    "verse": "I V/vii III IV <br> I V III IV <br> pre-chorus <br> ii ii iii IV (2x)",
+    "chorus": "I V ii IV (2x) <br> vi V IV IV <br> I V IV IV",
+    "bridge": "V V vi IV",
+    "outro": ""
+  },
+  {
     "band": "Saves the Day",
     "title": "At Your Funeral",
     "key": "D",
@@ -148,6 +158,16 @@
     "outro": "iii I IV ii (ii ii)"
   },
   {
+    "band": "Seaway",
+    "title": "London",
+    "key": "E♭",
+    "intro": "(same as chorus)",
+    "verse": "(same as chorus)",
+    "chorus": "I vi V IV <br> I iii IV V <br> I vi V IV <br> III III IV V <br>",
+    "bridge": "vi vi ♭vi I<br>I V I ♭vi <br> III III IV V (last time)<br>",
+    "outro": "vi vi V V <br> I I IV IV <br> V"
+  },
+  {
     "band": "Third Eye Blind",
     "title": "How's It Gonna Be",
     "key": "F",
@@ -166,5 +186,15 @@
     "chorus": "I I IV I <br> I I IV IV (last)",
     "bridge": "",
     "outro": ""
+  },
+  {
+    "band": "Voxtrot",
+    "title": "The Start of Something",
+    "key": "G#",
+    "intro": "",
+    "verse": "I V ii IV",
+    "chorus": "I III vi IV <br> I III III IV <br> I III vi IV <br> I III III III",
+    "bridge": "vi vi V IV",
+    "outro": "I IV vi IV"
   }
 ]
