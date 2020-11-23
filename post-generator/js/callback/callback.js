@@ -16,6 +16,27 @@
         return hashParams;
     }
 
+    /**
+     * Add some logical helpers to Handlebars
+     */
+    Handlebars.registerHelper({
+        eq: (v1, v2) => v1 === v2,
+        ne: (v1, v2) => v1 !== v2,
+        lt: (v1, v2) => v1 < v2,
+        gt: (v1, v2) => v1 > v2,
+        lte: (v1, v2) => v1 <= v2,
+        gte: (v1, v2) => v1 >= v2,
+        and() {
+            return Array.prototype.every.call(arguments, Boolean);
+        },
+        or() {
+            return Array.prototype.slice.call(arguments, 0, -1).some(Boolean);
+        },
+        nor() {
+            return !Array.prototype.slice.call(arguments, 0, -1).some(Boolean);
+        }
+    });
+
     var playlistsForUserSource = document.getElementById('playlists-for-user-template').innerHTML,
         playlistsForUserTemplate = Handlebars.compile(playlistsForUserSource),
         playlistsForUserPlaceholder = document.getElementById('playlist-names-container');
@@ -113,10 +134,16 @@
                             }, []);
 
 
-                            var date = new Date(albums.playlistName);
+                            var date;
 
-
-                            albums.date = date.getDate() + " " + date.toDateString().substring(4, 7) + " " + date.getFullYear() + " @ 12:01";
+                            try {
+                                // works when the playlist name is a parsable "date"
+                                date = new Date(albums.playlistName);
+                                albums.date = date.toISOString().split('T')[0];
+                            } catch (dateError) {
+                                // use the "date added" if the playlist name is not parsable
+                                albums.date = tracks.items[0].added_at.split('T')[0];
+                            }
 
                             // playlistPlaceholder.innerHTML += tracksForPlaylistTemplate(tracks);
                             playlistPlaceholder.innerHTML += albumsForPlaylistTemplate(albums);

@@ -116,19 +116,31 @@
 
     <script id="albums-for-playlist-template" type="text/x-handlebars-template">
         <div class="playlist-container">
+
+            <h2>{{playlistName}}</h2>
+
+            <ul>
+                {{#each items}}
+                <li>
+                    - {{artists}} - {{name}}
+                </li>
+                {{else}}
+                <p>You don't have any albums in this playlist</p>
+                {{/each}}
+            </ul>
             <pre>
-echo "---
-layout: post-album-playlist
-short-title: {{playlistName}}
-title: {{playlistName}}
-category: blog
-tags: [playlist,{{#each blogPostTags}}{{#if @index}},{{/if}}{{this}}{{/each}}]
-albums: [{{#each items}}{{#if @index}},{{/if}}\"{{artists}} - {{name}}\"{{/each}}]
-playlist-id: {{id}}
-playlist-img: {{images.0.url}}
-summary: \"A playlist of albums I created on {{date}} featuring{{#each items}}{{#if (nor (eq @index 0) (eq ../items.length 2))}},{{/if}}{{#if @last}} and{{/if}} {{artists}}{{/each}}.\"
----" > _posts/{{date}}-{{playlistName}}.md
+
+&lt;iframe class="albums-playlist" src="https://embed.spotify.com/?uri=spotify%3Auser%3A1213507414%3Aplaylist%3A{{id}}" allowtransparency="true" width="100%"&gt;&lt;/iframe&gt;
+
+&lt;div&gt;&lt;ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6093963355659130" data-ad-slot="8377988760" data-ad-format="auto"&gt;&lt;/ins&gt;&lt;/div&gt;
+
+&lt;div class="fb-comments" data-href="http://music.brgibson.com/{{playlistName}}/" data-width="100%" data-numposts="5"&gt;&lt;/div&gt;
             </pre>
+
+
+            <p><b>Blog Post Tags: </b>{{#each blogPostTags}} {{this}} {{/each}}</p>
+            <p><b>Blog Date: </b>{{date}}</p>
+            <p><b>Image: </b>{{images.0.url}}</p>
         </div>
     </script>
 
