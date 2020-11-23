@@ -20,6 +20,10 @@
      * Add some logical helpers to Handlebars
      */
     Handlebars.registerHelper({
+        replace: function (find, replace, options) {
+            var string = options.fn(this);
+            return string.replace(new RegExp(find,"g"), replace);
+        },
         eq: (v1, v2) => v1 === v2,
         ne: (v1, v2) => v1 !== v2,
         lt: (v1, v2) => v1 < v2,
