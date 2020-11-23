@@ -3,37 +3,41 @@
 {% capture post_url %}{{ site.baseurl }}{{ include.post.url }}{% endcapture %}
 {% capture post_url_full %}{{ site.url }}{{post_url}}{% endcapture %}
 <article class="post-preview">
-    {% if include.post.image %}
-    <a class="preview-image-link no-underline" href="{{ post_url }}">
-        <img class="preview-image" src="{{ include.post.image }}"/>
-    </a>
+    {% if include.post.playlist-img %}
         {% assign hasImage = true %}
     {% else %}
         {% assign hasImage = false %}
     {% endif %}
     <div class="preview-main {% if hasImage == false %}no-image{% endif %}">
         <a class="main-link no-underline no-color" href="{{ post_url }}">
-            <h1 class="post-title anchor-style">
-                {% if include.post.short-title %}
-                    {{ include.post.short-title }}
-                {% else %}
-                    {{ include.post.title }}
+            <div style="display:flex">
+                {% if hasImage %}
+                <div style="align-self:center;width:30%;max-width:200px" >
+                    <img style="width:100%;max-width:200px" class="preview-image" src="{{ include.post.playlist-img }}" alt="" />
+                </div>
                 {% endif %}
-            </h1>
-            {% if include.post.summary %}
-            <div class="preview-text">
-                {{ include.post.summary }}
-                <span class="read-more anchor-style">Read More</span>
+                <div {% if hasImage %} style="align-self:center;max-width:70%;margin-left:1em" {% endif %}>
+                    <h2 style="margin:0 0 .75em;color:#FFA5CF;" class="post-title anchor-style">
+                        {% if include.post.short-title %}
+                            {{ include.post.short-title }}
+                        {% else %}
+                            {{ include.post.title }}
+                        {% endif %}
+                    </h2>
+                    {% if include.post.summary %}
+                    <div style="display: -webkit-box;-webkit-line-clamp: 6;-webkit-box-orient: vertical;  overflow: hidden;" class="preview-text">
+                        {{ include.post.summary }}
+                    </div>
+                    {% endif %}
+                </div>
             </div>
-            {% endif %}
         </a>
-        <div>
-            <a class="category icon {{primary_tag_class}}" href="{{ site.baseurl }}/tag/{{ primary_tag_class }}">{{ primary_tag }}</a>
+        <div style="padding-bottom:2em">
+            <a style="padding:.5em 1em;" class="category icon {{primary_tag_class}}" href="{{ site.baseurl }}/tag/{{ primary_tag_class }}">#{{ primary_tag }}</a>
             <time class="post-date" datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date_to_string }}</time>
-            <div class="social-container">
+            <div style="display:inline-block;vertical-align:middle;" class="social-container">
                 {% include blog/social-buttons.html post_url_full=post_url_full %}
             </div>
         </div>
-
     </div>
 </article>

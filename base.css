@@ -222,6 +222,13 @@ nav .icon-camera-retro::after {
     width: 100%;
 }
 
+/* blog */
+.blog .main {
+    margin: 0 auto;
+    max-width: 42em;
+    letter-spacing: 0.05em;
+}
+
 /* studio pages */
 .rp-300 .main ol {
     counter-reset: initial;
