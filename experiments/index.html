@@ -9,27 +9,112 @@ description: Experimentation and side-projects.
 ---
 
 <div class="main">
+    <style>
+        .experiment-links-grid-top a,
+        .experiment-links-grid-bottom a{
+            border: 1px solid white;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 1em .5em;
+            text-align: center;
+            box-sizing: border-box;
+            background: rgba(0, 0, 0, .7);
+        }
+        .grid-a {
+            grid-area: a;
+        }
+        .grid-b {
+            grid-area: b;
+        }
+        .grid-c {
+            grid-area: c;
+        }
+        .grid-d {
+            grid-area: d;
+        }
+        .grid-e {
+            grid-area: e;
+        }
+        .grid-f {
+            grid-area: f;
+        }
+        .grid-g {
+            grid-area: g;
+        }
+        .grid-h {
+            grid-area: h;
+        }
+        .grid-i {
+            grid-area: i;
+        }
+        .experiment-links-grid-top {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-areas:
+                    "a b c"
+                    "a b c"
+                    "a e c"
+                    "a e f"
+                    "d e f"
+                    "d e i"
+                    "g e i"
+                    "g h i"
+                    "g h i";
+            grid-gap: 10px;
+            margin: 10px;
+        }
+        @media (max-width:640px) {
+          .experiment-links-grid-top {
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas:
+                    "a b"
+                    "a b"
+                    "a e"
+                    "a e"
+                    "d e"
+                    "d e"
+                    "g e"
+                    "g h"
+                    "c h"
+                    "c i"
+                    "c i"
+                    "c i"
+                    "f i"
+                    "f i";
+            }
+        }
+        .experiment-links-grid-bottom {
+            max-width: 20em;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-areas: "a" "b" "c" "d" "e" "f" "g" "h" "i";
+            grid-gap: 10px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+    </style>
     <section class="experiments-container">
         <h1>Experiments</h1>
-        <ul class="experiment-links">
-            <li><a href="/slider/">Slider</a></li>
-            <li><a href="/sudoku/">Sudoku</a></li>
-            <li><a href="/alphabet/nato/">NATO Phonetic Alphabet</a></li>
-            <li><a href="/spotify/">Spotify Playlist Backup</a></li>
-            <li><a href="/tennis/">Tennis Standings (Knockout.js)</a></li>
-            <li><a href="/smash/">Smash Standings (React.js)</a></li>
-            <li><a href="/arena-trends/">MCOC Arena Trends (D3.js)</a></li>
-            <li><a href="/svg/">SVGs</a></li>
-            <li><a href="/chords/">Chord Progressions</a></li>
+        <ul class="experiment-links-grid-top">
+            <li class="grid-a"><a href="/slider/">Slider</a></li>
+            <li class="grid-b"><a href="/sudoku/">Sudoku</a></li>
+            <li class="grid-c"><a href="/alphabet/nato/">NATO Phonetic Alphabet</a></li>
+            <li class="grid-d"><a href="/spotify/">Spotify Playlist Backup</a></li>
+            <li class="grid-e"><a href="/tennis/">Tennis Standings (Knockout.js)</a></li>
+            <li class="grid-f"><a href="/smash/">Smash Standings (React.js)</a></li>
+            <li class="grid-g"><a href="/arena-trends/">MCOC Arena Trends (D3.js)</a></li>
+            <li class="grid-h"><a href="/svg/">SVGs</a></li>
+            <li class="grid-i"><a href="/chords/">Chord Progressions</a></li>
         </ul>
         {% include global/ad-responsive.html %}
-        <ul class="experiment-links">
-            <li><a href="/accessibility/">Accessibility</a></li>
-            <li><a href="/music/">Music</a></li>
-            <li><a href="/photos/">Photos</a></li>
-            <li><a href="/movies/">Movies</a></li>
-            <li><a href="/playlists">Playlists</a></li>
-            <li><a href="/intros/">Intros to Artists</a></li>
+        <ul class="experiment-links-grid-bottom">
+            <li class="grid-a"><a href="/accessibility/">Accessibility</a></li>
+            <li class="grid-b"><a href="/music/">Music</a></li>
+            <li class="grid-c"><a href="/photos/">Photos</a></li>
+            <li class="grid-d"><a href="/movies/">Movies</a></li>
+            <li class="grid-e"><a href="/playlists">Playlists</a></li>
+            <li class="grid-f"><a href="/intros/">Intros to Artists</a></li>
         </ul>
     </section>
     <section>

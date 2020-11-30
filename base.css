@@ -517,7 +517,7 @@ h2 {
     /*color: #FFA5CF;*/
     text-shadow: none;
 }
-a:hover {
+a:hover, a:focus  {
     background: rgb(25, 32, 98);
     color: #FFA5CF;
     text-shadow: none;
