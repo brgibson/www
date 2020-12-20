@@ -4,11 +4,15 @@ layout: post
 
 {% if page.content %}{{page.content}}{% endif %}
 
+<hr>
+
 <h2 class="question-heading">Albums</h2>
 
 <ul>
-    {% for album in page.albums %}<li>{{album}}</li>{% endfor %}
+    {% for album in page.albums %}<li><span class="artist-name">{{album | split: " - " | first}}</span> - <span class="album-name">{{album | split: " - " | last}}</span></li>{% endfor %}
 </ul>
+
+<hr>
 
 <h2 class="question-heading">Playlist</h2>
 

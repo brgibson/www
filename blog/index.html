@@ -33,14 +33,14 @@ description: Experimentation and side-projects.
     {% endfor %}
     <div class="pagination">
         {% if paginator.previous_page %}
-            <a class="pagination-item newer no-underline" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">Newer</a>
+            <a class="pagination-item newer left" href="{{ paginator.previous_page_path | prepend: site.baseurl }}"><span class="arrow">⇦</span> &nbsp; <span class="words">Newer</span></a>
         {% else %}
-            <span class="pagination-item newer">Newer</span>
+            <span class="pagination-item newer left disabled"><span class="arrow">⇦</span> &nbsp; <span class="words">Newer</span></span>
         {% endif %}
         {% if paginator.next_page %}
-            <a class="pagination-item older no-underline" href="{{ paginator.next_page_path | prepend: site.baseurl }}">Older</a>
+            <a class="pagination-item older right" href="{{ paginator.next_page_path | prepend: site.baseurl }}"><span class="words">Older</span> &nbsp; <span class="arrow">⇨</span></a>
         {% else %}
-            <span class="pagination-item older">Older</span>
+            <span class="pagination-item older right disabled"><span class="words">Older</span> &nbsp; <span class="arrow">⇨</span></span>
         {% endif %}
     </div>
 </div>

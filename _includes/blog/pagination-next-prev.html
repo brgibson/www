@@ -1,0 +1,8 @@
+<nav class="pagination container" role="pagination">
+    {% if page.next.url %}
+    <a class="left" href="{{page.next.url}}"><span class="arrow">⇦</span> &nbsp; <span class="words">{{page.next.title}}</span></a>
+    {% endif %}
+    {% if page.previous.url %}
+    <a class="right" href="{{page.previous.url}}"><span class="words">{{page.previous.title}}</span> &nbsp; <span class="arrow no-underline">⇨</span></a>
+    {% endif %}
+</nav>

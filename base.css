@@ -29,7 +29,7 @@ dd, ul {
     padding: 0;
 }
 
-h2, h3, h4, h5, h6, nav, nav .offscreen {
+h2, h3, h4, h5, h6, .nav, .nav .offscreen {
     font-family: "Open Sans", sans-serif;
     letter-spacing: 0;
     text-transform: uppercase;
@@ -138,30 +138,30 @@ a {
 /*}*/
 
 /* nav */
-nav {
+.nav {
     position: fixed;
     text-align: left;
     width: 100%;
     z-index: 1;
 }
-nav li {
+.nav li {
     width: 14.25%;
     text-align: center;
 }
-nav a {
+.nav a {
     padding: 1em 0;
     width: 100%
 }
-nav + *::before,
-nav + .main::before {
+.nav + *::before,
+.nav + .main::before {
     content: '';
     display: block;
     padding-bottom: 3em;
 }
-nav .current {
+.nav .current {
     transition: color 1s;
 }
-nav .menu-collapsed {
+.nav .menu-collapsed {
     display: none;
 }
 
@@ -172,10 +172,10 @@ nav .menu-collapsed {
     95%  {opacity: 1;}
     100% {opacity: 0;}
 }
-nav .icon-camera-retro {
+.nav .icon-camera-retro {
     position: relative;
 }
-nav .icon-camera-retro::after {
+.nav .icon-camera-retro::after {
     animation-name: camera-flash;
     animation-duration: 5s;
     animation-iteration-count: infinite;
@@ -518,64 +518,64 @@ h2 {
     text-shadow: none;
 }
 a:hover, a:focus  {
+    /*background: rgb(25, 32, 98);*/
+    /*color: #FFA5CF;*/
+    /*text-shadow: none;*/
+}
+.nav .fa-home:hover,
+.nav .fa-info-circle:hover,
+.nav .fa-music:hover,
+.nav .fa-flask:hover,
+.nav .fa-bullhorn:hover,
+.nav .fa-facebook-square:hover,
+.nav .fa-spotify:hover {
     background: rgb(25, 32, 98);
-    color: #FFA5CF;
-    text-shadow: none;
 }
-nav .fa-home:hover,
-nav .fa-info-circle:hover,
-nav .fa-music:hover,
-nav .fa-flask:hover,
-nav .fa-bullhorn:hover,
-nav .fa-facebook-square:hover,
-nav .fa-spotify:hover {
-    background: rgb(25, 32, 98);
-}
-nav .fa-home {
+.nav .fa-home {
     color: #FFA5CF;
 }
-nav .fa-info-circle{
+.nav .fa-info-circle{
     color: #ff9900;
 }
-nav .fa-music {
+.nav .fa-music {
     color: #ff0051;
 }
-nav .fa-flask {
+.nav .fa-flask {
     color: #59e986;
 }
-nav .fa-bullhorn {
+.nav .fa-bullhorn {
     color: #3dc1ed;
 }
-nav .fa-facebook-square {
+.nav .fa-facebook-square {
     color: #1d53af;
 }
-nav .fa-spotify {
+.nav .fa-spotify {
     color: #2EBD59;
 }
 
-nav .current {
+.nav .current {
     background: rgb(25, 32, 98);
     color: #FFA5CF;
 }
-nav {
+.nav {
     border-bottom: solid 2px rgb(25, 32, 98);
     background: rgba(15,3,6,.92);
 }
-nav,
-nav .menu-expanded,
-nav .icon-camera-retro::after {
+.nav,
+.nav .menu-expanded,
+.nav .icon-camera-retro::after {
     /*background: #0f0306;*/
     color: white;
 }
 
 @media (max-width:25em) {
-    nav,
-    nav .menu-expanded,
-    nav .icon-camera-retro::after {
+    .nav,
+    .nav .menu-expanded,
+    .nav .icon-camera-retro::after {
         background: black;
     }
 }
-.introductions nav a:hover {
+.introductions .nav a:hover {
     color: #eee;
 }
 .games a.wrapper {

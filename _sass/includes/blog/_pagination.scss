@@ -1,7 +1,7 @@
 .pagination {
   overflow: hidden; // clearfix
-  font-family: "PT Sans", Helvetica, Arial, sans-serif;
-  color: #ccc;
+  //font-family: "PT Sans", Helvetica, Arial, sans-serif;
+  //color: #ccc;
   text-align: center;
 }
 
@@ -9,17 +9,16 @@
 .pagination-item {
   display: block;
   padding: 1rem;
-  border: solid #eee;
-  border-width: 1px 0;
+  //border: solid #eee;
+  //border-width: 1px 0;
 
   &:first-child {
     margin-bottom: -1px;
   }
 }
 
-// Only provide a hover state for linked pagination items
-a.pagination-item:hover {
-  background-color: #f5f5f5;
+.pagination a:hover .words {
+  text-decoration: underline;
 }
 
 @media (min-width: 30em) {

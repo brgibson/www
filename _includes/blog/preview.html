@@ -17,7 +17,7 @@
                 </div>
                 {% endif %}
                 <div {% if hasImage %} style="align-self:center;max-width:70%;margin-left:1em" {% endif %}>
-                    <h2 style="margin:0 0 .75em;color:#FFA5CF;" class="post-title anchor-style">
+                    <h2 style="margin:0 0 .75em;" class="post-title anchor-style">
                         {% if include.post.short-title %}
                             {{ include.post.short-title }}
                         {% else %}
@@ -33,8 +33,10 @@
             </div>
         </a>
         <div style="padding-bottom:2em">
-            <a style="padding:.5em 1em;" class="category icon {{primary_tag_class}}" href="{{ site.baseurl }}/tag/{{ primary_tag_class }}">#{{ primary_tag }}</a>
             <time class="post-date" datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date_to_string }}</time>
+            <span class="tags">
+                <a style="padding:.5em 1em;" class="category icon {{primary_tag_class}}" href="{{ site.baseurl }}/tag/{{ primary_tag_class }}">#{{ primary_tag }}</a>
+            </span>
             <div style="display:inline-block;vertical-align:middle;" class="social-container">
                 {% include blog/social-buttons.html post_url_full=post_url_full %}
             </div>
