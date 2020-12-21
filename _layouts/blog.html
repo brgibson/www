@@ -5,16 +5,22 @@
         .pagination, time {
             color: #3dc1edcc;
         }
+        h1 {
+            font-size: 2.25em;
+        }
+        h2 {
+            font-size: 1.75em;
+        }
         h1, h2 {
             color: #59e986;
+            -webkit-text-stroke: 1px rgba(25, 32, 98, .5);
             text-shadow: #ff0051cc 2px 2px, #ff9900cc 4px 4px, #1d53afcc 6px 6px, #3dc1edcc 8px 8px;
         }
         time, .pagination, .tags {
+            font-size: 140%;
             color: #59e986;
+            -webkit-text-stroke: 1px rgba(25, 32, 98, .5);
             text-shadow: #ff0051cc 1px 1px, #ff9900cc 2px 2px, #1d53afcc 3px 3px, #3dc1edcc 4px 4px;
-        }
-        .pagination .right {
-            text-shadow: #ff0051cc -1px 1px, #ff9900cc -2px 2px, #1d53afcc -3px 3px, #3dc1edcc -4px 4px;
         }
         .pagination .arrow {
             color: #3dc1ed;
@@ -25,14 +31,9 @@
             cursor: not-allowed;
         }
         .bkg-img-container {
-            /*opacity: .2;*/
-            /*filter: sepia(60%);*/
-            /*filter: brightness(.4);*/
             display: none;
         }
         .post {
-            /*background-color: #f5f5f5;*/
-            /*color: #3dc1ed;*/
             letter-spacing: .1rem;
         }
         .post ul {
@@ -54,10 +55,17 @@
         .post-preview {
             color: #FFA5CF;
         }
+        .post-preview .main-link:hover h2,
+        .pagination a:hover .words,
+        .tags a:hover {
+            text-decoration: underline;
+            text-decoration-thickness: 3px;
+            text-decoration-line: underline;
+            text-decoration-color: #59e986;
+        }
         .artist-name {
             color: #3dc1ed;
             text-shadow: #3dc1edbb 1px 1px 40px;
-
         }
         .album-name {
             color: #59e986;
