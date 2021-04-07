@@ -149,6 +149,9 @@
                                 albums.date = tracks.items[0].added_at.split('T')[0];
                             }
 
+                            var splitDate = albums.date.split('-');
+                            albums.prettyDate = `${splitDate[1]}-${splitDate[2]}-${splitDate[0]}`;
+
                             // playlistPlaceholder.innerHTML += tracksForPlaylistTemplate(tracks);
                             playlistPlaceholder.innerHTML += albumsForPlaylistTemplate(albums);
 
