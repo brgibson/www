@@ -41,6 +41,13 @@
 
         var state = generateRandomString(16);
 
+        var pageNumber = 1;
+        try {
+            pageNumber = Number(document.getElementById('page-number').value);
+        } catch (e) {
+            // just use page 1;
+        }
+
         localStorage.setItem(stateKey, state);
         var scope = 'user-read-private user-read-email';
 
@@ -50,6 +57,7 @@
         url += '&scope=' + encodeURIComponent(scope);
         url += '&redirect_uri=' + encodeURIComponent(redirect_uri);
         url += '&state=' + encodeURIComponent(state);
+        url += '&pageNumber=' + encodeURIComponent(pageNumber);
 
         window.location = url;
     }, false);

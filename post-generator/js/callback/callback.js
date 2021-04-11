@@ -55,6 +55,7 @@
     var params = getHashParams();
 
     var access_token = params.access_token,
+        pageNumber = params.pageNumber || 1,
         state = params.state,
         storedState = localStorage.getItem(stateKey);
 
@@ -73,7 +74,7 @@
 
             }).then(function() {
 
-                apiObj = BRG.SPOTIFY.API.playlists(access_token, accountId, 1);
+                apiObj = BRG.SPOTIFY.API.playlists(access_token, accountId, pageNumber);
                 return BRG.PROMISES.get(apiObj.url, apiObj.headers);
 
             }).then(function(response) {
