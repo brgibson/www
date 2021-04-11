@@ -128,7 +128,7 @@
                                 if (albums.length < 1 || albums[albums.length - 1].name != albumName) {
                                     albums.push({
                                         name: albumName,
-                                        artists: artists
+                                        artists: artists.replace(/"/g, '\\"'),
                                     });
                                 } else if (albums[albums.length - 1].artists != artists) {
                                     albums[albums.length - 1].artists = "Various Artists";
