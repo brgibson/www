@@ -35,18 +35,21 @@
     var state = params.state;
 
     document.getElementById('login-button').addEventListener('click', function () {
-        var pageNumber = 1;
-        try {
-            pageNumber = Number(document.getElementById('page-number').value);
-        } catch (e) {
-            // just use page 1;
-        }
-
         // Your client id
         var client_id = '957abd956db942d9b5bb2530f56fb63a';
 
         // Your redirect uri
-        var redirect_uri = window.location.origin + window.location.pathname + 'callback/?pageNumber=' + encodeURIComponent(pageNumber);
+        var redirect_uri = window.location.origin + window.location.pathname + 'callback/';
+        try {
+            var pageNumber = Number(document.getElementById('page-number').value);
+            if (pageNumber) {
+                '?pageNumber=' + encodeURIComponent(pageNumber);
+            }
+        } catch (e) {
+            // don't worry about adding pageNumber
+        }
+
+
 
         var state = generateRandomString(16);
 
