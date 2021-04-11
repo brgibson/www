@@ -40,18 +40,16 @@
 
         // Your redirect uri
         var redirect_uri = window.location.origin + window.location.pathname + 'callback/';
+
+        var state = generateRandomString(16);
         try {
             var pageNumber = Number(document.getElementById('page-number').value);
             if (pageNumber) {
-                '?pageNumber=' + encodeURIComponent(pageNumber);
+                state +='pageNumber=' + encodeURIComponent(pageNumber);
             }
         } catch (e) {
             // don't worry about adding pageNumber
         }
-
-
-
-        var state = generateRandomString(16);
 
         localStorage.setItem(stateKey, state);
         var scope = 'user-read-private user-read-email';
