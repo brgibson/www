@@ -127,7 +127,7 @@ albums: [{{#each items}}{{#if @index}},{{/if}}\"{{artists}} - {{name}}\"{{/each}
 playlist-id: {{id}}
 playlist-img: {{images.0.url}}
 summary: \"A playlist of albums I created on {{prettyDate}} featuring{{#each items}}{{#if (nor (eq @index 0) (eq ../items.length 2))}},{{/if}}{{#if @last}} and{{/if}} {{artists}}{{/each}}.\"
----" > _posts/{{date}}-{{#replace " " "-"}}{{#replace " - " "-"}}{{playlistName}}{{/replace}}{{/replace}}.md
+---" > _posts/{{date}}-{{#replace " " "-"}}{{#replace " - " "-"}}{{#replace "(" "\("}}{{#replace ")" "\)"}}{{playlistName}}{{/replace}}{{/replace}}{{/replace}}{{/replace}}.md
             </pre>
         </div>
     </script>
