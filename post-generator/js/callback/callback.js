@@ -98,6 +98,7 @@
 
                 var isSkipPlaylist = function(playlistName) {
                     return !playlistName.match(/[0-9]*-[0-9]*-[0-9]*.*/);
+                    // todo - add a way to do non-album playlists plz
                 };
 
                 for (var i = 0; i < playlists.items.length; i++) {
