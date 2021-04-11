@@ -61,6 +61,8 @@
     var pageNumber = 1;
     try {
         pageNumber = state.split("pageNumber=")[1] || pageNumber;
+    } catch (e) {
+        // just use pageNumber = 1;
     }
 
     if (access_token && (state == null || state !== storedState)) {
