@@ -35,18 +35,20 @@
     var state = params.state;
 
     document.getElementById('login-button').addEventListener('click', function () {
-
-        var client_id = '957abd956db942d9b5bb2530f56fb63a'; // Your client id
-        var redirect_uri = window.location.origin + window.location.pathname + 'callback/'; // Your redirect uri
-
-        var state = generateRandomString(16);
-
         var pageNumber = 1;
         try {
             pageNumber = Number(document.getElementById('page-number').value);
         } catch (e) {
             // just use page 1;
         }
+
+        // Your client id
+        var client_id = '957abd956db942d9b5bb2530f56fb63a';
+
+        // Your redirect uri
+        var redirect_uri = window.location.origin + window.location.pathname + 'callback/?pageNumber=' + encodeURIComponent(pageNumber);
+
+        var state = generateRandomString(16);
 
         localStorage.setItem(stateKey, state);
         var scope = 'user-read-private user-read-email';
@@ -57,7 +59,6 @@
         url += '&scope=' + encodeURIComponent(scope);
         url += '&redirect_uri=' + encodeURIComponent(redirect_uri);
         url += '&state=' + encodeURIComponent(state);
-        url += '&pageNumber=' + encodeURIComponent(pageNumber);
 
         window.location = url;
     }, false);

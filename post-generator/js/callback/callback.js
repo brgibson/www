@@ -55,9 +55,10 @@
     var params = getHashParams();
 
     var access_token = params.access_token,
-        pageNumber = params.pageNumber || 1,
         state = params.state,
         storedState = localStorage.getItem(stateKey);
+
+    var pageNumber = new URLSearchParams(window.location.search).get('pageNumber') || 1;
 
     if (access_token && (state == null || state !== storedState)) {
         alert('There was an error during the authentication\n\nYou will be redirected to the beginning of the flow.');
