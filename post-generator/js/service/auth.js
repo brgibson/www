@@ -47,6 +47,10 @@
             if (pageNumber) {
                 state +='pageNumber=' + encodeURIComponent(pageNumber);
             }
+            var playlistType = document.querySelector('input[name="playlist-type"]:checked').value;
+            if (playlistType) {
+                state +='playlistType=' + encodeURIComponent(playlistType);
+            }
         } catch (e) {
             // don't worry about adding pageNumber
         }

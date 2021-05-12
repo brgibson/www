@@ -71,9 +71,14 @@
         );
     }
 
-    function isSkipPlaylist({ playlistType }) {
-        return playlistType !== ALBUM_PLAYLIST;
-        // todo - add a way to do non-album playlists plz
+    function isSkipPlaylist({ playlistType, selectedPlaylistType }) {
+        if (!selectedPlaylistType || selectedPlaylistType === 'all') {
+            return false;
+        }
+
+        if (playlistType !== selectedPlaylistType) {
+            return true;
+        }
     }
 
     function getTracksApiCallback_introToArtistPlaylist({ playlistFromApi }) {
@@ -195,8 +200,15 @@
         storedState = localStorage.getItem(stateKey);
 
     var pageNumber = 1;
+    var selectedPlaylistType = null;
+
     try {
-        pageNumber = state.split("pageNumber=")[1] || pageNumber;
+        let [stateWithoutPlaylistType, playlistTypeFromState] = state.split("playlistType=");
+        selectedPlaylistType = playlistTypeFromState;
+
+        pageNumber = stateWithoutPlaylistType.split("pageNumber=")[1] || pageNumber;
+
+
     } catch (e) {
         // just use pageNumber = 1;
     }
@@ -235,7 +247,7 @@
                     const playlist = playlists.items[i];
                     const playlistType = getPlaylistType({ playlistName: playlist.name });
 
-                    if (isSkipPlaylist({ playlistType })) {
+                    if (isSkipPlaylist({ playlistType, selectedPlaylistType })) {
                           continue; //skip this playlist
                     }
 
