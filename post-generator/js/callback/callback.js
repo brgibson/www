@@ -1,6 +1,8 @@
 (function () {
 
     var stateKey = 'spotify_auth_state';
+    const ALBUM_PLAYLIST = 'album-playlist';
+    const INTRO_TO_ARTIST_PLAYLIST = 'intro-to-artist-playlist';
 
     /**
      * Obtains parameters from the hash of the URL
@@ -15,6 +17,89 @@
         }
         return hashParams;
     }
+
+    /**
+     * @param {String} - playlistName
+     * @return ('album-playlist'|'intro-to-artist-playlist'|null)
+     */
+    function getPlaylistType({ playlistName = "" }) {
+        return (
+            playlistName.match(/[0-9]*-[0-9]*-[0-9]*.*/) ? ALBUM_PLAYLIST :
+            playlistName.startsWith('An Introduction') ? INTRO_TO_ARTIST_PLAYLIST :
+            null
+        );
+    }
+    
+    function isSkipPlaylist({ playlistType }) {
+        return playlistType !== ALBUM_PLAYLIST;
+        // todo - add a way to do non-album playlists plz
+    };
+
+    function getTracksApiCallback_albumPlaylist({ playlist }) {
+        return function(response) {
+            var tracks = JSON.parse(response);
+            var albums = {};
+
+            tracks.images = albums.images = playlist.images;
+            tracks.playlistName = albums.playlistName = playlist.name;
+            albums.id = playlist.id;
+
+            albums.items = tracks.items.reduce(function(albums, track) {
+                var albumName = track.track.album.name;
+
+                var artists = track.track.artists.reduce(function(artists, artist, index) {
+                    artists += (index > 0 ? ", " + artist.name : artist.name);
+                    return artists;
+                }, "");
+
+                if (albums.length < 1 || albums[albums.length - 1].name != albumName) {
+                    albums.push({
+                        name: albumName,
+                        artists: artists.replace(/"/g, '\\\\\\"')
+                    });
+                } else if (albums[albums.length - 1].artists != artists) {
+                    albums[albums.length - 1].artists = "Various Artists";
+                }
+
+                return albums;
+            }, []);
+
+            albums.blogPostTags = albums.items.reduce(function(tags, album) {
+                  if (tags.indexOf(album.artists) < 0) {
+                      tags.push(album.artists.toLowerCase().replace(/ /g, '-'));
+                  }
+                  return tags;
+            }, []);
+
+
+            var date;
+
+            try {
+                // works when the playlist name is a parsable "date"
+                date = new Date(albums.playlistName);
+                albums.date = date.toISOString().split('T')[0];
+            } catch (dateError) {
+                // use the "date added" if the playlist name is not parsable
+                albums.date = tracks.items[0].added_at.split('T')[0];
+            }
+
+            var splitDate = albums.date.split('-');
+            albums.prettyDate = `${splitDate[1]}-${splitDate[2]}-${splitDate[0]}`;
+
+            // playlistPlaceholder.innerHTML += tracksForPlaylistTemplate(tracks);
+            playlistPlaceholder.innerHTML += albumsForPlaylistTemplate(albums);
+
+            $('#waiting-message').hide();
+    }}
+
+    function getTracksApiCallback({ playlistType, playlist }) {
+        return (
+            playlistType === ALBUM_PLAYLIST ? getTracksApiCallback_albumPlaylist({ playlist }) :
+            // playlistType === INTRO_TO_ARTIST_PLAYLIST ? tracksApiCallback_albumPlaylist :
+            null
+        );
+    }
+
 
     /**
      * Add some logical helpers to Handlebars
@@ -95,79 +180,20 @@
                 console.error("Playlists Failed.", error);
 
             }).then(function(playlists) {
-
-                var isSkipPlaylist = function(playlistName) {
-                    return !playlistName.match(/[0-9]*-[0-9]*-[0-9]*.*/);
-                    // todo - add a way to do non-album playlists plz
-                };
-
                 for (var i = 0; i < playlists.items.length; i++) {
+                    const playlist = playlists.items[i];
+                    const playlistType = getPlaylistType({ playlistName: playlist.name });
 
-                    if (isSkipPlaylist(playlists.items[i].name)) {
+                    if (isSkipPlaylist({ playlistType })) {
                           continue; //skip this playlist
                     }
 
-                    apiObj = BRG.SPOTIFY.API.tracks(access_token, accountId, playlists.items[i].id, 1);
+                    apiObj = BRG.SPOTIFY.API.tracks(access_token, accountId, playlist.id, 1);
 
-                    var tracksCallback = (function(playlistIndex) {
-                        return function(response) {
-                            var tracks = JSON.parse(response);
-                            var albums = {};
+                    const tracksApiCallback = getTracksApiCallback({ playlistType, playlist });
 
-                            tracks.images = albums.images = playlists.items[playlistIndex].images;
-                            tracks.playlistName = albums.playlistName = playlists.items[playlistIndex].name;
-                            albums.id = playlists.items[playlistIndex].id;
-
-                            albums.items = tracks.items.reduce(function(albums, track) {
-                                var albumName = track.track.album.name;
-
-                                var artists = track.track.artists.reduce(function(artists, artist, index) {
-                                    artists += (index > 0 ? ", " + artist.name : artist.name);
-                                    return artists;
-                                }, "");
-
-                                if (albums.length < 1 || albums[albums.length - 1].name != albumName) {
-                                    albums.push({
-                                        name: albumName,
-                                        artists: artists.replace(/"/g, '\\\\\\"')
-                                    });
-                                } else if (albums[albums.length - 1].artists != artists) {
-                                    albums[albums.length - 1].artists = "Various Artists";
-                                }
-
-                                return albums;
-                            }, []);
-
-                            albums.blogPostTags = albums.items.reduce(function(tags, album) {
-                                  if (tags.indexOf(album.artists) < 0) {
-                                      tags.push(album.artists.toLowerCase().replace(/ /g, '-'));
-                                  }
-                                  return tags;
-                            }, []);
-
-
-                            var date;
-
-                            try {
-                                // works when the playlist name is a parsable "date"
-                                date = new Date(albums.playlistName);
-                                albums.date = date.toISOString().split('T')[0];
-                            } catch (dateError) {
-                                // use the "date added" if the playlist name is not parsable
-                                albums.date = tracks.items[0].added_at.split('T')[0];
-                            }
-
-                            var splitDate = albums.date.split('-');
-                            albums.prettyDate = `${splitDate[1]}-${splitDate[2]}-${splitDate[0]}`;
-
-                            // playlistPlaceholder.innerHTML += tracksForPlaylistTemplate(tracks);
-                            playlistPlaceholder.innerHTML += albumsForPlaylistTemplate(albums);
-
-                            $('#waiting-message').hide();
-                    }})(i);
-
-                    if (playlists.items[i].id) { //need this check for Starred playlists, which doesn't have an id
-                        BRG.PROMISES.get(apiObj.url, apiObj.headers).then(tracksCallback ,function(error) {
+                    if (playlist.id) { //need this check for Starred playlists, which doesn't have an id
+                        BRG.PROMISES.get(apiObj.url, apiObj.headers).then(tracksApiCallback ,function(error) {
                             console.error("Tracks failed.", error);
                         });
                     }
