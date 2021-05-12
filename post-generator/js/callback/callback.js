@@ -99,7 +99,7 @@
                 }, "");
 
                 tracks.push({
-                    title: track.name,
+                    title: track.track.name,
                     album: albumName,
                     artists: artists.replace(/"/g, '\\\\\\"')
                 });
