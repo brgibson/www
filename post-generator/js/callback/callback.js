@@ -1,5 +1,7 @@
 (function () {
 
+    // Setup Functions/Helpers/Templates/Constants/Etc
+
     var stateKey = 'spotify_auth_state';
     const ALBUM_PLAYLIST = 'album-playlist';
     const INTRO_TO_ARTIST_PLAYLIST = 'intro-to-artist-playlist';
@@ -19,6 +21,45 @@
     }
 
     /**
+     * Add some logical helpers to Handlebars
+     */
+    Handlebars.registerHelper({
+        replace: function (find, replace, options) {
+            var string = options.fn(this);
+            return string.replace(new RegExp(find,"g"), replace);
+        },
+        eq: (v1, v2) => v1 === v2,
+        ne: (v1, v2) => v1 !== v2,
+        lt: (v1, v2) => v1 < v2,
+        gt: (v1, v2) => v1 > v2,
+        lte: (v1, v2) => v1 <= v2,
+        gte: (v1, v2) => v1 >= v2,
+        and() {
+            return Array.prototype.every.call(arguments, Boolean);
+        },
+        or() {
+            return Array.prototype.slice.call(arguments, 0, -1).some(Boolean);
+        },
+        nor() {
+            return !Array.prototype.slice.call(arguments, 0, -1).some(Boolean);
+        }
+    });
+
+    var playlistsForUserSource = document.getElementById('playlists-for-user-template').innerHTML,
+        playlistsForUserTemplate = Handlebars.compile(playlistsForUserSource),
+        playlistsForUserPlaceholder = document.getElementById('playlist-names-container');
+
+    var tracksForPlaylistSource = document.getElementById('tracks-for-playlist-template').innerHTML,
+        tracksForPlaylistTemplate = Handlebars.compile(tracksForPlaylistSource),
+        playlistPlaceholder = document.getElementById('playlists-container');
+
+    var introToArtistPlaylistSource = document.getElementById('intro-to-artist-playlist-template').innerHTML,
+        introToArtistPlaylistTemplate = Handlebars.compile(introToArtistPlaylistSource);
+
+    var albumsForPlaylistSource = document.getElementById('albums-for-playlist-template').innerHTML,
+        albumsForPlaylistTemplate = Handlebars.compile(albumsForPlaylistSource);
+
+    /**
      * @param {String} - playlistName
      * @return ('album-playlist'|'intro-to-artist-playlist'|null)
      */
@@ -29,11 +70,55 @@
             null
         );
     }
-    
+
     function isSkipPlaylist({ playlistType }) {
         return playlistType !== ALBUM_PLAYLIST;
         // todo - add a way to do non-album playlists plz
-    };
+    }
+
+    function getTracksApiCallback_introToArtistPlaylist({ playlistFromApi }) {
+        return function(response) {
+            var tracksFromApi = JSON.parse(response);
+            var playlist = {};
+
+            tracksFromApi.images = playlist.images = playlistFromApi.images;
+            tracksFromApi.playlistName = playlist.playlistName = playlistFromApi.name;
+            playlist.id = playlistFromApi.id;
+
+            playlist.tracks = tracksFromApi.items.reduce(function(tracks, track) {
+                var albumName = track.track.album.name;
+
+                var artists = track.track.artists.reduce(function(artists, artist, index) {
+                    artists += (index > 0 ? ", " + artist.name : artist.name);
+                    return artists;
+                }, "");
+
+                tracks.push({
+                    title: track.name,
+                    album: albumName,
+                    artists: artists.replace(/"/g, '\\\\\\"')
+                });
+
+                return tracks;
+            }, []);
+
+            playlist.blogPostTags = playlist.tracks.reduce(function(tags, album) {
+                  if (tags.indexOf(album.artists) < 0) {
+                      tags.push(album.artists.toLowerCase().replace(/ /g, '-'));
+                  }
+                  return tags;
+            }, []);
+
+            playlist.date = tracksFromApi.items[0].added_at.split('T')[0];
+
+            var splitDate = playlist.date.split('-');
+            playlist.prettyDate = `${splitDate[1]}-${splitDate[2]}-${splitDate[0]}`;
+
+            playlistPlaceholder.innerHTML += introToArtistPlaylistTemplate(playlist);
+
+            $('#waiting-message').hide();
+        }
+    }
 
     function getTracksApiCallback_albumPlaylist({ playlist }) {
         return function(response) {
@@ -90,52 +175,18 @@
             playlistPlaceholder.innerHTML += albumsForPlaylistTemplate(albums);
 
             $('#waiting-message').hide();
-    }}
+        }
+    }
 
     function getTracksApiCallback({ playlistType, playlist }) {
         return (
             playlistType === ALBUM_PLAYLIST ? getTracksApiCallback_albumPlaylist({ playlist }) :
-            // playlistType === INTRO_TO_ARTIST_PLAYLIST ? tracksApiCallback_albumPlaylist :
+            playlistType === INTRO_TO_ARTIST_PLAYLIST ? getTracksApiCallback_introToArtistPlaylist({ playlistFromApi: playlist }) :
             null
         );
     }
 
-
-    /**
-     * Add some logical helpers to Handlebars
-     */
-    Handlebars.registerHelper({
-        replace: function (find, replace, options) {
-            var string = options.fn(this);
-            return string.replace(new RegExp(find,"g"), replace);
-        },
-        eq: (v1, v2) => v1 === v2,
-        ne: (v1, v2) => v1 !== v2,
-        lt: (v1, v2) => v1 < v2,
-        gt: (v1, v2) => v1 > v2,
-        lte: (v1, v2) => v1 <= v2,
-        gte: (v1, v2) => v1 >= v2,
-        and() {
-            return Array.prototype.every.call(arguments, Boolean);
-        },
-        or() {
-            return Array.prototype.slice.call(arguments, 0, -1).some(Boolean);
-        },
-        nor() {
-            return !Array.prototype.slice.call(arguments, 0, -1).some(Boolean);
-        }
-    });
-
-    var playlistsForUserSource = document.getElementById('playlists-for-user-template').innerHTML,
-        playlistsForUserTemplate = Handlebars.compile(playlistsForUserSource),
-        playlistsForUserPlaceholder = document.getElementById('playlist-names-container');
-
-    var tracksForPlaylistSource = document.getElementById('tracks-for-playlist-template').innerHTML,
-        tracksForPlaylistTemplate = Handlebars.compile(tracksForPlaylistSource),
-        playlistPlaceholder = document.getElementById('playlists-container');
-
-    var albumsForPlaylistSource = document.getElementById('albums-for-playlist-template').innerHTML,
-        albumsForPlaylistTemplate = Handlebars.compile(albumsForPlaylistSource);
+    // Begin Main Work
 
     var params = getHashParams();
 

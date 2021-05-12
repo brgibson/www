@@ -114,6 +114,24 @@
         </div>
     </script>
 
+    <script id="intro-to-artist-playlist-template" type="text/x-handlebars-template">
+        <div class="playlist-container">
+            <pre>
+echo "---
+layout: post-album-playlist
+short-title: {{playlistName}}
+title: {{playlistName}}
+category: blog
+tags: [\"playlist\",{{#each blogPostTags}}{{#if @index}},{{/if}}\"{{this}}\"{{/each}}]
+tracks: [{{#each tracks}}{{#if @index}},{{/if}}\"{{artists}} - {{title}} - {{album}}\"{{/each}}]
+playlist-id: {{id}}
+playlist-img: {{images.0.url}}
+summary: \"These are some of my favorite songs by {{artist}}\"
+---" > _posts/{{date}}-{{#replace " " "-"}}{{#replace " - " "-"}}{{#replace "[(]" "\("}}{{#replace "[)]" "\)"}}{{#replace ":" ""}}{{playlistName}}{{/replace}}{{/replace}}{{/replace}}{{/replace}}{{/replace}}.md
+            </pre>
+        </div>
+    </script>
+
     <script id="albums-for-playlist-template" type="text/x-handlebars-template">
         <div class="playlist-container">
             <pre>
