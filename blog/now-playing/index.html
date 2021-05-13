@@ -1,0 +1,46 @@
+---
+layout: blog
+category: blog
+bodySelector: blog
+
+title: Ben's Experiments
+keywords: b.r.gibson, brgibson, ben gibson, benjamin roberts gibson, code, tech, experiments
+description: Experimentation and side-projects.
+---
+
+<header>
+    <h1>Now Playing</h1>
+</header>
+
+<div class="main">
+    {% for post in site.categories.now-playing %}
+
+        {% comment %}
+        /**
+         * Keeping the first separate from the others in case I want do a featured
+         * display for the most recent post
+         */
+        {% endcomment %}
+
+        {% if post.title == site.posts[0].title %}
+            {% include blog/preview.html post=post %}
+        {% endif %}
+
+        {% if post.title != site.posts[0].title %}
+            {% include blog/preview.html post=post %}
+        {% endif %}
+
+    {% endfor %}
+    <div class="pagination">
+        {% if paginator.previous_page %}
+            <a class="pagination-item newer left" href="{{ paginator.previous_page_path | prepend: site.baseurl }}"><span class="arrow">⇦</span> &nbsp; <span class="words">Newer</span></a>
+        {% else %}
+            <span class="pagination-item newer left disabled"><span class="arrow">⇦</span> &nbsp; <span class="words">Newer</span></span>
+        {% endif %}
+        {% if paginator.next_page %}
+            <a class="pagination-item older right" href="{{ paginator.next_page_path | prepend: site.baseurl }}"><span class="words">Older</span> &nbsp; <span class="arrow">⇨</span></a>
+        {% else %}
+            <span class="pagination-item older right disabled"><span class="words">Older</span> &nbsp; <span class="arrow">⇨</span></span>
+        {% endif %}
+    </div>
+</div>

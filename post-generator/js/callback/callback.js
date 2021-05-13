@@ -88,6 +88,7 @@
 
             tracksFromApi.images = playlist.images = playlistFromApi.images;
             tracksFromApi.playlistName = playlist.playlistName = playlistFromApi.name;
+            tracksFromApi.playlistNameLowercase = playlist.playlistNameLowercase = playlistFromApi.name.toLowerCase();
             playlist.id = playlistFromApi.id;
 
             playlist.tracks = tracksFromApi.items.reduce(function(tracks, track) {
@@ -103,6 +104,8 @@
                     album: albumName,
                     artists: artists.replace(/"/g, '\\\\\\"')
                 });
+
+                playlist.artist = playlist.artist || artists; // easier access for the overall playlist artist
 
                 return tracks;
             }, []);
