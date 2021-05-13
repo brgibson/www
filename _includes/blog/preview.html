@@ -35,7 +35,7 @@
         <div style="padding-bottom:2em">
             <time class="post-date" datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date_to_string }}</time>
             <span class="tags">
-                <a style="padding:.5em 1em;" class="category icon {{primary_tag_class}}" href="{{ site.baseurl }}/tag/{{ primary_tag_class }}">#{{ primary_tag }}</a>
+                <a style="padding:.5em 1em;" class="category icon {{primary_tag_class}}" href="{{ site.baseurl }}/blog/{{ primary_tag_class }}/">#{{ primary_tag }}</a>
             </span>
             <div style="display:inline-block;vertical-align:middle;" class="social-container">
                 {% include blog/social-buttons.html post_url_full=post_url_full %}

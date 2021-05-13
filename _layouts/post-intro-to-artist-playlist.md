@@ -9,7 +9,7 @@ layout: post
 <h2 class="question-heading">Tracks</h2>
 
 <ul>
-    {% for track in page.test %}<li><span class="artist-name">{{track.artist}}</span> - <span class="album-name">{{track.album}}</span> - <span class="album-name">{{track.album}}</span></li>{% endfor %}
+    {% for track in page.tracks %}<li><span class="artist-name">{{track.artists}}</span> - <span class="track-name">{{track.title}}</span> - <span class="album-name">{{track.album}}</span></li>{% endfor %}
 </ul>
 
 <hr>
