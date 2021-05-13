@@ -1,0 +1,11 @@
+---
+layout: post-intro-to-artist-playlist
+short-title: An Introduction to b.r.gibson
+title: An Introduction to b.r.gibson
+category: [blog, intros]
+tags: ["intros","playlist","b.r.gibson"]
+tracks: [{artists: "b.r.gibson", title: "Drift", album: "Sway"},{artists: "b.r.gibson", title: "For A Dream", album: "Lost & Found"},{artists: "b.r.gibson", title: "The Chase", album: "A Winter's Tale"},{artists: "b.r.gibson", title: "Death By Toads", album: "J.R."},{artists: "b.r.gibson", title: "IN-45", album: "Roads"},{artists: "b.r.gibson", title: "Death By Dinosaur Ninjas", album: "J.R."},{artists: "b.r.gibson", title: "Mountain Song", album: "A Winter's Tale"},{artists: "b.r.gibson", title: "Mountain", album: "The Nature Sessions"},{artists: "b.r.gibson", title: "Relaxing Stream", album: "Byzantine Tales"},{artists: "b.r.gibson", title: "Lost And Alone", album: "An Adventure In Space"},{artists: "b.r.gibson", title: "Heavy Rain", album: "Victory Garden"},{artists: "b.r.gibson", title: "Toss", album: "Sway"},{artists: "b.r.gibson", title: "Death By Sea Monsters", album: "J.R."},{artists: "b.r.gibson", title: "Bustling Cavern", album: "Byzantine Tales"},{artists: "b.r.gibson", title: "Dark", album: "Glass"},{artists: "b.r.gibson", title: "Undertow, the Broken Fjord", album: "Arms"},{artists: "b.r.gibson", title: "The Lullaby", album: "An Adventure In Space"},{artists: "b.r.gibson", title: "Meadow", album: "The Nature Sessions"},{artists: "b.r.gibson", title: "Buzzing With Life", album: "Victory Garden"},{artists: "b.r.gibson", title: "Happy Mountain", album: "Byzantine Tales"},{artists: "b.r.gibson", title: "Walking On A Sunday Sky", album: "Lost & Found"},{artists: "b.r.gibson", title: "Main St.", album: "Roads"},{artists: "b.r.gibson", title: "Pitch", album: "Sway"},{artists: "b.r.gibson", title: "Happy Mountain (Reprise)", album: "Byzantine Tales"},{artists: "b.r.gibson", title: "Sway", album: "Sway"}]
+playlist-id: 3AdRv2zw2bgm3ycpw7Crky
+playlist-img: https://mosaic.scdn.co/640/ab67616d0000b273231cbea480579be40e0ee50dab67616d0000b273649dfd76ac27ce85cba21445ab67616d0000b2736b1e70f62cf29aaac261ae4cab67616d0000b273f2a1017fa91fa3ff4991992e
+summary: "These are some of my favorite songs by b.r.gibson"
+---

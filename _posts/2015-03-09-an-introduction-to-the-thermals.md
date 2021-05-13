@@ -1,0 +1,11 @@
+---
+layout: post-intro-to-artist-playlist
+short-title: An Introduction to The Thermals
+title: An Introduction to The Thermals
+category: [blog, intros]
+tags: ["intros","playlist","the-thermals","the-thermals","the-thermals","the-thermals","the-thermals","the-thermals","the-thermals","the-thermals","the-thermals","the-thermals","the-thermals","the-thermals","the-thermals","the-thermals","the-thermals","the-thermals","the-thermals","the-thermals"]
+tracks: [{artists: "The Thermals", title: "Born To Kill", album: "Desperate Ground"},{artists: "The Thermals", title: "A Pillar Of Salt", album: "The Body, The Blood, The Machine"},{artists: "The Thermals", title: "Now We Can See", album: "Now We Can See"},{artists: "The Thermals", title: "Not Like Any Other Feeling", album: "Personal Life"},{artists: "The Thermals", title: "I Let It Go", album: "Now We Can See"},{artists: "The Thermals", title: "Back To The Sea", album: "The Body, The Blood, The Machine"},{artists: "The Thermals", title: "You Will Be Free", album: "Desperate Ground"},{artists: "The Thermals", title: "Alone, a Fool", album: "Personal Life"},{artists: "The Thermals", title: "Returning to the Fold", album: "The Body, The Blood, The Machine"},{artists: "The Thermals", title: "The Sword By My Side", album: "Desperate Ground"},{artists: "The Thermals", title: "I Hold The Sound", album: "The Body, The Blood, The Machine"},{artists: "The Thermals", title: "I Go Alone", album: "Desperate Ground"},{artists: "The Thermals", title: "No Culture Icons", album: "LIVE [at the Echoplex - December 7th, 2007]"},{artists: "The Thermals", title: "Never Listen To Me", album: "Personal Life"},{artists: "The Thermals", title: "Power Doesn't Run On Nothing", album: "The Body, The Blood, The Machine"},{artists: "The Thermals", title: "Your Love Is So Strong", album: "Personal Life"},{artists: "The Thermals", title: "Here's Your Future", album: "The Body, The Blood, The Machine"},{artists: "The Thermals", title: "Where I Stand", album: "Desperate Ground"}]
+playlist-id: 3ysVOs4RbKVpbaE37QEmxk
+playlist-img: https://mosaic.scdn.co/640/ab67616d0000b27304ab36032fe7f35e106c8bc7ab67616d0000b27314811cfab3a9353f8c49aed1ab67616d0000b2732be2e7fa7a5b835091f1fdccab67616d0000b2732d161af878fd673a56db716e
+summary: "These are some of my favorite songs by The Thermals"
+---
