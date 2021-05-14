@@ -108,9 +108,9 @@
                 }, "");
 
                 tracks.push({
-                    title: track.track.name.replace(/"/g, '\\\\\\"'),
-                    album: albumName.replace(/"/g, '\\\\\\"'),
-                    artists: artists.replace(/"/g, '\\\\\\"')
+                    title: track.track.name.replaceAll('"', '\\\\\\"'),
+                    album: albumName.replaceAll(/"/g, '\\\\\\"'),
+                    artists: artists.replaceAll(/"/g, '\\\\\\"')
                 });
 
                 playlist.artist = playlist.artist || artists; // easier access for the overall playlist artist
