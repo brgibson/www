@@ -99,6 +99,11 @@
 
             playlist.id = playlistFromApi.id;
 
+            if (!tracksFromApi.items[0]) {
+                console.log(`Skipping playlist (${tracksFromApi.playlistName}) because it has no tracks`);
+                return;
+            }
+
             playlist.tracks = tracksFromApi.items.reduce(function(tracks, track) {
                 var albumName = track.track.album.name;
 
@@ -108,9 +113,9 @@
                 }, "");
 
                 tracks.push({
-                    title: track.track.name.replaceAll('"', '\\\\"'),
-                    album: albumName.replaceAll('"', '\\\\"'),
-                    artists: artists.replaceAll('"', '\\\\"')
+                    title: track.track.name.replaceAll('"', '\\\\\\"'),
+                    album: albumName.replaceAll('"', '\\\\\\"'),
+                    artists: artists.replaceAll('"', '\\\\\\"')
                 });
 
                 playlist.artist = playlist.artist || artists; // easier access for the overall playlist artist
@@ -157,6 +162,11 @@ summary: \\"A playlist I created on ${playlist.prettyDate}\\"
             tracksFromApi.playlistName = playlist.playlistName = playlistFromApi.name;
             tracksFromApi.playlistNameLowercase = playlist.playlistNameLowercase = playlistFromApi.name.toLowerCase();
             playlist.id = playlistFromApi.id;
+
+            if (!tracksFromApi.items[0]) {
+                console.log(`Skipping playlist (${tracksFromApi.playlistName}) because it has no tracks`);
+                return;
+            }
 
             playlist.tracks = tracksFromApi.items.reduce(function(tracks, track) {
                 var albumName = track.track.album.name;
