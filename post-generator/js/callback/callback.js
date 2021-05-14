@@ -108,9 +108,9 @@
                 }, "");
 
                 tracks.push({
-                    title: track.track.name.replaceAll('"', '\\\\\\"'),
-                    album: albumName.replaceAll(/"/g, '\\\\\\"'),
-                    artists: artists.replaceAll(/"/g, '\\\\\\"')
+                    title: track.track.name.replaceAll('"', '\\\\"'),
+                    album: albumName.replaceAll('"', '\\\\"'),
+                    artists: artists.replaceAll('"', '\\\\"')
                 });
 
                 playlist.artist = playlist.artist || artists; // easier access for the overall playlist artist
@@ -137,7 +137,7 @@ short-title: ${playlist.playlistName}
 title: ${playlist.playlistName}
 category: [blog, playlist]
 tags: [\\"playlist\\",\\"${playlist.blogPostTags.join('\\",\\"')}\\"]
-tracks: [${playlist.tracks.map(track => JSON.stringify(track)).join(',').replaceAll('"', '\\"')}]
+tracks: [${playlist.tracks.map(track => `{\\"title\\":\\"${track.title}\\",\\"album\\":\\"${track.album}\\",\\"artists\\":\\"${track.artists}\\"}`).join(',')}]
 playlist-id: ${playlist.id}
 playlist-img: ${playlist.images[0].url}
 summary: \\"A playlist I created on ${playlist.prettyDate}\\"
