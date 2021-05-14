@@ -5,6 +5,7 @@
     var stateKey = 'spotify_auth_state';
     const ALBUM_PLAYLIST = 'album-playlist';
     const INTRO_TO_ARTIST_PLAYLIST = 'intro-to-artist-playlist';
+    const STANDARD_PLAYLIST = 'standard';
 
     /**
      * Obtains parameters from the hash of the URL
@@ -67,7 +68,7 @@
         return (
             playlistName.match(/[0-9]*-[0-9]*-[0-9]*.*/) ? ALBUM_PLAYLIST :
             playlistName.startsWith('An Introduction') ? INTRO_TO_ARTIST_PLAYLIST :
-            null
+            STANDARD_PLAYLIST
         );
     }
 
@@ -78,6 +79,71 @@
 
         if (playlistType !== selectedPlaylistType) {
             return true;
+        }
+    }
+
+    function getTracksApiCallback_standardPlaylist({ playlistFromApi }) {
+        return function(response) {
+            var tracksFromApi = JSON.parse(response);
+            var playlist = {};
+
+            tracksFromApi.images = playlist.images = playlistFromApi.images;
+            tracksFromApi.playlistName = playlist.playlistName = playlistFromApi.name;
+            tracksFromApi.playlistNameUrlFormatted = playlist.playlistNameUrlFormatted = playlistFromApi.name.toLowerCase()
+                .replace(' ', '-')
+                .replace(' - ', '-')
+                .replace('(', '\(')
+                .replace(')', '\)')
+                .replace(':', "");
+
+            playlist.id = playlistFromApi.id;
+
+            playlist.tracks = tracksFromApi.items.reduce(function(tracks, track) {
+                var albumName = track.track.album.name;
+
+                var artists = track.track.artists.reduce(function(artists, artist, index) {
+                    artists += (index > 0 ? ", " + artist.name : artist.name);
+                    return artists;
+                }, "");
+
+                tracks.push({
+                    title: track.track.name,
+                    album: albumName,
+                    artists: artists.replace(/"/g, '\\\\\\"')
+                });
+
+                playlist.artist = playlist.artist || artists; // easier access for the overall playlist artist
+
+                return tracks;
+            }, []);
+
+            playlist.blogPostTags = playlist.tracks.reduce(function(tags, album) {
+                  if (tags.indexOf(album.artists) < 0) {
+                      tags.push(album.artists.toLowerCase().replace(/ /g, '-'));
+                  }
+                  return tags;
+            }, []);
+
+            playlist.date = tracksFromApi.items[0].added_at.split('T')[0];
+
+            var splitDate = playlist.date.split('-');
+            playlist.prettyDate = `${splitDate[1]}-${splitDate[2]}-${splitDate[0]}`;
+
+            playlistPlaceholder.innerHTML += `<div class="playlist-container"><pre>
+echo "---
+layout: post-standard-playlist
+short-title: ${playlist.playlistName}
+title: ${playlist.playlistName}
+category: [blog, playlist]
+tags: [\"playlist\",\"${playlist.blogPostTags.join('\\",\\"')}\"]
+tracks: [${playlist.tracks.map(track => JSON.stringify(track)).join(',')}]
+playlist-id: ${playlist.id}
+playlist-img: ${playlist.images[0].url}
+summary: \"A playlist I created on ${playlist.prettyDate}\"
+---" > _posts/{{date}}-${playlist.playlistNameUrlFormatted}.md
+</pre></div>`;
+
+            $('#waiting-message').hide();
         }
     }
 
@@ -190,7 +256,7 @@
         return (
             playlistType === ALBUM_PLAYLIST ? getTracksApiCallback_albumPlaylist({ playlist }) :
             playlistType === INTRO_TO_ARTIST_PLAYLIST ? getTracksApiCallback_introToArtistPlaylist({ playlistFromApi: playlist }) :
-            null
+            getTracksApiCallback_standardPlaylist({ playlistFromApi: playlist })
         );
     }
 
