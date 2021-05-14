@@ -89,12 +89,13 @@
 
             tracksFromApi.images = playlist.images = playlistFromApi.images;
             tracksFromApi.playlistName = playlist.playlistName = playlistFromApi.name;
-            tracksFromApi.playlistNameUrlFormatted = playlist.playlistNameUrlFormatted = playlistFromApi.name.toLowerCase()
-                .replace(' ', '-')
-                .replace(' - ', '-')
-                .replace('(', '\(')
+            tracksFromApi.playlistNameUrlFormatted = playlist.playlistNameUrlFormatted = playlistFromApi.name
+                .toLowerCase()
+                .replace(':', "")
                 .replace(')', '\)')
-                .replace(':', "");
+                .replace('(', '\(')
+                .replace(' - ', '-')
+                .replace(' ', '-');
 
             playlist.id = playlistFromApi.id;
 
@@ -140,7 +141,7 @@ tracks: [${playlist.tracks.map(track => JSON.stringify(track)).join(',')}]
 playlist-id: ${playlist.id}
 playlist-img: ${playlist.images[0].url}
 summary: \"A playlist I created on ${playlist.prettyDate}\"
----" > _posts/{{date}}-${playlist.playlistNameUrlFormatted}.md
+---" > _posts/${playlist.date}-${playlist.playlistNameUrlFormatted}.md
 </pre></div>`;
 
             $('#waiting-message').hide();
