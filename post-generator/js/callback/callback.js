@@ -108,8 +108,8 @@
                 }, "");
 
                 tracks.push({
-                    title: track.track.name,
-                    album: albumName,
+                    title: track.track.name.replace(/"/g, '\\\\\\"'),
+                    album: albumName.replace(/"/g, '\\\\\\"'),
                     artists: artists.replace(/"/g, '\\\\\\"')
                 });
 
