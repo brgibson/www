@@ -91,11 +91,11 @@
             tracksFromApi.playlistName = playlist.playlistName = playlistFromApi.name;
             tracksFromApi.playlistNameUrlFormatted = playlist.playlistNameUrlFormatted = playlistFromApi.name
                 .toLowerCase()
-                .replace(':', "")
-                .replace(')', '\)')
-                .replace('(', '\(')
-                .replace(' - ', '-')
-                .replace(' ', '-');
+                .replaceAll(':', "")
+                .replaceAll(')', '\)')
+                .replaceAll('(', '\(')
+                .replaceAll(' - ', '-')
+                .replaceAll(' ', '-');
 
             playlist.id = playlistFromApi.id;
 
