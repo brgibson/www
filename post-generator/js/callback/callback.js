@@ -136,11 +136,11 @@ layout: post-standard-playlist
 short-title: ${playlist.playlistName}
 title: ${playlist.playlistName}
 category: [blog, playlist]
-tags: [\"playlist\",\"${playlist.blogPostTags.join('\\",\\"')}\"]
-tracks: [${playlist.tracks.map(track => JSON.stringify(track)).join(',')}]
+tags: [\\"playlist\\",\\"${playlist.blogPostTags.join('\\",\\"')}\\"]
+tracks: [${playlist.tracks.map(track => JSON.stringify(track)).join(',').replaceAll('"', '\\"')}]
 playlist-id: ${playlist.id}
 playlist-img: ${playlist.images[0].url}
-summary: \"A playlist I created on ${playlist.prettyDate}\"
+summary: \\"A playlist I created on ${playlist.prettyDate}\\"
 ---" > _posts/${playlist.date}-${playlist.playlistNameUrlFormatted}.md
 </pre></div>`;
 
