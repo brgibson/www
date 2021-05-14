@@ -3,9 +3,44 @@
     // Setup Functions/Helpers/Templates/Constants/Etc
 
     var stateKey = 'spotify_auth_state';
+
     const ALBUM_PLAYLIST = 'album-playlist';
     const INTRO_TO_ARTIST_PLAYLIST = 'intro-to-artist-playlist';
     const STANDARD_PLAYLIST = 'standard';
+    const SKIP_PLAYLIST = 'skip';
+
+    const PLAYLIST_TYPE_OVERRIDES = {
+        '12-06-2019 - First Friday - Choral Music': STANDARD_PLAYLIST,
+        'Rolling Stone Top 50 Pop Punk Albums': ALBUM_PLAYLIST,
+        '9-17-2018 (Italy)': STANDARD_PLAYLIST,
+        '9-17-2018 (Italy 2)': STANDARD_PLAYLIST,
+        '6-15-2016 (with Llewyn Davis Soundtrack)': STANDARD_PLAYLIST,
+        '10-24-2016 - Luke Cage Soundtrack': STANDARD_PLAYLIST,
+        '11-23-2016 - Radio - Walk Away Renee': STANDARD_PLAYLIST,
+        'My Top 20 Albums - 5/2016': ALBUM_PLAYLIST,
+        'Bury My Body (6-8-2015 Recap)': STANDARD_PLAYLIST,
+        'Twinkle, baby... Twinkle (7-9-2015 Recap)': STANDARD_PLAYLIST,
+        'Past Life Progress (7-18-2015 Recap)': STANDARD_PLAYLIST,
+        '(8-6-2015 Recap)': STANDARD_PLAYLIST,
+        'Clips  (8-6-2015 Recap - Part 2)': STANDARD_PLAYLIST,
+        'Splish Splash (8-6-1015 Recap - Part 1)': STANDARD_PLAYLIST,
+        'Japan - 9/1/2016': ALBUM_PLAYLIST,
+        'New Albums': ALBUM_PLAYLIST,
+        'Viva Las Vegas! - 2-6-2015': STANDARD_PLAYLIST,
+        'Vegas 2 - 7-22-2016': STANDARD_PLAYLIST,
+        'A Short Introduction to blink-182': INTRO_TO_ARTIST_PLAYLIST,
+        'A Short Introduction to blink-182 - Part 2': INTRO_TO_ARTIST_PLAYLIST,
+        'Danny Elfman': ALBUM_PLAYLIST,
+        'Disney & Other Childhood Soundtracks': ALBUM_PLAYLIST,
+        'Albums That Are Cool': ALBUM_PLAYLIST,
+        'Ten Albums With A Profound Impact On Me': ALBUM_PLAYLIST,
+        'Rolling Stone - Top 40 Punk Albums (Pub. 2016)': ALBUM_PLAYLIST,
+        "Andrew E's Top 20 Albums - 5/2016": ALBUM_PLAYLIST,
+        'From Rey': ALBUM_PLAYLIST,
+        'Next': SKIP_PLAYLIST,
+        'Starred': SKIP_PLAYLIST,
+        'My Shazam Tracks': SKIP_PLAYLIST,
+    };
 
     /**
      * Obtains parameters from the hash of the URL
@@ -66,6 +101,7 @@
      */
     function getPlaylistType({ playlistName = "" }) {
         return (
+            PLAYLIST_TYPE_OVERRIDES[playlistName] ? PLAYLIST_TYPE_OVERRIDES[playlistName] :
             playlistName.match(/[0-9]*-[0-9]*-[0-9]*.*/) ? ALBUM_PLAYLIST :
             playlistName.startsWith('An Introduction') ? INTRO_TO_ARTIST_PLAYLIST :
             STANDARD_PLAYLIST
@@ -73,6 +109,12 @@
     }
 
     function isSkipPlaylist({ playlistType, selectedPlaylistType }) {
+        // TODO - SKIP PLAYLISTS THAT YOU DIDN'T CREATE ('ex 2011-07-18-gen-x-yuppi.md' 'Gen X Yuppi')
+
+        if (playlistType === SKIP_PLAYLIST) {
+            return true
+        }
+
         if (!selectedPlaylistType || selectedPlaylistType === 'all') {
             return false;
         }
@@ -91,9 +133,17 @@
             tracksFromApi.playlistName = playlist.playlistName = playlistFromApi.name;
             tracksFromApi.playlistNameUrlFormatted = playlist.playlistNameUrlFormatted = playlistFromApi.name
                 .toLowerCase()
+                .replaceAll('...', 'ellipsis')
+                .replaceAll('—', '')
+                .replaceAll('.', "")
+                .replaceAll('\'', "")
+                .replaceAll('!', "")
+                .replaceAll(',',"")
+                .replaceAll('&','and')
+                .replaceAll('/', "-")
                 .replaceAll(':', "")
-                .replaceAll(')', '\)')
-                .replaceAll('(', '\(')
+                .replaceAll(')', '\\)')
+                .replaceAll('(', '\\(')
                 .replaceAll(' - ', '-')
                 .replaceAll(' ', '-');
 
