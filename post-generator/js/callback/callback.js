@@ -7,6 +7,7 @@
     const ALBUM_PLAYLIST = 'album-playlist';
     const INTRO_TO_ARTIST_PLAYLIST = 'intro-to-artist-playlist';
     const STANDARD_PLAYLIST = 'standard-playlist';
+    const COLLABORATIVE_PLAYLIST = 'collaborative-playlist';
     const SKIP_PLAYLIST = 'skip';
 
     const PLAYLIST_TYPE_OVERRIDES = {
@@ -99,29 +100,29 @@
      * @param {String} - playlistName
      * @return ('album-playlist'|'intro-to-artist-playlist'|null)
      */
-    function getPlaylistType({ playlistName = "" }) {
+    function getPlaylistType({ playlistName = "", collaborative }) {
         return (
             PLAYLIST_TYPE_OVERRIDES[playlistName] ? PLAYLIST_TYPE_OVERRIDES[playlistName] :
+            collaborative ? COLLABORATIVE_PLAYLIST :
             playlistName.match(/[0-9]*-[0-9]*-[0-9]*.*/) ? ALBUM_PLAYLIST :
             playlistName.startsWith('An Introduction') ? INTRO_TO_ARTIST_PLAYLIST :
             STANDARD_PLAYLIST
         );
     }
 
-    function isSkipPlaylist({ playlistType, selectedPlaylistType }) {
-        // TODO - SKIP PLAYLISTS THAT YOU DIDN'T CREATE ('ex 2011-07-18-gen-x-yuppi.md' 'Gen X Yuppi')
+    function isSkipPlaylist({ playlistType, selectedPlaylistType, isPublic, owner}) {
+        let skipPlaylist = false;
 
-        if (playlistType === SKIP_PLAYLIST) {
-            return true
-        }
+        if (!isPublic) { skipPlaylist = true } // skip private playlists
+        else if (owner.id !== "1213507414" && playlistType !== COLLABORATIVE_PLAYLIST) { skipPlaylist = true } // skip playlists that aren't created by me, unless they are collaborative
+        else if (playlistType === SKIP_PLAYLIST) { skipPlaylist = true } // skip playlists specified in PLAYLIST_TYPE_OVERRIDES
+        else if (
+            selectedPlaylistType
+            && selectedPlaylistType !== 'all'
+            && playlistType !== selectedPlaylistType
+        ) { skipPlaylist = true } // skip playlist if it is not in the "selected type"
 
-        if (!selectedPlaylistType || selectedPlaylistType === 'all') {
-            return false;
-        }
-
-        if (playlistType !== selectedPlaylistType) {
-            return true;
-        }
+        return skipPlaylist;
     }
 
     function getTracksApiCallback_standardPlaylist({ playlistFromApi }) {
@@ -375,9 +376,14 @@ summary: \\"A playlist I created on ${playlist.prettyDate}\\"
             }).then(function(playlists) {
                 for (var i = 0; i < playlists.items.length; i++) {
                     const playlist = playlists.items[i];
-                    const playlistType = getPlaylistType({ playlistName: playlist.name });
+                    const playlistType = getPlaylistType({ playlistName: playlist.name, collaborative: playlist.collaborative });
 
-                    if (isSkipPlaylist({ playlistType, selectedPlaylistType })) {
+                    if (isSkipPlaylist({
+                        playlistType,
+                        selectedPlaylistType,
+                        isPublic: playlist.public,
+                        owner: playlist.owner,
+                    })) {
                           continue; //skip this playlist
                     }
 
