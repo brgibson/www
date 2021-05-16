@@ -6,7 +6,7 @@
 
     const ALBUM_PLAYLIST = 'album-playlist';
     const INTRO_TO_ARTIST_PLAYLIST = 'intro-to-artist-playlist';
-    const STANDARD_PLAYLIST = 'standard';
+    const STANDARD_PLAYLIST = 'standard-playlist';
     const SKIP_PLAYLIST = 'skip';
 
     const PLAYLIST_TYPE_OVERRIDES = {
