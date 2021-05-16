@@ -61,7 +61,7 @@ BRG.SPOTIFY.API = BRG.SPOTIFY.API || {};
                + spotifyUserId
                + '/playlists/'
                + playlistId
-               + '/tracks?fields=limit,next,items(track(name,album(name),artists(name)))'
+               + '/tracks?fields=limit,next,items(added_at,track(name,album(name),artists(name)))'
                + '&limit=' + playlistLimit
                + '&offset=' + (playlistLimit * (pageNumber - 1)),
             headers: {

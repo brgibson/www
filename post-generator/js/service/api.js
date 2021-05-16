@@ -35,7 +35,7 @@ BRG.SPOTIFY.API = BRG.SPOTIFY.API || {};
         return {
             url: 'https://api.spotify.com/v1/users/'
                + spotifyUserId
-               + '/playlists?fields=limit,next,items(added_at,name,tracks(total),id,uri,images)'
+               + '/playlists?fields=limit,next,items(added_at,name,tracks(total),id,uri,images,collaborative,owner,public)'
                + '&limit=' + playlistLimit
                + '&offset=' + (playlistLimit * (pageNumber - 1)),
             headers: {
