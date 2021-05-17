@@ -1,0 +1,11 @@
+---
+layout: post-standard-playlist
+short-title: "Lead On, Motherfucker"
+title: "Lead On, Motherfucker"
+category: [blog, playlist]
+tags: ["playlist","css","blink-182","rancid","superdrag","the-donkeys","ok-go","grizzly-bear","the-faint","the-lighthouse-and-the-whaler","wu-tang-clan","the-long-winters","the-statler-brothers","ben-kweller","harley-poe","rancid","the-starting-line","grizzly-bear"]
+tracks: [{"title":"Move","album":"Donkey","artists":"CSS"},{"title":"Dogs Eating Dogs","album":"Dogs Eating Dogs","artists":"blink-182"},{"title":"Ghost Band","album":"Indestructible","artists":"Rancid"},{"title":"Hellbent","album":"Head Trip In Every Key","artists":"Superdrag"},{"title":"I Like The Way You Walk","album":"Born With Stripes","artists":"The Donkeys"},{"title":"A Good Idea At The Time","album":"Oh No","artists":"OK Go"},{"title":"Sleeping Ute","album":"Shields","artists":"Grizzly Bear"},{"title":"Posed To Death","album":"Danse Macabre","artists":"The Faint"},{"title":"Pioneers","album":"This Is an Adventure","artists":"The Lighthouse And The Whaler"},{"title":"Gravel Pit","album":"Legend Of The Wu-Tang: Wu-Tang Clan's Greatest Hits","artists":"Wu-Tang Clan"},{"title":"Teaspoon","album":"Putting the Days to Bed","artists":"The Long Winters"},{"title":"Flowers On the Wall","album":"Flowers On The Wall: The Essential Statler Brothers 1964-1969","artists":"The Statler Brothers"},{"title":"Mean To Me","album":"Go Fly A Kite","artists":"Ben Kweller"},{"title":"The Object of My Affection - Live","album":"The Dead and the Naked","artists":"Harley Poe"},{"title":"Born Frustrated","album":"Indestructible","artists":"Rancid"},{"title":"Hello Houston","album":"Say It Like You Mean It","artists":"The Starting Line"},{"title":"Yet Again","album":"Shields","artists":"Grizzly Bear"}]
+playlist-id: 6ByAl5koo2RC80ZroJzo79
+playlist-img: https://mosaic.scdn.co/640/ab67616d0000b27307be0c19180dcd94304d045cab67616d0000b273118bf9d163dbbce00d80eadeab67616d0000b273746b968ce3c1dd937b900d21ab67616d0000b273b4d6e44a1a58a9bdcd1edee7
+summary: "A playlist I created on 05-22-2014"
+---

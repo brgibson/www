@@ -1,0 +1,11 @@
+---
+layout: post-intro-to-artist-playlist
+short-title: A Short Introduction to blink-182 - Part 2
+title: A Short Introduction to blink-182 - Part 2
+category: [blog, intros]
+tags: ["intros","playlist","transplants","box-car-racer","motion-city-soundtrack","blink-182","+44","angels-&-airwaves"]
+tracks: [{artists: "Transplants", title: "D.J. D.J.", album: "Transplants"},{artists: "Box Car Racer", title: "I Feel So", album: "Box Car Racer"},{artists: "Motion City Soundtrack", title: "Attractive Today", album: "Commit This To Memory"},{artists: "blink-182", title: "Pathetic", album: "Dude Ranch"},{artists: "blink-182", title: "The Party Song", album: "Enema Of The State"},{artists: "blink-182", title: "Every Time I Look For You", album: "Take Off Your Pants And Jacket"},{artists: "blink-182", title: "Mutt", album: "Enema Of The State"},{artists: "blink-182", title: "MH 4.18.2011", album: "Neighborhoods (Deluxe Version)"},{artists: "blink-182", title: "Give Me One Good Reason", album: "Take Off Your Pants And Jacket"},{artists: "+44", title: "Cliff Diving", album: "When Your Heart Stops Beating"},{artists: "Angels & Airwaves", title: "Surrender", album: "Love, Pt. 2"},{artists: "blink-182", title: "GO", album: "blink-182 (explicit version) [Explicit Version]"},{artists: "blink-182", title: "Don't Leave Me", album: "Enema Of The State"},{artists: "blink-182", title: "Degenerate", album: "Dude Ranch"},{artists: "blink-182", title: "Ben Wah Balls", album: "Cheshire Cat"},{artists: "blink-182", title: "Roller Coaster", album: "Take Off Your Pants And Jacket"},{artists: "blink-182", title: "Up All Night", album: "Neighborhoods (Deluxe Version)"},{artists: "blink-182", title: "All Of This", album: "blink-182 (explicit version) [Explicit Version]"},{artists: "blink-182", title: "Wendy Clear", album: "Enema Of The State"},{artists: "blink-182", title: "Story Of A Lonely Guy", album: "Take Off Your Pants And Jacket"},{artists: "blink-182", title: "Stockholm Syndrome", album: "blink-182 (explicit version) [Explicit Version]"}]
+playlist-id: 5vUvC8GT0wpnos3uYZaTuG
+playlist-img: https://mosaic.scdn.co/640/ab67616d0000b2732682e92c4fc9b95df0319c72ab67616d0000b273330500a40905b093b134396aab67616d0000b27385a14a0a61f764b46cf69acdab67616d0000b273ab2043abccd667e1961b0595
+summary: "These are some of my favorite songs by Transplants"
+---

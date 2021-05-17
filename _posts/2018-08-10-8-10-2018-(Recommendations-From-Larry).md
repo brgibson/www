@@ -1,7 +1,7 @@
 ---
 layout: post-album-playlist
-short-title: 8-10-2018 (Recommendations From Larry)
-title: 8-10-2018 (Recommendations From Larry)
+short-title: "8-10-2018 (Recommendations From Larry)"
+title: "8-10-2018 (Recommendations From Larry)"
 category: [blog, now-playing]
 tags: ["now-playing","playlist","various-artists","various-artists","the-western-swing-authority","asleep-at-the-wheel","asleep-at-the-wheel","bob-wills-&-his-texas-playboys","daniel-newton"]
 albums: ["Various Artists - Musical Moments to Remember: Vera Lyna – I'm in the Mood for Love (Remastered 2017)","Various Artists - We'll Meet Again, The Very Best Of Vera Lynn","The Western Swing Authority - The Western Swing Authority","Asleep At The Wheel - Asleep At The Wheel","Asleep At The Wheel - Western Standard Time","Bob Wills & His Texas Playboys - Classic Western Swing","Daniel Newton - Cafe Accordion"]

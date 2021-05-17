@@ -1,0 +1,11 @@
+---
+layout: post-standard-playlist
+short-title: "OCJ - Chapter 1 - A New College Hire"
+title: "OCJ - Chapter 1 - A New College Hire"
+category: [blog, playlist]
+tags: ["playlist","mgmt","arcade-fire","raffi","ambulance-ltd","the-futureheads","rancid","belle-&-sebastian","the-get-up-kids","franz-ferdinand","horace-silver","the-yardbirds","ben-kweller","flogging-molly","hank-williams","the-get-up-kids","paco-de-lucía,-ricardo-modrego","best-coast"]
+tracks: [{"title":"Time to Pretend","album":"Oracular Spectacular","artists":"MGMT"},{"title":"Keep the Car Running","album":"Neon Bible","artists":"Arcade Fire"},{"title":"Baby Beluga","album":"Baby Beluga","artists":"Raffi"},{"title":"Yoga Means Union","album":"LP","artists":"Ambulance LTD"},{"title":"First Day","album":"The Futureheads (new version)","artists":"The Futureheads"},{"title":"David Courtney","album":"Indestructible","artists":"Rancid"},{"title":"Your Cover's Blown (Miaoux Miaoux Remix)","album":"The Third Eye Centre","artists":"Belle & Sebastian"},{"title":"Stay Gone","album":"On A Wire","artists":"The Get Up Kids"},{"title":"Right Action","album":"Right Thoughts, Right Words, Right Action (Deluxe Edition)","artists":"Franz Ferdinand"},{"title":"Nothing But The Soul","album":"Bottle Rocket Short Film Soundtrack","artists":"Horace Silver"},{"title":"For Your Love","album":"The Best Of The Yardbirds","artists":"The Yardbirds"},{"title":"Things I Like To Do","album":"Changing Horses","artists":"Ben Kweller"},{"title":"Rebels Of The Sacred Heart","album":"Drunken Lullabies","artists":"Flogging Molly"},{"title":"Cold, Cold Heart","album":"The Complete Hank Williams","artists":"Hank Williams"},{"title":"Wouldn't Believe It","album":"Guilt Show","artists":"The Get Up Kids"},{"title":"La Nina De Puerta Oscura","album":"The Life Aquatic","artists":"Paco de Lucía, Ricardo Modrego"},{"title":"Let's Go Home","album":"The Only Place (Deluxe Edition)","artists":"Best Coast"}]
+playlist-id: 611uyyRScJNva7CJkDi98d
+playlist-img: https://mosaic.scdn.co/640/ab67616d0000b273206c58c0eb9916d4eb32c1feab67616d0000b273482238a4b17cefe095c919fcab67616d0000b2738b32b139981e79f2ebe005ebab67616d0000b2739e0e42aa866e5fa167b19608
+summary: "A playlist I created on 05-29-2014"
+---
