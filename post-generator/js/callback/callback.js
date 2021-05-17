@@ -266,7 +266,9 @@ summary: \\"A playlist I created on ${playlist.prettyDate}\\"
             var albums = {};
 
             tracks.images = albums.images = playlist.images;
-            tracks.playlistName = albums.playlistName = formatTitleForUrl({ playlistName: playlist.name });
+            tracks.playlistName = albums.playlistName = playlist.name;
+            tracks.playlistNameUrlFormatted = albums.playlistNameUrlFormatted = formatTitleForUrl({ playlistName: playlist.name });
+
             albums.id = playlist.id;
 
             albums.items = tracks.items.reduce(function(albums, track) {
