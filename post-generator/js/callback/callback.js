@@ -96,6 +96,24 @@
     var albumsForPlaylistSource = document.getElementById('albums-for-playlist-template').innerHTML,
         albumsForPlaylistTemplate = Handlebars.compile(albumsForPlaylistSource);
 
+    function formatTitleForUrl({ playlistName }) {
+        return playlistName
+            .toLowerCase()
+            .replaceAll('...', 'ellipsis')
+            .replaceAll('—', '')
+            .replaceAll('.', "")
+            .replaceAll('\'', "")
+            .replaceAll('!', "")
+            .replaceAll(',',"")
+            .replaceAll('&','and')
+            .replaceAll('/', "-")
+            .replaceAll(':', "")
+            .replaceAll(')', '\\)')
+            .replaceAll('(', '\\(')
+            .replaceAll(' - ', '-')
+            .replaceAll(' ', '-');
+    }
+
     /**
      * @param {String} - playlistName
      * @return ('album-playlist'|'intro-to-artist-playlist'|null)
@@ -132,21 +150,7 @@
 
             tracksFromApi.images = playlist.images = playlistFromApi.images;
             tracksFromApi.playlistName = playlist.playlistName = playlistFromApi.name;
-            tracksFromApi.playlistNameUrlFormatted = playlist.playlistNameUrlFormatted = playlistFromApi.name
-                .toLowerCase()
-                .replaceAll('...', 'ellipsis')
-                .replaceAll('—', '')
-                .replaceAll('.', "")
-                .replaceAll('\'', "")
-                .replaceAll('!', "")
-                .replaceAll(',',"")
-                .replaceAll('&','and')
-                .replaceAll('/', "-")
-                .replaceAll(':', "")
-                .replaceAll(')', '\\)')
-                .replaceAll('(', '\\(')
-                .replaceAll(' - ', '-')
-                .replaceAll(' ', '-');
+            tracksFromApi.playlistNameUrlFormatted = playlist.playlistNameUrlFormatted = formatTitleForUrl({ playlistName: playlistFromApi.name });
 
             playlist.id = playlistFromApi.id;
 
@@ -211,7 +215,7 @@ summary: \\"A playlist I created on ${playlist.prettyDate}\\"
 
             tracksFromApi.images = playlist.images = playlistFromApi.images;
             tracksFromApi.playlistName = playlist.playlistName = playlistFromApi.name;
-            tracksFromApi.playlistNameLowercase = playlist.playlistNameLowercase = playlistFromApi.name.toLowerCase();
+            tracksFromApi.playlistNameLowercase = playlist.playlistNameLowercase = formatTitleForUrl({ playlistName: playlistFromApi.name });
             playlist.id = playlistFromApi.id;
 
             if (!tracksFromApi.items[0]) {
@@ -262,7 +266,7 @@ summary: \\"A playlist I created on ${playlist.prettyDate}\\"
             var albums = {};
 
             tracks.images = albums.images = playlist.images;
-            tracks.playlistName = albums.playlistName = playlist.name;
+            tracks.playlistName = albums.playlistName = formatTitleForUrl({ playlistName: playlist.name });
             albums.id = playlist.id;
 
             albums.items = tracks.items.reduce(function(albums, track) {
