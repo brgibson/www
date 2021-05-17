@@ -193,8 +193,8 @@
             playlistPlaceholder.innerHTML += `<div class="playlist-container"><pre>
 echo "---
 layout: post-standard-playlist
-short-title: ${playlist.playlistName}
-title: ${playlist.playlistName}
+short-title: \"${playlist.playlistName}\"
+title: \"${playlist.playlistName}\"
 category: [blog, playlist]
 tags: [\\"playlist\\",\\"${playlist.blogPostTags.join('\\",\\"')}\\"]
 tracks: [${playlist.tracks.map(track => `{\\"title\\":\\"${track.title}\\",\\"album\\":\\"${track.album}\\",\\"artists\\":\\"${track.artists}\\"}`).join(',')}]
