@@ -195,8 +195,8 @@ echo "---
 layout: post-standard-playlist
 short-title: \\"${playlist.playlistName}\\"
 title: \\"${playlist.playlistName}\\"
-category: [blog, playlist]
-tags: [\\"playlist\\",\\"${playlist.blogPostTags.join('\\",\\"')}\\"]
+category: [blog, playlists]
+tags: [\\"playlists\\",\\"${playlist.blogPostTags.join('\\",\\"')}\\"]
 tracks: [${playlist.tracks.map(track => `{\\"title\\":\\"${track.title}\\",\\"album\\":\\"${track.album}\\",\\"artists\\":\\"${track.artists}\\"}`).join(',')}]
 playlist-id: ${playlist.id}
 playlist-img: ${playlist.images[0].url}

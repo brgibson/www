@@ -3,7 +3,7 @@ layout: post-album-playlist
 short-title: "Danny Elfman"
 title: "Danny Elfman"
 category: [blog, now-playing]
-tags: ["now-playing","playlist","danny-elfman","danny-elfman","danny-elfman","vitamin-string-quartet","danny-elfman","danny-elfman"]
+tags: ["now-playing","playlists","danny-elfman","danny-elfman","danny-elfman","vitamin-string-quartet","danny-elfman","danny-elfman"]
 albums: ["Danny Elfman - Batman Returns OMPST","Danny Elfman - Edward Scissorhands","Danny Elfman - Alice in Wonderland","Vitamin String Quartet - Vitamin String Quartet Performs the Nightmare Before Christmas","Danny Elfman - Beetlejuice (Original Motion Picture Soundtrack)","Danny Elfman - Men in Black 3 (Original Motion Picture Soundtrack)"]
 playlist-id: 5ngvsBXlJc7MCZ2iawWqGZ
 playlist-img: https://i.scdn.co/image/ab67616d0000b273a08a69bd20adb0976f2bb3a1
