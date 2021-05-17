@@ -393,6 +393,7 @@ summary: \\"A playlist I created on ${playlist.prettyDate}\\"
                           continue; //skip this playlist
                     }
 
+                    // todo - handle multiple pages of tracks
                     apiObj = BRG.SPOTIFY.API.tracks(access_token, accountId, playlist.id, 1);
 
                     const tracksApiCallback = getTracksApiCallback({ playlistType, playlist });
