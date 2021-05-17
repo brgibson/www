@@ -108,8 +108,8 @@
             .replaceAll('&','and')
             .replaceAll('/', "-")
             .replaceAll(':', "")
-            .replaceAll(')', '\)')
-            .replaceAll('(', '\(')
+            .replaceAll(')', '\\)')
+            .replaceAll('(', '\\(')
             .replaceAll(' - ', '-')
             .replaceAll(' ', '-');
     }
