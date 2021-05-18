@@ -120,7 +120,7 @@ layout: post-intro-to-artist-playlist
 short-title: {{playlistName}}
 title: {{playlistName}}
 category: [blog, intros]
-tags: [\"intros\",\"playlist\",{{#each blogPostTags}}{{#if @index}},{{/if}}\"{{this}}\"{{/each}}]
+tags: [\"intros\",\"playlists\",{{#each blogPostTags}}{{#if @index}},{{/if}}\"{{this}}\"{{/each}}]
 tracks: [{{#each tracks}}{{#if @index}},{{/if}}{artists: \"{{artists}}\", title: \"{{title}}\", album: \"{{album}}\"}{{/each}}]
 playlist-id: {{id}}
 playlist-img: {{images.0.url}}
@@ -138,7 +138,7 @@ layout: post-album-playlist
 short-title: \"{{playlistName}}\"
 title: \"{{playlistName}}\"
 category: [blog, now-playing]
-tags: [\"now-playing\",\"playlist\",{{#each blogPostTags}}{{#if @index}},{{/if}}\"{{this}}\"{{/each}}]
+tags: [\"now-playing\",\"playlists\",{{#each blogPostTags}}{{#if @index}},{{/if}}\"{{this}}\"{{/each}}]
 albums: [{{#each items}}{{#if @index}},{{/if}}\"{{artists}} - {{name}}\"{{/each}}]
 playlist-id: {{id}}
 playlist-img: {{images.0.url}}
