@@ -420,7 +420,7 @@ summary: \\"A playlist I created on ${playlist.prettyDate}\\"
                     }
 
                     if (apiObjs.length > 1) {
-                        console.log(`${playlist.name} has over ${(apiObjs.length * 100) - 1} tracks`)
+                        console.log(`${playlist.name} has over ${((apiObjs.length - 1) * 100)} tracks`)
                     }
 
                     const tracksApiCallback = getTracksApiCallback({ playlistType, playlist });
