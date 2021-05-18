@@ -437,7 +437,7 @@ summary: \\"A playlist I created on ${playlist.prettyDate}\\"
 
                         const promises = apiObjs.map((apiObj, index) => {
                             return delayPromise({
-                                ms: (i * 250) + ((index + 1) * 250),
+                                ms: index === 0 ? 0 : (i * 250) + ((index + 1) * 250),
                                 wrappedPromise: () => BRG.PROMISES.get(apiObj.url, apiObj.headers)
                             });
                         });
