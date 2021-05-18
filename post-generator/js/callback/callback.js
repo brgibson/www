@@ -411,15 +411,15 @@ summary: \\"A playlist I created on ${playlist.prettyDate}\\"
                           continue; //skip this playlist
                     }
 
-                    const numPagesOfTracks = Math.floor(playlist.tracks.total / 100) + 1
+                    const numPagesOfTracks = Math.floor(playlist.tracks.total / 100) + 1;
 
                     const apiObjs = [];
                     for (let j = 1; j <= numPagesOfTracks; j++) {
-                      apiObjs.push(BRG.SPOTIFY.API.tracks(access_token, accountId, playlist.id, 1))
+                      apiObjs.push(BRG.SPOTIFY.API.tracks(access_token, accountId, playlist.id, j))
                     }
 
                     if (apiObjs.length > 1) {
-                        console.log(`${playlist.name} has over ${apiObjs.length * 100} tracks`)
+                        console.log(`${playlist.name} has over ${(apiObjs.length * 100) - 1} tracks`)
                     }
 
                     const tracksApiCallback = getTracksApiCallback({ playlistType, playlist });
