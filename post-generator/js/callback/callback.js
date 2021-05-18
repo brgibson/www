@@ -412,9 +412,10 @@ summary: \\"A playlist I created on ${playlist.prettyDate}\\"
                     }
 
                     const numPagesOfTracks = Math.floor(playlist.tracks.total / 100) + 1;
+                    const maxPagesToRequestPerPlaylist = 11; // that will get us 1100 songs
 
                     const apiObjs = [];
-                    for (let j = 1; j <= numPagesOfTracks; j++) {
+                    for (let j = 1; j <= numPagesOfTracks && j <= maxPagesToRequestPerPlaylist; j++) {
                       apiObjs.push(BRG.SPOTIFY.API.tracks(access_token, accountId, playlist.id, j))
                     }
 
