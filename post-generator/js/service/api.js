@@ -50,6 +50,7 @@ BRG.SPOTIFY.API = BRG.SPOTIFY.API || {};
      *
      * @param accessToken
      * @param spotifyUserId
+     * @param playlistId
      * @param pageNumber - we only get 100 tracks at a time
      *
      * @returns {{url: string, headers: {Authorization: string}}}

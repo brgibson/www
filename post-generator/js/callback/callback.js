@@ -144,8 +144,14 @@
     }
 
     function getTracksApiCallback_standardPlaylist({ playlistFromApi }) {
-        return function(response) {
-            var tracksFromApi = JSON.parse(response);
+        return function(responses) {
+            const tracksFromApi = JSON.parse(responses[0]);
+            for (let i = 1; i < responses.length; i++) {
+                // append subsequent pages of tracks to the first page of tracks
+                const arrayOfTracks = JSON.parse(responses[i]).items;
+                tracksFromApi.items.push(...arrayOfTracks);
+            }
+
             var playlist = {};
 
             tracksFromApi.images = playlist.images = playlistFromApi.images;
@@ -209,8 +215,14 @@ summary: \\"A playlist I created on ${playlist.prettyDate}\\"
     }
 
     function getTracksApiCallback_introToArtistPlaylist({ playlistFromApi }) {
-        return function(response) {
-            var tracksFromApi = JSON.parse(response);
+        return function(responses) {
+            const tracksFromApi = JSON.parse(responses[0]);
+            for (let i = 1; i < responses.length; i++) {
+                // append subsequent pages of tracks to the first page of tracks
+                const arrayOfTracks = JSON.parse(responses[i]).items;
+                tracksFromApi.items.push(...arrayOfTracks);
+            }
+
             var playlist = {};
 
             tracksFromApi.images = playlist.images = playlistFromApi.images;
@@ -261,8 +273,14 @@ summary: \\"A playlist I created on ${playlist.prettyDate}\\"
     }
 
     function getTracksApiCallback_albumPlaylist({ playlist }) {
-        return function(response) {
-            var tracks = JSON.parse(response);
+        return function(responses) {
+            const tracks = JSON.parse(responses[0]);
+            for (let i = 1; i < responses.length; i++) {
+                // append subsequent pages of tracks to the first page of tracks
+                const arrayOfTracks = JSON.parse(responses[i]).items;
+                tracks.items.push(...arrayOfTracks);
+            }
+
             var albums = {};
 
             tracks.images = albums.images = playlist.images;
@@ -393,13 +411,24 @@ summary: \\"A playlist I created on ${playlist.prettyDate}\\"
                           continue; //skip this playlist
                     }
 
-                    // todo - handle multiple pages of tracks
-                    apiObj = BRG.SPOTIFY.API.tracks(access_token, accountId, playlist.id, 1);
+                    // const numPagesOfTracks = Math.floor(playlists.items.length / 100) + 1;
+                    const numPagesOfTracks = 1; // hardcoded for now to test the promises.all logic
+
+                    const apiObjs = [];
+                    for (let j = 1; j <= numPagesOfTracks; j++) {
+                      apiObjs.push(BRG.SPOTIFY.API.tracks(access_token, accountId, playlist.id, 1))
+                    }
+
+                    if (apiObjs.length > 1) {
+                        console.log(`${playlists.items[i].name} has over ${apiObjs.length * 100} tracks`)
+                    }
 
                     const tracksApiCallback = getTracksApiCallback({ playlistType, playlist });
 
                     if (playlist.id) { //need this check for Starred playlists, which doesn't have an id
-                        BRG.PROMISES.get(apiObj.url, apiObj.headers).then(tracksApiCallback ,function(error) {
+                        const promises = apiObjs.map(apiObj => (BRG.PROMISES.get(apiObj.url, apiObj.headers)));
+
+                        Promise.all(promises).then(tracksApiCallback, function(error) {
                             console.error("Tracks failed.", error);
                         });
                     }
