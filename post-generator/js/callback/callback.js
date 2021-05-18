@@ -411,8 +411,7 @@ summary: \\"A playlist I created on ${playlist.prettyDate}\\"
                           continue; //skip this playlist
                     }
 
-                    // const numPagesOfTracks = Math.floor(playlists.items.length / 100) + 1;
-                    const numPagesOfTracks = 1; // hardcoded for now to test the promises.all logic
+                    const numPagesOfTracks = Math.floor(playlist.tracks.total / 100) + 1
 
                     const apiObjs = [];
                     for (let j = 1; j <= numPagesOfTracks; j++) {
@@ -420,7 +419,7 @@ summary: \\"A playlist I created on ${playlist.prettyDate}\\"
                     }
 
                     if (apiObjs.length > 1) {
-                        console.log(`${playlists.items[i].name} has over ${apiObjs.length * 100} tracks`)
+                        console.log(`${playlist.name} has over ${apiObjs.length * 100} tracks`)
                     }
 
                     const tracksApiCallback = getTracksApiCallback({ playlistType, playlist });
