@@ -57,6 +57,14 @@
         return hashParams;
     }
 
+    function delayPromise({ ms, wrappedPromise }) {
+      return new Promise(function (resolve, reject) {
+        setTimeout(function() {
+          return resolve(wrappedPromise());
+        }, ms);
+      });
+    }
+
     /**
      * Add some logical helpers to Handlebars
      */
@@ -426,7 +434,13 @@ summary: \\"A playlist I created on ${playlist.prettyDate}\\"
                     const tracksApiCallback = getTracksApiCallback({ playlistType, playlist });
 
                     if (playlist.id) { //need this check for Starred playlists, which doesn't have an id
-                        const promises = apiObjs.map(apiObj => (BRG.PROMISES.get(apiObj.url, apiObj.headers)));
+
+                        const promises = apiObjs.map((apiObj, index) => {
+                            return delayPromise({
+                                ms: (index + 1) * 250,
+                                wrappedPromise: () => BRG.PROMISES.get(apiObj.url, apiObj.headers)
+                            });
+                        });
 
                         Promise.all(promises).then(tracksApiCallback, function(error) {
                             console.error("Tracks failed.", error);
