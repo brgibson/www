@@ -406,6 +406,9 @@ summary: \\"A playlist I created on ${playlist.prettyDate}\\"
                 console.error("Playlists Failed.", error);
 
             }).then(function(playlists) {
+                let numDelayedRequests = 0;
+                let delayAmount = 250;
+
                 for (var i = 0; i < playlists.items.length; i++) {
                     const playlist = playlists.items[i];
                     const playlistType = getPlaylistType({ playlistName: playlist.name, collaborative: playlist.collaborative });
@@ -436,8 +439,15 @@ summary: \\"A playlist I created on ${playlist.prettyDate}\\"
                     if (playlist.id) { //need this check for Starred playlists, which doesn't have an id
 
                         const promises = apiObjs.map((apiObj, index) => {
+                            if (index !== 0) {
+                                numDelayedRequests++;
+                                if (numDelayedRequests % 5 === 0) {
+                                    delayAmount += 250;
+                                }
+                            }
+
                             return delayPromise({
-                                ms: index === 0 ? 0 : (i * 250) + ((index + 1) * 250),
+                                ms: index === 0 ? 0 : delayAmount,
                                 wrappedPromise: () => BRG.PROMISES.get(apiObj.url, apiObj.headers)
                             });
                         });
