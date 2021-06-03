@@ -6,8 +6,9 @@
 | cmd + f5 | turn on/off Voice Over |
 | cmd + fn + doubletap f5 |	turn on/off Voice Over (touchbar mac) |
 | ctrl | pause/unpause reading |
+| ctrl + opt + a |	read from current position to the bottom of the page |
 
-_Note: The VO (voice-over) command is set to "ctrl + opt" by default.  You will see ctrl + opt below in a number of commands below and will also see it referred to as the VO command in the apple documentation._
+_Note: The VO (voice-over) command is set to "ctrl + opt" by default.  You will see ctrl + opt both above and below in a number of commands below and will also see it referred to as the VO command in the apple documentation._
 
 Working with text: https://www.apple.com/voiceover/info/guide/_1128.html
 
@@ -35,7 +36,6 @@ _Note: If your function key (eg. f5) is doing something unexpected, you might ne
 | cmd + alt + shift + ↓ | dig deeper into the element that is selected |
 | cmd + ← | browser back button |
 | cmd + → | browser forward button |
-| ctrl + opt + a |	read from current position to the bottom of the page |
 
 ## Testing On Windows 10 - Tool: Narrator
 _⚠ Note: we will be using ❖ to represent the Windows Logo Key ⚠_
