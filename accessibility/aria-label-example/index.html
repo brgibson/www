@@ -2,20 +2,101 @@
 layout: plain
 category: accessibility
 stylesheets: '<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">'
+styleblock: '
+<style>
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    border: 0;
+}
+</style>
+'
 
-title: Span with aria-label example
-keywords: accessibility aria example label
-description: An example of a usage of aria-label for star ratings when the using an icon font without visible text.
+title: Alternatives for using an aria-label on a span
+keywords: accessibility aria example label span
+description: A look at some alternatives for using aria-label on a span, which is not valid per ARIA 2.1.
 ---
-<main>
-    <h1 id="accessibility">Span with aria-label</h1>
 
-    <span class="rating-stars rating-stars d-inline-block heading-3 text-primary-darker"
-          aria-label="4.3 out of 5 stars">
-        <span class="rating-star fa fa-star"></span>
-        <span class="rating-star fa fa-star"></span>
-        <span class="rating-star fa fa-star"></span>
-        <span class="rating-star fa fa-star"></span>
-        <span class="rating-star fa fa-star-half-o"></span>
+<main>
+    <h1 id="accessibility">Alternatives for using an aria-label on a span</h1>
+
+    <h2>Invalid: aria-label on a span</h2>
+    <p>
+        The example below is not valid per <a href="https://www.w3.org/TR/wai-aria-1.2/#generic">ARIA 1.2</a>.  It
+        is using a span with an aria-label.  Not all screen readers will read this text.  See:
+        <a href="https://www.tpgi.com/short-note-on-aria-label-aria-labelledby-and-aria-describedby/">Short note on aria-label, aria-labelledby, and aria-describedby</a>.
+    </p>
+    <span aria-label="4.3 out of 5 stars">
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star-half-o"></span>
     </span>
+    <pre><code>
+        &lt;span aria-label=&quot;4.3 out of 5 stars&quot;&gt;
+            &lt;span class=&quot;fa fa-star&quot;&gt;&lt;/span&gt;
+            &lt;span class=&quot;fa fa-star&quot;&gt;&lt;/span&gt;
+            &lt;span class=&quot;fa fa-star&quot;&gt;&lt;/span&gt;
+            &lt;span class=&quot;fa fa-star&quot;&gt;&lt;/span&gt;
+            &lt;span class=&quot;fa fa-star-half-o&quot;&gt;&lt;/span&gt;
+        &lt;/span&gt;
+    </code></pre>
+
+    <h2>Recommended: using "offscreen" text</h2>
+    <p>
+        From what I can find, the most foolproof option is using an "offscreen" method for screen reader text.  One implementation
+        of this is the `.sr-only` class in boostrap.
+    </p>
+    <span>
+        <span class="sr-only">4.3 out of 5 star</span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star-half-o"></span>
+    </span>
+    <pre><code>
+        &lt;span&gt;
+            &lt;span class=&quot;sr-only&quot;&gt;4.3 out of 5 star&lt;/span&gt;
+            &lt;span class=&quot;fa fa-star&quot;&gt;&lt;/span&gt;
+            &lt;span class=&quot;fa fa-star&quot;&gt;&lt;/span&gt;
+            &lt;span class=&quot;fa fa-star&quot;&gt;&lt;/span&gt;
+            &lt;span class=&quot;fa fa-star&quot;&gt;&lt;/span&gt;
+            &lt;span class=&quot;fa fa-star-half-o&quot;&gt;&lt;/span&gt;
+        &lt;/span&gt;
+    </code></pre>
+
+    <h2>Questionable: using the title attribute</h2>
+    <p>
+        Another option is using the title attribute, but from what I have read, it is does not consistently work
+        for screen reader users:
+        <ul>
+            <li><a href="https://www.mediacurrent.com/blog/dont-rely-title-attribute-accessibility-seo/">Don't Rely on the Title Attribute for Accessibility</a></li>
+            <li><a href="https://www.tpgi.com/using-the-html-title-attribute/">Using the HTML title attribute</a></li>
+        </ul>
+    </p>
+    <span title="4.3 out of 5 stars">
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star-half-o"></span>
+    </span>
+    <pre><code>
+        &lt;span title=&quot;4.3 out of 5 stars&quot;&gt;
+            &lt;span class=&quot;fa fa-star&quot;&gt;&lt;/span&gt;
+            &lt;span class=&quot;fa fa-star&quot;&gt;&lt;/span&gt;
+            &lt;span class=&quot;fa fa-star&quot;&gt;&lt;/span&gt;
+            &lt;span class=&quot;fa fa-star&quot;&gt;&lt;/span&gt;
+            &lt;span class=&quot;fa fa-star-half-o&quot;&gt;&lt;/span&gt;
+        &lt;/span&gt;
+    </code></pre>
 </main>
