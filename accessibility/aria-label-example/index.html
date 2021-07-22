@@ -53,7 +53,7 @@ description: A look at some alternatives for using aria-label on a span, which i
     <h2>Recommended: using "offscreen" text</h2>
     <p>
         From what I can find, the most foolproof option is using an "offscreen" method for screen reader text.  One implementation
-        of this is the `.sr-only` class in boostrap.
+        of this is the <code>.sr-only</code> class in boostrap.
     </p>
     <span>
         <span class="sr-only">4.3 out of 5 star</span>
@@ -78,11 +78,12 @@ description: A look at some alternatives for using aria-label on a span, which i
     <p>
         Another option is using the title attribute, but from what I have read, it is does not consistently work
         for screen reader users:
-        <ul>
-            <li><a href="https://www.mediacurrent.com/blog/dont-rely-title-attribute-accessibility-seo/">Don't Rely on the Title Attribute for Accessibility</a></li>
-            <li><a href="https://www.tpgi.com/using-the-html-title-attribute/">Using the HTML title attribute</a></li>
-        </ul>
     </p>
+    <ul>
+        <li><a href="https://www.mediacurrent.com/blog/dont-rely-title-attribute-accessibility-seo/">Don't Rely on the Title Attribute for Accessibility</a></li>
+        <li><a href="https://www.tpgi.com/using-the-html-title-attribute/">Using the HTML title attribute</a></li>
+    </ul>
+
     <span title="4.3 out of 5 stars">
         <span class="fa fa-star"></span>
         <span class="fa fa-star"></span>
