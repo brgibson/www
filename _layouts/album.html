@@ -5,7 +5,6 @@ category: music
 
 {% include music/functions/getAlbum.html %}
 <!--<div id="hero-img-container" class="hero-img-container">-->
-
     <h1>{{album.albumTitle}}</h1>
     <div class="musicviewer">
         {% include music/spotify-player.html header=album.albumTitle spotifyKey=album.albumSpotifyKey %}
