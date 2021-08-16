@@ -1,5 +1,19 @@
 [
   {
+        "albumTitle": "The Shallow End",
+        "albumImageSelector": "",
+        "albumLinks": {
+            "spotify": "https://open.spotify.com/album/2GVTn1gxuwhU6hLQ9unZdF",
+            "itunes": "https://apple.co/3jVuTVs",
+            "amazon": "https://amzn.to/3m4BvmS",
+            "youtube": "https://bit.ly/37RBPwV"
+        },
+        "albumTracks": [],
+        "albumReleaseDate": "August 15, 2021",
+        "albumImage": "",
+        "albumSpotifyKey": "2GVTn1gxuwhU6hLQ9unZdF"
+  },
+  {
         "albumTitle": "Lost & Found",
         "albumImageSelector": "",
         "albumLinks": {
