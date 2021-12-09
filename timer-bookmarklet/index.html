@@ -1,0 +1,91 @@
+---
+layout: plain
+category: about
+bodySelector: experiments
+
+title: b.r.gibson Experiments - Timer Bookmarklet Alert
+keywords: b.r.gibson, brgibson, experiments, tech, js, bookmarklet, ben gibson, benjamin roberts gibson
+description: A timer bookmarklet to alert you that a certain amount of time has passed
+---
+
+<div class="main">
+    <section class="about-container">
+        <h1 id="new-relic-logout-alert-bookmarklet">Timer Alert Bookmarklet</h1>
+
+        <p><a href="/timer-bookmarklet/timer-bookmarklet.js">timer-bookmarklet.js</a></p>
+
+        <p>A timer bookmarklet to alert you that a certain amount of time has passed (or anything else that you want to set an alarm for).</p>
+
+        <p>In my case I was trying to prevent new-relic logouts, which would catch me by surprise</p>
+
+        <h2 id="default-configuration">Default Configuration</h2>
+
+        <ul>
+            <li><em>ENABLE_FIVE_SECOND_TESTING</em>: <strong>true</strong> <code
+                    class="language-plaintext highlighter-rouge">/* toggle this to false when you are done testing
+                locally */</code></li>
+            <li><em>ENABLE_SOUNDS</em>: <strong>true</strong></li>
+            <li><em>ENABLE_ALERTS_IN_TAB</em>: <strong>false</strong></li>
+            <li><em>ENABLE_USE_A_NEW_WINDOW_AS_AN_ALERT</em>: <strong>true</strong></li>
+            <li><em>ENABLE_UPDATE_TAB_TITLE</em>: <strong>true</strong></li>
+            <li><em>TAB_TITLE_OPTION</em>: <strong>TAB_TITLE_OPTIONS_ENUM.TIMER_WITH_AUTO_STOP</strong> (enum options:
+                <code class="language-plaintext highlighter-rouge">TIMER_WITH_AUTO_STOP</code>, <code
+                        class="language-plaintext highlighter-rouge">TIMER_WITH_NEGATIVE</code>, <code
+                        class="language-plaintext highlighter-rouge">INITIAL_TIME</code>)
+            </li>
+            <li><em>MINUTES_UNTIL_ALERT</em>: <strong>50</strong></li>
+        </ul>
+
+        <h2 id="default-usage">Default Usage</h2>
+
+        <p><em>See <a href="#installation-instruction">Installation Instruction</a> section below on how to install the
+            bookmarklet</em></p>
+
+        <ol>
+            <li>Click the bookmarklet to set a timer for your specified duration. Notice the timer will appear in your
+                tab name (Note: you can click the bookmarklet again to cancel your timers).
+            </li>
+            <li>When your timer is done counting down, it will stop at zero and display the timestamp of when it
+                stopped. It will also play the default sound three times before opening the reminder window.
+            </li>
+            <li>A popup will appear to remind you to re-login to new relic so you don’t lose your work.</li>
+            <li>You can click the bookmarklet again to clear the timers and stop the pending alert.</li>
+        </ol>
+
+        <h2 id="installation-instruction">Installation Instruction</h2>
+
+        <p>Installs like any other bookmarklet.</p>
+
+        <ol>
+            <li>Create a placeholder bookmark.</li>
+            <li>Edit your bookmark and add the script where the url would normally go.</li>
+            <li>Give it a test from the webpage you want to execute the JS from.</li>
+            <li>Make sure sounds and popups are working (if you want those configurations).</li>
+            <li>Adjust any other configurations (see code).</li>
+        </ol>
+
+        <h2 id="troubleshooting">Troubleshooting</h2>
+        <ul>
+            <li>Make sure you are clicking the bookmarklet from an actual webpage and not a blank tab. I have run into
+                issue where it doesn’t do anything.
+            </li>
+            <li>Be careful when editing bookmarklets. You must use <code>/*
+                ... */</code> style comments because often the code gets squashed into a single line and <code>//</code> would
+                comment out ALL code after it, not just
+                until the newline character. Check your developer tools console.
+            </li>
+            <li>Be careful when editing bookmarklets. You need semi-colons at the end of every line. This is because the
+                browser will typically strip all newlines from your script when you save the bookmarklet. Check your
+                developer tools console.
+            </li>
+            <li>There are certain websites that will have problems playing the sound. Check your developer tools
+                console.
+            </li>
+            <li>I've found that the setInterval is not 100% accurate.  Usually the timer countdown does not match
+                the actual countdown time.  It would be better to instead use the <code>new Date() + 50 minutes</code>
+                approach and update the tab title to be that minus the current time.  But until I make those tweaks
+                I'll probably just use the <code>TAB_TITLE_OPTIONS_ENUM.INITIAL_TIME</code> version.
+            </li>
+        </ul>
+    </section>
+</div>
