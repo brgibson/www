@@ -253,7 +253,7 @@ summary: \\"A playlist I created on ${playlist.prettyDate}\\"
 
                 tracks.push({
                     title: track.track.name,
-                    album: albumName.replace(/"/g, '\\\\\\"'),
+                    album: albumName, // don't replace here because it will start duplicating artists
                     artists: artists.replace(/"/g, '\\\\\\"')
                 });
 
