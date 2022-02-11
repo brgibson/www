@@ -253,7 +253,7 @@ summary: \\"A playlist I created on ${playlist.prettyDate}\\"
 
                 tracks.push({
                     title: track.track.name,
-                    album: albumName,
+                    album: albumName.replace(/"/g, '\\\\\\"'),
                     artists: artists.replace(/"/g, '\\\\\\"')
                 });
 
@@ -307,7 +307,7 @@ summary: \\"A playlist I created on ${playlist.prettyDate}\\"
 
                 if (albums.length < 1 || albums[albums.length - 1].name != albumName) {
                     albums.push({
-                        name: albumName,
+                        name: albumName.replace(/"/g, '\\\\\\"'),
                         artists: artists.replace(/"/g, '\\\\\\"')
                     });
                 } else if (albums[albums.length - 1].artists != artists) {
