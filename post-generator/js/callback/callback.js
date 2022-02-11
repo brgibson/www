@@ -244,7 +244,7 @@ summary: \\"A playlist I created on ${playlist.prettyDate}\\"
             }
 
             playlist.tracks = tracksFromApi.items.reduce(function(tracks, track) {
-                var albumName = track.track.album.name;
+                var albumName = track.track.album.name.replace(/"/g, '\\\\\\"');
 
                 var artists = track.track.artists.reduce(function(artists, artist, index) {
                     artists += (index > 0 ? ", " + artist.name : artist.name);
@@ -298,7 +298,7 @@ summary: \\"A playlist I created on ${playlist.prettyDate}\\"
             albums.id = playlist.id;
 
             albums.items = tracks.items.reduce(function(albums, track) {
-                var albumName = track.track.album.name;
+                var albumName = track.track.album.name.replace(/"/g, '\\\\\\"');
 
                 var artists = track.track.artists.reduce(function(artists, artist, index) {
                     artists += (index > 0 ? ", " + artist.name : artist.name);
