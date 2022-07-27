@@ -1,0 +1,476 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Side Porch Renderings</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="main.css">
+	</head>
+	<body>
+        <button id="no-bottom-newel">Preset: No Bottom Newel Post</button>
+        <button id="preset-1">Preset #1</button>
+        <button id="preset-2">Preset #2</button>
+        <label>
+            bottom offset x:
+            <input id="weird-rail-bottom-offset-x"  type="number" name="bottom-offset" min="-100" max="100">
+        </label>
+        <label>
+            bottom offset y:
+            <input id="weird-rail-bottom-offset-y"  type="number" name="bottom-offset" min="-100" max="100">
+        </label>
+        <label>
+            bottom length:
+            <input id="weird-rail-bottom-length"  type="number" name="bottom-offset" min="20" max="100">
+        </label>
+        <label>
+            bottom angle:
+            <input id="weird-rail-bottom-angle"  type="number" name="bottom-offset" min="20" max="180">
+        </label>
+        <label>
+            distance between railings:
+            <input id="weird-rail-distance-between"  type="number" name="bottom-offset" min="10" max="100">
+        </label>
+
+		<!-- Import maps polyfill -->
+		<!-- Add this back in if you are having trouble with this when import maps not being supported -->
+		<!--script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script-->
+
+		<script type="importmap">
+			{
+				"imports": {
+					"three": "../build/three.module.js"
+				}
+			}
+		</script>
+
+		<script type="module">
+
+			import * as THREE from 'three';
+
+			import { OrbitControls } from './jsm/controls/OrbitControls.js';
+
+			let camera, scene, renderer;
+
+			init();
+
+			function init() {
+
+				scene = new THREE.Scene();
+				scene.background = new THREE.Color( 0x999999 );
+
+				const light = new THREE.DirectionalLight( 0xffffff );
+				light.position.set( 0.5, 1.0, 0.5 ).normalize();
+
+				scene.add( light );
+
+				camera = new THREE.PerspectiveCamera( 35, window.innerWidth / window.innerHeight, 1, 500 );
+
+				camera.position.x = -120;
+				camera.position.y = 80 + 30;
+				camera.position.z = -200;
+
+				scene.add( camera );
+
+				// inches
+                const gridWidthInFeet = 10;
+				const gridSize = 12 * gridWidthInFeet;
+				const gridDivisions = gridWidthInFeet;
+
+				const grid = new THREE.GridHelper( gridSize, gridDivisions, 0x333333, 0x333333 );
+				scene.add( grid );
+
+				renderer = new THREE.WebGLRenderer( { antialias: true } );
+				renderer.outputEncoding = THREE.sRGBEncoding;
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				document.body.appendChild( renderer.domElement );
+
+				const controls = new OrbitControls( camera, renderer.domElement );
+				controls.addEventListener( 'change', render );
+				controls.update();
+
+				window.addEventListener( 'resize', onWindowResize );
+
+				function degreesToRadians(degrees) {
+                    return Math.PI * degrees / 180;
+                }
+
+                /* positions are from the bottom-left corner of the cubes */
+                const COLOR_WOOD = 0x654321;
+                const COLOR_TRIM = 0xE1C4A7; //0xF7F4EF;
+                const COLOR_HOUSE = 0xB9D0D2;
+                const COLOR_STAIR = 0x8F969E;
+
+                function addCube({ posX, posY, posZ, height, width, depth, rotateY, rotateX, rotateZ, color = COLOR_TRIM  }) {
+                    // shape
+                    var geometry = new THREE.BoxGeometry( width, height, depth );
+
+                    // cube
+                    var material = new THREE.MeshBasicMaterial( { color } );
+                    var cube = new THREE.Mesh( geometry, material );
+
+                    // cube's edges
+                    const edgesGeometry = new THREE.EdgesGeometry(geometry);
+                    const edgesMaterial = new THREE.LineBasicMaterial({ color: 0xffffff, lineWidth: 4, vertexColors: true });
+                    const edges = new THREE.LineSegments(edgesGeometry, edgesMaterial);
+
+                    const gridShift = gridSize / 2;
+                    cube.position.x = edges.position.x = width / 2 + posX - gridShift;
+                    cube.position.y = edges.position.y = height / 2 + posY;
+                    cube.position.z = edges.position.z = depth / 2 + posZ - gridShift;
+
+                    // update positions
+                    if (rotateY) {
+                        const radRotateY = degreesToRadians(rotateY);
+                        cube.rotateY(radRotateY);
+                        edges.rotateY(radRotateY);
+
+                        // adjust for rotation at the center of the object
+                        // cube.position.x = edges.position.x = (cube.position.x - ((width/2) * (1 - Math.cos(rotateY))));
+                        // cube.position.z = edges.position.z = (cube.position.z - ((depth/2) * (1 - Math.cos(rotateY))));
+
+                        // edges.position.x = (cube.position.x + ((depth/2) * (1 - Math.cos(rotateY))));
+                        // edges.position.z = (cube.position.z - ((depth/2) * (1 - Math.cos(rotateY))));
+                    }
+
+                    if (rotateX) {
+                        const radRotateX = degreesToRadians(rotateX);
+                        cube.rotateX(radRotateX);
+                        edges.rotateX(radRotateX);
+                    }
+
+                    if (rotateZ) {
+                        const radRotateZ = degreesToRadians(rotateZ);
+                        cube.rotateZ(radRotateZ);
+                        edges.rotateZ(radRotateZ);
+                    }
+
+                    // add elements to scene
+                    scene.add(cube);
+                    scene.add(edges);
+
+                    return { cube, edges };
+                }
+
+                const newelPostPostWidth = 6.25;
+                const newelPostTopWidth = 8.75;
+
+                function addGroundNewelPost({ posX, posY, posZ }) {
+                    // newel post dimensions in inches
+                    const height = 45.25;
+                    const width = newelPostPostWidth; // top is 8.75
+                    const depth = 6.25; // top is 8.75
+
+                    return addCube({ posX, posY, posZ, height, width, depth });
+                }
+
+                const porchNewelHeight = 37.25;
+                function addPorchNewelPost({ posX, posY, posZ }) {
+                    // newel post dimensions in inches
+                    const height = porchNewelHeight;
+                    const width = newelPostPostWidth;
+                    const depth = newelPostPostWidth;
+
+                    return addCube({ posX, posY, posZ, height, width, depth });
+                }
+
+                const spindleHeight = 30;
+                const spindleWidth = 1.5;
+                function addSpindle({ posX, posY, posZ }) {
+                    // dimensions in inches
+                    const height = spindleHeight;
+                    const width = spindleWidth;
+                    const depth = spindleWidth;
+
+                    return addCube({ posX, posY, posZ, height, width, depth });
+                }
+
+                const railHeight = 1.5;
+                const railWidth = 4;
+                function addWeirdRail({ length, posX, posY, posZ, angle }) {
+                    // dimensions in inches
+                    const height = railHeight;
+                    const width = length;
+                    const depth = railWidth;
+
+                    return addCube({ posX, posY, posZ, height, width, depth, rotateZ: angle });
+                }
+
+                function addWeirdRailTop({ length, posX, posY, posZ, rotateY }) {
+                    // dimensions in inches
+                    const height = railHeight;
+                    const width = railWidth;
+                    const depth = length;
+
+                    return addCube({ posX, posY, posZ, height, width, depth, rotateY });
+                }
+
+                const frontRailLength = 45.25;
+                function addFrontRail({ posX, posY, posZ, rotateY }) {
+                    // dimensions in inches
+                    const height = railHeight;
+                    const width = railWidth;
+                    const depth = frontRailLength;
+
+                    return addCube({ posX, posY, posZ, height, width, depth, rotateY });
+                }
+
+                const shortRailLength = 39;
+                function addShortRail({ posX, posY, posZ, rotateY }) {
+                    // dimensions in inches
+                    const height = railHeight;
+                    const width = shortRailLength;
+                    const depth = railWidth;
+
+                    return addCube({ posX, posY, posZ, height, width, depth, rotateY });
+                }
+
+                const columnWidth = newelPostPostWidth;
+                function addColumn({ posX, posY, posZ }) {
+                    // newel post dimensions in inches
+                    const height = 94; // still need this real measurement
+                    const width = columnWidth;
+                    const depth = columnWidth;
+
+                    return addCube({ posX, posY, posZ, height, width, depth });
+                }
+
+                const stairHeight = 6.5; //average
+                const treadHeight = 1.5;
+                const stairFrontOverhang = 1; // between .5 and .75
+                const stairSideOverhang = 1.25;
+                function addStair({ posX, posY, posZ, treadWidth, treadDepth, stairNumber = 1, rotate = 0, noTread = false }) {
+                    //left side support
+                    // addCube({ posX: 1, posY, posZ: posZ + stairSideOverhang, height: stairHeight, width: treadDepth - stairFrontOverhang, depth: 1 });
+                    //right side support
+                    // addCube({ posX: 1, posY, posZ: (posZ - stairSideOverhang) + treadWidth, height: stairHeight, width: treadDepth - stairFrontOverhang, depth: 1 });
+
+                    // support as a single cube
+                    addCube({ color: COLOR_STAIR, posX: posX + stairFrontOverhang, posY: 0, posZ: posZ + stairSideOverhang, height: stairHeight * stairNumber + ((stairNumber - 1) * treadHeight), width: treadDepth - stairFrontOverhang, depth: treadWidth - (2* stairSideOverhang), rotateY: rotate });
+                    // tread
+                    if (!noTread) {
+                        addCube({ color: COLOR_STAIR, posX, posY: posY + stairHeight, posZ, height: treadHeight, width: treadDepth, depth: treadWidth, rotateY: rotate });
+                    }
+                }
+
+                /**
+                 * Dimension Notes:
+                 * X dimension is from ground post to back wall
+                 * Z dimension is from porch post to column
+                 * Y dimension is from ground to ceiling
+                 */
+
+                // begin adding pieces to the scene
+                const porchHeight = 39;
+                const distToPorchNewel = 22; // need to remeasure (might be 22.5
+
+                let groundNewelPost = {};
+                groundNewelPost = addGroundNewelPost({ posX: 0, posY: 0, posZ: 0 });
+                addPorchNewelPost({ posX: distToPorchNewel, posY: porchHeight, posZ: 0 });
+
+                groundNewelPost.isDisplayed = true;
+                function guiAddGroundNewelPost() {
+                    if (!groundNewelPost.isDisplayed) {
+                        scene.add(groundNewelPost.cube);
+                        scene.add(groundNewelPost.edges);
+                        groundNewelPost.isDisplayed = true;
+                    }
+                }
+                function guiRemoveGroundNewelPost() {
+                    if (groundNewelPost.isDisplayed) {
+                        scene.remove(groundNewelPost.cube);
+                        scene.remove(groundNewelPost.edges);
+                        groundNewelPost.isDisplayed = false;
+                    }
+                }
+
+                // front long rail
+                addFrontRail({ posX: distToPorchNewel, posY: porchHeight + porchNewelHeight - 4, posZ: newelPostPostWidth });
+                addFrontRail({ posX: distToPorchNewel, posY: porchHeight + porchNewelHeight - 4 - spindleHeight, posZ: newelPostPostWidth });
+                for (let n = 0; n < 12; n++) {
+                    addSpindle(({ posX: distToPorchNewel + 1.5, posY: porchHeight + 4, posZ: newelPostPostWidth + 2 + (n * 4) }));
+                }
+                // end front long rail
+
+                addColumn({ posX: distToPorchNewel, posY: porchHeight, posZ: newelPostPostWidth + frontRailLength });
+
+                // side short rail
+                addShortRail({ posX: distToPorchNewel + columnWidth, posY: porchHeight + porchNewelHeight - 4, posZ: newelPostPostWidth + frontRailLength + 1 });
+                addShortRail({ posX: distToPorchNewel + columnWidth, posY: porchHeight + porchNewelHeight - 4 - spindleHeight, posZ: newelPostPostWidth + frontRailLength + 1});
+
+                const distBetweenSpindles = 4;
+                for (let n = 0; n < 10; n++) {
+                    addSpindle(({ posX: distToPorchNewel + columnWidth + 1.5 + (n * distBetweenSpindles), posY: porchHeight + 4, posZ: newelPostPostWidth + frontRailLength + 2.5 }));
+                }
+                // end side long rail
+
+                //add porch floor
+                addCube({ posX: distToPorchNewel - 2, posY: 38.25, posZ: -3.5, height: .75, width: 46, depth: 64.5, color: COLOR_STAIR });
+
+                //walls
+                const wallHeight = 10 * 12;
+                const distanceToBackWall = 66.5;
+                const bayWindowWallLength = 58;
+                /* back wall */ addCube({ posX: distanceToBackWall, posY: 0, posZ: -3.5, height: wallHeight, width: 1, depth: 10 * 12, color: COLOR_HOUSE });
+                /* bay window wall */ addCube({ posX: 46.5, posY: 0, posZ: -50.5, height: wallHeight, width: 1, depth: bayWindowWallLength, rotateY: 45, color: COLOR_HOUSE  });
+                /* front wall */ addCube({ posX: 11 + 11 + 4.5, posY: 0, posZ: -102, height: wallHeight, width: 1, depth: 5 * 12, color: COLOR_HOUSE });
+
+                // stairs
+                const frontStairsDepth = 11;
+                addStair({ posX: 0, posY: 0, posZ: -45 + 1.5, treadWidth: 45, treadDepth: 11 });
+                addStair({ posX: frontStairsDepth - stairFrontOverhang, posY: stairHeight + treadHeight, posZ: -45 + 1.5, treadWidth: 45, treadDepth: 11, stairNumber: 2 });
+                addStair({ posX: 2 * (frontStairsDepth - stairFrontOverhang), posY: 2 * (stairHeight + treadHeight), posZ: -45 + 1.5, treadWidth: 45, treadDepth: 51, stairNumber: 3 });
+                addStair({ posX: 3 * (frontStairsDepth - stairFrontOverhang), posY: 3 * (stairHeight + treadHeight), posZ: -45 + 1.5 + 17, treadWidth: 45, treadDepth: 51, stairNumber: 4, rotate: 45 });
+                addStair({ posX: 3 * (frontStairsDepth - stairFrontOverhang) - 16, posY: 3 * (stairHeight + treadHeight), posZ: 6.5, treadWidth: 45, treadDepth: 61, stairNumber: 5, rotate: 90, noTread: true });
+
+                //weird railing
+                let weirdRailing = {};
+
+                function guiBottomRemoveNewelAndRailing() {
+                    guiRemoveGroundNewelPost();
+
+                    if (weirdRailing.bottom) {
+                        scene.remove(weirdRailing.bottom.cube);
+                        scene.remove(weirdRailing.bottom.edges);
+                    }
+                    if (weirdRailing.top) {
+                        scene.remove(weirdRailing.top.cube);
+                        scene.remove(weirdRailing.top.edges);
+                    }
+                    if (weirdRailing.spindles) {
+                        for (let n = 0; n < weirdRailing.spindles.length; n++) {
+                            scene.remove(weirdRailing.spindles[n].cube);
+                            scene.remove(weirdRailing.spindles[n].edges);
+                        }
+                    }
+                    render();
+                }
+
+                let weirdRailBottomOffsetX = -12; // -15 // -17
+                let weirdRailBottomOffsetY = 31; // 32 // 28
+                let weirdRailBottomLength = 40; // 48 // 50
+                let weirdRailBottomAngle = 60; // 58 // 66
+                let weirdRailDistBetween = 20; // 22
+                function guiAddBottomRailingAndNewel() {
+                    guiAddGroundNewelPost();
+
+                    weirdRailing.bottom = addWeirdRail({ length: weirdRailBottomLength, posX: newelPostPostWidth + weirdRailBottomOffsetX, posY: 1.5 + weirdRailBottomOffsetY, posZ: 1.5, angle: weirdRailBottomAngle });
+                    weirdRailing.top = addWeirdRail({ length: weirdRailBottomLength, posX: newelPostPostWidth + weirdRailBottomOffsetX, posY: 1.5 + weirdRailBottomOffsetY + weirdRailDistBetween, posZ: 1.5, angle: weirdRailBottomAngle });
+                    weirdRailing.spindles = [];
+
+                    for (let n = 0; n < 4; n++) {
+                         weirdRailing.spindles[n] = addCube({ posX: 1 + newelPostPostWidth + (n * distBetweenSpindles), posY: (weirdRailBottomOffsetY - 8) + 7 * n, posZ: 2.5, height: weirdRailDistBetween - 1, width: spindleWidth, depth: spindleWidth });
+                    }
+                    render();
+                }
+
+                // guiAddBottomRailingAndNewel();
+
+                guiPresetOption1();
+
+                function guiPresetNoNewel() {
+                    guiDisableButtons({ noRailing: true, preset1: false, preset2: false });
+                    guiBottomRemoveNewelAndRailing();
+                }
+
+                function guiPresetOption1() {
+                    weirdRailBottomOffsetX = -12; // -15 // -17
+                    weirdRailBottomOffsetY = 31; // 32 // 28
+                    weirdRailBottomLength = 40; // 48 // 50
+                    weirdRailBottomAngle = 60; // 58 // 66
+                    weirdRailDistBetween = 20; // 22
+
+                    guiUpdateInputValues();
+                    guiDisableButtons({ noRailing: false, preset1: true, preset2: false });
+                    guiBottomRemoveNewelAndRailing();
+                    guiAddBottomRailingAndNewel();
+                }
+
+                function guiPresetOption2() {
+                    weirdRailBottomOffsetX = -12;
+                    weirdRailBottomOffsetY = 17;
+                    weirdRailBottomLength = 40;
+                    weirdRailBottomAngle = 60;
+                    weirdRailDistBetween = 35;
+
+
+                    guiUpdateInputValues();
+                    guiDisableButtons({ noRailing: false, preset1: false, preset2: true });
+                    guiBottomRemoveNewelAndRailing();
+                    guiAddBottomRailingAndNewel();
+                }
+
+                function guiUpdateInputValues()  {
+                    document.querySelector('#weird-rail-bottom-offset-x').value = weirdRailBottomOffsetX;
+                    document.querySelector('#weird-rail-bottom-offset-y').value = weirdRailBottomOffsetY;
+                    document.querySelector('#weird-rail-bottom-length').value = weirdRailBottomLength;
+                    document.querySelector('#weird-rail-bottom-angle').value = weirdRailBottomAngle;
+                    document.querySelector('#weird-rail-distance-between').value = weirdRailDistBetween;
+                }
+
+                function guiDisableButtons({ noRailing, preset1, preset2}) {
+                    document.querySelector('#no-bottom-newel').disabled = !!noRailing;
+                    document.querySelector('#preset-1').disabled = !!preset1;
+                    document.querySelector('#preset-2').disabled = !!preset2;
+                }
+
+                guiUpdateInputValues();
+
+                document.querySelector('#no-bottom-newel').addEventListener("click", guiPresetNoNewel);
+                document.querySelector('#preset-1').addEventListener("click", guiPresetOption1);
+                document.querySelector('#preset-2').addEventListener("click", guiPresetOption2);
+
+                document.querySelector('#weird-rail-bottom-offset-x').addEventListener("change", function(event) {
+                    weirdRailBottomOffsetX = +(event.currentTarget.value);
+                    guiBottomRemoveNewelAndRailing();
+                    guiAddBottomRailingAndNewel();
+                });
+                document.querySelector('#weird-rail-bottom-offset-y').addEventListener("change", function(event) {
+                    weirdRailBottomOffsetY = +(event.currentTarget.value);
+                    guiBottomRemoveNewelAndRailing();
+                    guiAddBottomRailingAndNewel();
+                });
+                document.querySelector('#weird-rail-bottom-length').addEventListener("change", function(event) {
+                    weirdRailBottomLength = +(event.currentTarget.value);
+                    guiBottomRemoveNewelAndRailing();
+                    guiAddBottomRailingAndNewel();
+                });
+                document.querySelector('#weird-rail-bottom-angle').addEventListener("change", function(event) {
+                    weirdRailBottomAngle = +(event.currentTarget.value);
+                    guiBottomRemoveNewelAndRailing();
+                    guiAddBottomRailingAndNewel();
+                });
+                document.querySelector('#weird-rail-distance-between').addEventListener("change", function(event) {
+                    weirdRailDistBetween = +(event.currentTarget.value);
+                    guiBottomRemoveNewelAndRailing();
+                    guiAddBottomRailingAndNewel();
+                });
+
+
+
+                // addWeirdRail({ length: 30, posX: newelPostPostWidth, posY: 1.5, posZ: 1.5 });
+
+                render();
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+				render();
+
+			}
+
+			function render() {
+
+				renderer.render( scene, camera );
+
+			}
+
+		</script>
+	</body>
+</html>
