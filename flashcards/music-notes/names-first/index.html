@@ -1,0 +1,169 @@
+---
+layout: alphabet
+category: experiments
+bodySelector: smash
+
+title: Learn music note names - names first
+keywords: music notes, note names, learning, flashcards
+description: Flashcard style way to learn musical notes.
+---
+<style>
+    html {
+        font-size: 16px;
+        background: #0b1225;
+        color: white;
+        letter-spacing: 2px;
+        text-shadow:
+           -1px -1px 0 #0a0e1c,
+            1px -1px 0 #0a0e1c,
+            -1px 1px 0 #0a0e1c,
+             1px 1px 0 #0a0e1c
+    }
+
+    dt, dd {
+        margin: 0 auto;
+        font-size: 8vh;
+        text-transform: capitalize
+    }
+    dd {
+        padding-top: 12px;
+    }
+
+    dl {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        height: 80vh;
+    }
+    dl > * {
+        display: none;
+    }
+
+    dl > .visible {
+        display: inline-block;
+
+    }
+    svg > .hide {
+        visibility: hidden;
+    }
+</style>
+
+<h1>
+    Music Notes
+</h1>
+
+<dl id="alphabet-list" margin-top="2rem">
+    {% for noteIndex in (0..site.data['music-notes'].size) limit: site.data['music-notes'].size %}
+        {% assign note = site.data['music-notes'][noteIndex] %}
+        <dt>
+            {% assign isStemUp = note.isStemUp %}
+
+            {% assign musicNoteRadiusX = 12 %}
+            {% assign musicNoteRadiusY = 10 %}
+
+            {% assign staffWidth = musicNoteRadiusX | times: 6 | times: 2 %}
+
+            {% assign musicNoteCircleCx = staffWidth | divided_by: 2 %}
+            {% assign musicNoteCircleCy = noteIndex | times: musicNoteRadiusY | plus: musicNoteRadiusY %}
+            {% assign musicNoteStemX1 = musicNoteRadiusX | plus: musicNoteCircleCx | minus: 1 %}
+            {% assign musicNoteStemX2 = musicNoteStemX1 %}
+            {% assign musicStemHeight = musicNoteRadiusY | times: 5 %}
+            {% if isStemUp %}
+                {% assign musicNoteStemY1 = musicNoteCircleCy | minus: musicStemHeight %}
+                {% assign musicNoteStemY2 = musicNoteCircleCy %}
+            {% else %}
+                {% assign musicNoteStemY1 = musicNoteCircleCy %}
+                {% assign musicNoteStemY2 = musicNoteCircleCy | plus: musicStemHeight %}
+            {% endif %}
+
+            <!-- viewBox: min-x, min-y, width and height -->
+            <svg height="70vh" viewBox="0 0 {{staffWidth}} {{musicNoteRadiusY | times: 16 | times: 2}}" color="white">
+                <g aria-label="music note">
+                    <ellipse fill="currentcolor" cx="{{musicNoteCircleCx}}" cy="{{musicNoteCircleCy}}" rx="{{musicNoteRadiusX}}" ry="{{musicNoteRadiusY}}" />
+                    <line stroke="currentcolor" x1="{{musicNoteStemX1}}" y1="{{musicNoteStemY1}}" x2="{{musicNoteStemX2}}" y2="{{musicNoteStemY2}}"  />
+                </g>
+                <g aria-label="staff">
+                    {% for i in (1..15) %}
+                        {% assign y = musicNoteRadiusY | times: 2 | times: i  %}
+
+                        {% if i == 1 or i == 2 or i == 8 or i == 14 or i == 15 %}
+                            {%assign smallOffset = 2 %}
+                            {%assign x1 = staffWidth | divided_by: 2 | minus: musicNoteRadiusX | minus: smallOffset %}
+                            <line stroke="currentcolor" x1="{{x1}}" y1="{{y}}" x2="{{musicNoteRadiusX | times: 2 | plus: x1 | plus: smallOffset | plus: smallOffset}}" y2="{{y}}"  />
+                        {% else %}
+                            <line stroke="currentcolor" x1="0" y1="{{y}}" x2="{{staffWidth}}" y2="{{y}}"  />
+                        {% endif %}
+                    {% endfor %}
+                </g>
+            </svg>
+        </dt>
+        <dd>{{note.letterSimple}}{{note.pianoNumber}}</dd>
+    {% endfor %}
+</dl>
+
+<script>
+    (function() {
+        function shuffle(array) {
+            var currentIndex = array.length, temporaryValue, randomIndex;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                // And swap it with the current element.
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
+        }
+
+        var list = document.getElementById("alphabet-list");
+
+        var randomChildIndex = [];
+        for (var i = 0; i < list.children.length / 2; i++) {
+            randomChildIndex.push(i * 2);
+        }
+        shuffle(randomChildIndex);
+
+        var curr = { index: 0, isQuestionShowing: true, childToDisplay: randomChildIndex[0]};
+
+        // hide the current music note
+        list.children[curr.childToDisplay].querySelector('[aria-label="music note"]').classList.add('hide');
+        // show the current staff
+        list.children[curr.childToDisplay].classList.add('visible');
+        // show the current note name
+        list.children[curr.childToDisplay + 1].classList.add('visible');
+
+        function clickHandler() {
+
+            if (curr.isQuestionShowing) {
+                // show the music note
+                list.children[curr.childToDisplay].querySelector('[aria-label="music note"]').classList.remove('hide');
+            } else {
+                // hide the old staff
+                list.children[curr.childToDisplay].classList.remove('visible');
+                // hide the old note name
+                list.children[curr.childToDisplay + 1].classList.remove('visible');
+
+                // increment
+                curr.index++;
+                curr.childToDisplay = randomChildIndex[curr.index % randomChildIndex.length];
+
+                // hide the new music note
+                list.children[curr.childToDisplay].querySelector('[aria-label="music note"]').classList.add('hide');
+                // show the new staff
+                list.children[curr.childToDisplay].classList.add('visible');
+                // show the new note name
+                list.children[curr.childToDisplay + 1].classList.add('visible');
+            }
+            curr.isQuestionShowing = !curr.isQuestionShowing;
+        }
+
+        document.body.onclick = clickHandler;
+    })();
+
+</script>
