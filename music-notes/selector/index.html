@@ -3,9 +3,9 @@ layout: alphabet
 category: experiments
 bodySelector: smash
 
-title: Learn music note names - notes first
-keywords: music notes, note names, learning, flashcards
-description: Flashcard style way to learn musical notes.
+title: Learn music note names - notes selector
+keywords: music notes, note names, learning, flashcards, selector
+description: Tap on the staff to see the note and name appear to check if you had the correct note name in your mind.
 ---
 <style>
     html {
@@ -36,13 +36,19 @@ description: Flashcard style way to learn musical notes.
         align-content: center;
         height: 80vh;
     }
-    dl > * {
-        display: none;
+    /*dl > * {*/
+    /*    display: none;*/
+    /*}*/
+
+    /*dl > .visible {*/
+    /*    display: inline-block;*/
+    /*}*/
+
+    .note {
+        visibility: hidden;
     }
-
-    dl > .visible {
-        display: inline-block;
-
+    .note.visible {
+        visibility: visible;
     }
 </style>
 
@@ -51,35 +57,16 @@ description: Flashcard style way to learn musical notes.
 </h1>
 
 <dl id="alphabet-list" margin-top="2rem">
-    {% for noteIndex in (0..site.data['music-notes'].size) limit: site.data['music-notes'].size %}
+    {% for noteIndex in (0..site.data['music-notes'].size) limit: 1 %}
         {% assign note = site.data['music-notes'][noteIndex] %}
         <dt>
-            {% assign isStemUp = note.isStemUp %}
-
             {% assign musicNoteRadiusX = 12 %}
             {% assign musicNoteRadiusY = 10 %}
 
             {% assign staffWidth = musicNoteRadiusX | times: 6 | times: 2 %}
 
-            {% assign musicNoteCircleCx = staffWidth | divided_by: 2 %}
-            {% assign musicNoteCircleCy = noteIndex | times: musicNoteRadiusY | plus: musicNoteRadiusY %}
-            {% assign musicNoteStemX1 = musicNoteRadiusX | plus: musicNoteCircleCx | minus: 1 %}
-            {% assign musicNoteStemX2 = musicNoteStemX1 %}
-            {% assign musicStemHeight = musicNoteRadiusY | times: 5 %}
-            {% if isStemUp %}
-                {% assign musicNoteStemY1 = musicNoteCircleCy | minus: musicStemHeight %}
-                {% assign musicNoteStemY2 = musicNoteCircleCy %}
-            {% else %}
-                {% assign musicNoteStemY1 = musicNoteCircleCy %}
-                {% assign musicNoteStemY2 = musicNoteCircleCy | plus: musicStemHeight %}
-            {% endif %}
-
             <!-- viewBox: min-x, min-y, width and height -->
             <svg height="70vh" viewBox="0 0 {{staffWidth}} {{musicNoteRadiusY | times: 16 | times: 2}}" color="white">
-                <g aria-label="music note">
-                    <ellipse fill="currentcolor" cx="{{musicNoteCircleCx}}" cy="{{musicNoteCircleCy}}" rx="{{musicNoteRadiusX}}" ry="{{musicNoteRadiusY}}" />
-                    <line stroke="currentcolor" x1="{{musicNoteStemX1}}" y1="{{musicNoteStemY1}}" x2="{{musicNoteStemX2}}" y2="{{musicNoteStemY2}}"  />
-                </g>
                 <g aria-label="staff">
                     {% for i in (1..15) %}
                         {% assign y = musicNoteRadiusY | times: 2 | times: i  %}
@@ -92,10 +79,37 @@ description: Flashcard style way to learn musical notes.
                             <line stroke="currentcolor" x1="0" y1="{{y}}" x2="{{staffWidth}}" y2="{{y}}"  />
                         {% endif %}
                     {% endfor %}
+
                 </g>
+
+                {% for noteIndex in (0..site.data['music-notes'].size) limit: site.data['music-notes'].size %}
+                    {% assign note = site.data['music-notes'][noteIndex] %}
+                    {% assign musicNoteCircleCx = staffWidth | divided_by: 2 %}
+                    {% assign musicNoteCircleCy = noteIndex | times: musicNoteRadiusY | plus: musicNoteRadiusY %}
+                    {% assign musicNoteStemX1 = musicNoteRadiusX | plus: musicNoteCircleCx | minus: 1 %}
+                    {% assign musicNoteStemX2 = musicNoteStemX1 %}
+                    {% assign musicStemHeight = musicNoteRadiusY | times: 5 %}
+                    {% assign isStemUp = note.isStemUp %}
+                    {% if isStemUp %}
+                        {% assign musicNoteStemY1 = musicNoteCircleCy | minus: musicStemHeight %}
+                        {% assign musicNoteStemY2 = musicNoteCircleCy %}
+                    {% else %}
+                        {% assign musicNoteStemY1 = musicNoteCircleCy %}
+                        {% assign musicNoteStemY2 = musicNoteCircleCy | plus: musicStemHeight %}
+                    {% endif %}
+                    {%assign musicNoteRadiusYHalf = musicNoteRadiusY | divided_by: 2 %}
+                    <g aria-label="music note" data-note="{{note.letterSimple}}{{note.pianoNumber}}" data-lettersimple="{{note.letterSimple}}">
+                        <g class="note hidden">
+                            <ellipse fill="currentcolor" cx="{{musicNoteCircleCx}}" cy="{{musicNoteCircleCy}}" rx="{{musicNoteRadiusX}}" ry="{{musicNoteRadiusY}}" />
+                            <line stroke="currentcolor" x1="{{musicNoteStemX1}}" y1="{{musicNoteStemY1}}" x2="{{musicNoteStemX2}}" y2="{{musicNoteStemY2}}"  />
+                        </g>
+                        <!-- transparent touch target -->
+                        <rect class="touch-target" y="{{musicNoteCircleCy | minus: musicNoteRadiusYHalf}}" width="{{staffWidth}}" height="{{musicNoteRadiusY}}" fill="#f0f" fill-opacity="0%" />
+                    </g>
+                {% endfor %}
             </svg>
         </dt>
-        <dd>{{note.letterSimple}}<!--{{note.pianoNumber}}--></dd>
+        <dd><!-- empty to start until first click on the staff --></dd>
     {% endfor %}
 </dl>
 
@@ -124,7 +138,7 @@ description: Flashcard style way to learn musical notes.
         for (var i = 0; i < list.children.length / 2; i++) {
             randomChildIndex.push(i * 2);
         }
-        shuffle(randomChildIndex);
+        // shuffle(randomChildIndex);
 
         var curr = { index: 0, isQuestionShowing: true, childToDisplay: randomChildIndex[0]};
         list.children[curr.childToDisplay].classList.add('visible');
@@ -149,7 +163,23 @@ description: Flashcard style way to learn musical notes.
             list.children[curr.childToDisplay].classList.add('visible');
         }
 
-        document.body.onclick = clickHandler;
+        const ddElem = document.querySelector('dd');
+        document.querySelectorAll('.touch-target').forEach((el, index) => {
+            const parentElem = el.parentElement;
+            const note = parentElem.querySelector('.note');
+            el.addEventListener('click', () => {
+                // hide curr visible note
+                const currVisibleNote = document.querySelector('.note.visible');
+                if (currVisibleNote) {
+                    currVisibleNote.classList.remove('visible');
+                }
+
+                // show newly selected note
+                note.classList.add('visible');
+                ddElem.innerHTML = parentElem.dataset.lettersimple;
+
+            })
+        })
     })();
 
 </script>
