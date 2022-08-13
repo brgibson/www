@@ -163,21 +163,37 @@ description: Tap on the staff to see the note and name appear to check if you ha
             list.children[curr.childToDisplay].classList.add('visible');
         }
 
+        function hideVisibleNote() {
+            const currVisibleNote = document.querySelector('.note.visible');
+            if (currVisibleNote) {
+                currVisibleNote.classList.remove('visible');
+            }
+        }
+
+
+
         const ddElem = document.querySelector('dd');
+
+        // allows the user to clear the note if they click outside of the svg
+        document.body.addEventListener('click', () => {
+            hideVisibleNote();
+            ddElem.innerHTML = '';
+        });
+
+        // handles clicks on the svg touch targets
         document.querySelectorAll('.touch-target').forEach((el, index) => {
             const parentElem = el.parentElement;
             const note = parentElem.querySelector('.note');
-            el.addEventListener('click', () => {
+            el.addEventListener('click', (event) => {
                 // hide curr visible note
-                const currVisibleNote = document.querySelector('.note.visible');
-                if (currVisibleNote) {
-                    currVisibleNote.classList.remove('visible');
-                }
+                hideVisibleNote();
 
                 // show newly selected note
                 note.classList.add('visible');
                 ddElem.innerHTML = parentElem.dataset.lettersimple;
 
+                // stop propagation so we don't trigger the 'clear visible note' click even attached to the the body
+                event.stopPropagation();
             })
         })
     })();
