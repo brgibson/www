@@ -1,0 +1,11 @@
+---
+layout: post-standard-playlist
+short-title: "Can't Stop Playlist"
+title: "Can't Stop Playlist"
+category: [blog, playlists]
+tags: ["playlists","michael-jackson","red-hot-chili-peppers","lou-christie","dmx","mc-hammer","buffalo-springfield","the-supremes","four-tops","journey","sinakho-dance-band","frankie-valli","green-day","modern-english","dead-kennedys","kiss","elvis-presley"]
+tracks: [{"title":"Don't Stop 'Til You Get Enough","album":"Off the Wall","artists":"Michael Jackson"},{"title":"Can't Stop","album":"By the Way (Deluxe Edition)","artists":"Red Hot Chili Peppers"},{"title":"LIGHTNING STRIKES","album":"LOU CHRISTIE \"LIVE FROM THE BOTTOM LINE\"","artists":"Lou Christie"},{"title":"Ruff Ryders' Anthem","album":"It's Dark And Hell Is Hot","artists":"DMX"},{"title":"U Can't Touch This","album":"Please Hammer Don't Hurt 'Em","artists":"MC Hammer"},{"title":"For What It's Worth","album":"Buffalo Springfield","artists":"Buffalo Springfield"},{"title":"Stop! In The Name Of Love - Single Version","album":"More Hits By The Supremes","artists":"The Supremes"},{"title":"I Can't Help Myself (Sugar Pie, Honey Bunch)","album":"Four Tops Second Album","artists":"Four Tops"},{"title":"Don't Stop Believin'","album":"Escape (Bonus Track Version)","artists":"Journey"},{"title":"Let the Beat Go","album":"Nyathela Kancane","artists":"Sinakho Dance Band"},{"title":"Can't Take My Eyes off You","album":"The Very Best of Frankie Valli & The 4 Seasons","artists":"Frankie Valli"},{"title":"J.A.R. (Jason Andrew Relva)","album":"International Superhits!","artists":"Green Day"},{"title":"I Melt with You","album":"After the Snow","artists":"Modern English"},{"title":"Kinky Sex Makes the World Go 'Round","album":"Give Me Convenience or Give Me Death","artists":"Dead Kennedys"},{"title":"What Makes The World Go Round","album":"Unmasked","artists":"KISS"},{"title":"Can't Help Falling in Love","album":"Blue Hawaii","artists":"Elvis Presley"}]
+playlist-id: 0VV1Zm97kfhcFLwAyaEEkw
+playlist-img: https://mosaic.scdn.co/640/ab67616d0000b27311658b970e0518be491871dfab67616d0000b2737027294551db4fda68b5ddacab67616d0000b273de1af2785a83cc660155a0c4ab67616d0000b273e8fc325372218dc10e2c85f4
+summary: "A playlist I created on 12-26-2022"
+---
