@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <meta name='viewport' content='width=device-width,initial-scale=1'/>
+        <title>CSS Speficity Test</title>
+
+		<style>
+            body {
+                background-color: #444;
+            }
+            h1 {
+                color: #eee;
+            }
+            p {
+                background-color: lightblue;
+                color: #333;
+            }
+		</style>
+        <link rel="stylesheet" type="text/css" href="./specificity-test.css">
+    </head>
+    <body>
+    <h1>CSS Speficity Test</h1>
+    <p>
+        This is a test to see how specificity is determined for a <code>&lt;style&gt;</code> tag vs a stylesheet.
+    </p>
+    <button onclick="moveStyleSheet()">
+        Move Stylesheet Before Style Block
+    </button>
+	</body>
+    <script>
+        const AFTER = 'After';
+        const BEFORE = 'Before';
+        let styleSheetPosition = AFTER;
+        const styleSheet = document.querySelector('[rel="stylesheet"]');
+        const styleBlock = document.querySelector('style');
+        function moveStyleSheet() {
+            const button = document.querySelector('button');
+            if (styleSheetPosition === AFTER) {
+                styleBlock.before(styleSheet);
+                styleSheetPosition = BEFORE;
+                button.textContent = `Move Stylesheet After Style Block`;
+            } else {
+                styleBlock.after(styleSheet);
+                styleSheetPosition = AFTER;
+                button.textContent = `Move Stylesheet Before Style Block`;
+            }
+        }
+    </script>
+</html>
