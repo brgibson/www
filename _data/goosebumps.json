@@ -385,10 +385,10 @@
       "reprintCollection": "Classic Goosebumps #2",
       "pages": "121",
       "ISBN": "0-590-44261-0",
-      "isOwned": false,
+      "isOwned": true,
       "imageUrl": "",
       "purchaseInfo": {
-        "isFromBensCollection": false,
+        "isFromBensCollection": true,
         "isFromAaronsCollection": false,
         "date": "",
         "purchasedFrom": {
