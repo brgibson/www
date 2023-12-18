@@ -5,8 +5,8 @@ bodySelector: smash
 maxWidth: none
 tableTextTransform: none;
 
-title: Goosebumps Books
-keywords: goosebumps books ownership
+title: Goosebumps Collection
+keywords: goosebumps collection books give yourself special editions choose your own adventure ownership
 description: List of Goosebumps Books that I own and where I got them from.
 ---
 <style>
@@ -60,24 +60,9 @@ description: List of Goosebumps Books that I own and where I got them from.
         </section>
 
     </form>
-    <table>
-        <thead>
-            <tr>
-                <th>Number</th>
-                <th>Title</th>
-                <th>Owned</th>
-                <th>Purchase Info</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for book in site.data.goosebumps.goosebumps %}
-                <tr tabindex="0" {% if book.isOwned %} class="owned {{book.isOwned}}" {% endif %}>
-                    <td>{{book.number}}</td>
-                    <td>{{book.title}}</td>
-                    <td>{% if book.isOwned %} Owned {% else %} Not Owned {% endif %}</td>
-                    <td class="chord">{% if book.purchaseInfo.isFromBensCollection %}Ben's Collection{% elsif book.purchaseInfo.isFromAaronsCollection %}Aaron's Collection{% elsif book.purchaseInfo.purchasedFrom.name != "" %}{{book.purchaseInfo.purchasedFrom.name}}<br>{{book.purchaseInfo.purchasedFrom.city}},{{book.purchaseInfo.purchasedFrom.state}}<br>{{book.purchaseInfo.date}}{% endif %}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    {% include goosebumps/table.html setName="Goosebumps Books" bookSet=site.data.goosebumps.goosebumps %}
+    {% include goosebumps/table.html setName="Tales To Give You Goosebumps (Short Stories)" bookSet=site.data.goosebumps.talesToGiveYouGoosebumps %}
+    {% include goosebumps/table.html setName="Give Yourself Goosebumps (Choose Your Own Adventure)" bookSet=site.data.goosebumps.giveYourselfGoosebumps %}
+    {% include goosebumps/table.html setName="Give Yourself Goosebumps: Special Editions" bookSet=site.data.goosebumps.giveYourselfGoosebumpsSpecialEditions %}
+    {% include goosebumps/table.html setName="Goosebumps Triple Headers" bookSet=site.data.goosebumps.goosebumpsTripleHeader %}
 </div>
