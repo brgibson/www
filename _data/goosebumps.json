@@ -238,7 +238,7 @@
       "reprintCollection": "Classic Goosebumps #7",
       "pages": "121",
       "ISBN": "0-590-44254-8",
-      "isOwned": false,
+      "isOwned": true,
       "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
