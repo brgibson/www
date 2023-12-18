@@ -1311,7 +1311,7 @@
       "pages": "144",
       "ISBN": "0-590-35007-2",
       "purchaseInfo": {
-        "isFromBensCollection": false,
+        "isFromBensCollection": true,
         "isFromAaronsCollection": false,
         "date": "",
         "purchasedFrom": {
@@ -1321,7 +1321,7 @@
           "additionalNotes": ""
         }
       },
-      "isOwned": false,
+      "isOwned": true,
       "imageUrl": false
     },
     {
@@ -1393,7 +1393,7 @@
       "pages": "137",
       "ISBN": "0-590-56646-6",
       "purchaseInfo": {
-        "isFromBensCollection": false,
+        "isFromBensCollection": true,
         "isFromAaronsCollection": false,
         "date": "",
         "purchasedFrom": {
@@ -1403,7 +1403,7 @@
           "additionalNotes": ""
         }
       },
-      "isOwned": false,
+      "isOwned": true,
       "imageUrl": false
     },
     {
@@ -1414,7 +1414,7 @@
       "ISBN": "0-590-67318-1",
       "purchaseInfo": {
         "isFromBensCollection": false,
-        "isFromAaronsCollection": false,
+        "isFromAaronsCollection": true,
         "date": "",
         "purchasedFrom": {
           "name": "",
@@ -1423,7 +1423,7 @@
           "additionalNotes": ""
         }
       },
-      "isOwned": false,
+      "isOwned": true,
       "imageUrl": false
     },
     {
@@ -1434,7 +1434,7 @@
       "ISBN": "0-590-67319-X",
       "purchaseInfo": {
         "isFromBensCollection": false,
-        "isFromAaronsCollection": false,
+        "isFromAaronsCollection": true,
         "date": "",
         "purchasedFrom": {
           "name": "",
@@ -1443,7 +1443,7 @@
           "additionalNotes": ""
         }
       },
-      "isOwned": false,
+      "isOwned": true,
       "imageUrl": false
     },
     {
@@ -1453,7 +1453,7 @@
       "pages": "135",
       "ISBN": "0-590-67320-3",
       "purchaseInfo": {
-        "isFromBensCollection": false,
+        "isFromBensCollection": true,
         "isFromAaronsCollection": false,
         "date": "",
         "purchasedFrom": {
@@ -1463,7 +1463,7 @@
           "additionalNotes": ""
         }
       },
-      "isOwned": false,
+      "isOwned": true,
       "imageUrl": false
     },
     {
@@ -2377,7 +2377,7 @@
       "pages": "144",
       "ISBN": "0-590-26602-0",
       "purchaseInfo": {
-        "isFromBensCollection": false,
+        "isFromBensCollection": true,
         "isFromAaronsCollection": false,
         "date": "",
         "purchasedFrom": {
@@ -2387,7 +2387,7 @@
           "additionalNotes": ""
         }
       },
-      "isOwned": false,
+      "isOwned": true,
       "imageUrl": false
     },
     {
@@ -2417,7 +2417,7 @@
       "pages": "125",
       "ISBN": "0-590-73908-5",
       "purchaseInfo": {
-        "isFromBensCollection": false,
+        "isFromBensCollection": true,
         "isFromAaronsCollection": false,
         "date": "",
         "purchasedFrom": {
@@ -2427,7 +2427,7 @@
           "additionalNotes": ""
         }
       },
-      "isOwned": false,
+      "isOwned": true,
       "imageUrl": false
     },
     {
