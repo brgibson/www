@@ -1310,6 +1310,8 @@
       "originalPublishedDate": "November 1997",
       "pages": "144",
       "ISBN": "0-590-35007-2",
+      "isOwned": true,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": true,
         "isFromAaronsCollection": false,
@@ -1320,9 +1322,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": true,
-      "imageUrl": false
+      }
     },
     {
       "number": "02",
@@ -1330,6 +1330,8 @@
       "originalPublishedDate": "May 1998",
       "pages": "176",
       "ISBN": "0-590-76252-4",
+      "isOwned": false,
+      "imageUrl": false,
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1340,9 +1342,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     }
   ],
   "giveYourselfGoosebumps": [
@@ -1352,6 +1352,8 @@
       "originalPublishedDate": "July 1995",
       "pages": "135",
       "ISBN": "0-590-55323-2",
+      "isOwned": false,
+      "imageUrl": false,
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1362,9 +1364,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "02",
@@ -1372,6 +1372,8 @@
       "originalPublishedDate": "November 1995",
       "pages": "135",
       "ISBN": "0-590-56645-8",
+      "isOwned": false,
+      "imageUrl": false,
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1382,9 +1384,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "03",
@@ -1392,6 +1392,8 @@
       "originalPublishedDate": "December 1995",
       "pages": "137",
       "ISBN": "0-590-56646-6",
+      "isOwned": true,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": true,
         "isFromAaronsCollection": false,
@@ -1402,9 +1404,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": true,
-      "imageUrl": false
+      }
     },
     {
       "number": "04",
@@ -1412,6 +1412,8 @@
       "originalPublishedDate": "February 1996",
       "pages": "130",
       "ISBN": "0-590-67318-1",
+      "isOwned": true,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": true,
@@ -1422,9 +1424,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": true,
-      "imageUrl": false
+      }
     },
     {
       "number": "05",
@@ -1432,6 +1432,8 @@
       "originalPublishedDate": "April 1996",
       "pages": "133",
       "ISBN": "0-590-67319-X",
+      "isOwned": true,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": true,
@@ -1442,9 +1444,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": true,
-      "imageUrl": false
+      }
     },
     {
       "number": "06",
@@ -1452,6 +1452,8 @@
       "originalPublishedDate": "June 1996",
       "pages": "135",
       "ISBN": "0-590-67320-3",
+      "isOwned": true,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": true,
         "isFromAaronsCollection": false,
@@ -1462,9 +1464,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": true,
-      "imageUrl": false
+      }
     },
     {
       "number": "07",
@@ -1472,6 +1472,8 @@
       "originalPublishedDate": "July 1996",
       "pages": "135",
       "ISBN": "0-590-67321-1",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1482,9 +1484,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "08",
@@ -1492,6 +1492,8 @@
       "originalPublishedDate": "August 1996",
       "pages": "132",
       "ISBN": "0-590-84765-1",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1502,9 +1504,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "09",
@@ -1512,6 +1512,8 @@
       "originalPublishedDate": "September 1996",
       "pages": "136",
       "ISBN": "0-590-84766-X",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1532,6 +1534,8 @@
       "originalPublishedDate": "October 1996",
       "pages": "136",
       "ISBN": "0-590-84767-8",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1542,9 +1546,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "11",
@@ -1552,18 +1554,20 @@
       "originalPublishedDate": "November 1996",
       "pages": "136",
       "ISBN": "0-590-84768-6",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
-        "date": "",
+        "date": "12-21-2023",
         "purchasedFrom": {
-          "name": "",
-          "city": "",
-          "state": "",
+          "name": "Your Brother's Bookstore",
+          "city": "Evansville",
+          "state": "IN",
           "additionalNotes": ""
         }
       },
-      "isOwned": false,
+      "isOwned": true,
       "imageUrl": false
     },
     {
@@ -1572,6 +1576,8 @@
       "originalPublishedDate": "December 1996",
       "pages": "137",
       "ISBN": "0-590-84772-4",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1582,9 +1588,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "13",
@@ -1592,6 +1596,8 @@
       "originalPublishedDate": "January 1997",
       "pages": "137",
       "ISBN": "0-590-84773-2",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1602,9 +1608,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "14",
@@ -1612,6 +1616,8 @@
       "originalPublishedDate": "February 1997",
       "pages": "135",
       "ISBN": "0-590-84774-0",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1622,9 +1628,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "15",
@@ -1632,19 +1636,19 @@
       "originalPublishedDate": "March 1997",
       "pages": "137",
       "ISBN": "0-590-93477-5",
+      "isOwned": true,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
-        "date": "",
+        "date": "12-21-2023",
         "purchasedFrom": {
-          "name": "",
-          "city": "",
-          "state": "",
+          "name": "Your Brother's Bookstore",
+          "city": "Evansville",
+          "state": "IN",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "16",
@@ -1652,6 +1656,8 @@
       "originalPublishedDate": "April 1997",
       "pages": "131",
       "ISBN": "0-590-84775-9",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1662,9 +1668,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "17",
@@ -1672,6 +1676,8 @@
       "originalPublishedDate": "May 1997",
       "pages": "137",
       "ISBN": "0-590-93483-X",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1682,9 +1688,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "18",
@@ -1692,6 +1696,8 @@
       "originalPublishedDate": "June 1997",
       "pages": "136",
       "ISBN": "0-590-93485-6",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1702,9 +1708,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "19",
@@ -1712,6 +1716,8 @@
       "originalPublishedDate": "July 1997",
       "pages": "137",
       "ISBN": "0-590-93489-9",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1722,9 +1728,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "20",
@@ -1732,6 +1736,8 @@
       "originalPublishedDate": "August 1997",
       "pages": "137",
       "ISBN": "0-590-93492-9",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1742,9 +1748,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "21",
@@ -1752,6 +1756,8 @@
       "originalPublishedDate": "September 1997",
       "pages": "137",
       "ISBN": "0-590-93500-3",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1762,9 +1768,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "22",
@@ -1772,6 +1776,8 @@
       "originalPublishedDate": "October 1997",
       "pages": "137",
       "ISBN": "0-590-21062-9",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1782,9 +1788,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "23",
@@ -1792,6 +1796,8 @@
       "originalPublishedDate": "November 1997",
       "pages": "137",
       "ISBN": "0-590-39774-5",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1802,9 +1808,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "24",
@@ -1812,6 +1816,8 @@
       "originalPublishedDate": "December 1997",
       "pages": "134",
       "ISBN": "0-590-39775-3",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1822,9 +1828,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "25",
@@ -1832,6 +1836,8 @@
       "originalPublishedDate": "January 1998",
       "pages": "133",
       "ISBN": "0-590-39776-1",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1842,9 +1848,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "26",
@@ -1852,6 +1856,8 @@
       "originalPublishedDate": "March 1998",
       "pages": "137",
       "ISBN": "0-590-39997-7",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1862,9 +1868,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "27",
@@ -1872,6 +1876,8 @@
       "originalPublishedDate": "April 1998",
       "pages": "140",
       "ISBN": "0-590-39998-5",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1882,9 +1888,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "28",
@@ -1892,6 +1896,8 @@
       "originalPublishedDate": "June 1998",
       "pages": "137",
       "ISBN": "0-590-40034-7",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1902,9 +1908,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "29",
@@ -1912,6 +1916,8 @@
       "originalPublishedDate": "July 1998",
       "pages": "137",
       "ISBN": "0-590-40289-7",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1922,9 +1928,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "30",
@@ -1932,6 +1936,8 @@
       "originalPublishedDate": "September 1998",
       "pages": "136",
       "ISBN": "0-590-41974-9",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1942,9 +1948,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "31",
@@ -1952,6 +1956,8 @@
       "originalPublishedDate": "November 1998",
       "pages": "137",
       "ISBN": "0-590-46306-3",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1962,9 +1968,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "32",
@@ -1972,6 +1976,8 @@
       "originalPublishedDate": "December 1998",
       "pages": "137",
       "ISBN": "0-590-76785-2",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -1982,9 +1988,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "33",
@@ -1992,6 +1996,8 @@
       "originalPublishedDate": "February 1999",
       "pages": "135",
       "ISBN": "0-590-51665-5",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -2002,9 +2008,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "34",
@@ -2012,6 +2016,8 @@
       "originalPublishedDate": "March 1999",
       "pages": "136",
       "ISBN": "0-590-51670-1",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -2022,9 +2028,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "35",
@@ -2032,6 +2036,8 @@
       "originalPublishedDate": "April 1999",
       "pages": "137",
       "ISBN": "0-590-51673-6",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -2042,9 +2048,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "36",
@@ -2052,6 +2056,8 @@
       "originalPublishedDate": "May 1999",
       "pages": "137",
       "ISBN": "0-590-51723-6",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -2062,9 +2068,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "37",
@@ -2072,6 +2076,8 @@
       "originalPublishedDate": "July 1999",
       "pages": "135",
       "ISBN": "0-590-51682-5",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -2082,9 +2088,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "38",
@@ -2092,6 +2096,8 @@
       "originalPublishedDate": "August 1999",
       "pages": "133",
       "ISBN": "0-590-51706-6",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -2102,9 +2108,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "39",
@@ -2112,6 +2116,8 @@
       "originalPublishedDate": "September 1999",
       "pages": "140",
       "ISBN": "0-590-99390-9",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -2122,9 +2128,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "40",
@@ -2132,6 +2136,8 @@
       "originalPublishedDate": "November 1999",
       "pages": "144",
       "ISBN": "0-590-99397-6",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -2142,9 +2148,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "41",
@@ -2152,6 +2156,8 @@
       "originalPublishedDate": "January 2000",
       "pages": "135",
       "ISBN": "0-439-12186-8",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -2162,9 +2168,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "42",
@@ -2172,6 +2176,8 @@
       "originalPublishedDate": "February 2000",
       "pages": "137",
       "ISBN": "0-439-13530-3",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -2182,9 +2188,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     }
   ],
   "giveYourselfGoosebumpsSpecialEditions": [
@@ -2194,6 +2198,8 @@
       "originalPublishedDate": "February 1998",
       "pages": "135 (238 sections)",
       "ISBN": "0-590-39777-X",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -2204,9 +2210,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "02",
@@ -2214,6 +2218,8 @@
       "originalPublishedDate": "May 1998",
       "pages": "136",
       "ISBN": "0-590-39999-3",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -2224,9 +2230,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "03",
@@ -2234,6 +2238,8 @@
       "originalPublishedDate": "August 1998",
       "pages": "131",
       "ISBN": "0-590-41920-X",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -2244,9 +2250,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "04",
@@ -2254,6 +2258,8 @@
       "originalPublishedDate": "October 1998",
       "pages": "135",
       "ISBN": "0-590-43378-4",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -2264,9 +2270,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "05",
@@ -2274,6 +2278,8 @@
       "originalPublishedDate": "January 1999",
       "pages": "136",
       "ISBN": "0-590-18734-1",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -2284,9 +2290,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "06",
@@ -2294,6 +2298,8 @@
       "originalPublishedDate": "June 1999",
       "pages": "134",
       "ISBN": "0-590-51674-4",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -2304,9 +2310,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "07",
@@ -2314,6 +2318,8 @@
       "originalPublishedDate": "October 1999",
       "pages": "135",
       "ISBN": "0-590-99393-3",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -2324,9 +2330,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "08",
@@ -2334,6 +2338,8 @@
       "originalPublishedDate": "December 1999",
       "pages": "135",
       "ISBN": "0-590-99652-5",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -2344,9 +2350,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     }
   ],
   "talesToGiveYouGoosebumps": [
@@ -2356,6 +2360,8 @@
       "originalPublishedDate": "October 1994",
       "pages": "144",
       "ISBN": "0-590-62836-4",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -2366,9 +2372,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "02",
@@ -2376,6 +2380,8 @@
       "originalPublishedDate": "July 1995",
       "pages": "144",
       "ISBN": "0-590-26602-0",
+      "isOwned": true,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": true,
         "isFromAaronsCollection": false,
@@ -2386,9 +2392,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": true,
-      "imageUrl": false
+      }
     },
     {
       "number": "03",
@@ -2396,6 +2400,8 @@
       "originalPublishedDate": "June 1996",
       "pages": "125",
       "ISBN": "0-590-73909-3",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -2406,9 +2412,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "04",
@@ -2416,6 +2420,8 @@
       "originalPublishedDate": "January 1997",
       "pages": "125",
       "ISBN": "0-590-73908-5",
+      "isOwned": true,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": true,
         "isFromAaronsCollection": false,
@@ -2426,9 +2432,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": true,
-      "imageUrl": false
+      }
     },
     {
       "number": "05",
@@ -2436,6 +2440,8 @@
       "originalPublishedDate": "June 1997",
       "pages": "144",
       "ISBN": "0-590-23795-0",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -2446,9 +2452,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     },
     {
       "number": "06",
@@ -2456,6 +2460,8 @@
       "originalPublishedDate": "October 1997",
       "pages": "144",
       "ISBN": "0-590-36683-1",
+      "isOwned": false,
+      "imageUrl": "",
       "purchaseInfo": {
         "isFromBensCollection": false,
         "isFromAaronsCollection": false,
@@ -2466,9 +2472,7 @@
           "state": "",
           "additionalNotes": ""
         }
-      },
-      "isOwned": false,
-      "imageUrl": false
+      }
     }
   ]
 }
