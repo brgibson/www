@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Liquidism part 2';
+    src: url('Liquidismpart2.eot');
+    src: url('Liquidismpart2.eot?#iefix') format('embedded-opentype'),
+        url('Liquidismpart2.woff2') format('woff2'),
+        url('Liquidismpart2.woff') format('woff'),
+        url('Liquidismpart2.ttf') format('truetype'),
+        url('Liquidismpart2.svg#Liquidismpart2') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
