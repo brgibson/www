@@ -26,13 +26,37 @@ stylesheets: '<link rel="preload" href="./liquidism/Liquidismpart2.woff2" as="fo
     :root {
         background-color: #111;
         color: #fff;
+        --shadowColor: -20.1px 6.1px 19px #EADD62;
+        --shadowColorTwo: 17px -10px 2px #EADD62;
+        --shadowColorThree: 96px -31px 102px #EADD62;
     }
     h1, h2, th {
         color: #59e986;
         font-family: 'Liquidism part 2';
     }
+    h1 {
+        -webkit-text-stroke: 1.4px rgba(0, 0, 0, 1);
+    }
+    h2 {
+        -webkit-text-stroke: 0.9px rgba(0, 0, 0, 0.85);
+        letter-spacing: -3.1px;
+        font-size: 33.1px;
+    }
+    th {
+        -webkit-text-stroke: 0.4px rgba(0, 0, 0, 0.85);
+        letter-spacing: -1.7px;
+        font-size: 16px;
+    }
+
     fieldset { border: 0 }
-    legend { color: #be59e9; font-family: 'Liquidism part 2'; }
+    fieldset:not(:first-child) { padding-bottom: 0 }
+    legend {
+        color: #be59e9;
+        font-size: 1.3em;
+        font-family: 'Liquidism part 2';
+        display: inline;
+        -webkit-text-stroke: 1px rgba(5,5,5,1);
+    }
     label { background-color: #eee; font-family: 'Liquidism part 2'; }
 
     /* https://stackoverflow.com/questions/22252472/how-can-i-change-the-color-of-an-svg-element
@@ -51,7 +75,7 @@ stylesheets: '<link rel="preload" href="./liquidism/Liquidismpart2.woff2" as="fo
     }
 
     .fancy {
-        display: inline-block;
+        display: block;
         position: relative;
         /*white-space: nowrap;*/
         &:after {
@@ -60,16 +84,23 @@ stylesheets: '<link rel="preload" href="./liquidism/Liquidismpart2.woff2" as="fo
             position: absolute;
             left: 0;
             right: 0;
-            bottom: calc(var(--deco-height) * -0.625);
+            top: calc(var(--deco-height) * -1.5);
             height: var(--deco-height);
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='64' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23a)'%3E%3Cpath d='M-17 30.5C-1 22 72-4 54 13 37.9 28.2-2.5 57.5 16 55.5s72-29 104-40' stroke='%2300FDCF' stroke-width='10'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='a'%3E%3Cpath fill='%23fff' d='M0 0h100v64H0z'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
             background-size: auto 100%;
             background-repeat: round;
-            background-position: 0em;
+            background-position: 0;
+            width: 100vw;
+            overflow: hidden;
+            margin: -8px;
         }
     }
 
-    .filters { text-align: left; display: block; padding-bottom: .5em; }
+    .filters {
+        text-align: left;
+        display: block;
+        filter: drop-shadow(var(--shadowColor))  drop-shadow(var(--shadowColorTwo)) drop-shadow(var(--shadowColorThree));
+    }
     .filters ul { display: inline; }
     .filters li { display: inline-block; margin: .25em 0; }
 
@@ -78,11 +109,20 @@ stylesheets: '<link rel="preload" href="./liquidism/Liquidismpart2.woff2" as="fo
 
     .col-filter-checkbox { display: none }
 
-    legend { display: inline; }
+    table, .filters {
+        margin-bottom: 3.5em;
+    }
 
-    table { border-spacing: 0.75em 0.25em; }
+    table {
+        border-spacing: 0.75em 0.25em;
+        text-transform: uppercase;
+        font-family: 'Trebuchet MS';
+        letter-spacing: -1.3px;
+    }
+
     tbody tr { cursor: pointer; }
     tbody tr:focus { background-color: #333; text-shadow: 0 0 .2px #000; outline-width: 0; }
+    th { text-align: left; }
 
     {% include chords/checkbox-interaction-css.html name="notOwned" hideSelector="owned" hideColumn=true %}
 
@@ -91,7 +131,7 @@ stylesheets: '<link rel="preload" href="./liquidism/Liquidismpart2.woff2" as="fo
     {% include chords/checkbox-interaction-css.html name="purchaseInfo" index=4 %}
 </style>
 <div>
-    <h1 id="chord-progressions" class="fancy" style="font-size:42px;"><img class="logo" alt="Goosebumps" src="./goosebumps-logo.svg" height="60px" width="auto" style="margin-right:8px"/>Collection</h1>
+    <h1 id="chord-progressions" style="font-size:47px;letter-spacing: -4px;"><img class="logo" alt="Goosebumps" src="./goosebumps-logo.svg" height="60px" width="auto" style="margin-right:8px"/>Collection</h1>
 
     <!-- inputs up here so the css selectors work and no js is required for the filtering -->
     <input class="col-filter-checkbox" id="notOwned" type="checkbox" checked>
@@ -117,9 +157,9 @@ stylesheets: '<link rel="preload" href="./liquidism/Liquidismpart2.woff2" as="fo
 
     </form>
     {% include goosebumps/table.html setName="<img class='logo' alt='Goosebumps' src='./goosebumps-logo.svg' height='45px' width='auto' style='margin-right:6px'/>Books" bookSet=site.data.goosebumps.goosebumps %}
-    {% include goosebumps/table.html setName="Tales To Give You <img class='logo' alt='Goosebumps' src='./goosebumps-logo.svg' height='40px' width='auto' /> (Short Stories)" bookSet=site.data.goosebumps.talesToGiveYouGoosebumps %}
     {% include goosebumps/table.html setName="Give Yourself <img class='logo' alt='Goosebumps' src='./goosebumps-logo.svg' height='40px' width='auto' /> (Choose Your Own Adventure)" bookSet=site.data.goosebumps.giveYourselfGoosebumps %}
     {% include goosebumps/table.html setName="Give Yourself <img class='logo' alt='Goosebumps' src='./goosebumps-logo.svg' height='40px' width='auto' /> (Special Editions)" bookSet=site.data.goosebumps.giveYourselfGoosebumpsSpecialEditions %}
+    {% include goosebumps/table.html setName="Tales To Give You <img class='logo' alt='Goosebumps' src='./goosebumps-logo.svg' height='40px' width='auto' /> (Short Stories)" bookSet=site.data.goosebumps.talesToGiveYouGoosebumps %}
     {% include goosebumps/table.html setName="<img class='logo' alt='Goosebumps' src='./goosebumps-logo.svg' height='40px' width='auto' style='margin-right:6px' />Triple Headers" bookSet=site.data.goosebumps.goosebumpsTripleHeader %}
 
     <h2 class="fancy"><img class='logo' alt='Goosebumps' src='./goosebumps-logo.svg' height='40px' width='auto' style='margin-right:6px' />Collection Photo</h2>

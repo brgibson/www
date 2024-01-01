@@ -2,7 +2,7 @@
 <table>
     <thead>
     <tr>
-        <th>Number</th>
+        <th>No.</th>
         <th>Title</th>
         <th>Owned</th>
         <th>Purchase Info</th>
@@ -11,9 +11,9 @@
     <tbody>
     {% for book in include.bookSet %}
     <tr tabindex="0" {% if book.isOwned %} class="owned {{book.isOwned}}" {% endif %}>
-        <td>{{book.number}}</td>
+        <td style="white-space: nowrap"># {{book.number}}</td>
         <td>{{book.title}}</td>
-        <td>{% if book.isOwned %} Owned {% else %} Not Owned {% endif %}</td>
+        <td><center>{% if book.isOwned %} ✔ {% else %}  ✖{% endif %}</center></td>
         <td class="chord">{% if book.purchaseInfo.isFromBensCollection %}Ben's Collection{% elsif book.purchaseInfo.isFromAaronsCollection %}Aaron's Collection{% elsif book.purchaseInfo.purchasedFrom.name != "" %}{{book.purchaseInfo.purchasedFrom.name}}<br>{{book.purchaseInfo.purchasedFrom.city}},{{book.purchaseInfo.purchasedFrom.state}}<br>{{book.purchaseInfo.date}}{% endif %}</td>
     </tr>
     {% endfor %}
