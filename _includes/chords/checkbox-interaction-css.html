@@ -1,8 +1,13 @@
+{% comment %}
+name - used for making the labels look "selected" and as a key to hide specific things
+hideSelector - used to specify the selector of the rows to be hidden
+index - index of the column to be hidden if you aren't using hideSelector
+{% endcomment %}
 #{{include.name}} ~ form label[for="{{include.name}}"] { content: '+ ' }
 #{{include.name}} ~ form label[for="{{include.name}}"]:before { content: '+ '}
 #{{include.name}}:checked ~ form label[for="{{include.name}}"]:before { content: '✓ '}
 
-{% if include.hideColumn %}
+{% if include.hideSelector %}
     #{{include.name}}:checked ~ table tr.{{include.hideSelector}} { display: none; }
 {% else %}
     #{{include.name}} ~ table tr > *:nth-of-type({{include.index}}) { display: none; }

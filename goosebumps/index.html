@@ -107,6 +107,22 @@ stylesheets: '<link rel="preload" href="./liquidism/Liquidismpart2.woff2" as="fo
     label { border: 1px solid #000; border-radius: .625em; padding: 0.25em 0.75em 0.125em 0.5em; line-height: 1.5em; background-color: #f1f8ff; color: #000}
     label:before { display: inline-block; width: 1em; }
 
+    ul.radio li:first-of-type label {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    ul.radio li:last-of-type label {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        margin-left: -5px;
+    }
+
+    ul.radio li:not(:first-child):not(:last-child) label {
+        border-radius: 0;
+        margin-left: -5px;
+    }
+
     .col-filter-checkbox { display: none }
 
     table, .filters {
@@ -124,33 +140,36 @@ stylesheets: '<link rel="preload" href="./liquidism/Liquidismpart2.woff2" as="fo
     tbody tr:focus { background-color: #333; text-shadow: 0 0 .2px #000; outline-width: 0; }
     th { text-align: left; }
 
-    {% include chords/checkbox-interaction-css.html name="notOwned" hideSelector="owned" hideColumn=true %}
-
+    {% include chords/checkbox-interaction-css.html name="notOwned" hideSelector="owned"%}
+    {% include chords/checkbox-interaction-css.html name="owned" hideSelector="not-owned" %}
+    {% include chords/checkbox-interaction-css.html name="all" hideSelector="do-nothing" %}
     {% include chords/checkbox-interaction-css.html name="title" index=2 %}
-    {% include chords/checkbox-interaction-css.html name="owned" index=3 %}
     {% include chords/checkbox-interaction-css.html name="purchaseInfo" index=4 %}
 </style>
 <div>
     <h1 id="chord-progressions" style="font-size:47px;letter-spacing: -4px;"><img class="logo" alt="Goosebumps" src="./goosebumps-logo.svg" height="60px" width="auto" style="margin-right:8px"/>Collection</h1>
 
     <!-- inputs up here so the css selectors work and no js is required for the filtering -->
-    <input class="col-filter-checkbox" id="notOwned" type="checkbox" checked>
+    <input class="col-filter-checkbox" id="notOwned" name="isOwned" type="radio" checked >
+    <input class="col-filter-checkbox" id="owned" name="isOwned" type="radio">
+    <input class="col-filter-checkbox" id="all" name="isOwned" type="radio">
+
     <input class="col-filter-checkbox" id="title" type="checkbox" checked>
-    <input class="col-filter-checkbox" id="owned" type="checkbox" checked>
     <input class="col-filter-checkbox" id="purchaseInfo" type="checkbox">
 
     <form class="filters">
         <fieldset>
             <legend>Filters:</legend>
-            <ul>
-                <li><label for="notOwned">Not Owned</label></li>
+            <ul class="radio">
+                <li><label for="notOwned" >Not Owned</label></li>
+                <li><label for="owned" >Owned</label></li>
+                <li><label for="all" >All</label></li>
             </ul>
         </fieldset>
         <fieldset>
             <legend>Columns:</legend>
             <ul>
                 <li><label for="title">Title</label></li>
-                <li><label for="owned">Owned</label></li>
                 <li><label for="purchaseInfo">Purchase Info</label></li>
             </ul>
         </fieldset>

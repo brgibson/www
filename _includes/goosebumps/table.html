@@ -10,7 +10,7 @@
     </thead>
     <tbody>
     {% for book in include.bookSet %}
-    <tr tabindex="0" {% if book.isOwned %} class="owned {{book.isOwned}}" {% endif %}>
+    <tr tabindex="0" class="{% if book.isOwned %}owned{% else %}not-owned{% endif %}">
         <td style="white-space: nowrap"># {{book.number}}</td>
         <td>{{book.title}}</td>
         <td><center>{% if book.isOwned %} ✔ {% else %}  ✖{% endif %}</center></td>
