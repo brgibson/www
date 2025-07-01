@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Number Typing Practice</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+        }
+        .number-toggle {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        .exercise {
+            font-size: 2rem;
+            margin: 20px 0 10px 0;
+        }
+        .mistyped {
+            color: red;
+        }
+        textarea {
+            width: 100%;
+            font-size: 1.5rem;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        .slider-label {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .metronome-status {
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<h1>Number Typing Exercise</h1>
+
+<div>
+    <strong>Include Numbers:</strong>
+    <div class="number-toggle"></div>
+</div>
+
+<div class="slider-label">
+    <label for="lengthInput">Length of number: <span id="lengthDisplay">5</span></label>
+    <input type="range" id="lengthInput" min="1" max="40" value="5" />
+</div>
+
+<div class="slider-label">
+    <label for="tempoInput">Metronome Tempo (BPM): <span id="tempoDisplay">60</span></label>
+    <input type="range" id="tempoInput" min="0" max="360" value="95" />
+</div>
+
+<button id="startMetronome">Start Metronome</button>
+<button id="stopMetronome">Stop Metronome</button>
+
+<div class="metronome-status" id="metronomeStatus">Metronome stopped</div>
+
+<div id="exerciseDisplay" class="exercise">Press start to begin</div>
+
+<textarea id="inputBox" rows="2" placeholder="Type here..."></textarea>
+
+<script>
+  const numberToggleContainer = document.querySelector('.number-toggle');
+  const exerciseDisplay = document.getElementById('exerciseDisplay');
+  const lengthSlider = document.getElementById('lengthInput');
+  const lengthDisplay = document.getElementById('lengthDisplay');
+  const tempoSlider = document.getElementById('tempoInput');
+  const tempoDisplay = document.getElementById('tempoDisplay');
+  const metronomeStatus = document.getElementById('metronomeStatus');
+  const inputBox = document.getElementById('inputBox');
+
+  let metronomeInterval = null;
+  let audioContext = null;
+  let currentTarget = '';
+  const digitCheckboxes = [];
+
+  // Parse query params into a plain object
+  function getQueryParams() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+      digits: params.get('digits'),
+      length: parseInt(params.get('length'), 10),
+      tempo: parseInt(params.get('tempo'), 10)
+    };
+  }
+
+  // Update the query params in the URL without reloading
+  function updateQueryParams() {
+    const digits = getSelectedDigits().join('');
+    const length = lengthSlider.value;
+    const tempo = tempoSlider.value;
+
+    const params = new URLSearchParams({
+      digits,
+      length,
+      tempo
+    });
+
+    history.replaceState(null, '', '?' + params.toString());
+  }
+
+  // Create checkboxes for 0–9
+  function setupDigitCheckboxes(initialDigits) {
+    for (let i = 0; i <= 9; i++) {
+      const label = document.createElement('label');
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.value = i;
+      checkbox.checked = initialDigits ? initialDigits.includes(i.toString()) : true;
+
+      checkbox.addEventListener('change', () => {
+        updateQueryParams();
+        showNewExercise();
+      });
+
+      digitCheckboxes.push(checkbox);
+      label.appendChild(checkbox);
+      label.append(' ' + i);
+      numberToggleContainer.appendChild(label);
+    }
+  }
+
+  function getSelectedDigits() {
+    return digitCheckboxes.filter(cb => cb.checked).map(cb => cb.value);
+  }
+
+  function generateNumberString(length, digits) {
+    let result = '';
+    for (let i = 0; i < length; i++) {
+      const rand = Math.floor(Math.random() * digits.length);
+      result += digits[rand];
+    }
+    return result;
+  }
+
+  function playClickSound() {
+    if (!audioContext) {
+      audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    }
+
+    const osc = audioContext.createOscillator();
+    const gain = audioContext.createGain();
+
+    osc.type = 'square';
+    osc.frequency.value = 1000;
+    gain.gain.value = 0.1;
+
+    osc.connect(gain);
+    gain.connect(audioContext.destination);
+
+    osc.start();
+    osc.stop(audioContext.currentTime + 0.05);
+  }
+
+  function startMetronome() {
+    if (metronomeInterval) return;
+    playClickSound();
+    const bpm = parseInt(tempoSlider.value, 10);
+    if (bpm > 0) {
+      const intervalMs = 60000 / bpm;
+      metronomeInterval = setInterval(playClickSound, intervalMs);
+      metronomeStatus.textContent = `Metronome running at ${bpm} BPM`;
+    } else {
+      metronomeStatus.textContent = 'Tempo is 0 — no metronome clicks';
+    }
+  }
+
+  function stopMetronome() {
+    clearInterval(metronomeInterval);
+    metronomeInterval = null;
+    metronomeStatus.textContent = 'Metronome stopped';
+  }
+
+  function showNewExercise() {
+    const length = parseInt(lengthSlider.value, 10);
+    const digits = getSelectedDigits();
+    if (digits.length === 0) {
+      exerciseDisplay.textContent = 'Please select at least one digit.';
+      return;
+    }
+    currentTarget = generateNumberString(length, digits);
+    inputBox.value = '';
+    updateExerciseDisplay();
+  }
+
+  function updateExerciseDisplay() {
+    const typed = inputBox.value.replace(/[\n\r\s]/g, '');
+    let isMistyped = false;
+
+    for (let i = 0; i < typed.length; i++) {
+      if (typed[i] !== currentTarget[i]) {
+        isMistyped = true;
+        break;
+      }
+    }
+
+    exerciseDisplay.textContent = currentTarget;
+    exerciseDisplay.className = 'exercise' + (isMistyped ? ' mistyped' : '');
+  }
+
+  // Apply initial query param values
+  const initialParams = getQueryParams();
+
+  if (!isNaN(initialParams.length)) {
+    lengthSlider.value = initialParams.length;
+  }
+  if (!isNaN(initialParams.tempo)) {
+    tempoSlider.value = initialParams.tempo;
+  }
+
+  setupDigitCheckboxes(initialParams.digits);
+
+  // Update UI with loaded values
+  tempoDisplay.textContent = tempoSlider.value;
+  lengthDisplay.textContent = lengthSlider.value;
+
+  // Event listeners
+  document.getElementById('startMetronome').addEventListener('click', startMetronome);
+  document.getElementById('stopMetronome').addEventListener('click', stopMetronome);
+
+  inputBox.addEventListener('input', updateExerciseDisplay);
+
+  inputBox.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      showNewExercise();
+    }
+  });
+
+  tempoSlider.addEventListener('input', () => {
+    tempoDisplay.textContent = tempoSlider.value;
+    updateQueryParams();
+    if (metronomeInterval) {
+      stopMetronome();
+      startMetronome();
+    }
+  });
+
+  lengthSlider.addEventListener('input', () => {
+    lengthDisplay.textContent = lengthSlider.value;
+    updateQueryParams();
+  });
+
+  // Show first exercise
+  showNewExercise();
+  inputBox.focus()
+
+</script>
+</body>
+</html>
