@@ -152,7 +152,7 @@ a {
     width: 100%
 }
 .nav + *::before,
-.nav + .main::before {
+.nav + style + *::before {
     content: '';
     display: block;
     padding-bottom: 3em;

@@ -1,74 +1,171 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>Number Typing Practice</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            padding: 20px;
-        }
-        .number-toggle {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-bottom: 10px;
-        }
-        .exercise {
-            font-size: 2rem;
-            margin: 20px 0 10px 0;
-        }
-        .mistyped {
-            color: red;
-        }
-        textarea {
-            width: 100%;
-            font-size: 1.5rem;
-            padding: 8px;
-            box-sizing: border-box;
-        }
-        label {
-            display: block;
-            margin-top: 10px;
-        }
-        .slider-label {
-            margin-top: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .metronome-status {
-            margin-top: 10px;
-            font-style: italic;
-        }
-    </style>
-</head>
-<body>
-<h1>Number Typing Exercise</h1>
+---
+layout: default-no-bkg
+category: experiments
+bodySelector: experiments
 
-<div>
-    <strong>Include Numbers:</strong>
-    <div class="number-toggle"></div>
+title: Number Typing Practice
+keywords: b.r.gibson, brgibson, ben gibson, benjamin roberts gibson, code, tech, experiments,
+description: Simple and customizable number typing practice.
+---
+<style>
+    body {
+        font-family: sans-serif;
+    }
+    h2 {
+        margin: 4rem auto 2rem;
+    }
+    .number-toggle {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+    }
+    .exercise {
+        font-size: 2rem;
+        margin: 2rem 0 2rem;
+    }
+    .mistyped {
+        color: red;
+    }
+    textarea {
+        width: 100%;
+        font-size: 1.5rem;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+    label {
+        display: block;
+        margin-top: 10px;
+    }
+    .slider-label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-grow: 1;
+    }
+    .input-label {
+        margin-bottom: 10px;
+    }
+    #exerciseForm section {
+        padding: 0 2rem;
+
+        h2 {
+            margin-left: -2rem;
+        }
+    }
+    .configuration {
+        margin: 1.75rem 0;
+    }
+    .metronome-wrapper {
+        display: flex;
+        align-items: center;
+    }
+    .metronome-controls {
+        margin-right: 2rem;
+        text-align: center;
+        button {
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+
+            svg {
+                height: 100%;
+                width: 100%;
+            }
+        }
+        .display-start-metronome-btn {
+            .startMetronomeSvg {
+                display: unset;
+            }
+            .stopMetronomeSvg {
+                display: none;
+            }
+        }
+        .display-stop-metronome-btn {
+            .startMetronomeSvg {
+                display: none;
+            }
+            .stopMetronomeSvg {
+                display: unset;
+            }
+        }
+    }
+</style>
+<div class="main">
+    <section aria-labelledby="exercise-heading">
+        <h1 id="exercise-heading">Number Typing Exercise</h1>
+
+        <form id="exerciseForm" novalidate>
+            <section>
+                <h2>Configurations</h2>
+
+                <div class="metronome-wrapper configuration">
+                    <div class="metronome-controls" role="group" aria-label="Metronome controls" aria-live="polite">
+                        <button type="button" id="metronomeControl" class="display-start-metronome-btn">
+                            <svg class="startMetronomeSvg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-label="Start Metronome">
+                                <polygon points="6,4 20,12 6,20" fill="currentColor" />
+                            </svg>
+                            <svg class="stopMetronomeSvg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-label="Stop Metronome" display="none">
+                                <rect x="6" y="4" width="4" height="16" fill="currentColor" />
+                                <rect x="14" y="4" width="4" height="16" fill="currentColor" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="slider-label">
+                        <label for="tempoInput">
+                            Metronome Tempo:<br> <span id="tempoDisplay">90</span> BPM
+                        </label>
+                        <input
+                                type="range"
+                                id="tempoInput"
+                                name="tempo"
+                                min="0"
+                                max="360"
+                                value="95"
+                                aria-describedby="tempoDisplay"
+                        />
+                    </div>
+                </div>
+
+                <fieldset class="include-numbers configuration" style="margin-top: 2.25rem">
+                    <legend>Numbers</legend>
+                    <div class="number-toggle"></div>
+                </fieldset>
+
+                <div class="slider-label configuration">
+                    <label for="lengthInput">
+                        Number of Digits: <span id="lengthDisplay">5</span>
+                    </label>
+                    <input
+                            type="range"
+                            id="lengthInput"
+                            name="length"
+                            min="1"
+                            max="40"
+                            value="5"
+                            aria-describedby="lengthDisplay"
+                    />
+                </div>
+            </section>
+
+            <section>
+                <h2>Practice Area</h2>
+                <div id="exerciseDisplay" class="exercise">First Number Will Be Added Here</div>
+
+                <label for="inputBox" class="input-label">Your Input
+                    <span style="font-size: .75rem; line-height: 1rem; vertical-align: middle">(press enter for next number)</span>
+                </label>
+                <textarea
+                        id="inputBox"
+                        rows="2"
+                        placeholder="Type here..."
+                        aria-describedby="exerciseDisplay"
+                ></textarea>
+            </section>
+        </form>
+    </section>
 </div>
-
-<div class="slider-label">
-    <label for="lengthInput">Length of number: <span id="lengthDisplay">5</span></label>
-    <input type="range" id="lengthInput" min="1" max="40" value="5" />
-</div>
-
-<div class="slider-label">
-    <label for="tempoInput">Metronome Tempo (BPM): <span id="tempoDisplay">60</span></label>
-    <input type="range" id="tempoInput" min="0" max="360" value="95" />
-</div>
-
-<button id="startMetronome">Start Metronome</button>
-<button id="stopMetronome">Stop Metronome</button>
-
-<div class="metronome-status" id="metronomeStatus">Metronome stopped</div>
-
-<div id="exerciseDisplay" class="exercise">Press start to begin</div>
-
-<textarea id="inputBox" rows="2" placeholder="Type here..."></textarea>
 
 <script>
   const numberToggleContainer = document.querySelector('.number-toggle');
@@ -77,7 +174,7 @@
   const lengthDisplay = document.getElementById('lengthDisplay');
   const tempoSlider = document.getElementById('tempoInput');
   const tempoDisplay = document.getElementById('tempoDisplay');
-  const metronomeStatus = document.getElementById('metronomeStatus');
+  const metronomeControl = document.getElementById('metronomeControl');
   const inputBox = document.getElementById('inputBox');
 
   let metronomeInterval = null;
@@ -163,23 +260,25 @@
     osc.stop(audioContext.currentTime + 0.05);
   }
 
+  function handleMetronomeClick() {
+    !!metronomeInterval ? stopMetronome() : startMetronome();
+  }
+
   function startMetronome() {
     if (metronomeInterval) return;
+    metronomeControl.className = "display-stop-metronome-btn";
     playClickSound();
     const bpm = parseInt(tempoSlider.value, 10);
     if (bpm > 0) {
       const intervalMs = 60000 / bpm;
       metronomeInterval = setInterval(playClickSound, intervalMs);
-      metronomeStatus.textContent = `Metronome running at ${bpm} BPM`;
-    } else {
-      metronomeStatus.textContent = 'Tempo is 0 — no metronome clicks';
     }
   }
 
   function stopMetronome() {
     clearInterval(metronomeInterval);
+    metronomeControl.className = "display-start-metronome-btn";
     metronomeInterval = null;
-    metronomeStatus.textContent = 'Metronome stopped';
   }
 
   function showNewExercise() {
@@ -226,8 +325,7 @@
   lengthDisplay.textContent = lengthSlider.value;
 
   // Event listeners
-  document.getElementById('startMetronome').addEventListener('click', startMetronome);
-  document.getElementById('stopMetronome').addEventListener('click', stopMetronome);
+  document.getElementById('metronomeControl').addEventListener('click', handleMetronomeClick);
 
   inputBox.addEventListener('input', updateExerciseDisplay);
 
@@ -250,6 +348,7 @@
   lengthSlider.addEventListener('input', () => {
     lengthDisplay.textContent = lengthSlider.value;
     updateQueryParams();
+    showNewExercise();
   });
 
   // Show first exercise
@@ -257,5 +356,3 @@
   inputBox.focus()
 
 </script>
-</body>
-</html>
