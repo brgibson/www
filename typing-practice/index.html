@@ -3,9 +3,9 @@ layout: default-no-bkg
 category: experiments
 bodySelector: experiments
 
-title: Number Typing Practice
+title: Typing Practice
 keywords: b.r.gibson, brgibson, ben gibson, benjamin roberts gibson, code, tech, experiments,
-description: Simple and customizable number typing practice.
+description: Simple and customizable typing practice.
 ---
 <style>
     body {
@@ -129,13 +129,13 @@ description: Simple and customizable number typing practice.
                 </div>
 
                 <fieldset class="include-numbers configuration" style="margin-top: 2.25rem">
-                    <legend>Numbers</legend>
+                    <legend>Numbers/Characters</legend>
                     <div class="number-toggle"></div>
                 </fieldset>
 
                 <div class="slider-label configuration">
                     <label for="lengthInput">
-                        Number of Digits: <span id="lengthDisplay">5</span>
+                        Word Length: <span id="lengthDisplay">5</span>
                     </label>
                     <input
                             type="range"
@@ -185,7 +185,8 @@ description: Simple and customizable number typing practice.
   let currentTarget = '';
   const digitCheckboxes = [];
 
-  // Parse query params into a plain object
+  const allCharacters = "0123456789~!@#$%^&*()_+[]<>";
+
   function getQueryParams() {
     const params = new URLSearchParams(window.location.search);
     return {
@@ -195,7 +196,6 @@ description: Simple and customizable number typing practice.
     };
   }
 
-  // Update the query params in the URL without reloading
   function updateQueryParams() {
     const digits = getSelectedDigits().join('');
     const length = lengthSlider.value;
@@ -207,17 +207,19 @@ description: Simple and customizable number typing practice.
       tempo
     });
 
-    history.replaceState(null, '', '?' + params.toString());
+    history.pushState(null, '', '?' + params.toString());
   }
 
-  // Create checkboxes for 0–9
-  function setupDigitCheckboxes(initialDigits) {
-    for (let i = 0; i <= 9; i++) {
+  function setupCharacterCheckboxes(initialChars) {
+    numberToggleContainer.innerHTML = '';
+    digitCheckboxes.length = 0;
+
+    allCharacters.split('').forEach(char => {
       const label = document.createElement('label');
       const checkbox = document.createElement('input');
       checkbox.type = 'checkbox';
-      checkbox.value = i;
-      checkbox.checked = initialDigits ? initialDigits.includes(i.toString()) : true;
+      checkbox.value = char;
+      checkbox.checked = initialChars ? initialChars.includes(char) : true;
 
       checkbox.addEventListener('change', () => {
         updateQueryParams();
@@ -226,9 +228,9 @@ description: Simple and customizable number typing practice.
 
       digitCheckboxes.push(checkbox);
       label.appendChild(checkbox);
-      label.append(' ' + i);
+      label.append(' ' + char);
       numberToggleContainer.appendChild(label);
-    }
+    });
   }
 
   function getSelectedDigits() {
@@ -288,7 +290,7 @@ description: Simple and customizable number typing practice.
     const length = parseInt(lengthSlider.value, 10);
     const digits = getSelectedDigits();
     if (digits.length === 0) {
-      exerciseDisplay.textContent = 'Please select at least one digit.';
+      exerciseDisplay.textContent = 'Please select at least one character.';
       return;
     }
     currentTarget = generateNumberString(length, digits);
@@ -311,7 +313,6 @@ description: Simple and customizable number typing practice.
     exerciseDisplay.className = 'exercise' + (isMistyped ? ' mistyped' : '');
   }
 
-  // Apply initial query param values
   const initialParams = getQueryParams();
 
   if (!isNaN(initialParams.length)) {
@@ -321,13 +322,11 @@ description: Simple and customizable number typing practice.
     tempoSlider.value = initialParams.tempo;
   }
 
-  setupDigitCheckboxes(initialParams.digits);
+  setupCharacterCheckboxes(initialParams.digits);
 
-  // Update UI with loaded values
   tempoDisplay.textContent = tempoSlider.value;
   lengthDisplay.textContent = lengthSlider.value;
 
-  // Event listeners
   document.getElementById('metronomeControl').addEventListener('click', handleMetronomeClick);
 
   inputBox.addEventListener('input', updateExerciseDisplay);
@@ -354,8 +353,6 @@ description: Simple and customizable number typing practice.
     showNewExercise();
   });
 
-  // Show first exercise
   showNewExercise();
-  inputBox.focus()
-
+  inputBox.focus();
 </script>
