@@ -133,7 +133,7 @@ const THRILLER_MJ_PAGE_1 = {
   "metadata": {
     "startX": 60,
     "endX": 509,
-    "sections": ["intro", "verse", "chorus"],
+    "sections": ["intro", "verse"],
   }, "music": {
     "intro": [{ "lyric": "",
       "notes": [["D3", 0.25], ["C3", 0.5], ["D3", 0.5], ["F3", 0.5], ["G3", 0.5], ["D3", 1], ["D3", 1],
@@ -157,18 +157,23 @@ const THRILLER_MJ_PAGE_2 = {
   "metadata": {
     "startX": 180,
     "endX": 400,
-    "sections": ["intro", "verse", "chorus"],
+    "sections": ["chorus", "chorus-part-2"],
   }, "music": {
     "chorus": [{
-      "lyric": "",
+      "lyric": `'Cause this is thriller,\nthriller night\nAnd no one's gonna save you\nFrom the beast about to strike`,
       "notes": [
         ["E4", 0.5], ["G4", 0.5], ["E4", 0.5], ["A4", 1], ["G4", 3], ["G4", 1.0], ["F4", 1.0],
         ["E4", 2], ["E4", 0.5], ["E4", 0.5], ["D4", 0.5], ["D4", 0.5], ["C4", 0.25], ["C4", 0.5], ["A3", 0.5],
         ["C4", 0.5], ["D4", 0.25], ["E4", 0.5], ["D4", 0.5], ["D4", 0.5], ["C4", 0.25], ["C4", 0.5],
-
+      ],
+    }],
+    "chorus-part-2": [{
+      "lyric": "You know it's thriller,\nthriller night\nYou're fighting for your life inside a\nkiller,\nthriller,\now!",
+      "notes": [
         ["E4", 0.5], ["G4", 0.5], ["E4", 0.5], ["A4", 1], ["G4", 3], ["G4", 1.0], ["F4", 1.0],
         ["E4", 2], ["E4", 0.5], ["E4", 0.5], ["D4", 0.5], ["D4", 0.5], ["C4", 0.25], ["C4", 0.5], ["A3", 0.5],
-        ["C4", 0.5], ["D4", 0.5], ["F3", 0.5], ["C4", 0.5], ["E3", 0.5], ["A3", 1.0], ["E4", 0.5], ["C4", 1.0], ["G3", 0.5], ["G4", 0.5], ["A3", 0.5], ["A4", 4.0]],
+        ["C4", 0.5], ["D4", 0.5], ["F3", 0.5], ["C4", 0.5], ["E3", 0.5], ["A3", 1.0], ["E4", 0.5], ["C4", 1.0], ["G3", 0.5], ["G4", 0.5], ["A3", 0.5], ["A4", 4.0]
+      ],
     }],
   },
 };
@@ -265,9 +270,12 @@ function insertNotesFromJsonFile() {
     text.getTextStyle().setFontSize(fontSize).setFontFamily(fontFamily);
   }
 
-  const insertLine = (x1, y1, x2, y2) => {
+  const insertLine = (x1, y1, x2, y2, { isDotted }) => {
     const line = slide.insertLine(SlidesApp.LineCategory.STRAIGHT, x1, y1, x2, y2);
-    line.getLineFill().setSolidFill('#000000'); // black
+    line.getLineFill().setSolidFill('#000000');
+    if (isDotted) {
+      line.setDashStyle(SlidesApp.DashStyle.DOT);
+    }
     return line;
   }
 
@@ -276,6 +284,7 @@ function insertNotesFromJsonFile() {
   // Insert all sections (e.g., verse and chorus)
   const sections = song?.metadata?.sections || ['verse', 'chorus'];
   let x = startX;
+
   for (const sectionName of sections) {
     const section = song.music[sectionName];
     if (!section) continue;
@@ -344,7 +353,8 @@ function insertNotesFromJsonFile() {
               x1,
               y1,
               x2,
-              y2
+              y2,
+              { isDotted: i === 0 }
             );
           }
         }
