@@ -1,3 +1,5 @@
+const DOTTED_LINE = 'DOTTED_LINE';
+
 const NOTES_TEST = {
   music: {
     "verse": [
@@ -164,7 +166,7 @@ const THRILLER_MJ_PAGE_2 = {
       "notes": [
         ["E4", 0.5], ["G4", 0.5], ["E4", 0.5], ["A4", 1], ["G4", 3], ["G4", 1.0], ["F4", 1.0],
         ["E4", 2], ["E4", 0.5], ["E4", 0.5], ["D4", 0.5], ["D4", 0.5], ["C4", 0.25], ["C4", 0.5], ["A3", 0.5],
-        ["C4", 0.5], ["D4", 0.25], ["E4", 0.5], ["D4", 0.5], ["D4", 0.5], ["C4", 0.25], ["C4", 0.5],
+        ["C4", 0.5], ["D4", 0.25], ["E4", 0.5], ["D4", 0.5], ["D4", 0.5], ["C4", 0.25], ["C4", 2],
       ],
     }],
     "chorus-part-2": [{
@@ -172,7 +174,7 @@ const THRILLER_MJ_PAGE_2 = {
       "notes": [
         ["E4", 0.5], ["G4", 0.5], ["E4", 0.5], ["A4", 1], ["G4", 3], ["G4", 1.0], ["F4", 1.0],
         ["E4", 2], ["E4", 0.5], ["E4", 0.5], ["D4", 0.5], ["D4", 0.5], ["C4", 0.25], ["C4", 0.5], ["A3", 0.5],
-        ["C4", 0.5], ["D4", 0.5], ["F3", 0.5], ["C4", 0.5], ["E3", 0.5], ["A3", 1.0], ["E4", 0.5], ["C4", 1.0], ["G3", 0.5], ["G4", 0.5], ["A3", 0.5], ["A4", 4.0]
+        ["C4", 0.5], ["D4", 0.5], ["F3", 0.5, DOTTED_LINE], ["C4", 0.5, DOTTED_LINE], ["A3", 1.0],["E3", 0.5, DOTTED_LINE], ["E4", 0.5, DOTTED_LINE], ["C4", 1.0], ["G3", 0.5, DOTTED_LINE], ["G4", 0.5, DOTTED_LINE], ["A4", 4.0]
       ],
     }],
   },
@@ -294,7 +296,7 @@ function insertNotesFromJsonFile() {
       const spacing = phrase.spacing || spacingX;
 
       for (let i = 0; i < notes.length; i++) {
-        const [noteName, noteDuration] = notes[i];
+        const [noteName, noteDuration, dottedEnum] = notes[i];
         const [prevNoteName, prevNoteDuration] = notes?.[i - 1] || [];
 
         const isPreviousNoteDotted = isNoteDotted(prevNoteDuration);
@@ -311,7 +313,7 @@ function insertNotesFromJsonFile() {
 
         insertNoteBox(noteSymbol, noteX, noteY);
 
-        noteXYs.push({ noteX, noteY, isWholeNote: noteSymbol == WHOLE_NOTE, hasSpaceAddedBeforeNote: addSpaceBeforeNote});
+        noteXYs.push({ noteX, noteY, isWholeNote: noteSymbol == WHOLE_NOTE, hasSpaceAddedBeforeNote: addSpaceBeforeNote, isDottedLine: dottedEnum === DOTTED_LINE });
 
         x += spacing;
 
@@ -354,7 +356,7 @@ function insertNotesFromJsonFile() {
               y1,
               x2,
               y2,
-              { isDotted: i === 0 }
+              { isDotted: i === 0 || noteXYs[currentIndex].isDottedLine }
             );
           }
         }
