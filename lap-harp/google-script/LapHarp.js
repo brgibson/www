@@ -282,7 +282,7 @@ function insertNotesFromJsonFile() {
 
     for (const phrase of section) {
       const notes = phrase.notes;
-      const spacing = phrase.spacing;
+      const spacing = phrase.spacing || spacingX;
 
       for (let i = 0; i < notes.length; i++) {
         const [noteName, noteDuration] = notes[i];
@@ -290,21 +290,21 @@ function insertNotesFromJsonFile() {
 
         const isPreviousNoteDotted = isNoteDotted(prevNoteDuration);
         const isPreviousNoteSameName = noteName === prevNoteName;
+        const addSpaceBeforeNote = isPreviousNoteDotted && isPreviousNoteSameName
 
         const noteX = x;
         const noteY = NOTE_POSITION_MAP[noteName] || 0;
 
         let noteSymbol = NOTE_SYMBOL_MAP[noteDuration] || WHOLE_NOTE;
-
-        if (isPreviousNoteDotted && isPreviousNoteSameName) {
+        if (addSpaceBeforeNote) {
           noteSymbol = ' ' + noteSymbol; // helps to keep the current note from covering the dot of the previous note
         }
 
         insertNoteBox(noteSymbol, noteX, noteY);
 
-        noteXYs.push({ noteX, noteY, isWholeNote: noteSymbol == WHOLE_NOTE });
+        noteXYs.push({ noteX, noteY, isWholeNote: noteSymbol == WHOLE_NOTE, hasSpaceAddedBeforeNote: addSpaceBeforeNote});
 
-        x += spacing || spacingX;
+        x += spacing;
 
         // Draw line to next note if this isn't the last note
         if (noteXYs.length > 1) {
@@ -314,9 +314,9 @@ function insertNotesFromJsonFile() {
           const currentIndex = noteXYs.length - 1;
           const prevIndex = currentIndex - 1;
 
-          const centeroidXNoteA = noteXYs[prevIndex].noteX + lineShiftX;
+          const centeroidXNoteA = noteXYs[prevIndex].noteX + lineShiftX  + (noteXYs[prevIndex].hasSpaceAddedBeforeNote ? spacing/2 : 0);
           const centeroidYNoteA = noteXYs[prevIndex].noteY + lineShiftY;
-          const centeroidXNoteB = noteXYs[currentIndex].noteX + lineShiftX;
+          const centeroidXNoteB = noteXYs[currentIndex].noteX + lineShiftX + (noteXYs[currentIndex].hasSpaceAddedBeforeNote ? spacing/2 : 0);
           const centeroidYNoteB = noteXYs[currentIndex].noteY + lineShiftY;
 
           const slopeY = centeroidYNoteB - centeroidYNoteA;
