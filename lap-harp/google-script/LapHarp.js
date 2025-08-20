@@ -155,25 +155,20 @@ const THRILLER_MJ_PAGE_1 = {
 
 const THRILLER_MJ_PAGE_2 = {
   "metadata": {
-    "startX": 60,
-    "endX": 509,
+    "startX": 180,
+    "endX": 400,
     "sections": ["intro", "verse", "chorus"],
   }, "music": {
     "chorus": [{
       "lyric": "",
-      "notes": [["E4", 0.5], ["G4", 0.5], ["E4", 0.5], ["A4", 0.75], ["G4", 1.25], ["G4", 1.0], ["D4", 1.0],
-        ["E4", 1.0], ["E4", 0.5], ["E4", 0.5], ["D4", 0.5], ["D4", 0.5], ["C4", 0.25], ["C4", 0.5], ["A3", 0.5],
-        ["C4", 0.5], ["D4", 0.25], ["E4", 0.5], ["D4", 0.5], ["D4", 0.5], ["C4", 0.25], ["C4", 0.5], ["E4", 0.5],
-        ["G4", 0.5], ["E4", 0.5], ["A4", 0.75], ["G4", 1.25], ["G4", 1.0], ["D4", 1.0], ["E4", 1.0], ["E4", 0.5],
-        ["E4", 0.5], ["D4", 0.5], ["D4", 0.5], ["C4", 0.25], ["C4", 0.5], ["A3", 0.5], ["C4", 0.5], ["D4", 0.5],
-        ["F3", 0.5], ["C4", 0.5], ["E3", 0.5], ["A3", 1.0], ["E4", 0.5], ["C4", 1.0], ["G3", 0.5], ["G4", 0.5],
-        ["A3", 0.5], ["A4", 4.0], ["E4", 0.5], ["G4", 0.5], ["E4", 0.5], ["A4", 0.75], ["G4", 1.25], ["G4", 1.0],
-        ["D4", 1.0], ["E4", 1.0], ["E4", 0.5], ["E4", 0.5], ["D4", 0.5], ["D4", 0.5], ["C4", 0.25], ["C4", 0.5],
-        ["A3", 0.5], ["C4", 0.5], ["D4", 0.25], ["E4", 0.5], ["D4", 0.5], ["D4", 0.5], ["C4", 0.25], ["C4", 0.5],
-        ["E4", 0.5], ["G4", 0.5], ["E4", 0.5], ["A4", 0.75], ["G4", 1.25], ["G4", 1.0], ["D4", 1.0], ["E4", 1.0],
-        ["E4", 0.5], ["E4", 0.5], ["D4", 0.5], ["D4", 0.5], ["C4", 0.25], ["C4", 0.5], ["A3", 0.5], ["C4", 0.5],
-        ["D4", 0.5], ["F3", 0.5], ["C4", 0.5], ["E3", 0.5], ["A3", 1.0], ["E4", 0.5], ["C4", 1.0], ["G3", 0.5],
-        ["G4", 0.5], ["A3", 0.5], ["A4", 4.0]],
+      "notes": [
+        ["E4", 0.5], ["G4", 0.5], ["E4", 0.5], ["A4", 1], ["G4", 3], ["G4", 1.0], ["F4", 1.0],
+        ["E4", 2], ["E4", 0.5], ["E4", 0.5], ["D4", 0.5], ["D4", 0.5], ["C4", 0.25], ["C4", 0.5], ["A3", 0.5],
+        ["C4", 0.5], ["D4", 0.25], ["E4", 0.5], ["D4", 0.5], ["D4", 0.5], ["C4", 0.25], ["C4", 0.5],
+
+        ["E4", 0.5], ["G4", 0.5], ["E4", 0.5], ["A4", 1], ["G4", 3], ["G4", 1.0], ["F4", 1.0],
+        ["E4", 2], ["E4", 0.5], ["E4", 0.5], ["D4", 0.5], ["D4", 0.5], ["C4", 0.25], ["C4", 0.5], ["A3", 0.5],
+        ["C4", 0.5], ["D4", 0.5], ["F3", 0.5], ["C4", 0.5], ["E3", 0.5], ["A3", 1.0], ["E4", 0.5], ["C4", 1.0], ["G3", 0.5], ["G4", 0.5], ["A3", 0.5], ["A4", 4.0]],
     }],
   },
 };
@@ -183,6 +178,7 @@ const DOTTED_HALF_NOTE = "𝅗𝅥.";
 const HALF_NOTE = "𝅗𝅥";
 const DOTTED_QUARTER_NOTE = "𝅘𝅥.";
 const QUARTER_NOTE = "𝅘𝅥";
+const DOTTED_EIGHTH_NOTE = "𝅘𝅥𝅮.";
 const EIGHTH_NOTE = "𝅘𝅥𝅮";
 const SIXTEENTH_NOTE = "𝅘𝅥𝅯";
 
@@ -193,10 +189,16 @@ const NOTE_SYMBOL_MAP = {
   2.5: HALF_NOTE,
   2: HALF_NOTE,
   1.5: DOTTED_QUARTER_NOTE,
+  1.25: DOTTED_QUARTER_NOTE,
   1: QUARTER_NOTE,
+  0.75: QUARTER_NOTE,
   0.5: EIGHTH_NOTE,
   0.25: SIXTEENTH_NOTE
 };
+
+const isNoteDotted = (duration) => {
+  return [DOTTED_HALF_NOTE, DOTTED_QUARTER_NOTE, DOTTED_EIGHTH_NOTE].includes(NOTE_SYMBOL_MAP[duration]);
+}
 
 const NOTE_POSITION_MAP = {
   "C5": 8.5,
@@ -284,64 +286,73 @@ function insertNotesFromJsonFile() {
 
       for (let i = 0; i < notes.length; i++) {
         const [noteName, noteDuration] = notes[i];
+        const [prevNoteName, prevNoteDuration] = notes?.[i - 1] || [];
+
+        const isPreviousNoteDotted = isNoteDotted(prevNoteDuration);
+        const isPreviousNoteSameName = noteName === prevNoteName;
 
         const noteX = x;
         const noteY = NOTE_POSITION_MAP[noteName] || 0;
 
-        const noteSymbol = NOTE_SYMBOL_MAP[noteDuration] || WHOLE_NOTE;
+        let noteSymbol = NOTE_SYMBOL_MAP[noteDuration] || WHOLE_NOTE;
+
+        if (isPreviousNoteDotted && isPreviousNoteSameName) {
+          noteSymbol = ' ' + noteSymbol; // helps to keep the current note from covering the dot of the previous note
+        }
 
         insertNoteBox(noteSymbol, noteX, noteY);
 
         noteXYs.push({ noteX, noteY, isWholeNote: noteSymbol == WHOLE_NOTE });
 
         x += spacing || spacingX;
+
+        // Draw line to next note if this isn't the last note
+        if (noteXYs.length > 1) {
+          const lineShiftX = song?.metadata?.lineShiftX || 13;
+          const lineShiftY = song?.metadata?.lineShiftY || 17;
+
+          const currentIndex = noteXYs.length - 1;
+          const prevIndex = currentIndex - 1;
+
+          const centeroidXNoteA = noteXYs[prevIndex].noteX + lineShiftX;
+          const centeroidYNoteA = noteXYs[prevIndex].noteY + lineShiftY;
+          const centeroidXNoteB = noteXYs[currentIndex].noteX + lineShiftX;
+          const centeroidYNoteB = noteXYs[currentIndex].noteY + lineShiftY;
+
+          const slopeY = centeroidYNoteB - centeroidYNoteA;
+
+          const isSlopeYNegative = slopeY > 0;
+          const isSlopeYPositive = slopeY < 0;
+
+          const EXTRA_Y = 16;
+          const REDUCE_Y = 13;
+
+          // skip drawing a horizontal line if the notes are too close together (todo: implement width for this when a song comes up)
+          if (slopeY != 0) {
+
+            const reduceX = Math.min(Math.max(1, spacingX * .2), 3);
+
+            const reduceY = (isSlopeYNegative ? REDUCE_Y: isSlopeYPositive ? -REDUCE_Y : 0)
+
+            const x1 = centeroidXNoteA + reduceX;
+            const y1 = centeroidYNoteA + reduceY + (isSlopeYPositive && noteXYs[prevIndex].isWholeNote ? + EXTRA_Y : 0);
+
+            const x2 = centeroidXNoteB - reduceX;
+            const y2 = centeroidYNoteB - reduceY + (isSlopeYNegative && noteXYs[currentIndex].isWholeNote ? + EXTRA_Y : 0);
+
+            insertLine(
+              x1,
+              y1,
+              x2,
+              y2
+            );
+          }
+        }
       }
 
       // Optional: insert lyric label
       // slide.insertTextBox(phrase.lyric, 50, startY - 20, 600, 20)
       //     .getText().getTextStyle().setFontSize(12).setFontFamily(fontFamily);
     }
-  }
-
-  const lineShiftX = song?.metadata?.lineShiftX || 13;
-  const lineShiftY = song?.metadata?.lineShiftY || 17;
-
-  noteXYs.forEach(({}, index) => {
-    if (index < (noteXYs.length - 1)) {
-
-      const centeroidXNoteA = noteXYs[index].noteX + lineShiftX;
-      const centeroidYNoteA = noteXYs[index].noteY + lineShiftY;
-      const centeroidXNoteB = noteXYs[index + 1].noteX + lineShiftX;
-      const centeroidYNoteB = noteXYs[index + 1].noteY + lineShiftY;
-
-      const slopeY = centeroidYNoteB - centeroidYNoteA;
-
-      const isSlopeYNegative = slopeY > 0;
-      const isSlopeYPositive = slopeY < 0;
-
-      const EXTRA_Y = 16;
-      const REDUCE_Y = 13;
-
-      // skip drawing a horizontal line if the notes are too close together (todo: implement width for this when a song comes up)
-      if (slopeY != 0) {
-
-        const reduceX = Math.min(Math.max(1, spacingX * .2), 3);
-
-        const reduceY = (isSlopeYNegative ? REDUCE_Y: isSlopeYPositive ? -REDUCE_Y : 0)
-
-        const x1 = centeroidXNoteA + reduceX;
-        const y1 = centeroidYNoteA + reduceY + (isSlopeYPositive && noteXYs[index].isWholeNote ? + EXTRA_Y : 0);
-
-        const x2 = centeroidXNoteB - reduceX;
-        const y2 = centeroidYNoteB - reduceY + (isSlopeYNegative && noteXYs[index + 1].isWholeNote ? + EXTRA_Y : 0);
-
-        insertLine(
-          x1,
-          y1,
-          x2,
-          y2
-        );
-      }
-    }
-  });
+  };
 }
