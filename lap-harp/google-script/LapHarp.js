@@ -1,5 +1,11 @@
 const DOTTED_LINE = 'DOTTED_LINE';
 
+/**
+ * Lap Harp supports [C3 to C5].
+ * Notes:
+ * -- B2 and D5 are the out-of-bounds notes.
+ * -- Notice A3 and B3 are good to go.
+ */
 const NOTES_TEST = {
   music: {
     "verse": [
@@ -13,6 +19,38 @@ const NOTES_TEST = {
     ]
   }
 };
+
+const ZELDA_PRINCESS_ZELDAS_THEME = {
+  "metadata": {
+    "startX": 50,
+    "endX": 495,
+    "sections": ["verse", "hidden","bridge"],
+  },
+  "music": {
+    "verse": [{
+      "lyric": "",
+      "notes": [["E3", 2.0], ["G3", 1.0], ["D3", 2.0], ["C3", 0.5], ["D3", 0.5], ["E3", 2.0], ["G3", 1.0], ["D3", 3.0],
+        ["E3", 2.0], ["G3", 1.0], ["D4", 2.0], ["C4", 1.0], ["G3", 2.0], ["F3", 0.5], ["E3", 0.5], ["D3", 3.0],
+        ["E3", 2.0], ["G3", 1.0], ["D3", 2.0], ["C3", 0.5], ["D3", 0.5], ["E3", 2.0], ["G3", 1.0], ["D3", 3.0],
+        ["E3", 2.0], ["G3", 1.0], ["D4", 2.0], ["C4", 1.0], ["G4", 6.0]],
+    }],
+
+
+    "hidden": [{
+      "lyric": "",
+      "notes": [["G4", 0],["G4", 0]],
+    }],
+
+    "bridge": [{
+      "lyric": "",
+      "notes": [["G4", 2.0], ["F4", 0.5], ["E4", 0.5], ["F4", 0.5], ["E4", 0.5], ["C4", 2.0], ["F4", 2.0], ["E4", 0.5],
+        ["D4", 0.5], ["E4", 0.5], ["D4", 0.5], ["A3", 2.0], ["G4", 2.0], ["F4", 0.5], ["E4", 0.5], ["F4", 0.5],
+        ["E4", 0.5], ["C4", 1.25], ["F4", 1.0], ["C5", 6.0]],
+    }],
+  },
+};
+
+
 
 const MY_HEART_WILL_GO_ON = {
   "metadata": {
@@ -188,6 +226,7 @@ const QUARTER_NOTE = "𝅘𝅥";
 const DOTTED_EIGHTH_NOTE = "𝅘𝅥𝅮.";
 const EIGHTH_NOTE = "𝅘𝅥𝅮";
 const SIXTEENTH_NOTE = "𝅘𝅥𝅯";
+const BLANK = " ";
 
 const NOTE_SYMBOL_MAP = {
   4: WHOLE_NOTE,
@@ -200,12 +239,10 @@ const NOTE_SYMBOL_MAP = {
   1: QUARTER_NOTE,
   0.75: QUARTER_NOTE,
   0.5: EIGHTH_NOTE,
-  0.25: SIXTEENTH_NOTE
+  0.25: SIXTEENTH_NOTE,
+  0: BLANK
 };
 
-const isNoteDotted = (duration) => {
-  return [DOTTED_HALF_NOTE, DOTTED_QUARTER_NOTE, DOTTED_EIGHTH_NOTE].includes(NOTE_SYMBOL_MAP[duration]);
-}
 
 const NOTE_POSITION_MAP = {
   "C5": 8.5,
@@ -229,6 +266,10 @@ const NOTE_POSITION_MAP = {
 
 function insertNotesFromJsonFile() {
 
+  const isNoteDotted = (duration) => {
+    return [DOTTED_HALF_NOTE, DOTTED_QUARTER_NOTE, DOTTED_EIGHTH_NOTE].includes(NOTE_SYMBOL_MAP[duration]);
+  }
+
   const countNotes = (song) => {
     let total = 0;
     for (const section of Object.values(song)) {
@@ -239,7 +280,7 @@ function insertNotesFromJsonFile() {
     return total;
   };
 
-  const song = THRILLER_MJ_PAGE_2;
+  const song = ZELDA_PRINCESS_ZELDAS_THEME;
 
   const presentationId = '1Icl9TS2Pl0NbW8FE1pRsfSIKWPpecTPDHG3iwhtGcuI';
   const slideIndex = 0; // Which slide to insert on
