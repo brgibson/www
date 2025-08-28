@@ -23,18 +23,20 @@ if [ -z "$INPUT_MIDI_FILE" ]; then
 fi
 
 # Create a temporary file with a .json suffix in the current directory
-TEMP_JSON_FILE=$(mktemp ./tmp.XXXXXXXXXX).json
+TEMP_FILE=$(mktemp ./tmp.XXXXXXXXXX)
+TEMP_JSON_FILE_NAME="${TEMP_FILE}.json"
+rm $TEMP_FILE
 
 # Run the first script and save output to a temporary file
-python3 midiparse_to_json.py "$INPUT_MIDI_FILE" > "$TEMP_JSON_FILE"
+python3 midiparse_to_json.py "$INPUT_MIDI_FILE" > "$TEMP_JSON_FILE_NAME"
 
 # Run the second script, reading from the temporary file and outputting to stdout
-python3 transform_notes.py < "$TEMP_JSON_FILE"
+python3 transform_notes.py < "$TEMP_JSON_FILE_NAME"
 
 # Remove the temporary file unless in debug mode
 if [ "$DEBUG" = false ]; then
-  rm "$TEMP_JSON_FILE"
+  rm "$TEMP_JSON_FILE_NAME"
 else
-  echo "Debug mode: Temporary file retained at $TEMP_JSON_FILE"
-  open $TEMP_JSON_FILE
+  echo "Debug mode: Temporary file retained at $TEMP_JSON_FILE_NAME"
+  open $TEMP_JSON_FILE_NAME
 fi
