@@ -1,4 +1,5 @@
 const DOTTED_LINE = 'DOTTED_LINE';
+const IS_SHIFT_ONE_OCTAVE_DOWN = true
 
 /**
  * Lap Harp supports [C3 to C5].
@@ -17,6 +18,25 @@ const NOTES_TEST = {
         ]
       },
     ]
+  }
+};
+
+const ZELDA_SONG_OF_STORMS = {
+  "metadata": {
+    "startX": 50,
+    "endX": 495,
+    "sections": ["verse", "hidden","bridge"],
+  },
+  "music": {
+    "verse": [{
+      "lyric": "",
+      "notes": [["D5", 0.5], ["F5", 0.5], ["D6", 2.0], ["D5", 0.5], ["F5", 0.5], ["D6", 2.0], ["E6", 1.5], ["F6", 0.5],
+        ["E6", 0.5], ["F6", 0.5], ["E6", 0.5], ["C6", 0.5], ["A5", 1.75], ["A5", 1.0], ["D5", 1.0], ["F5", 0.5],
+        ["G5", 0.75], ["A5", 2.5], ["A5", 1.0], ["D5", 1.0], ["F5", 0.5], ["G5", 0.5], ["E5", 3.0], ["D5", 0.5],
+        ["F5", 0.5], ["D6", 2.0], ["D5", 0.5], ["F5", 0.5], ["D6", 2.0], ["E6", 1.5], ["F6", 0.5], ["E6", 0.5],
+        ["F6", 0.5], ["E6", 0.5], ["C6", 0.5], ["A5", 1.75], ["A5", 1.0], ["D5", 1.0], ["F5", 0.5], ["G5", 0.5],
+        ["A5", 2.0], ["A5", 1.0], ["D5", 3.0]],
+    }],
   }
 };
 
@@ -270,6 +290,14 @@ function insertNotesFromJsonFile() {
     return [DOTTED_HALF_NOTE, DOTTED_QUARTER_NOTE, DOTTED_EIGHTH_NOTE].includes(NOTE_SYMBOL_MAP[duration]);
   }
 
+  const adjustNoteOctave = (noteName) => {
+    let noteNameShifted = noteName
+    if (IS_SHIFT_ONE_OCTAVE_DOWN) {
+      noteNameShifted `${noteName.charAt(0)}${noteName.charAt(1) - 1}`;
+    }
+    return NOTE_POSITION_MAP[noteName];
+  }
+
   const countNotes = (song) => {
     let total = 0;
     for (const section of Object.values(song)) {
@@ -280,7 +308,7 @@ function insertNotesFromJsonFile() {
     return total;
   };
 
-  const song = ZELDA_PRINCESS_ZELDAS_THEME;
+  const song = ZELDA_SONG_OF_STORMS;
 
   const presentationId = '1Icl9TS2Pl0NbW8FE1pRsfSIKWPpecTPDHG3iwhtGcuI';
   const slideIndex = 0; // Which slide to insert on
@@ -345,7 +373,7 @@ function insertNotesFromJsonFile() {
         const addSpaceBeforeNote = isPreviousNoteDotted && isPreviousNoteSameName
 
         const noteX = x;
-        const noteY = NOTE_POSITION_MAP[noteName] || 0;
+        const noteY = adjustNoteOctave(noteName) || 0;
 
         let noteSymbol = NOTE_SYMBOL_MAP[noteDuration] || WHOLE_NOTE;
         if (addSpaceBeforeNote) {
