@@ -1,5 +1,6 @@
 const DOTTED_LINE = 'DOTTED_LINE';
-const IS_SHIFT_ONE_OCTAVE_DOWN = true
+const BLANK = 0;
+const IS_SHIFT_OCTAVE = true;
 
 /**
  * Lap Harp supports [C3 to C5].
@@ -23,19 +24,19 @@ const NOTES_TEST = {
 
 const ZELDA_SONG_OF_STORMS = {
   "metadata": {
-    "startX": 50,
-    "endX": 495,
+    "startX": 100,
+    "endX": 610,
     "sections": ["verse", "hidden","bridge"],
   },
   "music": {
     "verse": [{
       "lyric": "",
-      "notes": [["D5", 0.5], ["F5", 0.5], ["D6", 2.0], ["D5", 0.5], ["F5", 0.5], ["D6", 2.0], ["E6", 1.5], ["F6", 0.5],
-        ["E6", 0.5], ["F6", 0.5], ["E6", 0.5], ["C6", 0.5], ["A5", 1.75], ["A5", 1.0], ["D5", 1.0], ["F5", 0.5],
-        ["G5", 0.75], ["A5", 2.5], ["A5", 1.0], ["D5", 1.0], ["F5", 0.5], ["G5", 0.5], ["E5", 3.0], ["D5", 0.5],
-        ["F5", 0.5], ["D6", 2.0], ["D5", 0.5], ["F5", 0.5], ["D6", 2.0], ["E6", 1.5], ["F6", 0.5], ["E6", 0.5],
-        ["F6", 0.5], ["E6", 0.5], ["C6", 0.5], ["A5", 1.75], ["A5", 1.0], ["D5", 1.0], ["F5", 0.5], ["G5", 0.5],
-        ["A5", 2.0], ["A5", 1.0], ["D5", 3.0]],
+      "notes": [["D5", 0.5], ["F5", 0.5], ["D6", 2.0], ["D5", 0.5, DOTTED_LINE], ["F5", 0.5], ["D6", 2.0], ["E6", 1.5, DOTTED_LINE], ["F6", 0.5],
+        ["E6", 0.5], ["F6", 0.5], ["E6", 0.5], ["C6", 0.5], ["A5", 2], ["A5", BLANK], ["A5", 1.0], ["D5", 1.0], ["F5", 0.5],
+        ["G5", 0.5], ["A5", 3], ["A5", BLANK], ["A5", 1.0], ["D5", 1.0], ["F5", 0.5], ["G5", 0.5], ["E5", 3.0], ["D5", 0.5],
+        ["F5", 0.5], ["D6", 2.0], ["D5", 0.5, DOTTED_LINE], ["F5", 0.5], ["D6", 2.0], ["E6", 1.5, DOTTED_LINE], ["F6", 0.5], ["E6", 0.5],
+        ["F6", 0.5], ["E6", 0.5], ["C6", 0.5], ["A5", 2], ["A5", BLANK], ["A5", 1.0], ["D5", 1.0], ["F5", 0.5], ["G5", 0.5],
+        ["A5", 2.0], ["A5", BLANK], ["A5", 1.0], ["D5", 3.0]],
     }],
   }
 };
@@ -246,7 +247,7 @@ const QUARTER_NOTE = "𝅘𝅥";
 const DOTTED_EIGHTH_NOTE = "𝅘𝅥𝅮.";
 const EIGHTH_NOTE = "𝅘𝅥𝅮";
 const SIXTEENTH_NOTE = "𝅘𝅥𝅯";
-const BLANK = " ";
+const BLANK_SPACE = " ";
 
 const NOTE_SYMBOL_MAP = {
   4: WHOLE_NOTE,
@@ -254,13 +255,15 @@ const NOTE_SYMBOL_MAP = {
   3: DOTTED_HALF_NOTE,
   2.5: HALF_NOTE,
   2: HALF_NOTE,
+  1.75: HALF_NOTE,
   1.5: DOTTED_QUARTER_NOTE,
   1.25: DOTTED_QUARTER_NOTE,
   1: QUARTER_NOTE,
   0.75: QUARTER_NOTE,
   0.5: EIGHTH_NOTE,
   0.25: SIXTEENTH_NOTE,
-  0: BLANK
+  0: BLANK_SPACE,
+  BLANK: BLANK_SPACE,
 };
 
 
@@ -291,11 +294,12 @@ function insertNotesFromJsonFile() {
   }
 
   const adjustNoteOctave = (noteName) => {
-    let noteNameShifted = noteName
-    if (IS_SHIFT_ONE_OCTAVE_DOWN) {
-      noteNameShifted `${noteName.charAt(0)}${noteName.charAt(1) - 1}`;
+    let noteNameShifted = noteName;
+    const numOctavesDown = 2;
+    if (IS_SHIFT_OCTAVE) {
+      noteNameShifted = `${noteName.charAt(0)}${noteName.charAt(1) - numOctavesDown}`;
     }
-    return NOTE_POSITION_MAP[noteName];
+    return NOTE_POSITION_MAP[noteNameShifted];
   }
 
   const countNotes = (song) => {
