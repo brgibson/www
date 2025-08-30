@@ -29,6 +29,11 @@ def transform_notes(input_stream):
 
     # Create the new structure
     transformed_data = {
+        "metadata": {
+            "startX": 100,
+            "endX": 650,
+            "sections": ["verse", "chorus","bridge"],
+        },
         "music": {
             section_name: [
                 {
@@ -55,7 +60,7 @@ def main():
         transformed_data = transform_notes(sys.stdin)
 
     # Print the transformed data to the command line with compact formatting
-    print(json.dumps(transformed_data, separators=(',', ':')))
+    print("const FOO =", json.dumps(transformed_data, separators=(',', ':')), ";")
 
 if __name__ == "__main__":
     main()
