@@ -1,6 +1,6 @@
 const DOTTED_LINE = 'DOTTED_LINE';
 const BLANK = 0;
-const NUM_OCTAVES_TO_SHIFT_DOWN = 1;
+const NUM_OCTAVES_TO_SHIFT_DOWN = 2;
 const NOTE_LENGTH_MULTIPLIER = 2;
 
 /**
@@ -21,6 +21,32 @@ const NOTES_TEST = {
       },
     ]
   }
+};
+
+const SARIAS_SONG = {
+  "metadata": { "startX": 100, "endX": 610, "sections": ["part-1", "part-2", "part-3"] }, "music": {
+    "part-1": [{
+      "lyric": "",
+      "notes": [["F5", 0.5], ["A5", 0.5], ["B5", 1.0], ["F5", 0.5], ["A5", 0.5], ["B5", 1.0], ["F5", 0.5], ["A5", 0.5],
+        ["B5", 0.5], ["E6", 0.5], ["D6", 1.0], ["B5", 0.5], ["C6", 0.5], ["B5", 0.5], ["G5", 0.5], ["E5", 2.5],
+        ["D5", 0.5], ["E5", 0.5], ["G5", 0.5], ["E5", 2.5]],
+    }],
+    "part-2": [{
+      "lyric": "",
+      "notes": [["F5", 0.5], ["A5", 0.5], ["B5", 1.0], ["F5", 0.5], ["A5", 0.5], ["B5", 1.0], ["F5", 0.5], ["A5", 0.5],
+        ["B5", 0.5], ["E6", 0.5], ["D6", 1.0], ["B5", 0.5], ["C6", 0.5], ["E6", 0.5], ["B5", 0.5], ["G5", 2.5],
+        ["B5", 0.5], ["G5", 0.5], ["D5", 0.5], ["E5", 2.5]],
+    }],
+    "part-3": [{
+      "lyric": "",
+      "notes": [["D5", 0.5], ["E5", 0.5], ["F5", 1.0], ["G5", 0.5], ["A5", 0.5], ["B5", 1.0], ["C6", 0.5], ["B5", 0.5],
+        ["E5", 3.0], ["D5", 0.5], ["E5", 0.5], ["F5", 1.0], ["G5", 0.5], ["A5", 0.5], ["B5", 1.0], ["C6", 0.5],
+        ["D6", 0.5], ["E6", 3.0], ["D5", 0.5], ["E5", 0.5], ["F5", 1.0], ["G5", 0.5], ["A5", 0.5], ["B5", 1.0],
+        ["C6", 0.5], ["B5", 0.5], ["E5", 3.0], ["F5", 0.5], ["E5", 0.5], ["G5", 0.5], ["F5", 0.5], ["A5", 0.5],
+        ["G5", 0.5], ["B5", 0.5], ["A5", 0.5], ["C6", 0.5], ["B5", 0.5], ["D6", 0.5], ["C6", 0.5], ["E6", 0.5],
+        ["D6", 0.5], ["E6", 0.25], ["F6", 0.5], ["D6", 0.25], ["E6", 4.0]],
+    }],
+  },
 };
 
 const SECTIONS_POCAHONTAS_COLORS_OF_THE_WIND = ["verse-1", "verse-2", "chorus-1", "verse-3", "verse-4", "bridge", "chorus-2", "outro"]
@@ -324,6 +350,9 @@ const THRILLER_MJ_PAGE_2 = {
   },
 };
 
+const BREVE = "𝅜";
+const DOTTED_WHOLE_NOTE = "𝅝.";
+
 const WHOLE_NOTE = "𝅝";
 const DOTTED_HALF_NOTE = "𝅗𝅥.";
 const HALF_NOTE = "𝅗𝅥";
@@ -332,9 +361,15 @@ const QUARTER_NOTE = "𝅘𝅥";
 const DOTTED_EIGHTH_NOTE = "𝅘𝅥𝅮.";
 const EIGHTH_NOTE = "𝅘𝅥𝅮";
 const SIXTEENTH_NOTE = "𝅘𝅥𝅯";
+const SLUR = "𝆤";
+const SLURRED_FIVE = `${WHOLE_NOTE}${SLUR}${QUARTER_NOTE}`;
 const BLANK_SPACE = " ";
 
+
 const NOTE_SYMBOL_MAP = {
+  8: BREVE,
+  6: DOTTED_WHOLE_NOTE,
+  5: SLURRED_FIVE,
   4: WHOLE_NOTE,
   3.5: DOTTED_HALF_NOTE,
   3: DOTTED_HALF_NOTE,
@@ -374,8 +409,12 @@ const NOTE_POSITION_MAP = {
 
 function insertNotesFromJsonFile() {
 
+  const isNoteSlurred = (noteSymbol) => {
+    return [SLURRED_FIVE].includes(noteSymbol);
+  }
+
   const isNoteDotted = (duration) => {
-    return [DOTTED_HALF_NOTE, DOTTED_QUARTER_NOTE, DOTTED_EIGHTH_NOTE].includes(NOTE_SYMBOL_MAP[duration]);
+    return [DOTTED_WHOLE_NOTE, DOTTED_HALF_NOTE, DOTTED_QUARTER_NOTE, DOTTED_EIGHTH_NOTE].includes(NOTE_SYMBOL_MAP[duration]);
   }
 
   const adjustNoteOctave = (noteName) => {
@@ -406,7 +445,7 @@ function insertNotesFromJsonFile() {
     return total;
   };
 
-  const song = POCAHONTAS_COLORS_OF_THE_WIND;
+  const song = SARIAS_SONG;
 
   const presentationId = '1Icl9TS2Pl0NbW8FE1pRsfSIKWPpecTPDHG3iwhtGcuI';
   const slideIndex = 0; // Which slide to insert on
@@ -432,11 +471,18 @@ function insertNotesFromJsonFile() {
   const fontSize = 22;
   const fontFamily = 'Noto Music';
 
-  // Helper to insert a note box
   function insertNoteBox(note, x, y) {
     const box = slide.insertTextBox(note, x, y, boxWidth, boxHeight);
     const text = box.getText();
     text.getTextStyle().setFontSize(fontSize).setFontFamily(fontFamily);
+
+    // Make the slur a subscript
+    const slurIndex = note.indexOf(SLUR);
+    if (slurIndex > -1) {
+      text.getRange(slurIndex + 0, slurIndex + 2)
+        .getTextStyle()
+        .setBaselineOffset(SlidesApp.TextBaselineOffset.SUBSCRIPT);
+    }
   }
 
   const insertLine = (x1, y1, x2, y2, { isDotted }) => {
@@ -466,16 +512,22 @@ function insertNotesFromJsonFile() {
         const [noteName, noteDuration, dottedEnum] = notes[i];
         const [prevNoteName, prevNoteDuration] = notes?.[i - 1] || [];
 
+        let noteSymbol = NOTE_SYMBOL_MAP[noteDuration] || WHOLE_NOTE;
+        let prevNoteSymbol = NOTE_SYMBOL_MAP[prevNoteDuration] || WHOLE_NOTE;
+
         const isPreviousNoteDotted = isNoteDotted(prevNoteDuration);
+        const isPreviousNoteSlurred = isNoteSlurred(prevNoteSymbol);
         const isPreviousNoteSameName = noteName === prevNoteName;
-        const addSpaceBeforeNote = isPreviousNoteDotted && isPreviousNoteSameName
+        const addSpaceBeforeNote = isPreviousNoteDotted && isPreviousNoteSameName;
+        const addThreeSpacesBeforeNote = isPreviousNoteSlurred;
 
         const noteX = x;
         const noteY = noteName || 0;
 
-        let noteSymbol = NOTE_SYMBOL_MAP[noteDuration] || WHOLE_NOTE;
         if (addSpaceBeforeNote) {
           noteSymbol = ' ' + noteSymbol; // helps to keep the current note from covering the dot of the previous note
+        } else if (addThreeSpacesBeforeNote) {
+          noteSymbol = '   ' + noteSymbol; // helps to keep the current note from covering the dot of the previous note
         }
 
         insertNoteBox(noteSymbol, noteX, noteY);
