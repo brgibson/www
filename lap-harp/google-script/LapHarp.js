@@ -1,6 +1,7 @@
 const DOTTED_LINE = 'DOTTED_LINE';
 const BLANK = 0;
-const IS_SHIFT_OCTAVE = true;
+const NUM_OCTAVES_TO_SHIFT_DOWN = 1;
+const NOTE_LENGTH_MULTIPLIER = 2;
 
 /**
  * Lap Harp supports [C3 to C5].
@@ -20,6 +21,90 @@ const NOTES_TEST = {
       },
     ]
   }
+};
+
+const SECTIONS_POCAHONTAS_COLORS_OF_THE_WIND = ["verse-1", "verse-2", "chorus-1", "verse-3", "verse-4", "bridge", "chorus-2", "outro"]
+const POCAHONTAS_COLORS_OF_THE_WIND = {
+  "metadata": {
+    // "sections": SECTIONS_POCAHONTAS_COLORS_OF_THE_WIND.slice(3,5),
+    // "startX": 95,
+    // "endX": 730,
+    "sections": SECTIONS_POCAHONTAS_COLORS_OF_THE_WIND.slice(5),
+    "startX": 140,
+    "endX": 650,
+
+  },
+  "music": {
+    "verse-1": [{
+      "lyric": "",
+      "notes": [["C4", 0.5], ["A4", 0.5], ["C5", 0.5], ["C5", 0.5], ["A4", 0.5], ["A4", 0.5], ["G4", 0.5], ["G4", 0.5],
+        ["F4", 0.5], ["G4", 1.0], ["D4", 2.0], ["C4", 0.5], ["A4", 0.5], ["C5", 0.5], ["C5", 0.5], ["A4", 0.5],
+        ["A4", 0.5], ["G4", 0.5], ["G4", 0.5], ["F4", 0.5], ["A4", 3.0], ["C5", 0.5], ["D5", 0.5], ["C5", 0.5],
+        ["C5", 0.5], ["A4", 0.5], ["A4", 0.5], ["G4", 0.5], ["G4", 0.5], ["F4", 0.5], ["G4", 1.0], ["D4", 2.0],
+        ["F4", 0.5], ["A4", 0.5], ["G4", 1.0], ["F4", 0.5], ["G4", 0.5], ["A4", 0.5], ["C5", 0.5], ["G4", 0.5],
+        ["A4", 0.5], ["D4", 3.0]],
+    }],
+    "verse-2": [{
+      "lyric": "",
+      "notes": [["C4", 0.5], ["A4", 0.5], ["C5", 0.5], ["C5", 0.5], ["A4", 0.5], ["A4", 0.5], ["G4", 0.5], ["G4", 0.5],
+        ["F4", 0.5], ["G4", 1.0], ["D4", 2.0], ["C4", 0.5], ["A4", 0.5], ["C5", 0.5], ["C5", 0.5], ["A4", 0.5],
+        ["A4", 0.5], ["G4", 0.5], ["G4", 0.5], ["F4", 0.5], ["C5", 3.0], ["C5", 0.5], ["D5", 0.5], ["C5", 0.5],
+        ["C5", 0.5], ["A4", 0.5], ["A4", 0.5], ["G4", 0.5], ["G4", 0.5], ["F4", 0.5], ["G4", 1.0], ["D4", 2.0],
+        ["F4", 0.5], ["A4", 0.5], ["G4", 0.5], ["F4", 0.5], ["G4", 0.5], ["A4", 0.5], ["G4", 0.5], ["F4", 0.5],
+        ["D4", 0.5], ["F4", 0.5], ["F4", 3.0]],
+    }],
+    "chorus-1": [{
+      "lyric": "",
+      "notes": [["A4", 1.0], ["C5", 1.0], ["F5", 0.5], ["E5", 0.5], ["E5", 0.5], ["D5", 0.5], ["D5", 0.5], ["C5", 0.5],
+        ["A4", 0.5], ["G4", 0.5], ["A4", 1.0], ["C5", 1.0], ["D5", 1.5], ["C5", 0.5], ["F5", 0.5], ["E5", 0.5],
+        ["E5", 0.5], ["D5", 0.5], ["D5", 0.5], ["C5", 0.5], ["C5", 0.5], ["A4", 0.5], ["C5", 3.0], ["A4", 0.5],
+        ["C5", 0.5], ["F5", 0.5], ["E5", 0.5], ["E5", 0.5], ["D5", 0.5], ["D5", 0.5], ["C5", 0.5], ["C5", 0.5],
+        ["D5", 0.5], ["C5", 1.0], ["F4", 2.0], ["D4", 0.5], ["F4", 0.5], ["G4", 0.5], ["A4", 0.5], ["A4", 0.5],
+        ["G4", 0.5], ["G4", 0.5], ["F4", 0.5], ["F4", 0.5], ["D4", 0.5], ["G4", 3.0], ["D4", 0.5], ["F4", 0.5],
+        ["G4", 0.5], ["A4", 0.5], ["A4", 0.5], ["G4", 0.5], ["G4", 0.5], ["F4", 0.5], ["D4", 0.5], ["F4", 0.5],
+        ["F4", 4.0]],
+    }],
+    "verse-3": [{
+      "lyric": "",
+      "notes": [["C4", 0.5], ["A4", 0.5], ["C5", 0.5], ["C5", 0.5], ["A4", 0.5], ["A4", 0.5], ["G4", 0.5], ["G4", 0.5],
+        ["F4", 0.5], ["G4", 1.0], ["D4", 2.0], ["C4", 0.5], ["A4", 0.5], ["C5", 0.5], ["C5", 0.5], ["A4", 0.5],
+        ["A4", 0.5], ["G4", 0.5], ["G4", 0.5], ["F4", 0.5], ["A4", 3.0], ["C5", 0.5], ["D5", 0.5], ["C5", 0.5],
+        ["C5", 0.5], ["A4", 0.5], ["A4", 0.5], ["G4", 0.5], ["G4", 0.5], ["F4", 0.5], ["G4", 1.0], ["D4", 2.0],
+        ["F4", 0.5], ["A4", 0.5], ["G4", 1.0], ["F4", 0.5], ["G4", 0.5], ["A4", 0.5], ["C5", 0.5], ["G4", 0.5],
+        ["A4", 0.5], ["D4", 3.0]],
+    }],
+    "verse-4": [{
+      "lyric": "",
+      "notes": [["C4", 0.5], ["A4", 0.5], ["C5", 0.5], ["C5", 0.5], ["A4", 0.5], ["A4", 0.5], ["G4", 0.5], ["G4", 0.5],
+        ["F4", 0.5], ["G4", 1.0], ["D4", 2.0], ["C4", 0.5], ["A4", 0.5], ["C5", 0.5], ["C5", 0.5], ["A4", 0.5],
+        ["A4", 0.5], ["G4", 0.5], ["G4", 0.5], ["F4", 0.5], ["C5", 3.0], ["C5", 0.5], ["D5", 0.5], ["C5", 0.5],
+        ["C5", 0.5], ["A4", 0.5], ["A4", 0.5], ["G4", 0.5], ["G4", 0.5], ["F4", 0.5], ["G4", 1.0], ["D4", 2.0],
+        ["F4", 0.5], ["A4", 0.5], ["G4", 0.5], ["F4", 0.5], ["G4", 0.5], ["A4", 0.5], ["G4", 0.5], ["F4", 0.5],
+        ["D4", 0.5], ["F4", 0.5], ["F4", 3.0]],
+    }],
+    "bridge": [{
+      "lyric": "",
+      "notes": [["C5", 2.0], ["E5", 1.5], ["C5", 0.5], ["C5", 0.5], ["D5", 0.5], ["C5", 1.0], ["F4", 1.0], ["D4", 0.5],
+        ["F4", 0.5], ["G4", 1.5], ["A4", 0.5], ["G4", 1.0], ["D4", 0.5], ["F4", 0.5], ["A4", 1.5],
+        ["G4", 0.5],["G4", 3]],
+    }],
+    "chorus-2": [{
+      "lyric": "",
+      "notes": [["A4", 1.0], ["C5", 1.0], ["F5", 0.5], ["E5", 0.5], ["E5", 0.5], ["D5", 0.5], ["D5", 0.5], ["C5", 0.5],
+        ["A4", 0.5], ["G4", 0.5], ["A4", 1.0], ["C5", 1.0], ["D5", 1.5], ["C5", 0.5], ["F5", 0.5], ["E5", 0.5],
+        ["E5", 0.5], ["D5", 0.5], ["D5", 0.5], ["C5", 0.5], ["C5", 0.5], ["A4", 0.5], ["C5", 2.5], ["A4", 0.5],
+        ["A4", 0.5], ["C5", 0.5], ["F5", 0.5], ["E5", 0.5], ["E5", 0.5], ["D5", 0.5], ["D5", 0.5], ["C5", 0.5],
+        ["C5", 0.5], ["D5", 0.5], ["C5", 1.0], ["F4", 2.0]],
+    }],
+    "outro": [{
+      "lyric": "",
+      "notes": [["D4", 0.5], ["F4", 0.5], ["G4", 0.5], ["A4", 0.5], ["A4", 0.5], ["G4", 0.5], ["G4", 0.5], ["F4", 0.5],
+        ["F4", 0.5], ["D4", 0.5], ["G4", 2.5], ["D4", 0.5], ["F4", 0.5], ["G4", 0.5], ["A4", 0.5], ["A4", 0.5],
+        ["G4", 0.5], ["G4", 1.0], ["F4", 0.5], ["G4", 0.5], ["A4", 0.5], ["C5", 0.5], ["A4", 0.5], ["C5", 0.5],
+        ["D5", 1.0], ["C5", 0.5], ["D5", 0.5], ["F5", 0.5], ["E5", 0.5], ["D5", 0.5], ["C5", 0.5], ["A4", 0.5],
+        ["G4", 0.5], ["F4", 0.5], ["D4", 0.5], ["F4", 5.0]],
+    }],
+  },
 };
 
 const ZELDA_SONG_OF_STORMS = {
@@ -294,25 +379,34 @@ function insertNotesFromJsonFile() {
   }
 
   const adjustNoteOctave = (noteName) => {
-    let noteNameShifted = noteName;
-    const numOctavesDown = 2;
-    if (IS_SHIFT_OCTAVE) {
-      noteNameShifted = `${noteName.charAt(0)}${noteName.charAt(1) - numOctavesDown}`;
-    }
+    const noteNameShifted = `${noteName.charAt(0)}${noteName.charAt(1) - NUM_OCTAVES_TO_SHIFT_DOWN}`;
     return NOTE_POSITION_MAP[noteNameShifted];
   }
 
+  const adjustNoteDuration = (noteLength) => {
+    return noteLength * NOTE_LENGTH_MULTIPLIER;
+  }
+
+  const adjustNotes = (notes) => {
+    return notes.map(([noteName, noteDuration, dottedEnum]) => [adjustNoteOctave(noteName), adjustNoteDuration(noteDuration), dottedEnum]);
+  };
+
   const countNotes = (song) => {
     let total = 0;
-    for (const section of Object.values(song)) {
+
+    const sections = song?.metadata?.sections || ['verse', 'chorus'];
+
+    for (const sectionName of sections) {
+      const section = song.music[sectionName];
       for (const line of section) {
         total += line.notes.length;
       }
     }
+
     return total;
   };
 
-  const song = ZELDA_SONG_OF_STORMS;
+  const song = POCAHONTAS_COLORS_OF_THE_WIND;
 
   const presentationId = '1Icl9TS2Pl0NbW8FE1pRsfSIKWPpecTPDHG3iwhtGcuI';
   const slideIndex = 0; // Which slide to insert on
@@ -323,7 +417,7 @@ function insertNotesFromJsonFile() {
   const boxWidth = 60;
   const boxHeight = 40;
 
-  const numNotes = countNotes(song.music);
+  const numNotes = countNotes(song);
 
   /**
    * Favorite [startX, endX] values:
@@ -332,8 +426,8 @@ function insertNotesFromJsonFile() {
    * -- [150,500]
    */
   const startX = song?.metadata?.startX || 120;
-  const endX = song?.metadata?.endX || 500;;
-  const spacingX = endX / numNotes;
+  const endX = song?.metadata?.endX || 500;
+  const spacingX = (endX - startX) / numNotes;
 
   const fontSize = 22;
   const fontFamily = 'Noto Music';
@@ -365,7 +459,7 @@ function insertNotesFromJsonFile() {
     if (!section) continue;
 
     for (const phrase of section) {
-      const notes = phrase.notes;
+      const notes = adjustNotes(phrase.notes);
       const spacing = phrase.spacing || spacingX;
 
       for (let i = 0; i < notes.length; i++) {
@@ -377,7 +471,7 @@ function insertNotesFromJsonFile() {
         const addSpaceBeforeNote = isPreviousNoteDotted && isPreviousNoteSameName
 
         const noteX = x;
-        const noteY = adjustNoteOctave(noteName) || 0;
+        const noteY = noteName || 0;
 
         let noteSymbol = NOTE_SYMBOL_MAP[noteDuration] || WHOLE_NOTE;
         if (addSpaceBeforeNote) {
