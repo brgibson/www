@@ -1,6 +1,6 @@
 const DOTTED_LINE = 'DOTTED_LINE';
 const BLANK = 0;
-const NUM_OCTAVES_TO_SHIFT_DOWN = 2;
+const NUM_OCTAVES_TO_SHIFT_DOWN = 0;
 const NOTE_LENGTH_MULTIPLIER = 2;
 
 /**
@@ -21,6 +21,26 @@ const NOTES_TEST = {
       },
     ]
   }
+};
+
+const CIVIL_WAR_ASHOKAN_FAREWELL = {
+  "metadata": { "startX": 200, "endX": 589, "sections": ["song"] }, "music": {
+    "song": [{
+      "lyric": "",
+      "notes": [["G4", 0.5], ["B4", 0.5], ["C5", 1.5], ["B4", 0.5], ["A4", 0.5], ["G4", 0.5], ["E4", 2.0], ["D4", 0.5],
+        ["E4", 0.5], ["F4", 1.5], ["E4", 0.5], ["D4", 0.5], ["C4", 0.5], ["A3", 1.0], ["C4", 1.5], ["A3", 0.5],
+        ["G3", 1.0], ["C4", 1.0], ["E4", 1.0], ["G4", 1.0], ["C5", 1.0], ["E4", 1.0], ["E4", 1.5], ["F4", 0.5],
+        ["E4", 1.0], ["D4", 2.0], ["G4", 0.5], ["B4", 0.5], ["C5", 1.5], ["B4", 0.5], ["A4", 0.5], ["G4", 0.5],
+        ["E4", 2.0], ["D4", 0.5], ["E4", 0.5], ["F4", 1.5], ["E4", 0.5], ["D4", 0.5], ["C4", 0.5], ["A3", 1.0],
+        ["C4", 1.5], ["A3", 0.5], ["G3", 1.0], ["C4", 1.0], ["E4", 1.0], ["C3", 1.0], ["E3", 1.0], ["G3", 1.0],
+        ["G3", 1.0], ["B3", 1.0], ["D4", 1.0], ["C4", 2.0], ["E3", 0.5], ["F3", 0.5], ["G3", 1.5], ["E3", 0.5],
+        ["C3", 1.5], ["C4", 2.0], ["G3", 1.0], ["A3", 1.5], ["B3", 0.5], ["C4", 1.0], ["G3", 0.5], ["E3", 2.0],
+        ["D4", 0.5], ["E4", 2.0], ["D4", 0.5], ["C4", 0.5], ["A3", 2.0], ["F3", 1.0], ["G3", 3.0], ["G4", 2.0],
+        ["E4", 0.5], ["D4", 0.5], ["C4", 1.0], ["E4", 1.0], ["G4", 1.0], ["C5", 3.0], ["A4", 1.5], ["B4", 0.5],
+        ["C5", 1.0], ["G4", 0.5], ["E4", 1.5], ["C4", 1.0], ["G3", 1.0], ["C4", 1.0], ["E4", 1.0], ["G4", 1.0],
+        ["C5", 1.0], ["E4", 1.0], ["D4", 1.5], ["C4", 0.5], ["B3", 1.0], ["C4", 2.0]],
+    }],
+  },
 };
 
 const SARIAS_SONG = {
@@ -445,7 +465,7 @@ function insertNotesFromJsonFile() {
     return total;
   };
 
-  const song = SARIAS_SONG;
+  const song = CIVIL_WAR_ASHOKAN_FAREWELL;
 
   const presentationId = '1Icl9TS2Pl0NbW8FE1pRsfSIKWPpecTPDHG3iwhtGcuI';
   const slideIndex = 0; // Which slide to insert on
