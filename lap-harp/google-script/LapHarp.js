@@ -24,7 +24,7 @@ const NOTES_TEST = {
 };
 
 const SARIAS_SONG = {
-  "metadata": { "startX": 100, "endX": 610, "sections": ["part-1", "part-2", "part-3"] }, "music": {
+  "metadata": { "startX": 100, "endX": 520, "sections": ["part-1", "part-2", "part-3"] }, "music": {
     "part-1": [{
       "lyric": "",
       "notes": [["F5", 0.5], ["A5", 0.5], ["B5", 1.0], ["F5", 0.5], ["A5", 0.5], ["B5", 1.0], ["F5", 0.5], ["A5", 0.5],
@@ -494,6 +494,8 @@ function insertNotesFromJsonFile() {
     return line;
   }
 
+  const WIDTH_TO_INCREASE_FOR_SLUR = 24;
+
   const noteXYs = []
 
   // Insert all sections (e.g., verse and chorus)
@@ -516,35 +518,36 @@ function insertNotesFromJsonFile() {
         let prevNoteSymbol = NOTE_SYMBOL_MAP[prevNoteDuration] || WHOLE_NOTE;
 
         const isPreviousNoteDotted = isNoteDotted(prevNoteDuration);
-        const isPreviousNoteSlurred = isNoteSlurred(prevNoteSymbol);
+        const isPreviousNoteSlurred = noteXYs.at(-1)?.isSlurred;
         const isPreviousNoteSameName = noteName === prevNoteName;
         const addSpaceBeforeNote = isPreviousNoteDotted && isPreviousNoteSameName;
-        const addThreeSpacesBeforeNote = isPreviousNoteSlurred;
+
+        if (isPreviousNoteSlurred) {
+          x += WIDTH_TO_INCREASE_FOR_SLUR;
+        }
 
         const noteX = x;
         const noteY = noteName || 0;
 
         if (addSpaceBeforeNote) {
           noteSymbol = ' ' + noteSymbol; // helps to keep the current note from covering the dot of the previous note
-        } else if (addThreeSpacesBeforeNote) {
-          noteSymbol = '   ' + noteSymbol; // helps to keep the current note from covering the dot of the previous note
         }
 
         insertNoteBox(noteSymbol, noteX, noteY);
 
-        noteXYs.push({ noteX, noteY, isWholeNote: noteSymbol == WHOLE_NOTE, hasSpaceAddedBeforeNote: addSpaceBeforeNote, isDottedLine: dottedEnum === DOTTED_LINE });
+        noteXYs.push({ noteX, noteY, isWholeNote: noteSymbol == WHOLE_NOTE, hasSpaceAddedBeforeNote: addSpaceBeforeNote, isDottedLine: dottedEnum === DOTTED_LINE, isSlurred: isNoteSlurred(noteSymbol) });
 
         x += spacing;
 
         // Draw line to next note if this isn't the last note
         if (noteXYs.length > 1) {
-          const lineShiftX = song?.metadata?.lineShiftX || 13;
+          const lineShiftX = (song?.metadata?.lineShiftX || 13);
           const lineShiftY = song?.metadata?.lineShiftY || 17;
 
           const currentIndex = noteXYs.length - 1;
           const prevIndex = currentIndex - 1;
 
-          const centeroidXNoteA = noteXYs[prevIndex].noteX + lineShiftX  + (noteXYs[prevIndex].hasSpaceAddedBeforeNote ? spacing/2 : 0);
+          const centeroidXNoteA = noteXYs[prevIndex].noteX + lineShiftX  + (noteXYs[prevIndex].hasSpaceAddedBeforeNote ? spacing/2 : 0) + (noteXYs[prevIndex].isSlurred ? (WIDTH_TO_INCREASE_FOR_SLUR - 5) : 0);
           const centeroidYNoteA = noteXYs[prevIndex].noteY + lineShiftY;
           const centeroidXNoteB = noteXYs[currentIndex].noteX + lineShiftX + (noteXYs[currentIndex].hasSpaceAddedBeforeNote ? spacing/2 : 0);
           const centeroidYNoteB = noteXYs[currentIndex].noteY + lineShiftY;
