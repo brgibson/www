@@ -23,6 +23,15 @@ const NOTES_TEST = {
   }
 };
 
+const PETER_PAN_A_PIRATES_LIFE = {
+  "metadata": {
+    "startX": 150,
+    "endX": 670,
+    "sections": ["song"],
+  },
+  "music":{"song":[{"lyric":"","notes":[["G4",2.0],["F4",2.0],["E4",1.0],["C4",0.5],["C4",0.5],["B3",0.5],["A3",0.5],["G3",0.5],["C4",0.5],["C4",0.5],["C4",1.0],["D4",0.5],["E4",1.0],["E4",0.5],["E4",0.5],["D4",0.5],["C4",0.5],["D4",2.0],["E4",0.5],["G4",0.5],["G4",0.5],["G4",0.5],["G4",0.5],["F4",0.5],["E4",0.5],["F4",1.0],["F4",0.5],["F4",0.5],["E4",0.5],["D4",0.5],["E4",0.5],["D4",0.5],["C4",0.5],["D4",0.5],["C4",0.5],["B3",0.5],["C4",1.5],["G4",1.0],["F4",0.5],["E4",0.5],["D4",0.5],["C4",0.5],["D4",0.5],["C4",0.5],["B3",0.5],["C4",2.0]]}]}
+};
+
 //Page 1
 const LITTLE_MERMAID_UNDER_THE_SEA = {
   "metadata": { "startX": 110, "endX": 640, "sections": ["intro", "verse", "pre-chorus"] }, "music": {
@@ -534,7 +543,7 @@ function insertNotesFromJsonFile() {
     return total;
   };
 
-  const song = CIVIL_WAR_ASHOKAN_FAREWELL;
+  const song = PETER_PAN_A_PIRATES_LIFE;
 
   const presentationId = '1Icl9TS2Pl0NbW8FE1pRsfSIKWPpecTPDHG3iwhtGcuI';
   const slideIndex = 0; // Which slide to insert on
