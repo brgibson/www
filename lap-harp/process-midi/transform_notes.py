@@ -60,7 +60,7 @@ def main():
         transformed_data = transform_notes(sys.stdin)
 
     # Print the transformed data to the command line with compact formatting
-    print("const FOO =", json.dumps(transformed_data, separators=(',', ':')), ";")
+    print("", json.dumps(transformed_data, separators=(',', ':')))
 
 if __name__ == "__main__":
     main()

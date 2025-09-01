@@ -1,7 +1,7 @@
 const DOTTED_LINE = 'DOTTED_LINE';
 const BLANK = 0;
-const NUM_OCTAVES_TO_SHIFT_DOWN = 0;
-const NOTE_LENGTH_MULTIPLIER = 2;
+const NUM_OCTAVES_TO_SHIFT_DOWN = 1;
+const NOTE_LENGTH_MULTIPLIER = 1;
 
 /**
  * Lap Harp supports [C3 to C5].
@@ -22,6 +22,73 @@ const NOTES_TEST = {
     ]
   }
 };
+
+//Page 1
+const LITTLE_MERMAID_UNDER_THE_SEA = {
+  "metadata": { "startX": 110, "endX": 640, "sections": ["intro", "verse", "pre-chorus"] }, "music": {
+    "intro": [{
+      "lyric": "",
+      "notes": [["E4", 0.5], ["G4", 0.5], ["C5", 0.5], ["E5", 0.5], ["E5", 1.0], ["C5", 0.5], ["D5", 1.0], ["F5", 1.0],
+        ["E5", 1.0], ["C5", 1.0], ["C4", 0.5, DOTTED_LINE], ["E4", 0.5], ["G4", 0.5], ["C5", 0.5], ["C5", 1.0], ["G4", 0.5],
+        ["B4", 1.0], ["D5", 1.0], ["C5", 1.5],
+        // ["E4", 0.5], ["G4", 0.5], ["C5", 0.5], ["E5", 0.5], ["E5", 1.0],
+        // ["C5", 0.5], ["D5", 1.0], ["F5", 1.0], ["E5", 1.0], ["C5", 1.0], ["C4", 0.5], ["E4", 0.5], ["G4", 0.5],
+        // ["C5", 0.5], ["C5", 1.0], ["G4", 0.5], ["B4", 1.0], ["D5", 1.0], ["C5", 1.5]
+        ["C5", BLANK],["C5", BLANK]
+      ],
+    }],
+    "verse": [{
+      "lyric": "",
+      "notes": [["C5", 0.5], ["C5", 1.0], ["C5", 1.0], ["C5", 0.5], ["B4", 1.0], ["D5", 1.0], ["C5", 1.0], ["G4", 1.5],
+        ["E4", 0.5, DOTTED_LINE], ["G4", 0.5], ["G4", 1.0], ["E4", 0.5], ["D4", 1.0], ["G4", 1.0], ["E4", 2.0], ["C5", 0.5, DOTTED_LINE],
+        ["C5", 1.0], ["C5", 0.5], ["C5", 1.0], ["B4", 1.0], ["D5", 1.0], ["C5", 1.0], ["G4", 1.5], ["E4", 0.5, DOTTED_LINE],
+        ["G4", 0.5], ["G4", 1.0], ["E4", 0.5], ["D4", 1.0], ["G4", 1.0], ["E4", 1.5]],
+    }],
+    "pre-chorus": [{
+      "lyric": "",
+      "notes": [["A4", 0.5], ["C5", 1.0], ["C5", 1.0], ["A4", 0.5], ["G4", 1.0], ["C5", 1.0], ["G4", 1.0], ["C5", 1.5],
+        ["B4", 0.5, DOTTED_LINE], ["D5", 1.0], ["D5", 1.0], ["C5", 0.5], ["E5", 1.0], ["D5", 1.0], ["C5", 2.0], ["A4", 0.5, DOTTED_LINE],
+        ["C5", 0.5], ["C5", 1.0], ["A4", 0.5], ["G4", 1.0], ["C5", 1.0], ["G4", 1.0], ["C5", 1.5], ["B4", 0.5, DOTTED_LINE],
+        ["D5", 0.5], ["D5", 1.0], ["C5", 0.5], ["E5", 1.0], ["D5", 1.0], ["C5", 2.0]],
+    }],
+  },
+}
+// Page 2
+// const LITTLE_MERMAID_UNDER_THE_SEA = {
+//   "metadata": { "startX": 140, "endX": 650, "sections": ["chorus"] }, "music": {
+//     "chorus": [{
+//       "lyric": "",
+//       "notes": [["E5", 1.0], ["D5", 0.5], ["C5", 1.5], ["A4", 4.0], ["E5", 1.0, DOTTED_LINE], ["D5", 0.5], ["C5", 1.0], ["D5", 4.0],
+//         ["E5", 1.0, DOTTED_LINE], ["D5", 0.5], ["C5", 1.0], ["A4", 0.5], ["G4", 1.0], ["E5", 1.0, DOTTED_LINE], ["D5", 0.5], ["C5", 1.0],
+//         ["A4", 0.5], ["G4", 1.0], ["E5", 1.0, DOTTED_LINE], ["D5", 0.5], ["C5", 1.0], ["E5", 4.0], ["E5", BLANK, DOTTED_LINE], ["E5", 1.0, DOTTED_LINE], ["D5", 0.5],
+//         ["C5", 1.0], ["A4", 1.0], ["C5", 0.5], ["C5", 1.0], ["A4", 0.5], ["D5", 2.0], ["D5", BLANK], ["D5", 0.75, DOTTED_LINE], ["D5", 0.5],
+//         ["C5", 0.5], ["E5", 1.0], ["D5", 0.5], ["C5", 1.0], ["E5", 0.5], ["C5", 1.0], ["A4", 1.5], ["E5", 1.0, DOTTED_LINE],
+//         ["D5", 0.5], ["C5", 1.0], ["A4", 0.5], ["G4", 1.0], ["E5", 1.0, DOTTED_LINE], ["D5", 0.5], ["C5", 1.0], ["A4", 0.5],
+//         ["G4", 1.0], ["E5", 1.0, DOTTED_LINE], ["D5", 0.5], ["C5", 1.0], ["C5", 4.0]],
+//     }],
+//   },
+// }
+// //Page 3
+// const LITTLE_MERMAID_UNDER_THE_SEA = {
+//   "metadata": { "startX": 110, "endX": 660, "sections": ["bridge", "bridge-2"] }, "music": {
+//     "bridge": [{
+//       "lyric": "",
+//       "notes": [["C5", 0.5], ["B4", 1.0], ["B4", 1.0], ["B4", 0.5], ["B4", 1.0], ["A4", 0.5], ["G4", 1.0], ["G4", 1.0],
+//         ["G4", 0.5], ["G4", 1.0], ["C5", 0.5], ["B4", 1.0], ["B4", 1.0], ["B4", 0.5], ["B4", 1.0], ["A4", 0.5],
+//         ["G4", 1.0], ["G4", 1.0], ["G4", 0.5], ["G4", 1.0], ["G4", BLANK], ["G4", 0.5], ["A4", 1.0], ["A4", 1.0], ["A4", 0.5],
+//         ["C5", 1.0], ["A4", 0.5], ["G4", 1.0], ["G4", 1.0], ["G4", 0.5], ["C5", 1.0], ["C5", BLANK], ["C5", 0.5], ["B4", 1.0],
+//         ["B4", 1.0], ["B4", 0.5], ["D5", 1.0], ["B4", 1.0], ["C5", 2.0],["C5", BLANK]],
+//     }],
+//     "bridge-2": [{
+//       "lyric": "",
+//       "notes": [["C5", 0.5], ["B4", 1.0], ["B4", 1.0], ["B4", 0.5], ["B4", 1.0], ["A4", 0.5], ["G4", 1.0], ["G4", 1.0],
+//         ["G4", 0.5], ["G4", 1.0], ["C5", 0.5], ["B4", 1.0], ["B4", 1.0], ["B4", 0.5], ["B4", 1.0], ["A4", 0.5],
+//         ["G4", 1.0], ["G4", 1.0], ["G4", 0.5], ["G4", 1.0], ["G4", BLANK], ["G4", 0.5], ["A4", 1.0], ["A4", 1.0], ["A4", 0.5],
+//         ["C5", 1.0], ["A4", 0.5], ["G4", 1.0], ["G4", 1.0], ["G4", 0.5], ["C5", 1.0], ["G4", 0.5, DOTTED_LINE], ["B4", 1.0],
+//         ["C5", 1.0], ["D5", 1], ["B4", 1.0], ["C5", 4.0],["C5", BLANK]],
+//     }],
+//   },
+// }
 
 const CIVIL_WAR_ASHOKAN_FAREWELL = {
   "metadata": { "startX": 200, "endX": 589, "sections": ["song"] }, "music": {
@@ -438,6 +505,8 @@ function insertNotesFromJsonFile() {
   }
 
   const adjustNoteOctave = (noteName) => {
+    if (noteName === BLANK) return BLANK;
+
     const noteNameShifted = `${noteName.charAt(0)}${noteName.charAt(1) - NUM_OCTAVES_TO_SHIFT_DOWN}`;
     return NOTE_POSITION_MAP[noteNameShifted];
   }
@@ -473,7 +542,7 @@ function insertNotesFromJsonFile() {
   const presentation = SlidesApp.openById(presentationId);
   const slide = presentation.getSlides()[slideIndex];
 
-  const boxWidth = 60;
+  const boxWidth = 30;
   const boxHeight = 40;
 
   const numNotes = countNotes(song);
